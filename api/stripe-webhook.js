@@ -1,6 +1,6 @@
 const Stripe = require("stripe");
 const { Resend } = require("resend");
-const const { supabase } = require("../_supabase");
+const const const { supabase } = require("../_supabase");
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 module.exports=async(req,res)=>{
