@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#050505"><title>LNK Admin V5 — Ludak Na Kvadrat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#060606;color:#eee;font-family:Inter,Arial,sans-serif}
+.wrap{max-width:1450px;margin:auto;padding:26px}.gold{color:#dfb34f}
+.login{min-height:100vh;display:grid;place-items:center;padding:20px}.login-card{width:min(430px,100%);padding:36px;border:1px solid #3b2d18;border-radius:22px;background:#0d0c0a;box-shadow:0 30px 100px #000}.logo{width:70px;height:70px;border-radius:50%;object-fit:cover;border:1px solid #9a6f22;display:block;margin:0 auto 20px}.login h1{font-family:Cinzel,serif;text-align:center;margin:8px 0}.sub{text-align:center;color:#777;font-size:12px}.input{width:100%;padding:13px;border-radius:10px;border:1px solid #302719;background:#111;color:#fff;margin:20px 0 12px;outline:none}.btn{border:0;border-radius:10px;padding:11px 15px;font-weight:800;cursor:pointer}.btn-gold{background:#d9a83e;color:#080808;width:100%}.error{color:#dc806b;text-align:center;font-size:12px;min-height:18px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid #211c13;padding-bottom:20px}.brand{display:flex;gap:12px;align-items:center}.brand .logo{width:50px;height:50px;margin:0}.top h1{font-family:Cinzel,serif;margin:0;font-size:25px}.logout,.tool{background:#14120e;color:#d9b05b;border:1px solid #382a17}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:22px 0}.stat{padding:17px;border:1px solid #282116;background:#0d0c0a;border-radius:14px}.stat strong{font-size:27px;color:#dfb34f;display:block}.stat small{color:#777}
+.filters{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr auto auto;gap:9px;margin:18px 0}.field,.select{background:#111;color:#ddd;border:1px solid #302719;border-radius:9px;padding:10px;min-width:0}.tool{white-space:nowrap}
+.table-wrap{overflow:auto;border:1px solid #292116;border-radius:16px}.table{width:100%;border-collapse:collapse;min-width:1200px}.table th,.table td{padding:13px;border-bottom:1px solid #211c14;text-align:left;font-size:12px;vertical-align:top}.table th{color:#8f887c;background:#0d0c0a;position:sticky;top:0;z-index:1}.table tr:hover td{background:#0d0c09}
+.badge{display:inline-flex;padding:5px 8px;border-radius:999px;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.08em}.pending{background:#252116;color:#c9a85f}.paid{background:#162719;color:#79c783}.in_progress{background:#201c2b;color:#b79be5}.completed{background:#112727;color:#70d4cf}.cancelled{background:#2a1715;color:#db8476}
+.action{background:#15130f;border:1px solid #352916;color:#dcb35a;border-radius:8px;padding:7px 9px;cursor:pointer;text-decoration:none;display:inline-block}.action:hover{border-color:#9b7124}.detail{max-width:310px;white-space:pre-wrap;color:#aaa}.muted{color:#777}
+.empty{text-align:center;color:#777;padding:40px}.toast{position:fixed;right:20px;bottom:20px;background:#15130f;border:1px solid #6f501c;color:#e7c878;padding:13px 17px;border-radius:10px;opacity:0;transform:translateY(10px);transition:.25s;z-index:20}.toast.show{opacity:1;transform:none}
+.modal{position:fixed;inset:0;background:#000b;display:grid;place-items:center;padding:20px;z-index:10}.modal-card{width:min(650px,100%);max-height:90vh;overflow:auto;background:#0d0c0a;border:1px solid #4a3618;border-radius:18px;padding:24px;box-shadow:0 30px 100px #000}.modal h2{font-family:Cinzel,serif}.modal textarea{min-height:130px;resize:vertical}.modal .row{display:grid;gap:8px;margin:13px 0}.modal .buttons{display:flex;gap:9px;justify-content:flex-end}.success-note{font-size:12px;color:#7dc985;margin-top:8px}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.filters{grid-template-columns:1fr 1fr}.filters .search{grid-column:1/-1}}
+@media(max-width:600px){.wrap{padding:15px}.top h1{font-size:18px}.stats{grid-template-columns:1fr 1fr}.filters{grid-template-columns:1fr}.filters .search{grid-column:auto}}
+</style>
+</head>
+<body>
+<div id="login" class="login">
+<form class="login-card" id="loginForm"><img class="logo" src="assets/logo.jpeg" alt="Ludak Na Kvadrat">
+<h1>LNK <span class="gold">ADMIN V5</span></h1><p class="sub">Profesionalno upravljanje narudžbinama</p>
+<input class="input" id="password" type="password" autocomplete="current-password" placeholder="Admin lozinka" required>
+<button class="btn btn-gold">Prijavi se</button><p class="error" id="loginError"></p></form></div>
+
+<div id="app" class="wrap" hidden>
+<header class="top"><div class="brand"><img class="logo" src="assets/logo.jpeg" alt=""><div><h1>Ludak Na Kvadrat <span class="gold">ADMIN</span></h1><div class="sub" style="text-align:left">Narudžbine · statusi · isporuka</div></div></div>
+<div style="display:flex;gap:8px"><button class="btn tool" id="export">↓ CSV</button><button class="btn tool" id="refresh">↻ Osveži</button><button class="btn logout" id="logout">Odjavi se</button></div></header>
+
+<section class="stats">
+<div class="stat"><strong id="all">0</strong><small>Ukupno</small></div><div class="stat"><strong id="paid">0</strong><small>Plaćeno</small></div>
+<div class="stat"><strong id="progress">0</strong><small>U izradi</small></div><div class="stat"><strong id="done">0</strong><small>Završeno</small></div>
+<div class="stat"><strong id="revenue">0 €</strong><small>Ukupno naplaćeno</small></div>
+</section>
+
+<div class="filters">
+<input class="field search" id="search" placeholder="🔎 Pretraži kupca, e-mail, kome je pesma namenjena...">
+<select class="select" id="statusFilter"><option value="all">Svi statusi</option><option value="pending">Čeka uplatu</option><option value="paid">Plaćeno</option><option value="in_progress">U izradi</option><option value="completed">Završeno</option><option value="cancelled">Otkazano</option></select>
+<input class="field" id="dateFrom" type="date" title="Od datuma"><input class="field" id="dateTo" type="date" title="Do datuma">
+<select class="select" id="sort"><option value="new">Najnovije prvo</option><option value="old">Najstarije prvo</option><option value="high">Najskuplje prvo</option></select>
+<button class="btn tool" id="clear">Reset</button>
+</div>
+
+<div class="table-wrap"><table class="table"><thead><tr><th>Datum</th><th>Kupac</th><th>Pesma za</th><th>Paket</th><th>Priča / detalji</th><th>Status</th><th>Akcije</th></tr></thead><tbody id="ordersBody"></tbody></table></div>
+</div>
+
+<div id="deliveryModal" class="modal" hidden>
+<div class="modal-card"><h2>🎵 Pošalji gotovu pesmu</h2><p class="muted" id="deliveryFor"></p>
+<div class="row"><label>Link za preuzimanje MP3/WAV fajla</label><input class="field" id="downloadUrl" placeholder="https://..."></div>
+<div class="row"><label>Poruka kupcu</label><textarea class="field" id="deliveryMessage">Tvoja personalizovana pesma je gotova. Hvala ti što si izabrao/la Ludak Na Kvadrat!</textarea></div>
+<p class="muted">Kupcu će stići e-mail sa linkom. Nakon uspešnog slanja status se automatski postavlja na <b class="gold">Završeno</b>.</p>
+<div class="buttons"><button class="btn tool" id="closeModal">Otkaži</button><button class="btn btn-gold" id="sendDelivery">Pošalji pesmu kupcu →</button></div>
+<p class="success-note" id="deliveryNote"></p></div></div>
+
+<div class="toast" id="toast"></div>
+<script>
+const labels={pending:"Čeka uplatu",paid:"Plaćeno",in_progress:"U izradi",completed:"Završeno",cancelled:"Otkazano"};
+let orders=[], deliveryOrder=null;
+const $=id=>document.getElementById(id);
+function showToast(t){$("toast").textContent=t;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2800)}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function date(s){return new Date(s).toLocaleString("sr-RS",{dateStyle:"short",timeStyle:"short"})}
+function matches(o){
+ const q=$("search").value.toLowerCase().trim(), f=$("statusFilter").value;
+ if(f!=="all"&&o.status!==f)return false;
+ if(q && ![o.name,o.email,o.recipient,o.occasion,o.style,o.package,o.story,o.language].join(" ").toLowerCase().includes(q))return false;
+ const d=new Date(o.created_at), from=$("dateFrom").value?new Date($("dateFrom").value+"T00:00:00"):null, to=$("dateTo").value?new Date($("dateTo").value+"T23:59:59"):null;
+ if(from&&d<from)return false;if(to&&d>to)return false;return true;
+}
+function filtered(){
+ let list=orders.filter(matches);
+ const s=$("sort").value;
+ list.sort((a,b)=>s==="old"?new Date(a.created_at)-new Date(b.created_at):s==="high"?b.amount_cents-a.amount_cents:new Date(b.created_at)-new Date(a.created_at));
+ return list;
+}
+function render(){
+ const list=filtered();
+ $("all").textContent=orders.length;$("paid").textContent=orders.filter(o=>o.status==="paid").length;
+ $("progress").textContent=orders.filter(o=>o.status==="in_progress").length;$("done").textContent=orders.filter(o=>o.status==="completed").length;
+ $("revenue").textContent=(orders.filter(o=>["paid","in_progress","completed"].includes(o.status)).reduce((n,o)=>n+(o.amount_cents||0),0)/100).toFixed(2)+" €";
+ $("ordersBody").innerHTML=list.length?list.map(o=>`<tr>
+<td>${esc(date(o.created_at))}</td>
+<td><b>${esc(o.name)}</b><br><a style="color:#d8ac50" href="mailto:${esc(o.email)}">${esc(o.email)}</a></td>
+<td><b>${esc(o.recipient)}</b><br><small>${esc(o.occasion)} · ${esc(o.style)}</small></td>
+<td><b>${esc(o.package)}</b><br><small>${(o.amount_cents/100).toFixed(2)} €</small></td>
+<td class="detail">${esc(o.story)}<br><small class="muted">Jezik: ${esc(o.language)} · Atmosfera: ${esc(o.mood||"-")} · Rok: ${esc(o.deadline||"-")}</small></td>
+<td><span class="badge ${esc(o.status)}">${labels[o.status]||o.status}</span></td>
+<td>
+<select class="select status-select" data-id="${esc(o.id)}">${Object.entries(labels).map(([k,v])=>`<option value="${k}" ${o.status===k?"selected":""}>${v}</option>`).join("")}</select>
+<div style="margin-top:7px;display:flex;gap:6px;flex-wrap:wrap">
+<button class="action download-order" data-id="${esc(o.id)}">↓ Narudžbina</button>
+${o.status!=="completed"?`<button class="action deliver" data-id="${esc(o.id)}">🎵 Pošalji pesmu</button>`:""}
+<a class="action" href="mailto:${esc(o.email)}">✉ E-mail</a>
+</div></td></tr>`).join(""):`<tr><td colspan="7" class="empty">Nema narudžbina za zadate filtere.</td></tr>`;
+ document.querySelectorAll(".status-select").forEach(s=>s.onchange=()=>updateStatus(s.dataset.id,s.value));
+ document.querySelectorAll(".download-order").forEach(b=>b.onclick=()=>downloadOrder(b.dataset.id));
+ document.querySelectorAll(".deliver").forEach(b=>b.onclick=()=>openDelivery(b.dataset.id));
+}
+async function load(){
+ const r=await fetch("/api/admin-orders"); if(r.status===401){$("app").hidden=true;$("login").hidden=false;return}
+ const d=await r.json();if(!r.ok)throw new Error(d.error||"Greška");orders=d.orders||[];render();
+}
+async function updateStatus(id,status){
+ const r=await fetch("/api/admin-orders",{method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify({id,status})});
+ const d=await r.json();if(!r.ok){showToast(d.error||"Greška");return}
+ const i=orders.findIndex(o=>o.id===id);if(i>=0)orders[i]=d.order;render();showToast("✓ Status promenjen.");
+}
+function downloadOrder(id){
+ const o=orders.find(x=>x.id===id);if(!o)return;
+ const data={...o};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json;charset=utf-8"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`LNK-${o.name||"narudzbina"}-${o.id.slice(0,8)}.json`;a.click();URL.revokeObjectURL(a.href);
+}
+function openDelivery(id){
+ deliveryOrder=orders.find(x=>x.id===id);if(!deliveryOrder)return;
+ $("deliveryFor").innerHTML=`Kupac: <b>${esc(deliveryOrder.name)}</b> · ${esc(deliveryOrder.email)} · Pesma za: <b>${esc(deliveryOrder.recipient)}</b>`;
+ $("downloadUrl").value="";$("deliveryNote").textContent="";$("deliveryModal").hidden=false;$("downloadUrl").focus();
+}
+$("closeModal").onclick=()=>{$("deliveryModal").hidden=true};
+$("sendDelivery").onclick=async()=>{
+ if(!deliveryOrder)return;const url=$("downloadUrl").value.trim();if(!url){$("deliveryNote").textContent="Unesi link za preuzimanje.";return}
+ const btn=$("sendDelivery");btn.disabled=true;btn.textContent="Šaljem...";
+ try{
+  const r=await fetch("/api/admin-deliver",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id:deliveryOrder.id,downloadUrl:url,message:$("deliveryMessage").value})});
+  const d=await r.json();if(!r.ok)throw new Error(d.error||"Slanje nije uspelo.");
+  $("deliveryModal").hidden=true;showToast("✓ Pesma je poslata kupcu i status je Završeno.");await load();
+ }catch(e){$("deliveryNote").textContent=e.message}
+ finally{btn.disabled=false;btn.textContent="Pošalji pesmu kupcu →"}
+};
+function csvCell(v){return `"${String(v??"").replace(/"/g,'""')}"`}
+$("export").onclick=()=>{
+ const list=filtered();const head=["Datum","Kupac","Email","Pesma za","Povod","Stil","Jezik","Paket","Iznos EUR","Atmosfera","Rok","Status","Priča"];
+ const rows=list.map(o=>[date(o.created_at),o.name,o.email,o.recipient,o.occasion,o.style,o.language,o.package,(o.amount_cents/100).toFixed(2),o.mood,o.deadline,labels[o.status]||o.status,o.story]);
+ const csv="\uFEFF"+[head,...rows].map(r=>r.map(csvCell).join(";")).join("\n");const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="ludak-na-kvadrat-narudzbine.csv";a.click();URL.revokeObjectURL(a.href);
+};
+["search","statusFilter","dateFrom","dateTo","sort"].forEach(id=>$(id).addEventListener("input",render));
+$("clear").onclick=()=>{$("search").value="";$("statusFilter").value="all";$("dateFrom").value="";$("dateTo").value="";$("sort").value="new";render()};
+$("loginForm").addEventListener("submit",async e=>{e.preventDefault();$("loginError").textContent="";
+ const r=await fetch("/api/admin-login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password:$("password").value})});
+ const d=await r.json();if(!r.ok){$("loginError").textContent=d.error||"Prijava nije uspela.";return}
+ $("login").hidden=true;$("app").hidden=false;load().catch(err=>showToast(err.message));
+});
+$("logout").onclick=async()=>{await fetch("/api/admin-logout",{method:"POST"});location.reload()};
+$("refresh").onclick=()=>load().catch(e=>showToast(e.message));
+fetch("/api/admin-orders").then(r=>{if(r.ok){$("login").hidden=true;$("app").hidden=false;load()}}).catch(()=>{});
+</script>
+</body></html>

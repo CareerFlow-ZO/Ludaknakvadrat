@@ -1,0 +1,12 @@
+{
+  "name": "ludak-na-kvadrat",
+  "version": "6.0.0",
+  "private": true,
+  "dependencies": {
+    "stripe": "^18.5.0",
+    "resend": "^6.1.0"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}
