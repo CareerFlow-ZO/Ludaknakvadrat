@@ -3,9 +3,9 @@ const { supabase } = require("./_supabase");
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const PRICES = {
-  BASIC: { amount: 2900, name: "Ludak Na Kvadrat — BASIC personalizovana pesma" },
-  PREMIUM: { amount: 4900, name: "Ludak Na Kvadrat — PREMIUM personalizovana pesma" },
-  VIP: { amount: 7900, name: "Ludak Na Kvadrat — VIP personalizovana pesma" }
+  BASIC: { amount: 15.99, name: "Ludak Na Kvadrat — BASIC personalizovana pesma" },
+  PREMIUM: { amount: 39.99, name: "Ludak Na Kvadrat — PREMIUM personalizovana pesma" },
+  VIP: { amount: 59.99, name: "Ludak Na Kvadrat — VIP personalizovana pesma" }
 };
 function clean(value, max=1800) { return String(value ?? "").trim().slice(0,max); }
 
