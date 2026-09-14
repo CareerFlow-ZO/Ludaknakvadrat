@@ -9,11 +9,11 @@ const PRICES = {
     name: "Ludak Na Kvadrat — BASIC personalizovana pesma"
   },
   PREMIUM: {
-    amount: 39.99,
+    amount: 29.99,
     name: "Ludak Na Kvadrat — PREMIUM personalizovana pesma"
   },
   VIP: {
-    amount: 59.99,
+    amount: 49.99,
     name: "Ludak Na Kvadrat — VIP personalizovana pesma"
   }
 };
