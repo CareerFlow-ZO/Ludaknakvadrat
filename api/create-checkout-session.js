@@ -1,5 +1,5 @@
 const Stripe = require("stripe");
-const { supabase } = require("./_supabase");
+const { supabase } = require("../_supabase");
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
