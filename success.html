@@ -1,1 +1,135 @@
-<!doctype html><html lang="sr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#050505"><title>Hvala — Ludak Na Kvadrat</title><link rel="stylesheet" href="style.css"></head><body><main class="success-page"><img src="assets/logo.jpeg" alt="Ludak Na Kvadrat"><span class="eyebrow">LUDAK NA KVADRAT</span><h1>Hvala na narudžbini. <em>❤️</em></h1><p>Uplata je poslata na obradu. Tvoja narudžbina je primljena i javićemo ti se na e-mail.</p><a class="btn btn-gold" href="index.html">Nazad na sajt</a></main></body></html>
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050505">
+
+  <title>Hvala na narudžbini — Ludak Na Kvadrat</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(212,165,70,.13), transparent 30%),
+        #050505;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .success-card {
+      width: 100%;
+      max-width: 520px;
+      padding: 45px 25px 40px;
+    }
+
+    .logo {
+      width: 145px;
+      height: 145px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 28px;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 25px rgba(212,165,70,.25));
+    }
+
+    .brand {
+      color: #d9aa4b;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(42px, 11vw, 68px);
+      line-height: .98;
+      margin: 0 auto 25px;
+      max-width: 500px;
+    }
+
+    h1 span {
+      display: inline-block;
+      font-size: .65em;
+    }
+
+    .message {
+      color: #bdbdbd;
+      font-size: 19px;
+      line-height: 1.6;
+      max-width: 440px;
+      margin: 0 auto 35px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 17px 38px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #f0c65c, #c9962e);
+      color: #080808;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 800;
+      box-shadow: 0 10px 35px rgba(212,165,70,.22);
+      transition: .2s ease;
+    }
+
+    .btn:active {
+      transform: scale(.97);
+    }
+
+    .small {
+      margin-top: 28px;
+      color: #666;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="success-card">
+
+    <img
+      class="logo"
+      src="logo.jpeg"
+      alt="Ludak Na Kvadrat"
+    >
+
+    <div class="brand">
+      LUDAK NA KVADRAT
+    </div>
+
+    <h1>
+      Hvala na<br>
+      narudžbini. <span>❤️</span>
+    </h1>
+
+    <p class="message">
+      Uplata je uspješno primljena. Tvoja narudžbina je poslata na obradu.
+      Javićemo ti se na e-mail čim tvoja pjesma bude spremna.
+    </p>
+
+    <a class="btn" href="index.html">
+      Nazad na sajt
+    </a>
+
+    <div class="small">
+      Tvoja priča. Tvoja pjesma. 🎵
+    </div>
+
+  </main>
+
+</body>
+</html>
