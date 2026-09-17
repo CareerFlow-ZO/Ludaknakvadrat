@@ -106,6 +106,7 @@
 
     await safeLoad('/lnk-runtime.js?v=2');
     await safeLoad('/lnk-service-runtime.js?v=2');
+    await safeLoad('/lnk-about.js?v=2');
     await safeLoad('/lnk-extra-languages.js?v=2');
 
     await safeLoad('/lnk-ux-fix.js?v=2');
