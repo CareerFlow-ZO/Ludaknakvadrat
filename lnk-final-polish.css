@@ -1,0 +1,65 @@
+/* LNK DIGITAL — final blue / black / silver visual layer */
+:root{
+  --lnk-bg:#02070d;--lnk-bg-soft:#05101a;--lnk-panel:#081725;--lnk-panel-2:#0b1d2d;
+  --lnk-blue:#008cff;--lnk-blue-2:#176dff;--lnk-cyan:#47d8ff;--lnk-silver:#dce9f3;
+  --lnk-text:#f3f9ff;--lnk-muted:#8ea7ba;--lnk-line:rgba(75,190,255,.19);
+}
+html,body{background:#02070d!important}
+body{color:var(--lnk-text)!important;background:
+ radial-gradient(circle at 78% 7%,rgba(0,157,255,.16),transparent 27%),
+ radial-gradient(circle at 8% 52%,rgba(22,93,255,.09),transparent 31%),
+ linear-gradient(180deg,#01050a 0%,#06111c 43%,#02070d 100%)!important}
+::selection{background:#0b8fff!important;color:white!important}
+*{scrollbar-color:#087ec8 #030a11}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#030a11}::-webkit-scrollbar-thumb{background:linear-gradient(#2bd3ff,#096eff);border-radius:99px;border:2px solid #030a11}
+
+.site-header{background:rgba(2,8,14,.80)!important;border-bottom:1px solid rgba(67,190,255,.20)!important;box-shadow:0 14px 45px rgba(0,0,0,.34)!important;backdrop-filter:blur(24px) saturate(1.35)!important}
+.brand{color:#f7fbff!important}.brand span{background:linear-gradient(90deg,#fff,#bdeeff);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+.brand img,.footer-brand img{border:1px solid rgba(75,206,255,.62)!important;box-shadow:0 0 28px rgba(0,151,255,.30),0 8px 24px rgba(0,0,0,.28)!important}
+.desktop-nav a,.socials a{color:#9db4c6!important}.desktop-nav a:hover,.socials a:hover{color:#52d6ff!important}
+#language{background:linear-gradient(180deg,#0a1a29,#06121e)!important;color:#eef9ff!important;border:1px solid rgba(79,193,255,.34)!important;box-shadow:0 8px 24px rgba(0,0,0,.18)!important}
+
+.btn,.lnk-order-btn,.submit-btn,.pay-submit,.email-submit{border-radius:12px!important}
+.btn-gold,.lnk-order-btn,.submit-btn,.pay-submit,.dc-filter.active{background:linear-gradient(135deg,#29d4ff 0%,#078fff 47%,#165cff 100%)!important;color:#fff!important;border:1px solid rgba(137,226,255,.72)!important;box-shadow:0 11px 34px rgba(0,133,255,.28),inset 0 1px 0 rgba(255,255,255,.24)!important}
+.btn-gold:hover,.lnk-order-btn:hover,.submit-btn:hover,.pay-submit:hover{transform:translateY(-2px)!important;filter:brightness(1.08)!important;box-shadow:0 17px 46px rgba(0,151,255,.35)!important}
+.btn-outline,.email-submit{background:rgba(4,22,37,.58)!important;color:#a8e9ff!important;border:1px solid rgba(70,191,255,.38)!important}.btn-outline:hover,.email-submit:hover{background:rgba(0,130,220,.15)!important;border-color:#48d5ff!important;color:#fff!important}
+
+.hero{position:relative!important;overflow:hidden!important;isolation:isolate!important}
+.hero:before{content:"";position:absolute;inset:7% -10% auto 47%;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(0,166,255,.18),rgba(0,92,255,.04) 48%,transparent 70%);filter:blur(16px);z-index:-1}
+.hero-copy .eyebrow,.eyebrow,.form-kicker,.dc-count{color:#50d8ff!important}
+.hero h1{font-family:Inter,system-ui,sans-serif!important;font-weight:900!important;letter-spacing:-.055em!important}.hero h1 em,h2 em{color:#55d7ff!important;text-shadow:0 0 34px rgba(0,159,255,.22)!important}
+.hero p,.section-heading p,.lnk-card p,.dc-head p,.dc-form>p,.web-order-form>p,.order-copy p,.step p,.service-card p{color:#8fa8bb!important}
+.hero-art{filter:drop-shadow(0 28px 48px rgba(0,0,0,.34))}.hero-logo{border:1px solid rgba(84,211,255,.56)!important;box-shadow:0 0 96px rgba(0,144,255,.31),0 30px 72px rgba(0,0,0,.42)!important;background:#02070d!important}
+.halo{border-color:rgba(77,208,255,.42)!important;box-shadow:0 0 104px rgba(0,148,255,.21),inset 0 0 88px rgba(0,129,255,.08)!important}
+.floating-card{background:rgba(6,18,29,.91)!important;border-color:rgba(72,194,255,.26)!important}.mini-icon{background:linear-gradient(135deg,#42dcff,#116eff)!important;color:#fff!important}
+
+.stats{background:rgba(3,11,19,.88)!important;border-color:rgba(72,184,255,.15)!important}.stats div{border-color:rgba(72,184,255,.13)!important}.stats strong{color:#54d9ff!important}.stats span{color:#758fa4!important}
+.section-heading h2,.lnk-quick h2,.dc-head h2,.dc-monthly h3{font-family:Inter,system-ui,sans-serif!important;font-weight:900!important;letter-spacing:-.035em!important}
+.section-heading:after,.dc-head:after{content:"";display:block;width:82px;height:3px;margin-top:20px;border-radius:99px;background:linear-gradient(90deg,#40d8ff,#126dff)}
+
+.service-card,.price-card,.occasion-wrap,.order-form,.order-note,.lnk-card,.web-order-form,.dc-card,.dc-monthly-card,.dc-form{background:linear-gradient(145deg,rgba(10,27,43,.94),rgba(4,12,20,.95))!important;border:1px solid rgba(69,183,255,.17)!important;box-shadow:0 18px 54px rgba(0,0,0,.22)!important;backdrop-filter:blur(13px)!important}
+.service-card:hover,.price-card:hover,.lnk-card:hover,.dc-card:hover,.dc-monthly-card:hover{border-color:rgba(66,205,255,.47)!important;transform:translateY(-4px)!important;box-shadow:0 25px 72px rgba(0,121,255,.14)!important}
+.service-card .number{color:#1c577e!important}.icon,.price,.lnk-card h3,.lnk-price,.dc-price,.dc-monthly-card h4,.step>span,.occasion-grid i{color:#55d9ff!important}
+.price-top{border-color:rgba(72,184,255,.16)!important}.price-card.featured{border-color:rgba(74,209,255,.61)!important;box-shadow:0 0 74px rgba(0,139,255,.17)!important}.popular{background:linear-gradient(135deg,#46dcff,#1474ff)!important;color:#fff!important}
+.occasion-grid span,.payments span{background:rgba(5,18,30,.82)!important;border-color:rgba(70,181,255,.13)!important}
+.video-thumb{border-color:rgba(70,188,255,.22)!important}.video-thumb span{background:linear-gradient(135deg,#43d9ff,#1570ff)!important;color:#fff!important}
+.step{border-color:rgba(70,188,255,.27)!important}
+
+.lnk-quick,#digital-catalog{background:linear-gradient(180deg,rgba(3,9,15,.12),rgba(6,20,33,.55),rgba(3,9,15,.12))!important}
+.lnk-quick-grid,.dc-grid{gap:17px!important}.lnk-card,.dc-card{border-radius:18px!important}
+.dc-filter{background:#071522!important;color:#93acbf!important;border:1px solid rgba(69,181,255,.20)!important}.dc-filter:hover{background:rgba(0,132,225,.15)!important;color:#fff!important;border-color:#49d3ff!important}.dc-filter.active{color:#fff!important}
+.dc-cat{color:#5fcff6!important}.dc-note{background:#06131f!important;border-color:rgba(68,179,255,.16)!important;color:#8299ab!important}
+.dc-search{min-height:50px!important}
+
+.order-section{background:radial-gradient(circle at 74% 42%,rgba(0,151,255,.15),transparent 34%),linear-gradient(180deg,#030b13,#061421)!important;border-color:rgba(69,184,255,.14)!important}
+.order-form input,.order-form select,.order-form textarea,.web-order-form input,.web-order-form select,.web-order-form textarea,.dc-form input,.dc-form select,.dc-form textarea,.dc-search{background:#05131f!important;color:#f2fbff!important;border:1px solid rgba(68,181,255,.24)!important}
+.order-form input:focus,.order-form select:focus,.order-form textarea:focus,.web-order-form input:focus,.web-order-form select:focus,.web-order-form textarea:focus,.dc-form input:focus,.dc-form select:focus,.dc-form textarea:focus,.dc-search:focus{outline:none!important;border-color:#4bd5ff!important;box-shadow:0 0 0 4px rgba(0,158,255,.09)!important}
+
+footer{background:#01050a!important;border-top:1px solid rgba(69,181,255,.13)!important}.footer-brand strong{color:#eaf7ff!important}.footer-brand small,footer p{color:#627d92!important}
+.lnk-glow-orb{opacity:.21!important}
+
+.goog-te-banner-frame.skiptranslate,.goog-te-gadget,.goog-te-balloon-frame,#goog-gt-tt,.VIpgJd-ZVi9od-ORHb-OEVmcd{display:none!important}
+body{top:0!important}.skiptranslate iframe{display:none!important}body>.skiptranslate{display:none!important}
+
+@media(max-width:950px){.desktop-nav.mobile-open{background:rgba(2,9,16,.985)!important;border-color:rgba(70,188,255,.17)!important;box-shadow:0 24px 45px rgba(0,0,0,.35)!important}}
+@media(max-width:600px){.hero h1{font-size:44px!important;line-height:1.04!important}.hero-buttons{gap:10px!important}.hero-buttons .lnk-order-btn,.hero-buttons .btn{width:100%!important}.brand img{border-radius:14px!important}.lnk-card,.dc-card,.price-card,.service-card{box-shadow:0 13px 38px rgba(0,0,0,.19)!important}}
