@@ -1,0 +1,95 @@
+/* LNK DIGITAL — keep MOST POPULAR badge clear of the price on every language */
+.price-card.featured{
+  position:relative!important;
+  padding-top:78px!important;
+  overflow:visible!important;
+}
+
+.price-card.featured .popular{
+  position:absolute!important;
+  top:20px!important;
+  right:20px!important;
+  left:auto!important;
+  transform:none!important;
+  z-index:4!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:auto!important;
+  max-width:calc(100% - 40px)!important;
+  min-height:34px!important;
+  margin:0!important;
+  padding:7px 14px!important;
+  border-radius:999px!important;
+  white-space:nowrap!important;
+  font-family:Inter,system-ui,sans-serif!important;
+  font-size:12px!important;
+  line-height:1!important;
+  font-weight:800!important;
+  letter-spacing:.09em!important;
+  text-align:center!important;
+  box-sizing:border-box!important;
+}
+
+.price-card.featured .price-top{
+  position:relative!important;
+  z-index:2!important;
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:space-between!important;
+  gap:18px!important;
+  min-height:76px!important;
+  padding-top:0!important;
+}
+
+.price-card.featured .price-top .plan{
+  flex:0 1 auto!important;
+  min-width:0!important;
+  padding-top:8px!important;
+}
+
+.price-card.featured .price-top .price{
+  position:static!important;
+  flex:0 0 auto!important;
+  display:block!important;
+  margin:0!important;
+  padding:0!important;
+  white-space:nowrap!important;
+  text-align:right!important;
+  line-height:1!important;
+  font-size:clamp(42px,6vw,62px)!important;
+}
+
+@media(max-width:600px){
+  .price-card.featured{
+    padding-top:72px!important;
+  }
+  .price-card.featured .popular{
+    top:16px!important;
+    right:16px!important;
+    max-width:calc(100% - 32px)!important;
+    min-height:32px!important;
+    padding:7px 12px!important;
+    font-size:11px!important;
+    letter-spacing:.08em!important;
+  }
+  .price-card.featured .price-top{
+    gap:12px!important;
+    min-height:68px!important;
+  }
+  .price-card.featured .price-top .plan{
+    padding-top:7px!important;
+  }
+  .price-card.featured .price-top .price{
+    font-size:clamp(40px,13vw,54px)!important;
+  }
+}
+
+@media(max-width:390px){
+  .price-card.featured .price-top{
+    align-items:flex-start!important;
+  }
+  .price-card.featured .price-top .price{
+    font-size:42px!important;
+  }
+}
