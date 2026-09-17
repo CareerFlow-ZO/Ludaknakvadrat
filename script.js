@@ -111,6 +111,7 @@
     await safeLoad('/lnk-ux-fix.js?v=2');
     await safeLoad('/lnk-click-fix.js?v=3');
     await safeLoad('/lnk-logo-final.js?v=1');
+    await safeLoad('/lnk-price-fix.js?v=1');
 
     clearTimeout(bootFallback);
     finishBoot();
