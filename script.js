@@ -63,6 +63,7 @@
 
     // Final user-facing cleanup always runs last.
     await safeLoad('/lnk-ux-fix.js?v=1');
+    await safeLoad('/lnk-click-fix.js?v=2');
   };
 
   boot().catch(err => console.error('LNK DIGITAL loader error', err));
