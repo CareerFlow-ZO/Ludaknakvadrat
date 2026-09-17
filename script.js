@@ -33,11 +33,7 @@
   }
 
   function finishBoot() {
-    // Stop the mutation-based repaint loop after the final render. Language changes
-    // still have their own explicit handlers, so the site remains interactive.
     window.__LNK_PAUSE_SITE_OBSERVERS = true;
-
-    // Never leave reveal elements invisible after the loading screen disappears.
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
 
     const loader = document.getElementById('lnk-boot-screen');
@@ -56,9 +52,6 @@
   }
 
   installBootScreen();
-
-  // Safety fallback: the page must always become visible even if a third-party
-  // translation script or optional enhancement does not respond.
   const bootFallback = setTimeout(finishBoot, 4200);
 
   function addStyle(href, key) {
@@ -70,13 +63,12 @@
     document.head.appendChild(l);
   }
 
-  // Load the final visual identity while the boot screen masks all intermediate states.
   addStyle('/lnk-blue-theme.css?v=5', 'blue');
   addStyle('/lnk-final-polish.css?v=5', 'final-polish');
   addStyle('/lnk-compact-fix.css?v=2', 'compact-fix');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
-    img.src = '/lnk-digital-logo.jpg?v=7';
+    img.src = '/lnk-digital-logo.svg?v=1';
     img.alt = 'LNK DIGITAL';
   });
   const brandText = document.querySelector('.brand span');
@@ -118,6 +110,7 @@
 
     await safeLoad('/lnk-ux-fix.js?v=2');
     await safeLoad('/lnk-click-fix.js?v=3');
+    await safeLoad('/lnk-logo-final.js?v=1');
 
     clearTimeout(bootFallback);
     finishBoot();
