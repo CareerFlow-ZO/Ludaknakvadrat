@@ -6,5 +6,7 @@
     s.onerror = reject;
     document.head.appendChild(s);
   });
-  load('/script-core.js').then(() => load('/web-services.js'));
+  load('/script-core.js')
+    .then(() => load('/web-services.js'))
+    .then(() => load('/digital-catalog.js'));
 })();
