@@ -7,6 +7,16 @@
     document.head.appendChild(theme);
   }
 
+  // Replace visible legacy branding immediately, before the rest of the runtime finishes loading.
+  document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
+    img.src = '/lnk-digital-logo.jpg';
+    img.alt = 'LNK DIGITAL';
+  });
+  const brandText = document.querySelector('.brand span');
+  if (brandText) brandText.textContent = 'LNK DIGITAL';
+  const footerText = document.querySelector('.footer-brand strong');
+  if (footerText) footerText.textContent = 'LNK DIGITAL';
+
   const load = (src) => new Promise((resolve, reject) => {
     const s = document.createElement('script');
     s.src = src;
@@ -25,6 +35,8 @@
     .then(() => load('/lnk-web-data.js'))
     .then(() => load('/lnk-cat-data.js'))
     .then(() => load('/lnk-services-data.js'))
+    .then(() => load('/lnk-service-translations.js'))
     .then(() => load('/lnk-runtime.js'))
+    .then(() => load('/lnk-service-runtime.js'))
     .catch((err) => console.error('LNK DIGITAL loader error', err));
 })();
