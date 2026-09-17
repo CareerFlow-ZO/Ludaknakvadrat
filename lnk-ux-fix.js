@@ -28,8 +28,11 @@
     const nav=document.querySelector('.desktop-nav');
     if(nav) nav.innerHTML=`<a href="#lnk-usluge">${t.services}</a><a href="#web-stranice">${t.web}</a><a href="#digital-catalog">Digital</a><a href="#cenovnik">${t.song}</a>`;
 
-    const headerBtn=document.querySelector('.header-actions .btn,.header-actions .lnk-order-btn');
-    if(headerBtn){ headerBtn.textContent=t.order; headerBtn.href='#digital-order'; headerBtn.removeAttribute('data-i18n'); }
+    const headerBtns=[...document.querySelectorAll('.header-actions a.btn,.header-actions a.lnk-order-btn')];
+    headerBtns.forEach((btn,i)=>{
+      if(i===0){btn.textContent=t.order;btn.href='#digital-order';btn.removeAttribute('data-i18n');btn.classList.add('lnk-order-btn');}
+      else btn.remove();
+    });
 
     const hero=document.querySelector('.hero-copy');
     if(hero){
