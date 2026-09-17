@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
+  <title id="title">LNK DIGITAL</title>
+  <desc id="desc">LNK DIGITAL blue digital services logo</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="72%">
+      <stop offset="0" stop-color="#0d2b45"/>
+      <stop offset="0.52" stop-color="#061522"/>
+      <stop offset="1" stop-color="#02070d"/>
+    </radialGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#58e5ff"/>
+      <stop offset="0.42" stop-color="#0aa0ff"/>
+      <stop offset="1" stop-color="#174cff"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1000" height="1000" rx="120" fill="url(#bg)"/>
+  <circle cx="500" cy="500" r="405" fill="none" stroke="url(#blue)" stroke-width="18" opacity="0.95" filter="url(#glow)"/>
+  <circle cx="500" cy="500" r="345" fill="none" stroke="#87ddff" stroke-width="2" opacity="0.22"/>
+  <path d="M310 350v295h62V470l125 175h68V350h-62v183L374 350z" fill="#eef9ff" opacity="0.98"/>
+  <path d="M585 350h62v115l112-115h79L708 483l139 162h-82L664 525l-17 17v103h-62z" fill="#eef9ff" opacity="0.98"/>
+  <text x="500" y="745" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="78" font-weight="800" fill="#79d9ff" letter-spacing="24">DIGITAL</text>
+  <text x="500" y="815" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" fill="#8ca8bc" letter-spacing="8">WEB • BRANDING • MARKETING • AI</text>
+</svg>
