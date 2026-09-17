@@ -1,10 +1,10 @@
 (() => {
   'use strict';
-  const LOGO = '/lnk-digital-logo.svg?v=1';
+  const LOGO = '/lnk-digital-logo.svg?v=2';
 
   function applyLogo(root=document){
     root.querySelectorAll?.('.brand img,.hero-logo,.footer-brand img').forEach(img => {
-      img.alt = 'LNK DIGITAL';
+      img.alt = 'LNK-DIGITAL';
       img.decoding = 'async';
       img.loading = img.classList.contains('hero-logo') ? 'eager' : 'lazy';
       if (img.getAttribute('src') !== LOGO) img.setAttribute('src', LOGO);
@@ -35,7 +35,6 @@
     document.addEventListener('DOMContentLoaded', () => applyLogo(), {once:true});
   }
 
-  // One delayed pass catches any late dynamic rerender without creating an observer loop.
   setTimeout(() => applyLogo(), 350);
   setTimeout(() => applyLogo(), 1000);
 })();
