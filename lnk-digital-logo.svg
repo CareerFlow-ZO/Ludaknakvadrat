@@ -1,27 +1,65 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
-  <title id="title">LNK DIGITAL</title>
-  <desc id="desc">LNK DIGITAL blue digital services logo</desc>
+  <title id="title">LNK-DIGITAL</title>
+  <desc id="desc">Premium metallic blue LNK-DIGITAL logo</desc>
   <defs>
     <radialGradient id="bg" cx="50%" cy="42%" r="72%">
-      <stop offset="0" stop-color="#0d2b45"/>
-      <stop offset="0.52" stop-color="#061522"/>
-      <stop offset="1" stop-color="#02070d"/>
+      <stop offset="0" stop-color="#10283d"/>
+      <stop offset="0.46" stop-color="#07131f"/>
+      <stop offset="1" stop-color="#01050a"/>
     </radialGradient>
-    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#58e5ff"/>
-      <stop offset="0.42" stop-color="#0aa0ff"/>
-      <stop offset="1" stop-color="#174cff"/>
+    <linearGradient id="silver" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.24" stop-color="#eef4f8"/>
+      <stop offset="0.48" stop-color="#9aa9b6"/>
+      <stop offset="0.72" stop-color="#f8fbfd"/>
+      <stop offset="1" stop-color="#8998a5"/>
     </linearGradient>
-    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="15" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#68edff"/>
+      <stop offset="0.38" stop-color="#0cb4ff"/>
+      <stop offset="0.72" stop-color="#0876ff"/>
+      <stop offset="1" stop-color="#183cff"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b65ff"/>
+      <stop offset="0.22" stop-color="#59ecff"/>
+      <stop offset="0.50" stop-color="#007fff"/>
+      <stop offset="0.75" stop-color="#45dfff"/>
+      <stop offset="1" stop-color="#2440ff"/>
+    </linearGradient>
+    <filter id="blueGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="16" result="b"/>
+      <feColorMatrix in="b" type="matrix" values="0 0 0 0 0.05  0 0 0 0 0.55  0 0 0 0 1  0 0 0 1 0" result="c"/>
+      <feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.72"/>
     </filter>
   </defs>
-  <rect width="1000" height="1000" rx="120" fill="url(#bg)"/>
-  <circle cx="500" cy="500" r="405" fill="none" stroke="url(#blue)" stroke-width="18" opacity="0.95" filter="url(#glow)"/>
-  <circle cx="500" cy="500" r="345" fill="none" stroke="#87ddff" stroke-width="2" opacity="0.22"/>
-  <path d="M310 350v295h62V470l125 175h68V350h-62v183L374 350z" fill="#eef9ff" opacity="0.98"/>
-  <path d="M585 350h62v115l112-115h79L708 483l139 162h-82L664 525l-17 17v103h-62z" fill="#eef9ff" opacity="0.98"/>
-  <text x="500" y="745" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="78" font-weight="800" fill="#79d9ff" letter-spacing="24">DIGITAL</text>
-  <text x="500" y="815" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" fill="#8ca8bc" letter-spacing="8">WEB • BRANDING • MARKETING • AI</text>
+
+  <rect width="1000" height="1000" fill="url(#bg)"/>
+  <circle cx="500" cy="500" r="410" fill="#02080e" stroke="#061523" stroke-width="34" filter="url(#shadow)"/>
+  <circle cx="500" cy="500" r="423" fill="none" stroke="url(#rim)" stroke-width="13" filter="url(#blueGlow)"/>
+  <circle cx="500" cy="500" r="395" fill="none" stroke="#bfeeff" stroke-opacity="0.38" stroke-width="2"/>
+  <circle cx="500" cy="500" r="438" fill="none" stroke="#087cff" stroke-opacity="0.28" stroke-width="2"/>
+
+  <!-- metallic L -->
+  <path d="M240 350h82v270h150v82H240z" fill="url(#silver)" stroke="#eaf7ff" stroke-width="2" filter="url(#softGlow)"/>
+  <path d="M322 620l76 82h74l-74-82z" fill="#526474" opacity="0.9"/>
+
+  <!-- metallic N with electric-blue diagonal -->
+  <path d="M410 350h72l168 245v107h-76L410 470z" fill="url(#silver)" stroke="#effaff" stroke-width="2"/>
+  <path d="M410 350l240 245v107L410 470z" fill="url(#blue)" filter="url(#blueGlow)" opacity="0.98"/>
+  <path d="M410 470v232h82V555z" fill="#697887" stroke="#dceaff" stroke-width="2"/>
+
+  <!-- metallic K -->
+  <path d="M650 350h82v150l140-150h105L805 525l180 177H873L732 563v139h-82z" fill="url(#silver)" stroke="#eef9ff" stroke-width="2" filter="url(#softGlow)"/>
+
+  <line x1="240" y1="770" x2="325" y2="770" stroke="#42dfff" stroke-width="6" stroke-linecap="round" filter="url(#blueGlow)"/>
+  <line x1="675" y1="770" x2="760" y2="770" stroke="#42dfff" stroke-width="6" stroke-linecap="round" filter="url(#blueGlow)"/>
+  <text x="500" y="795" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="53" font-weight="700" fill="url(#silver)" letter-spacing="13">LNK-DIGITAL</text>
 </svg>
