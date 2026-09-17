@@ -16,7 +16,7 @@
   addStyle('/lnk-compact-fix.css?v=1', 'compact-fix');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
-    img.src = '/lnk-digital-logo.jpg';
+    img.src = '/lnk-digital-logo.jpg?v=6';
     img.alt = 'LNK DIGITAL';
   });
   const brandText = document.querySelector('.brand span');
@@ -41,6 +41,8 @@
   };
 
   const boot = async () => {
+    // Repair images first so the visitor never sees broken image boxes.
+    await safeLoad('/lnk-image-fix.js?v=1');
     await safeLoad('/lnk-observer-bridge.js');
 
     // Base functionality first.
