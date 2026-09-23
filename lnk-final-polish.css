@@ -63,3 +63,23 @@ body{top:0!important}.skiptranslate iframe{display:none!important}body>.skiptran
 
 @media(max-width:950px){.desktop-nav.mobile-open{background:rgba(2,9,16,.985)!important;border-color:rgba(70,188,255,.17)!important;box-shadow:0 24px 45px rgba(0,0,0,.35)!important}}
 @media(max-width:600px){.hero h1{font-size:44px!important;line-height:1.04!important}.hero-buttons{gap:10px!important}.hero-buttons .lnk-order-btn,.hero-buttons .btn{width:100%!important}.brand img{border-radius:14px!important}.lnk-card,.dc-card,.price-card,.service-card{box-shadow:0 13px 38px rgba(0,0,0,.19)!important}}
+
+
+/* Desktop language dropdown readability fix */
+#language{
+  color-scheme:dark!important;
+  background:#071522!important;
+  color:#f2fbff!important;
+  border:1px solid rgba(79,193,255,.38)!important;
+}
+#language option{
+  background:#071522!important;
+  color:#f2fbff!important;
+}
+#language option:checked{
+  background:#0b3150!important;
+  color:#ffffff!important;
+}
+@media (forced-colors:active){
+  #language,#language option{background:Canvas!important;color:CanvasText!important}
+}
