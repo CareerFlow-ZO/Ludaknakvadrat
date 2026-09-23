@@ -66,6 +66,7 @@
   addStyle('/lnk-blue-theme.css?v=5', 'blue');
   addStyle('/lnk-final-polish.css?v=6', 'final-polish');
   addStyle('/lnk-compact-fix.css?v=2', 'compact-fix');
+  addStyle('/lnk-navigation-v2.css?v=1', 'navigation-v2');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
     img.src = '/lnk-digital-logo.svg?v=1';
@@ -114,6 +115,7 @@
     await safeLoad('/lnk-logo-final.js?v=1');
     await safeLoad('/lnk-price-fix.js?v=1');
     await safeLoad('/lnk-form-final.js?v=1');
+    await safeLoad('/lnk-navigation-v2.js?v=1');
 
     clearTimeout(bootFallback);
     finishBoot();
