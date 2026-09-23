@@ -59,3 +59,32 @@ html{scroll-padding-top:calc(var(--lnk-nav-h) + 18px)}
   .lnk-mobile-dock a{font-size:8.5px}
 }
 @media(prefers-reduced-motion:reduce){.lnk-qh-card,.lnk-floating-order{transition:none!important}}
+
+
+/* Keep the large catalog compact until the visitor asks for more */
+.dc-grid.lnk-collapsed .dc-card:nth-of-type(n+9){display:none!important}
+.lnk-catalog-toggle{display:flex;align-items:center;justify-content:center;gap:8px;margin:18px auto 0;padding:11px 18px;border-radius:999px;border:1px solid rgba(70,194,255,.25);background:#071521;color:#bfeaff;font:800 11px/1 Inter,system-ui,sans-serif;cursor:pointer}
+.lnk-catalog-toggle:hover{border-color:rgba(70,194,255,.5);background:#0a1c2a}
+
+/* Song pricing tabs */
+.lnk-song-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:-10px 0 24px}
+.lnk-song-tabs::-webkit-scrollbar{display:none}
+.lnk-song-tab{white-space:nowrap;padding:10px 14px;border-radius:999px;border:1px solid rgba(72,188,255,.16);background:#07131d;color:#83a4b8;font:800 11px/1 Inter,system-ui,sans-serif;cursor:pointer}
+.lnk-song-tab.active{background:linear-gradient(135deg,#3dd4ff,#147fff);border-color:transparent;color:#03121b}
+.occasion-wrap.lnk-extras-only{max-width:720px}
+.occasion-wrap.lnk-extras-only .extras{font-size:14px!important;line-height:1.8!important;color:#b8cfdd!important;margin-top:0!important}
+.lnk-extra-title{font-family:Inter,system-ui,sans-serif!important;font-size:22px!important;margin-bottom:12px!important;color:#eef9ff}
+
+/* Collapsed FAQ */
+.lnk-faq{padding:58px 5vw 72px;background:#040b11;border-top:1px solid rgba(70,190,255,.11)}
+.lnk-faq-wrap{max-width:920px;margin:auto}
+.lnk-faq-head{margin-bottom:20px}.lnk-faq-head span{color:#47c9ff;font-size:10px;font-weight:900;letter-spacing:.18em}.lnk-faq-head h2{font-size:clamp(26px,4vw,42px);margin:5px 0;color:#eef9ff}
+.lnk-faq details{border:1px solid rgba(72,185,255,.13);background:#07131d;border-radius:14px;margin:9px 0;overflow:hidden}
+.lnk-faq summary{list-style:none;cursor:pointer;padding:16px 18px;color:#dcecf4;font-weight:800;font-size:13px;display:flex;justify-content:space-between;gap:14px}
+.lnk-faq summary::-webkit-details-marker{display:none}.lnk-faq summary:after{content:'+';color:#45c9ff;font-size:18px}.lnk-faq details[open] summary:after{content:'−'}
+.lnk-faq details p{padding:0 18px 17px;color:#7f9aaa;font-size:12px;line-height:1.65}
+@media(max-width:760px){
+  .dc-grid.lnk-collapsed .dc-card:nth-of-type(n+7){display:none!important}
+  .lnk-faq{padding:44px 14px 96px}
+  .lnk-song-tabs{margin-top:-4px}
+}
