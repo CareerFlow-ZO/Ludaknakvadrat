@@ -1,0 +1,61 @@
+/* LNK DIGITAL — Quick navigation / low-scroll UX */
+:root{--lnk-nav-h:72px;--lnk-blue:#44c8ff;--lnk-blue2:#168cff;--lnk-bg:#030910;--lnk-card:#07131d}
+html{scroll-padding-top:calc(var(--lnk-nav-h) + 18px)}
+#digital-catalog,#web-stranice,#cenovnik,#primeri,#digital-order,#naruci{scroll-margin-top:calc(var(--lnk-nav-h) + 18px)}
+
+.lnk-quick-hub{padding:34px 5vw 38px;background:linear-gradient(180deg,#03080d,#06111a);border-top:1px solid rgba(71,190,255,.12);border-bottom:1px solid rgba(71,190,255,.12)}
+.lnk-qh-wrap{max-width:1220px;margin:auto}
+.lnk-qh-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:18px}
+.lnk-qh-kicker{display:block;color:#48c8ff;font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;margin-bottom:5px}
+.lnk-qh-head h2{font-family:Inter,system-ui,sans-serif;font-size:clamp(22px,3vw,34px);line-height:1.12;color:#f2f8fb}
+.lnk-qh-head p{max-width:460px;color:#8299aa;font-size:13px}
+.lnk-qh-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.lnk-qh-card{appearance:none;text-decoration:none;min-width:0;min-height:104px;padding:14px 12px;border-radius:16px;border:1px solid rgba(74,186,255,.14);background:linear-gradient(145deg,rgba(9,27,41,.96),rgba(4,12,19,.96));color:#dcebf3;display:flex;flex-direction:column;justify-content:space-between;gap:10px;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.025);transition:.2s ease}
+.lnk-qh-card:hover,.lnk-qh-card:focus-visible{border-color:rgba(78,204,255,.5);transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,128,210,.10);outline:none}
+.lnk-qh-icon{font-size:24px;line-height:1}
+.lnk-qh-card strong{font-size:12px;line-height:1.2}
+.lnk-qh-card small{color:#638196;font-size:9px;line-height:1.2}
+
+.lnk-mobile-dock{display:none}
+.lnk-floating-order{position:fixed;right:20px;bottom:20px;z-index:65;display:flex;align-items:center;gap:9px;text-decoration:none;padding:12px 16px;border-radius:999px;background:linear-gradient(135deg,#45d6ff,#137dff);color:#02111a;font:900 12px/1 Inter,system-ui,sans-serif;box-shadow:0 16px 42px rgba(0,126,255,.28);border:1px solid rgba(191,238,255,.38);transition:.2s ease}
+.lnk-floating-order:hover{transform:translateY(-2px);box-shadow:0 20px 48px rgba(0,126,255,.38)}
+.lnk-floating-order span{font-size:16px}
+
+.lnk-section-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:3px 0 12px;margin:0 0 22px}
+.lnk-section-tabs::-webkit-scrollbar{display:none}
+.lnk-section-tab{white-space:nowrap;text-decoration:none;padding:9px 13px;border-radius:999px;border:1px solid rgba(73,187,255,.15);background:#07121b;color:#8eacbf;font:800 11px/1 Inter,system-ui,sans-serif}
+.lnk-section-tab:hover{color:#e9f8ff;border-color:rgba(73,187,255,.38)}
+
+.desktop-nav{align-items:center}
+.desktop-nav a{white-space:nowrap}
+
+@media(max-width:1050px){
+  .lnk-qh-grid{grid-template-columns:repeat(3,1fr)}
+  .lnk-qh-head{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:760px){
+  :root{--lnk-nav-h:66px}
+  body{padding-bottom:74px}
+  .lnk-quick-hub{padding:25px 14px 26px}
+  .lnk-qh-head{gap:7px;margin-bottom:14px}
+  .lnk-qh-head h2{font-size:24px}
+  .lnk-qh-head p{font-size:12px;line-height:1.45}
+  .lnk-qh-grid{display:flex;overflow-x:auto;gap:9px;padding:2px 1px 6px;scroll-snap-type:x proximity;scrollbar-width:none}
+  .lnk-qh-grid::-webkit-scrollbar{display:none}
+  .lnk-qh-card{flex:0 0 128px;min-height:98px;scroll-snap-align:start}
+  .lnk-mobile-dock{position:fixed;z-index:80;left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));height:62px;padding:5px;display:grid;grid-template-columns:repeat(5,1fr);background:rgba(3,10,16,.94);border:1px solid rgba(73,190,255,.20);border-radius:18px;box-shadow:0 18px 48px rgba(0,0,0,.48);backdrop-filter:blur(18px)}
+  .lnk-mobile-dock a{min-width:0;text-decoration:none;color:#7591a4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:13px;font:800 9px/1 Inter,system-ui,sans-serif;letter-spacing:.01em}
+  .lnk-mobile-dock a .dock-icon{font-size:18px;line-height:1}
+  .lnk-mobile-dock a.active,.lnk-mobile-dock a:active{color:#e9f9ff;background:rgba(41,174,255,.12)}
+  .lnk-mobile-dock a[data-key="order"]{background:linear-gradient(135deg,#3cd5ff,#147fff);color:#021019}
+  .lnk-floating-order{display:none}
+  .desktop-nav.mobile-open{bottom:78px;top:66px;max-height:calc(100vh - 154px);overflow:auto}
+  footer{padding-bottom:95px!important}
+}
+@media(max-width:430px){
+  .lnk-qh-card{flex-basis:116px;padding:12px 10px}
+  .lnk-qh-icon{font-size:22px}
+  .lnk-mobile-dock{left:6px;right:6px}
+  .lnk-mobile-dock a{font-size:8.5px}
+}
+@media(prefers-reduced-motion:reduce){.lnk-qh-card,.lnk-floating-order{transition:none!important}}
