@@ -64,7 +64,7 @@
   }
 
   addStyle('/lnk-blue-theme.css?v=5', 'blue');
-  addStyle('/lnk-final-polish.css?v=5', 'final-polish');
+  addStyle('/lnk-final-polish.css?v=6', 'final-polish');
   addStyle('/lnk-compact-fix.css?v=2', 'compact-fix');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
