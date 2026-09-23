@@ -13,6 +13,27 @@
   };
   for (const l of ['fr','es','it','sq','tr','mk']) COPY[l] = COPY.en;
 
+  const EXTRA = {
+    sr:{showAll:'Prikaži sve usluge',showLess:'Prikaži manje',packages:'Paketi',occasions:'Posebne prilike',extras:'Dodaci',faq:'Česta pitanja',faqTitle:'Brzi odgovori pre narudžbe',
+      qs:[['Kako najbrže da pronađem uslugu?','Koristi Brzi izbor na vrhu ili donji meni na telefonu. Kategorija će te odvesti direktno na odgovarajući deo sajta.'],['Koliko traje izrada?','Rok zavisi od usluge i paketa. Kod narudžbe napiši željeni rok, a za personalizovane pesme postoje standardne i prioritetne opcije.'],['Mogu li naručiti više usluga odjednom?','Da. U detaljima upita napiši sve što ti treba i možemo spojiti više digitalnih usluga u jednu ponudu.'],['Kako naručujem personalizovanu pesmu?','Otvori Pesme, izaberi paket ili posebnu priliku, pa popuni formular. Narudžbu možeš poslati putem ponuđenih kanala na sajtu.'],['Mogu li tražiti izmene?','Da, broj izmena zavisi od izabranog paketa ili dogovorene digitalne usluge.'],['Ne znam šta mi tačno treba — šta da izaberem?','Izaberi Kontakt / Naruči i ukratko opiši cilj. Na osnovu toga se može odabrati odgovarajuća usluga.']]},
+    bs:{showAll:'Prikaži sve usluge',showLess:'Prikaži manje',packages:'Paketi',occasions:'Posebne prilike',extras:'Dodaci',faq:'Česta pitanja',faqTitle:'Brzi odgovori prije narudžbe'},
+    hr:{showAll:'Prikaži sve usluge',showLess:'Prikaži manje',packages:'Paketi',occasions:'Posebne prilike',extras:'Dodaci',faq:'Česta pitanja',faqTitle:'Brzi odgovori prije narudžbe'},
+    sl:{showAll:'Prikaži vse storitve',showLess:'Prikaži manj',packages:'Paketi',occasions:'Posebne priložnosti',extras:'Dodatki',faq:'Pogosta vprašanja',faqTitle:'Hitri odgovori pred naročilom'},
+    en:{showAll:'Show all services',showLess:'Show less',packages:'Packages',occasions:'Special occasions',extras:'Extras',faq:'FAQ',faqTitle:'Quick answers before ordering'},
+    de:{showAll:'Alle Leistungen anzeigen',showLess:'Weniger anzeigen',packages:'Pakete',occasions:'Besondere Anlässe',extras:'Extras',faq:'FAQ',faqTitle:'Schnelle Antworten vor der Bestellung'}
+  };
+  EXTRA.bs.qs=EXTRA.sr.qs; EXTRA.hr.qs=EXTRA.sr.qs; EXTRA.sl.qs=EXTRA.en.qs; EXTRA.en.qs=[
+    ['How do I find the right service quickly?','Use Quick Access near the top or the fixed mobile menu. Each shortcut takes you directly to the relevant section.'],
+    ['How long does delivery take?','Timing depends on the service and package. Add your preferred deadline to the inquiry; personalized songs also offer standard and priority options.'],
+    ['Can I order several services together?','Yes. Describe everything you need in the inquiry and multiple digital services can be combined into one scope.'],
+    ['How do I order a personalized song?','Open Songs, choose a package or occasion, then complete the order form using the available contact or payment option.'],
+    ['Can I request revisions?','Yes. The number of revisions depends on the selected package or the agreed digital service.'],
+    ['I am not sure what I need. What should I choose?','Open Contact / Order and describe your goal briefly. The right service can then be selected from your needs.']
+  ]; EXTRA.de.qs=EXTRA.en.qs;
+  for (const l of ['fr','es','it','sq','tr','mk']) EXTRA[l]=EXTRA.en;
+  function x(){ return EXTRA[lang()] || EXTRA.sr; }
+
+
   function lang(){ return document.getElementById('language')?.value || localStorage.getItem('lnkDisplayLang') || localStorage.getItem('ludakLang') || 'sr'; }
   function t(){ return COPY[lang()] || COPY.sr; }
 
@@ -97,6 +118,73 @@
     head.after(tabs);
   }
 
+
+  function ensureCatalogToggle(){
+    const grid=document.querySelector('#digital-catalog .dc-grid');
+    if(!grid) return;
+    grid.classList.add('lnk-collapsed');
+    let btn=document.getElementById('lnk-catalog-toggle');
+    if(!btn){
+      btn=document.createElement('button');
+      btn.type='button'; btn.id='lnk-catalog-toggle'; btn.className='lnk-catalog-toggle';
+      grid.after(btn);
+      btn.addEventListener('click',()=>{
+        const collapsed=grid.classList.toggle('lnk-collapsed');
+        btn.textContent=collapsed ? '＋ '+x().showAll : '− '+x().showLess;
+      });
+    }
+    btn.textContent=grid.classList.contains('lnk-collapsed') ? '＋ '+x().showAll : '− '+x().showLess;
+  }
+
+  function ensureSongTabs(){
+    const sec=document.getElementById('cenovnik');
+    const pricing=sec?.querySelector('.pricing-grid');
+    const occasions=sec?.querySelector('.occasion-wrap');
+    const head=sec?.querySelector('.section-heading');
+    if(!sec || !pricing || !occasions || !head) return;
+    let tabs=sec.querySelector('.lnk-song-tabs');
+    if(!tabs){
+      tabs=document.createElement('div'); tabs.className='lnk-song-tabs'; head.after(tabs);
+      if(!occasions.querySelector('.lnk-extra-title')){
+        const h=document.createElement('h3'); h.className='lnk-extra-title'; occasions.prepend(h);
+      }
+      tabs.addEventListener('click',e=>{
+        const b=e.target.closest('.lnk-song-tab'); if(!b) return;
+        const mode=b.dataset.mode;
+        tabs.querySelectorAll('.lnk-song-tab').forEach(v=>v.classList.toggle('active',v===b));
+        pricing.style.display=mode==='packages'?'grid':'none';
+        occasions.style.display=mode==='packages'?'none':'block';
+        const title=occasions.querySelector('h3:not(.lnk-extra-title)');
+        const extraTitle=occasions.querySelector('.lnk-extra-title');
+        const og=occasions.querySelector('.occasion-grid'), ex=occasions.querySelector('.extras');
+        if(mode==='occasions'){
+          occasions.classList.remove('lnk-extras-only');
+          if(title) title.style.display=''; if(extraTitle) extraTitle.style.display='none';
+          if(og) og.style.display='grid'; if(ex) ex.style.display='none';
+        }else if(mode==='extras'){
+          occasions.classList.add('lnk-extras-only');
+          if(title) title.style.display='none'; if(extraTitle) extraTitle.style.display='';
+          if(og) og.style.display='none'; if(ex) ex.style.display='block';
+        }
+      });
+    }
+    const m=x();
+    tabs.innerHTML='<button class="lnk-song-tab active" data-mode="packages">'+m.packages+'</button><button class="lnk-song-tab" data-mode="occasions">'+m.occasions+'</button><button class="lnk-song-tab" data-mode="extras">'+m.extras+'</button>';
+    const extraTitle=occasions.querySelector('.lnk-extra-title'); if(extraTitle) extraTitle.textContent=m.extras;
+    pricing.style.display='grid'; occasions.style.display='none';
+  }
+
+  function ensureFaq(){
+    let faq=document.getElementById('lnk-faq');
+    if(!faq){
+      faq=document.createElement('section'); faq.id='lnk-faq'; faq.className='lnk-faq';
+      document.querySelector('footer')?.before(faq);
+    }
+    const m=x(), qs=m.qs || EXTRA.en.qs;
+    faq.innerHTML='<div class="lnk-faq-wrap"><div class="lnk-faq-head"><span>'+m.faq+'</span><h2>'+m.faqTitle+'</h2></div>'+
+      qs.map(q=>'<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>').join('')+'</div>';
+  }
+
   function bind(){
     document.addEventListener('click', e=>{
       const q=e.target.closest('.lnk-qh-card[data-cat]');
@@ -128,8 +216,8 @@
   }
 
   function apply(){
-    ensureHub(); ensureDock(); ensureDesktopNav();
-    setTimeout(addSectionTabs,80);
+    ensureHub(); ensureDock(); ensureDesktopNav(); ensureFaq();
+    setTimeout(()=>{ addSectionTabs(); ensureCatalogToggle(); ensureSongTabs(); },100);
   }
 
   function boot(){
@@ -137,6 +225,8 @@
     const obs=new MutationObserver(()=>{
       if(!document.getElementById('lnk-quick-hub')) ensureHub();
       if(document.getElementById('digital-catalog') && !document.querySelector('#digital-catalog .lnk-section-tabs')) addSectionTabs();
+      if(document.getElementById('digital-catalog') && !document.getElementById('lnk-catalog-toggle')) ensureCatalogToggle();
+      if(document.getElementById('cenovnik') && !document.querySelector('#cenovnik .lnk-song-tabs')) ensureSongTabs();
     });
     obs.observe(document.body,{childList:true,subtree:true});
   }
