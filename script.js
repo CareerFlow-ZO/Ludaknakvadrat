@@ -66,10 +66,10 @@
   addStyle('/lnk-blue-theme.css?v=5', 'blue');
   addStyle('/lnk-final-polish.css?v=6', 'final-polish');
   addStyle('/lnk-compact-fix.css?v=2', 'compact-fix');
-  addStyle('/lnk-navigation-v2.css?v=1', 'navigation-v2');
-  addStyle('/lnk-web-showcase.css?v=1', 'web-showcase');
-  addStyle('/lnk-vip-upgrade.css?v=2', 'vip-upgrade');
-  addStyle('/lnk-signature-2026.css?v=1', 'signature-2026');
+  addStyle('/lnk-navigation-v2.css?v=3', 'navigation-v2');
+  addStyle('/lnk-web-showcase.css?v=4', 'web-showcase');
+  addStyle('/lnk-vip-upgrade.css?v=4', 'vip-upgrade');
+  addStyle('/lnk-signature-2026.css?v=2', 'signature-2026');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
     img.src = '/lnk-digital-logo.svg?v=1';
@@ -100,8 +100,8 @@
     await safeLoad('/lnk-observer-bridge.js?v=2');
 
     await safeLoad('/script-core.js?v=2');
-    await safeLoad('/web-services.js?v=2');
-    await safeLoad('/digital-catalog.js?v=2');
+    await safeLoad('/web-services.js?v=5');
+    await safeLoad('/digital-catalog.js?v=5');
 
     for (const src of [
       '/lnk-core-bs-hr.js?v=2','/lnk-core-1.js?v=2','/lnk-core-2.js?v=2','/lnk-core-3.js?v=2',
@@ -118,10 +118,10 @@
     await safeLoad('/lnk-logo-final.js?v=1');
     await safeLoad('/lnk-price-fix.js?v=1');
     await safeLoad('/lnk-form-final.js?v=1');
-    await safeLoad('/lnk-navigation-v2.js?v=1');
-    await safeLoad('/lnk-web-showcase.js?v=1');
-    await safeLoad('/lnk-vip-upgrade.js?v=2');
-    await safeLoad('/lnk-signature-2026.js?v=1');
+    await safeLoad('/lnk-navigation-v2.js?v=3');
+    await safeLoad('/lnk-web-showcase.js?v=4');
+    await safeLoad('/lnk-vip-upgrade.js?v=4');
+    await safeLoad('/lnk-signature-2026.js?v=2');
 
     clearTimeout(bootFallback);
     finishBoot();
