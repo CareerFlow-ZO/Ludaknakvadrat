@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
   <title id="title">LNK-DIGITAL</title>
-  <desc id="desc">Premium metallic blue LNK-DIGITAL logo</desc>
+  <desc id="desc">Premium metallic cyan violet LNK-DIGITAL logo</desc>
   <defs>
     <radialGradient id="bg" cx="50%" cy="42%" r="72%">
-      <stop offset="0" stop-color="#10283d"/>
-      <stop offset="0.46" stop-color="#07131f"/>
-      <stop offset="1" stop-color="#01050a"/>
+      <stop offset="0" stop-color="#202227"/>
+      <stop offset="0.46" stop-color="#111317"/>
+      <stop offset="1" stop-color="#08090b"/>
     </radialGradient>
     <linearGradient id="silver" x1="0" y1="0" x2="0.9" y2="1">
       <stop offset="0" stop-color="#ffffff"/>
@@ -15,17 +15,17 @@
       <stop offset="1" stop-color="#8998a5"/>
     </linearGradient>
     <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#68edff"/>
-      <stop offset="0.38" stop-color="#0cb4ff"/>
-      <stop offset="0.72" stop-color="#0876ff"/>
-      <stop offset="1" stop-color="#183cff"/>
+      <stop offset="0" stop-color="#63f4ff"/>
+      <stop offset="0.36" stop-color="#10c8ff"/>
+      <stop offset="0.68" stop-color="#5268ff"/>
+      <stop offset="1" stop-color="#b02cff"/>
     </linearGradient>
     <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b65ff"/>
-      <stop offset="0.22" stop-color="#59ecff"/>
-      <stop offset="0.50" stop-color="#007fff"/>
-      <stop offset="0.75" stop-color="#45dfff"/>
-      <stop offset="1" stop-color="#2440ff"/>
+      <stop offset="0" stop-color="#5cf6ff"/>
+      <stop offset="0.28" stop-color="#15d9ff"/>
+      <stop offset="0.55" stop-color="#5e63ff"/>
+      <stop offset="0.78" stop-color="#9b3cff"/>
+      <stop offset="1" stop-color="#d331ff"/>
     </linearGradient>
     <filter id="blueGlow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="16" result="b"/>
@@ -42,10 +42,10 @@
   </defs>
 
   <rect width="1000" height="1000" fill="url(#bg)"/>
-  <circle cx="500" cy="500" r="410" fill="#02080e" stroke="#061523" stroke-width="34" filter="url(#shadow)"/>
+  <circle cx="500" cy="500" r="410" fill="#0b0d10" stroke="#23272d" stroke-width="34" filter="url(#shadow)"/>
   <circle cx="500" cy="500" r="423" fill="none" stroke="url(#rim)" stroke-width="13" filter="url(#blueGlow)"/>
   <circle cx="500" cy="500" r="395" fill="none" stroke="#bfeeff" stroke-opacity="0.38" stroke-width="2"/>
-  <circle cx="500" cy="500" r="438" fill="none" stroke="#087cff" stroke-opacity="0.28" stroke-width="2"/>
+  <circle cx="500" cy="500" r="438" fill="none" stroke="#923cff" stroke-opacity="0.28" stroke-width="2"/>
 
   <!-- metallic L -->
   <path d="M240 350h82v270h150v82H240z" fill="url(#silver)" stroke="#eaf7ff" stroke-width="2" filter="url(#softGlow)"/>
@@ -59,7 +59,7 @@
   <!-- metallic K -->
   <path d="M650 350h82v150l140-150h105L805 525l180 177H873L732 563v139h-82z" fill="url(#silver)" stroke="#eef9ff" stroke-width="2" filter="url(#softGlow)"/>
 
-  <line x1="240" y1="770" x2="325" y2="770" stroke="#42dfff" stroke-width="6" stroke-linecap="round" filter="url(#blueGlow)"/>
+  <line x1="240" y1="770" x2="325" y2="770" stroke="#58efff" stroke-width="6" stroke-linecap="round" filter="url(#blueGlow)"/>
   <line x1="675" y1="770" x2="760" y2="770" stroke="#42dfff" stroke-width="6" stroke-linecap="round" filter="url(#blueGlow)"/>
   <text x="500" y="795" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="53" font-weight="700" fill="url(#silver)" letter-spacing="13">LNK-DIGITAL</text>
 </svg>
