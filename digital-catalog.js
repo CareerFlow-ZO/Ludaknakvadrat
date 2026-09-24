@@ -58,18 +58,20 @@
   CATEGORY_LABELS.bs=CATEGORY_LABELS.sr; CATEGORY_LABELS.hr=CATEGORY_LABELS.sr; CATEGORY_LABELS.fr=CATEGORY_LABELS.en; CATEGORY_LABELS.es=CATEGORY_LABELS.en; CATEGORY_LABELS.it=CATEGORY_LABELS.en; CATEGORY_LABELS.sq=CATEGORY_LABELS.en;
 
   const services = [
-    ['web','🌐','Landing page','149.99€'],
-    ['web','🏢','Business website do 5 stranica','299.99€'],
-    ['web','💎','Premium business website','499.99€'],
-    ['web','🛒','E-commerce / web shop','699.99€'],
+    ['web','🌐','Landing page','299.99€'],
+    ['web','🏢','Basic website do 5 stranica','599.99€'],
+    ['web','💎','Premium website do 10 stranica','999.99€'],
+    ['web','👑','VIP custom website do 15 stranica','1499.99€'],
     ['web','📅','Booking / rezervacioni sistem','149.99€'],
-    ['web','♻️','Redizajn postojeće web stranice','199.99€'],
+    ['web','♻️','Basic redesign postojeće web stranice','499.99€'],
+    ['web','✨','Premium redesign postojeće web stranice','799.99€'],
+    ['web','👑','VIP redesign postojeće web stranice','1199.99€'],
     ['web','⚡','Optimizacija brzine sajta','79.99€'],
-    ['web','🌍','Dodatni jezik na sajtu','49.99€ / jezik'],
+    ['web','🌍','Dodatni jezik na sajtu','119.99€ / jezik'],
     ['web','🧰','Održavanje web stranice','39.99€ / mj'],
     ['web','🔗','Domena + DNS + poslovni e-mail setup','39.99€'],
 
-    ['brand','✦','Logo koncept','49.99€'],
+    ['brand','✦','Logo koncept','99.99€'],
     ['brand','🎨','Logo + mini brand kit','99.99€'],
     ['brand','👑','Kompletan vizuelni identitet','199.99€'],
     ['brand','💳','Vizit karta','29.99€'],
@@ -94,11 +96,11 @@
     ['marketing','✍️','Reklamni copy / ad tekst','29.99€'],
 
     ['seo','🔍','SEO audit','49.99€'],
-    ['seo','🧭','On-page SEO do 5 stranica','99.99€'],
+    ['seo','🧭','Osnovna SEO optimizacija','149.99€'],
     ['seo','📍','Local SEO','79.99€'],
-    ['seo','🏪','Google Business profil setup','49.99€'],
+    ['seo','🏪','Google Business profil setup','99.99€'],
     ['seo','🗝️','Keyword research','39.99€'],
-    ['seo','📊','Mesečni SEO paket','149.99€ / mj'],
+    ['seo','📊','Napredni SEO paket','249.99€ / mj'],
 
     ['ai','🤖','AI chatbot za web stranicu','149.99€'],
     ['ai','🧠','AI asistent za biznis','249.99€'],
@@ -108,6 +110,9 @@
     ['ai','🗃️','CRM setup i automatizacija','149.99€'],
     ['ai','📝','AI content paket','69.99€'],
 
+    ['shop','🛒','Start web shop','1499.99€'],
+    ['shop','🏢','Business web shop','2499.99€'],
+    ['shop','👑','Premium web shop','3499.99€'],
     ['shop','💳','Online plaćanje / payment setup','59.99€'],
     ['shop','🚚','Dostava i shipping setup','59.99€'],
     ['shop','📦','Unos do 50 proizvoda','99.99€'],
@@ -146,9 +151,9 @@
   ].map((x,i)=>({id:'svc-'+(i+1),cat:x[0],icon:x[1],name:x[2],price:x[3]}));
 
   const monthly = [
-    {name:'DIGITAL CARE',price:'99.99€ / mj',text:'Održavanje sajta • male izmene • 2 vizuala • tehnička podrška'},
-    {name:'GROWTH',price:'299.99€ / mj',text:'10 objava • vođenje profila • osnovni SEO • mesečni izveštaj'},
-    {name:'FULL DIGITAL PARTNER',price:'599.99€ / mj',text:'Web podrška • social media • SEO • kreativa • automatizacija • prioritet'}
+    {name:'BASIC CARE',price:'39.99€ / mj',text:'Osnovni nadzor • manje izmjene • tehnička podrška'},
+    {name:'BUSINESS CARE',price:'69.99€ / mj',text:'Ažuriranja • sigurnost • manje sadržajne izmjene • podrška'},
+    {name:'PREMIUM CARE',price:'119.99€ / mj',text:'Prioritetna podrška • redovne izmjene • optimizacija • nadzor web stranice'}
   ];
 
   const css = `
