@@ -1,26 +1,40 @@
 (() => {
   'use strict';
-  if (window.__LNK_SIGNATURE_2026) return;
-  window.__LNK_SIGNATURE_2026 = true;
+  if (window.__LNK_SIGNATURE_2026_V2) return;
+  window.__LNK_SIGNATURE_2026_V2 = true;
 
   const WA='38631244612';
+  const PORTFOLIO=[
+    ['LNK BARBER','Barber / premium booking','https://lnk-barber-demo.vercel.app','cyan'],
+    ['UNSEEN BARBERSHOP','Dark luxury barber concept','https://unseen-barbershop-preview.vercel.app','violet'],
+    ["BARBER'S PLACE",'Modern local business','https://barbers-place-preview.vercel.app','blue'],
+    ['AS BARBERSHOP','Clean premium service site','https://as-barbershop-preview.vercel.app','purple'],
+    ['AVTOLUX','Automotive premium concept','https://avtolux-preview.vercel.app','cyan'],
+    ['ROČNA STIL','Service / local brand concept','https://rocna-stil-preview.vercel.app','violet']
+  ];
+
   const COPY={
     sl:{
       eyebrow:'LNK DIGITAL',
       title:'Vse digitalne<br>storitve na <span class="sig-gradient">enem mestu.</span>',
       text:'Celoten digitalni nastop za uspešno in prepoznavno blagovno znamko. Strategija, dizajn in rešitve, ki pomagajo tvojemu poslu rasti.',
-      cta:'Začni svoj projekt',
-      second:'Poglej storitve',
+      cta:'Začni svoj projekt',second:'Poglej storitve',
       trust:['SEO pripravljeno','Hiter kontakt','Premium dizajn'],
       stats:[['100%','po meri'],['SEO','pripravljeno'],['1:1','podpora'],['∞','možnosti']],
-      servicesEy:'NAŠE STORITVE',
-      servicesTitle:'Strategija. Dizajn. Rezultati.',
-      servicesLead:'Vse, kar potrebuješ za močno spletno prisotnost — na enem mestu.',
+      servicesEy:'NAŠE STORITVE',servicesTitle:'Strategija. Dizajn. Rezultati.',servicesLead:'Vse, kar potrebuješ za močno spletno prisotnost — na enem mestu.',
       serviceCards:[
         ['🖥️','Spletne strani','Moderne, hitre in SEO pripravljene spletne strani.','#web-stranice',''],
         ['📈','Digitalni marketing','Več obiska, več povpraševanj in merljivi rezultati.','#digital-catalog','marketing'],
         ['✦','Branding','Celostna grafična podoba in vizualna identiteta, ki izstopa.','#digital-catalog','brand'],
         ['AI','AI rešitve','Avtomatizacija, AI orodja in rešitve za večjo učinkovitost.','#digital-catalog','ai']
+      ],
+      portfolioEy:'PORTFOLIO',portfolioTitle:'Dizajni, ki prodajajo.',portfolioText:'Oglej si nekaj smeri in demo projektov. Vsak končni projekt prilagodimo tvoji znamki, vsebini in ciljem.',portfolioBtn:'Odpri projekt',
+      packagesEy:'SPLETNI PAKETI',packagesTitle:'Izberi nivo svojega novega spletnega nastopa.',popular:'NAJBOLJ IZBRANO',choose:'Izberi paket',
+      packages:[
+        ['BASIC','599,99 €',['Do 5 podstrani','Premium responsive dizajn','Kontaktni obrazec + WhatsApp','Google Maps + osnovni SEO','SSL + 2 kroga popravkov']],
+        ['PREMIUM','999,99 €',['Do 10 podstrani','Premium dizajn + animacije','Google Analytics','SEO osnove + hitrost','3 krogi popravkov']],
+        ['VIP','1.499,99 €',['Do 15 podstrani','Popolnoma custom VIP dizajn','Napredne animacije','Booking / order sistem','Več jezikov + blog','Prednostna podpora']],
+        ['WEB SHOP','od 1.499,99 €',['Premium spletna trgovina','Spletna plačila','Dostava + naročila','Responsive dizajn','Pripravljeno za rast']]
       ],
       nav:['Domov','Storitve','Portfolio','O nas','WhatsApp']
     },
@@ -38,9 +52,16 @@
         ['✦','Branding','Kompletan vizuelni identitet koji se pamti.','#digital-catalog','brand'],
         ['AI','AI rješenja','Automatizacija, AI alati i rješenja za veću efikasnost.','#digital-catalog','ai']
       ],
+      portfolioEy:'PORTFOLIO',portfolioTitle:'Dizajni koji prodaju.',portfolioText:'Pogledaj nekoliko pravaca i demo projekata. Finalni projekat se prilagođava tvom brendu, sadržaju i ciljevima.',portfolioBtn:'Otvori projekat',
+      packagesEy:'WEB PAKETI',packagesTitle:'Izaberi nivo svog novog web nastupa.',popular:'NAJPOPULARNIJI',choose:'Izaberi paket',
+      packages:[
+        ['BASIC','599,99 €',['Do 5 stranica','Premium responsive dizajn','Kontakt forma + WhatsApp','Google Maps + osnovni SEO','SSL + 2 kruga izmjena']],
+        ['PREMIUM','999,99 €',['Do 10 stranica','Premium dizajn + animacije','Google Analytics','SEO osnove + brzina','3 kruga izmjena']],
+        ['VIP','1.499,99 €',['Do 15 stranica','Potpuno custom VIP dizajn','Napredne animacije','Booking / order sistem','Više jezika + blog','Prioritetna podrška']],
+        ['WEB SHOP','od 1.499,99 €',['Premium web shop','Online plaćanje','Dostava + narudžbe','Responsive dizajn','Spremno za rast']]
+      ],
       nav:['Početna','Usluge','Portfolio','O nama','WhatsApp']
     },
-    bs:null,hr:null,
     en:{
       eyebrow:'LNK DIGITAL',
       title:'All digital<br>services in <span class="sig-gradient">one place.</span>',
@@ -54,6 +75,14 @@
         ['📈','Digital marketing','More traffic, more inquiries and measurable results.','#digital-catalog','marketing'],
         ['✦','Branding','A complete visual identity designed to stand out.','#digital-catalog','brand'],
         ['AI','AI solutions','Automation, AI tools and solutions for greater efficiency.','#digital-catalog','ai']
+      ],
+      portfolioEy:'PORTFOLIO',portfolioTitle:'Design that sells.',portfolioText:'Explore selected directions and demo projects. Every final project is tailored to your brand, content and goals.',portfolioBtn:'Open project',
+      packagesEy:'WEBSITE PACKAGES',packagesTitle:'Choose the level of your new digital presence.',popular:'MOST POPULAR',choose:'Choose package',
+      packages:[
+        ['BASIC','€599.99',['Up to 5 pages','Premium responsive design','Contact form + WhatsApp','Google Maps + basic SEO','SSL + 2 revision rounds']],
+        ['PREMIUM','€999.99',['Up to 10 pages','Premium design + animations','Google Analytics','SEO basics + speed','3 revision rounds']],
+        ['VIP','€1,499.99',['Up to 15 pages','Fully custom VIP design','Advanced animations','Booking / order system','Multilingual + blog','Priority support']],
+        ['WEB SHOP','from €1,499.99',['Premium e-commerce','Online payments','Shipping + orders','Responsive design','Ready to scale']]
       ],
       nav:['Home','Services','Portfolio','About','WhatsApp']
     },
@@ -71,6 +100,14 @@
         ['✦','Branding','Eine komplette visuelle Identität mit Wiedererkennung.','#digital-catalog','brand'],
         ['AI','KI-Lösungen','Automatisierung, KI-Tools und Lösungen für mehr Effizienz.','#digital-catalog','ai']
       ],
+      portfolioEy:'PORTFOLIO',portfolioTitle:'Design, das verkauft.',portfolioText:'Ausgewählte Richtungen und Demo-Projekte. Jedes finale Projekt wird an Marke, Inhalte und Ziele angepasst.',portfolioBtn:'Projekt öffnen',
+      packagesEy:'WEBSEITEN-PAKETE',packagesTitle:'Wähle das Level deines neuen Webauftritts.',popular:'BELIEBTESTE',choose:'Paket wählen',
+      packages:[
+        ['BASIC','599,99 €',['Bis zu 5 Seiten','Premium Responsive Design','Kontaktformular + WhatsApp','Google Maps + Basis-SEO','SSL + 2 Korrekturrunden']],
+        ['PREMIUM','999,99 €',['Bis zu 10 Seiten','Premium Design + Animationen','Google Analytics','SEO-Basis + Speed','3 Korrekturrunden']],
+        ['VIP','1.499,99 €',['Bis zu 15 Seiten','Komplett individuelles VIP Design','Erweiterte Animationen','Booking / Order System','Mehrsprachig + Blog','Prioritäts-Support']],
+        ['WEB SHOP','ab 1.499,99 €',['Premium Webshop','Online-Zahlung','Versand + Bestellungen','Responsive Design','Skalierbar']]
+      ],
       nav:['Start','Leistungen','Portfolio','Über uns','WhatsApp']
     }
   };
@@ -79,6 +116,7 @@
 
   function lang(){return document.getElementById('language')?.value||localStorage.getItem('lnkDisplayLang')||localStorage.getItem('ludakLang')||'sl'}
   function t(){return COPY[lang()]||COPY.sl}
+
   function scrollToId(id){
     const el=document.querySelector(id); if(!el)return;
     const h=document.querySelector('.site-header')?.offsetHeight||70;
@@ -103,9 +141,7 @@
           '<a class="lnk-order-btn sig-secondary" href="#lnk-usluge">'+c.second+'</a>'+
         '</div>';
     }
-    if(art){
-      art.innerHTML='<div class="halo"></div><img src="/lnk-digital-logo.svg?v=3" alt="LNK DIGITAL" class="hero-logo">';
-    }
+    if(art) art.innerHTML='<div class="halo"></div><img src="/lnk-digital-logo.svg?v=4" alt="LNK DIGITAL" class="hero-logo">';
   }
 
   function stats(){
@@ -119,7 +155,7 @@
       '<span class="eyebrow">'+c.servicesEy+'</span>'+
       '<h2>'+c.servicesTitle+'</h2>'+
       '<p class="lnk-services-lead">'+c.servicesLead+'</p>'+
-      '<div class="lnk-quick-grid">'+c.serviceCards.map((x,i)=>
+      '<div class="lnk-quick-grid">'+c.serviceCards.map(x=>
         '<article class="lnk-card">'+
           '<div class="sig-service-icon">'+x[0]+'</div>'+
           '<h3>'+x[1]+'</h3><p>'+x[2]+'</p>'+
@@ -128,12 +164,59 @@
       '</div></div>';
   }
 
+  function portfolio(){
+    const c=t();
+    let sec=document.getElementById('portfolio');
+    if(!sec){
+      sec=document.createElement('section'); sec.id='portfolio'; sec.className='sig-portfolio';
+      const web=document.getElementById('web-stranice');
+      if(web) web.before(sec); else document.getElementById('lnk-usluge')?.after(sec);
+    }
+    sec.innerHTML='<div class="sig-portfolio-wrap">'+
+      '<div class="sig-portfolio-head"><div><span>'+c.portfolioEy+'</span><h2>'+c.portfolioTitle+'</h2><p>'+c.portfolioText+'</p></div></div>'+
+      '<div class="sig-project-grid">'+PORTFOLIO.map((p,i)=>
+        '<a class="sig-project-card sig-'+p[3]+'" href="'+p[2]+'" target="_blank" rel="noopener">'+
+          '<div class="sig-project-browser"><div class="sig-browser-bar"><i></i><i></i><i></i></div><div class="sig-project-screen">'+
+            '<div class="sig-mini-logo">LNK</div><div class="sig-mini-lines"><b></b><b></b><b></b></div><div class="sig-mini-button"></div><div class="sig-mini-panels"><i></i><i></i><i></i></div>'+
+          '</div></div>'+
+          '<div class="sig-project-copy"><span>0'+(i+1)+'</span><div><h3>'+p[0]+'</h3><p>'+p[1]+'</p></div><b>'+c.portfolioBtn+' →</b></div>'+
+        '</a>').join('')+
+      '</div></div>';
+  }
+
+  function packages(){
+    const c=t(), web=document.getElementById('web-stranice'); if(!web)return;
+    const inner=web.querySelector('.lnk-quick-inner')||web;
+    let grid=inner.querySelector(':scope > .lnk-quick-grid');
+    if(!grid){grid=document.createElement('div');grid.className='lnk-quick-grid';inner.prepend(grid)}
+    let eyebrow=inner.querySelector(':scope > .eyebrow'); if(eyebrow)eyebrow.textContent=c.packagesEy;
+    let h2=inner.querySelector(':scope > h2'); if(h2)h2.textContent=c.packagesTitle;
+    grid.className='lnk-quick-grid sig-package-grid';
+    grid.innerHTML=c.packages.map((p,i)=>
+      '<article class="lnk-card sig-package-card '+(i===1?'lnk-featured':'')+'">'+
+        (i===1?'<div class="lnk-best">'+c.popular+'</div>':'')+
+        '<div class="sig-package-top"><span class="sig-package-name">'+p[0]+'</span><div class="lnk-price">'+p[1]+'</div></div>'+
+        '<ul class="sig-package-list">'+p[2].map(x=>'<li>'+x+'</li>').join('')+'</ul>'+
+        '<a class="lnk-order-btn web-pick sig-package-btn" href="#web-naruci" data-package="'+p[0]+' — '+p[1]+'">'+c.choose+' →</a>'+
+      '</article>').join('');
+    const sel=web.querySelector('select[name="package"]');
+    if(sel){
+      const current=sel.value;
+      sel.innerHTML=c.packages.map(p=>'<option value="'+p[0]+' — '+p[1]+'">'+p[0]+' — '+p[1]+'</option>').join('')+'<option value="Branding & Social">Branding & Social</option>';
+      if([...sel.options].some(o=>o.value===current))sel.value=current;
+    }
+    grid.querySelectorAll('.web-pick').forEach(a=>a.onclick=()=>{
+      const form=document.getElementById('web-naruci'), select=form?.querySelector('select[name="package"]');
+      if(select)select.value=a.dataset.package;
+    });
+  }
+
   function desktopNav(){
     const nav=document.querySelector('.desktop-nav'), c=t(); if(!nav)return;
     nav.innerHTML=
       '<a href="#top">'+c.nav[0]+'</a>'+
       '<a href="#lnk-usluge">'+c.nav[1]+'</a>'+
-      '<a href="#web-showcase">'+c.nav[2]+'</a>'+
+      '<a href="#portfolio">'+c.nav[2]+'</a>'+
       '<a href="#o-nama">'+c.nav[3]+'</a>'+
       '<a href="https://wa.me/'+WA+'" target="_blank" rel="noopener">'+c.nav[4]+'</a>';
   }
@@ -143,36 +226,51 @@
     dock.innerHTML=
       '<a href="#top" data-key="home"><span class="dock-icon">⌂</span><span>'+c.nav[0]+'</span></a>'+
       '<a href="#lnk-usluge" data-key="services"><span class="dock-icon">▦</span><span>'+c.nav[1]+'</span></a>'+
-      '<a href="#web-showcase" data-key="portfolio"><span class="dock-icon">▣</span><span>'+c.nav[2]+'</span></a>'+
+      '<a href="#portfolio" data-key="portfolio"><span class="dock-icon">▣</span><span>'+c.nav[2]+'</span></a>'+
       '<a href="#o-nama" data-key="about"><span class="dock-icon">◉</span><span>'+c.nav[3]+'</span></a>'+
       '<a href="https://wa.me/'+WA+'" target="_blank" rel="noopener" data-key="order"><span class="dock-icon">✆</span><span>'+c.nav[4]+'</span></a>';
   }
 
   function bind(){
-    if(document.body.dataset.sigBound)return; document.body.dataset.sigBound='1';
+    if(document.body.dataset.sigV2Bound)return; document.body.dataset.sigV2Bound='1';
     document.addEventListener('click',e=>{
-      const a=e.target.closest('.sig-service-link');
-      if(a&&a.dataset.cat){e.preventDefault();category(a.dataset.cat);return}
+      const service=e.target.closest('.sig-service-link');
+      if(service&&service.dataset.cat){e.preventDefault();category(service.dataset.cat);return}
       const smooth=e.target.closest('a[href^="#"]');
       if(smooth){
         const h=smooth.getAttribute('href');
         if(h&&h.length>1&&document.querySelector(h)){e.preventDefault();scrollToId(h)}
       }
     });
-    document.getElementById('language')?.addEventListener('change',()=>setTimeout(apply,350));
+    document.getElementById('language')?.addEventListener('change',()=>setTimeout(apply,180));
   }
 
   function apply(){
     document.title='LNK DIGITAL';
-    document.querySelectorAll('.brand img,.footer-brand img').forEach(img=>{img.src='/lnk-digital-logo.svg?v=3';img.alt='LNK DIGITAL'});
+    document.querySelectorAll('.brand img,.footer-brand img').forEach(img=>{img.src='/lnk-digital-logo.svg?v=4';img.alt='LNK DIGITAL'});
     const brand=document.querySelector('.brand span'); if(brand)brand.textContent='LNK DIGITAL';
-    hero(); stats(); services(); desktopNav(); mobileDock();
+    hero(); stats(); services(); portfolio(); packages(); desktopNav(); mobileDock();
+  }
+
+  let repairTimer;
+  function repair(){
+    clearTimeout(repairTimer);
+    repairTimer=setTimeout(()=>{
+      const broken =
+        !document.getElementById('portfolio') ||
+        !document.querySelector('.hero .sig-gradient') ||
+        !document.querySelector('#lnk-usluge .sig-service-icon') ||
+        !document.querySelector('#web-stranice .sig-package-grid') ||
+        !document.querySelector('#lnk-mobile-dock a[href="#portfolio"]');
+      if(broken) apply();
+    },90);
   }
 
   function boot(){
-    apply();bind();
-    setTimeout(apply,250);
-    setTimeout(apply,900);
+    apply(); bind();
+    [250,700,1400,2600].forEach(ms=>setTimeout(apply,ms));
+    const obs=new MutationObserver(repair);
+    obs.observe(document.body,{childList:true,subtree:true});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
