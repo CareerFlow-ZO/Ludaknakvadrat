@@ -68,7 +68,7 @@
   addStyle('/lnk-compact-fix.css?v=2', 'compact-fix');
   addStyle('/lnk-navigation-v2.css?v=1', 'navigation-v2');
   addStyle('/lnk-web-showcase.css?v=1', 'web-showcase');
-  addStyle('/lnk-vip-upgrade.css?v=1', 'vip-upgrade');
+  addStyle('/lnk-vip-upgrade.css?v=2', 'vip-upgrade');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
     img.src = '/lnk-digital-logo.svg?v=1';
@@ -119,7 +119,7 @@
     await safeLoad('/lnk-form-final.js?v=1');
     await safeLoad('/lnk-navigation-v2.js?v=1');
     await safeLoad('/lnk-web-showcase.js?v=1');
-    await safeLoad('/lnk-vip-upgrade.js?v=1');
+    await safeLoad('/lnk-vip-upgrade.js?v=2');
 
     clearTimeout(bootFallback);
     finishBoot();
