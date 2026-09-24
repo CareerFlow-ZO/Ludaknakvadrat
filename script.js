@@ -69,6 +69,7 @@
   addStyle('/lnk-navigation-v2.css?v=1', 'navigation-v2');
   addStyle('/lnk-web-showcase.css?v=1', 'web-showcase');
   addStyle('/lnk-vip-upgrade.css?v=2', 'vip-upgrade');
+  addStyle('/lnk-signature-2026.css?v=1', 'signature-2026');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
     img.src = '/lnk-digital-logo.svg?v=1';
@@ -120,6 +121,7 @@
     await safeLoad('/lnk-navigation-v2.js?v=1');
     await safeLoad('/lnk-web-showcase.js?v=1');
     await safeLoad('/lnk-vip-upgrade.js?v=2');
+    await safeLoad('/lnk-signature-2026.js?v=1');
 
     clearTimeout(bootFallback);
     finishBoot();
