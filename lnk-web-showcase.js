@@ -43,12 +43,12 @@
     realestate:'/assets/previews/realestate.png?v=2',
     dental:'/assets/previews/dental.png?v=2',
     gym:'/assets/previews/fitness.png?v=2',
-    luxury:'/assets/previews/realestate.png?v=2',
-    noir:'/assets/previews/auto.png?v=2'
+    luxury:null,
+    noir:null
   };
 
   function preview(d,large=false){
-    const img=SHOWCASE_IMAGES[d.theme]||SHOWCASE_IMAGES.modern;
+    const img=SHOWCASE_IMAGES[d.theme] || window.LNKVisuals?.dataUri(d.name+' • '+d.theme,'template','✦') || SHOWCASE_IMAGES.modern;
     return '<button type="button" class="wds-image-preview '+(large?'large':'')+'" data-lnk-preview-src="'+img+'" data-lnk-preview-title="'+d.name.replace(/\"/g,'&quot;')+'"><img src="'+img+'" alt="'+d.name.replace(/\"/g,'&quot;')+' — LNK DIGITAL design preview" loading="lazy"></button>';
   }
 
