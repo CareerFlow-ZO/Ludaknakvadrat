@@ -1,0 +1,44 @@
+name: Import LNK music visuals
+on:
+  push:
+    paths:
+      - ".github/workflows/import-lnk-music-visuals.yml"
+permissions:
+  contents: write
+jobs:
+  import-music:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Download music visuals
+        run: |
+          mkdir -p assets/music
+          curl --fail --location --retry 3 --output assets/music/personalizovana.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/2c32d213-d84b-46c9-8fa9-9a5e7bb27bbd.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOGI5MWMwYTA3ZWQ3ZTI0OSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUyNTg1Nn0.8bZzxHbo2Y4fLDxQpWSXc6UMN6wFS4X1hfAscPKDuRM"
+          curl --fail --location --retry 3 --output assets/music/rodjendan.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/6d76d7c5-4ad2-42a8-af10-c118a36e964e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOTg5YTY1YTkwNzk1N2U0MSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUxNzgwMX0.5C7JReST9MpznKwSeLaib-cQws5OrfJWAWDTP03tKBM"
+          curl --fail --location --retry 3 --output assets/music/svadba.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/5464461a-2c43-4656-8fe8-af09b793d3a1.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMTk5NDMxNWUwZjkzZTA1MSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDQ2MDc2Nn0._b3EDxVUUlo7nLdyVtYQE94u557fSqEiPGdCn6URYjk"
+          curl --fail --location --retry 3 --output assets/music/ljubavna.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/e787834c-5af3-4f75-b1d0-6dbebe1cf87e.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZmIwMzNhYTRjNWEwYzU2NCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUzNzYzNn0.6l7nXFC8lEqvzfBK-e3hWYWifcxQttmbKh24vNSwuM4"
+          curl --fail --location --retry 3 --output assets/music/godisnjica.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/efc98fbe-e8d5-4d66-b285-5e641873ff89.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzYwNGJiNWRjYzYzYzFlYSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDQ1OTk5N30.MW2O4PVaBW3vbEoAEsgRk2_aANYc-fBwKdlzwREkyF4"
+          curl --fail --location --retry 3 --output assets/music/porodica.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/b7e2ae89-6847-47a2-b6cc-78a23dc1f528.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMzAxMTcyNjUwMzBkNTU1MCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDQ1OTM2NX0.aBypCP7N6EPdUL74YPKd5kaQs7BFHOWF7a4mqFxaEd0"
+          curl --fail --location --retry 3 --output assets/music/saljiva.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/f014c2da-2581-4b8f-bf31-0f7daae64a60.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZWQxZmE5NjJjYWI2N2NjOCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDU0MDc3MH0.O2AZMO3YJo5sL1wtvfsWzBrHExWEz8jfAicA72HxAjY"
+          curl --fail --location --retry 3 --output assets/music/raptrap.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/26f3ef91-0bee-42c8-b02c-74d659b209d4.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNzA5OTk3ZDA3Y2E5MmUzMSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUzMTY2NH0.GADOz9lk43eOFjhRzzrTly_HC-iRvJfVuk_-0jaUnVw"
+          curl --fail --location --retry 3 --output assets/music/balkanturkey.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/0ba5a147-8df8-4e6d-b4af-c78b92eae6f9.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiYjg0ZDAyZmQwMjVmZWNiMCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUyNTE4MX0.ac2ofetdEglvPcxhUGwwI9uRBR32wGSOolvM-2BCE4U"
+          curl --fail --location --retry 3 --output assets/music/vip.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/57b23844-0325-4698-805f-c619aafc0603.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZTU1OGEzODIwYmIyYWY1OCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUyMTA5MH0.O_o8YZD6UvaE5hox8n_ITpIj0MEz58AmbIsMmC3ckEQ"
+          test -s assets/music/personalizovana.png
+          test -s assets/music/rodjendan.png
+          test -s assets/music/svadba.png
+          test -s assets/music/ljubavna.png
+          test -s assets/music/godisnjica.png
+          test -s assets/music/porodica.png
+          test -s assets/music/saljiva.png
+          test -s assets/music/raptrap.png
+          test -s assets/music/balkanturkey.png
+          test -s assets/music/vip.png
+      - name: Commit music visuals
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/music
+          git commit -m "Add LNK music preview visuals"
+          git push origin HEAD:main
