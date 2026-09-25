@@ -111,21 +111,7 @@
 
   function productPreview(p,kind){
     if(p.preset && PREVIEW_ASSETS[p.preset]) return PREVIEW_ASSETS[p.preset];
-    const cat=p.cat||kind;
-    const map={
-      content:PREVIEW_ASSETS.business,
-      video:PREVIEW_ASSETS.ecommerce,
-      music:PREVIEW_ASSETS.beauty,
-      social:PREVIEW_ASSETS.ecommerce,
-      brand:PREVIEW_ASSETS.business,
-      tech:PREVIEW_ASSETS.business,
-      marketing:PREVIEW_ASSETS.business,
-      seo:PREVIEW_ASSETS.realestate,
-      ai:PREVIEW_ASSETS.business,
-      shop:PREVIEW_ASSETS.ecommerce,
-      career:PREVIEW_ASSETS.business
-    };
-    return map[cat]||PREVIEW_ASSETS.business;
+    return window.LNKVisuals?.dataUri(p.name,p.cat||kind,p.icon) || PREVIEW_ASSETS.business;
   }
 
   function card(p,kind){
