@@ -204,26 +204,8 @@
     return html;
   }
 
-  const PREVIEW_POOL={
-    web:['/assets/previews/business.png?v=2','/assets/previews/barbershop.png?v=2','/assets/previews/beauty.png?v=2','/assets/previews/auto.png?v=2','/assets/previews/truck.png?v=2','/assets/previews/restaurant.png?v=2','/assets/previews/realestate.png?v=2','/assets/previews/dental.png?v=2','/assets/previews/fitness.png?v=2','/assets/previews/ecommerce.png?v=2'],
-    brand:['/assets/previews/business.png?v=2','/assets/previews/beauty.png?v=2','/assets/previews/barbershop.png?v=2'],
-    social:['/assets/previews/ecommerce.png?v=2','/assets/previews/beauty.png?v=2','/assets/previews/fitness.png?v=2'],
-    marketing:['/assets/previews/business.png?v=2','/assets/previews/ecommerce.png?v=2','/assets/previews/realestate.png?v=2'],
-    seo:['/assets/previews/business.png?v=2','/assets/previews/realestate.png?v=2','/assets/previews/dental.png?v=2'],
-    ai:['/assets/previews/business.png?v=2','/assets/previews/ecommerce.png?v=2','/assets/previews/auto.png?v=2'],
-    shop:['/assets/previews/ecommerce.png?v=2','/assets/previews/beauty.png?v=2','/assets/previews/business.png?v=2'],
-    video:['/assets/previews/fitness.png?v=2','/assets/previews/restaurant.png?v=2','/assets/previews/auto.png?v=2'],
-    content:['/assets/previews/business.png?v=2','/assets/previews/restaurant.png?v=2','/assets/previews/beauty.png?v=2'],
-    career:['/assets/previews/business.png?v=2','/assets/previews/dental.png?v=2','/assets/previews/realestate.png?v=2'],
-    tech:['/assets/previews/business.png?v=2','/assets/previews/ecommerce.png?v=2','/assets/previews/truck.png?v=2'],
-    music:['/assets/previews/beauty.png?v=2','/assets/previews/restaurant.png?v=2','/assets/previews/fitness.png?v=2']
-  };
-  function previewHash(name=''){
-    let h=0; for(let i=0;i<name.length;i++) h=(Math.imul(h,31)+name.charCodeAt(i))>>>0; return h;
-  }
   function previewSrc(name,cat,icon){
-    const pool=PREVIEW_POOL[cat]||PREVIEW_POOL.web;
-    return pool[previewHash(name)%pool.length];
+    return window.LNKVisuals?.dataUri(name,cat,icon) || '/assets/previews/business.png?v=2';
   }
 
   function card(s,t){
