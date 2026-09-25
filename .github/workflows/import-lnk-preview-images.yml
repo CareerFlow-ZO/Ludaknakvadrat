@@ -1,0 +1,46 @@
+name: Import LNK preview images
+on:
+  push:
+    paths:
+      - ".github/workflows/import-lnk-preview-images.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  import-previews:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Download preview images
+        run: |
+          mkdir -p assets/previews
+          curl --fail --location --retry 3 --output assets/previews/barbershop.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/852f7458-6348-496d-882c-5b147f842b57.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNTZiNTc4ZDFmN2QzNjg1NSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDQ4MzkyMX0.zuwarwRJ00codAnZnkfo-G1-cWXtgeubUQ1raHuHWKQ"
+          curl --fail --location --retry 3 --output assets/previews/beauty.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/e5e13248-78a7-4df7-b328-caa9b7735577.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZjU0Yzc4NzY4YjVhMmM1MSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDQ5MTg5NH0.v9T8dPbNlRzAE3Fq2k1SaHLq86Qc9wijuUhzdIUnRaQ"
+          curl --fail --location --retry 3 --output assets/previews/auto.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/149a61d5-4cb1-4564-8614-08ec5382a425.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNDUzMzc5YjNkYzgwNTlmNSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUxMTc5NX0.fwGK1_kwP05loSxUWGIOF9c8t2ZFvEvI7hkcDfa3MHQ"
+          curl --fail --location --retry 3 --output assets/previews/truck.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/970b9541-8374-4ff7-9c01-c44868cb2f05.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNGM3OGNjNmM3NjdlZDIyNyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDQ5ODY2OH0.v37PW4bvHJTOkdwNZ8xl3w8yQfazU-XFQEgB8zXrQNU"
+          curl --fail --location --retry 3 --output assets/previews/restaurant.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/618910e9-3506-4aeb-a63b-3dd7f6422fc1.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiODNlM2FkZGI5NTRlNjJhMSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDQ5OTY3NX0.BACW0dy2c63xMMq4kakrLkGQindtSg6RsOPurNhXIiw"
+          curl --fail --location --retry 3 --output assets/previews/realestate.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/d9641d27-a439-4007-961a-5e1263b6e8b1.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMDU0NzAxZmFkMjY0ZmI2YSIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUzMzI0Mn0.6MPxUPD7IsYneSBZwzD0fVleRfULlg_4fM9yjhNRazk"
+          curl --fail --location --retry 3 --output assets/previews/dental.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/9f590c5d-6f7b-47b5-a445-eb2b99e54fd5.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNjFlZmRmM2ZmYWRhODY3MCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUwODYwN30.v_R85DdEbzWNtO-mYSdGzNyl5YKaOMEIrZ5ZItC6BYo"
+          curl --fail --location --retry 3 --output assets/previews/fitness.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/1476ade0-94d4-4ee5-9f7f-8ccbbf8404a7.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMGUxN2FhM2JhOTJhMzI5MyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUwODczMX0.VMd99yR0zMMs07S2GnO-8PTd0SHeWqqC6htpdDcEsJc"
+          curl --fail --location --retry 3 --output assets/previews/ecommerce.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/7a987da3-2f2c-4a3a-bc24-8b515a16beb5.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiZTExNjFlNTk0NGMxMTFkZCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDUwNTU2MX0.vjFw-cpsuGupw40Mz2rPqkqUiDb-94dbZuSV5uA5Clc"
+          curl --fail --location --retry 3 --output assets/previews/business.png "https://d2jqrm6oza8nb6.cloudfront.net/datasets/fa9d6f84-f594-4f82-a651-a656904978ac.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiNmMxYjRlNjA3YjJlNzI2ZCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MDQ4NzI2NH0.F4DyU2Xz9dWyBVsuQh69sYcUoQ1cdC0-2HYbHCozuno"
+          test -s assets/previews/barbershop.png
+          test -s assets/previews/beauty.png
+          test -s assets/previews/auto.png
+          test -s assets/previews/truck.png
+          test -s assets/previews/restaurant.png
+          test -s assets/previews/realestate.png
+          test -s assets/previews/dental.png
+          test -s assets/previews/fitness.png
+          test -s assets/previews/ecommerce.png
+          test -s assets/previews/business.png
+      - name: Commit preview images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/previews
+          git commit -m "Add LNK DIGITAL website preview images"
+          git push origin HEAD:main
