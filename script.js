@@ -67,10 +67,10 @@
   addStyle('/lnk-final-polish.css?v=6', 'final-polish');
   addStyle('/lnk-compact-fix.css?v=2', 'compact-fix');
   addStyle('/lnk-navigation-v2.css?v=3', 'navigation-v2');
-  addStyle('/lnk-web-showcase.css?v=4', 'web-showcase');
+  addStyle('/lnk-web-showcase.css?v=5', 'web-showcase');
   addStyle('/lnk-vip-upgrade.css?v=4', 'vip-upgrade');
   addStyle('/lnk-signature-2026.css?v=2', 'signature-2026');
-  addStyle('/lnk-shop.css?v=1', 'shop');
+  addStyle('/lnk-shop.css?v=2', 'shop');
   addStyle('/lnk-mobile-nav-fix.css?v=1', 'mobile-nav-fix');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
@@ -104,7 +104,7 @@
     await safeLoad('/script-core.js?v=2');
     await safeLoad('/web-services.js?v=5');
     await safeLoad('/lnk-visuals.js?v=1');
-    await safeLoad('/digital-catalog.js?v=5');
+    await safeLoad('/digital-catalog.js?v=6');
 
     for (const src of [
       '/lnk-core-bs-hr.js?v=2','/lnk-core-1.js?v=2','/lnk-core-2.js?v=2','/lnk-core-3.js?v=2',
@@ -122,10 +122,10 @@
     await safeLoad('/lnk-price-fix.js?v=1');
     await safeLoad('/lnk-form-final.js?v=1');
     await safeLoad('/lnk-navigation-v2.js?v=3');
-    await safeLoad('/lnk-web-showcase.js?v=4');
+    await safeLoad('/lnk-web-showcase.js?v=5');
     await safeLoad('/lnk-vip-upgrade.js?v=4');
     await safeLoad('/lnk-signature-2026.js?v=2');
-    await safeLoad('/lnk-shop.js?v=1');
+    await safeLoad('/lnk-shop.js?v=2');
     await safeLoad('/lnk-mobile-nav-fix.js?v=1');
 
     clearTimeout(bootFallback);
