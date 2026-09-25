@@ -32,8 +32,23 @@
   function t(){return copy[lang()] || copy.sr}
   function dtext(d){const l=lang();return d.desc[l] || d.desc.sr || d.desc.en}
 
+  const SHOWCASE_IMAGES={
+    clean:'/assets/previews/business.png?v=2',
+    barber:'/assets/previews/barbershop.png?v=2',
+    beauty:'/assets/previews/beauty.png?v=2',
+    modern:'/assets/previews/business.png?v=2',
+    auto:'/assets/previews/auto.png?v=2',
+    truck:'/assets/previews/truck.png?v=2',
+    restaurant:'/assets/previews/restaurant.png?v=2',
+    realestate:'/assets/previews/realestate.png?v=2',
+    dental:'/assets/previews/dental.png?v=2',
+    gym:'/assets/previews/fitness.png?v=2',
+    luxury:'/assets/previews/realestate.png?v=2',
+    noir:'/assets/previews/auto.png?v=2'
+  };
+
   function preview(d,large=false){
-    const img=window.LNKVisuals?.dataUri(d.name+' • '+d.theme,'template','✦') || '';
+    const img=SHOWCASE_IMAGES[d.theme]||SHOWCASE_IMAGES.modern;
     return '<button type="button" class="wds-image-preview '+(large?'large':'')+'" data-lnk-preview-src="'+img+'" data-lnk-preview-title="'+d.name.replace(/\"/g,'&quot;')+'"><img src="'+img+'" alt="'+d.name.replace(/\"/g,'&quot;')+' — LNK DIGITAL design preview" loading="lazy"></button>';
   }
 
