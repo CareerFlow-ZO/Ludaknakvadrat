@@ -116,7 +116,7 @@
     await safeLoad('/lnk-extra-languages.js?v=2');
 
     await safeLoad('/lnk-ux-fix.js?v=2');
-    await safeLoad('/lnk-click-fix.js?v=3');
+    await safeLoad('/lnk-click-fix.js?v=4');
     await safeLoad('/lnk-logo-final.js?v=1');
     await safeLoad('/lnk-price-fix.js?v=1');
     await safeLoad('/lnk-form-final.js?v=1');
