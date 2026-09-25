@@ -96,10 +96,36 @@
   function lang(){return document.getElementById('language')?.value || localStorage.getItem('lnkDisplayLang') || localStorage.getItem('ludakLang') || 'sr'}
   function t(){return COPY[lang()]||COPY.sr}
   function wa(product,price){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t().orderText+product+' — '+price)}
+  const PREVIEW_ASSETS={
+    barber:'/assets/previews/barbershop.png?v=2',
+    beauty:'/assets/previews/beauty.png?v=2',
+    auto:'/assets/previews/auto.png?v=2',
+    truck:'/assets/previews/truck.png?v=2',
+    restaurant:'/assets/previews/restaurant.png?v=2',
+    realestate:'/assets/previews/realestate.png?v=2',
+    dental:'/assets/previews/dental.png?v=2',
+    gym:'/assets/previews/fitness.png?v=2',
+    ecommerce:'/assets/previews/ecommerce.png?v=2',
+    business:'/assets/previews/business.png?v=2'
+  };
+
   function productPreview(p,kind){
-    const category=kind==='web'?'template':(p.cat||kind);
-    const title=(p.preset? p.name+' • '+p.preset.toUpperCase() : p.name);
-    return window.LNKVisuals?.dataUri(title,category,p.icon) || '';
+    if(p.preset && PREVIEW_ASSETS[p.preset]) return PREVIEW_ASSETS[p.preset];
+    const cat=p.cat||kind;
+    const map={
+      content:PREVIEW_ASSETS.business,
+      video:PREVIEW_ASSETS.ecommerce,
+      music:PREVIEW_ASSETS.beauty,
+      social:PREVIEW_ASSETS.ecommerce,
+      brand:PREVIEW_ASSETS.business,
+      tech:PREVIEW_ASSETS.business,
+      marketing:PREVIEW_ASSETS.business,
+      seo:PREVIEW_ASSETS.realestate,
+      ai:PREVIEW_ASSETS.business,
+      shop:PREVIEW_ASSETS.ecommerce,
+      career:PREVIEW_ASSETS.business
+    };
+    return map[cat]||PREVIEW_ASSETS.business;
   }
 
   function card(p,kind){
