@@ -442,3 +442,56 @@ body:before{
   #lnk-usluge .lnk-card{min-height:290px!important}
   .sig-service-visual{height:138px}
 }
+
+
+/* ===== MOBILE POLISH + CLEAN SERVICE CROPS V4 ===== */
+.sig-service-visual{
+  background-size:100% 400%!important;
+  background-position:center calc(var(--sig-service-y) * 33.333333%)!important;
+  background-color:#07111a!important;
+}
+@media(max-width:760px){
+  body{padding-bottom:92px!important}
+  #lnk-usluge{padding-left:12px!important;padding-right:12px!important}
+  #lnk-usluge .lnk-quick-grid{grid-template-columns:1fr!important;gap:14px!important}
+  #lnk-usluge .lnk-card{
+    min-height:0!important;
+    padding:0 18px 18px!important;
+    border-radius:20px!important;
+    overflow:hidden!important;
+  }
+  .sig-service-visual{
+    height:178px!important;
+    margin:0 -18px 16px!important;
+    width:calc(100% + 36px)!important;
+    border-radius:20px 20px 0 0!important;
+  }
+  #lnk-usluge .lnk-card .sig-service-icon{
+    width:48px!important;height:48px!important;margin:0 0 14px!important;
+  }
+  #lnk-usluge .lnk-card h3{
+    font-size:22px!important;line-height:1.15!important;margin:0 0 8px!important;padding-right:42px!important;
+  }
+  #lnk-usluge .lnk-card p{
+    font-size:14px!important;line-height:1.55!important;margin:0!important;color:#9cb0c0!important;
+  }
+  #lnk-usluge .lnk-card .lnk-order-btn{
+    right:14px!important;top:194px!important;width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;
+  }
+  .sig-package-grid{grid-template-columns:1fr!important;gap:14px!important}
+  .sig-package-card{padding:0 18px 18px!important}
+  .sig-package-visual{
+    height:200px!important;
+    width:calc(100% + 36px)!important;
+    margin:0 -18px 18px!important;
+  }
+  .sig-project-grid{grid-template-columns:1fr!important;gap:14px!important}
+  .sig-project-card{padding:10px!important;border-radius:20px!important}
+  .sig-project-screen{height:220px!important}
+  .sig-project-copy{gap:10px!important}
+}
+@media(max-width:430px){
+  .sig-service-visual{height:160px!important}
+  #lnk-usluge .lnk-card .lnk-order-btn{top:176px!important}
+  .sig-package-visual{height:185px!important}
+}
