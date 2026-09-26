@@ -5,12 +5,20 @@
 
   const WA='38631244612';
   const PORTFOLIO=[
-    ['LNK BARBER','Barber / premium booking','https://lnk-barber-demo.vercel.app','cyan'],
-    ['UNSEEN BARBERSHOP','Dark luxury barber concept','https://unseen-barbershop-preview.vercel.app','violet'],
-    ["BARBER'S PLACE",'Modern local business','https://barbers-place-preview.vercel.app','blue'],
-    ['AS BARBERSHOP','Clean premium service site','https://as-barbershop-preview.vercel.app','purple'],
-    ['AVTOLUX','Automotive premium concept','https://avtolux-preview.vercel.app','cyan'],
-    ['ROČNA STIL','Service / local brand concept','https://rocna-stil-preview.vercel.app','violet']
+    ['BARBER PRO','Premium booking / local business','/assets/previews/barbershop.png?v=2','cyan'],
+    ['BEAUTY LUXE','Elegant salon / booking concept','/assets/previews/beauty.png?v=2','violet'],
+    ['AUTO PERFORMANCE','Automotive service / lead concept','/assets/previews/auto.png?v=2','blue'],
+    ['TRUCK INDUSTRIAL','Fleet / VIN / service concept','/assets/previews/truck.png?v=2','purple'],
+    ['RESTAURANT EMBER','Menu / reservation concept','/assets/previews/restaurant.png?v=2','cyan'],
+    ['REAL ESTATE PRIME','Property / lead generation concept','/assets/previews/realestate.png?v=2','violet']
+  ];
+
+  const SERVICE_VISUAL='/assets/previews/services-signature-v1.png?v=1';
+  const PACKAGE_VISUALS=[
+    '/assets/previews/business.png?v=2',
+    '/assets/previews/auto.png?v=2',
+    '/assets/previews/realestate.png?v=2',
+    '/assets/previews/ecommerce.png?v=2'
   ];
 
   const COPY={
@@ -155,8 +163,9 @@
       '<span class="eyebrow">'+c.servicesEy+'</span>'+
       '<h2>'+c.servicesTitle+'</h2>'+
       '<p class="lnk-services-lead">'+c.servicesLead+'</p>'+
-      '<div class="lnk-quick-grid">'+c.serviceCards.map(x=>
+      '<div class="lnk-quick-grid">'+c.serviceCards.map((x,i)=>
         '<article class="lnk-card">'+
+          '<a class="sig-service-visual sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'" style="--sig-service-y:'+i+';background-image:url('+SERVICE_VISUAL+')"><span>Pogledaj primjer ↗</span></a>'+
           '<div class="sig-service-icon">'+x[0]+'</div>'+
           '<h3>'+x[1]+'</h3><p>'+x[2]+'</p>'+
           '<a class="lnk-order-btn sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'">Open</a>'+
@@ -175,12 +184,10 @@
     sec.innerHTML='<div class="sig-portfolio-wrap">'+
       '<div class="sig-portfolio-head"><div><span>'+c.portfolioEy+'</span><h2>'+c.portfolioTitle+'</h2><p>'+c.portfolioText+'</p></div></div>'+
       '<div class="sig-project-grid">'+PORTFOLIO.map((p,i)=>
-        '<a class="sig-project-card sig-'+p[3]+'" href="'+p[2]+'" target="_blank" rel="noopener">'+
-          '<div class="sig-project-browser"><div class="sig-browser-bar"><i></i><i></i><i></i></div><div class="sig-project-screen">'+
-            '<div class="sig-mini-logo">LNK</div><div class="sig-mini-lines"><b></b><b></b><b></b></div><div class="sig-mini-button"></div><div class="sig-mini-panels"><i></i><i></i><i></i></div>'+
-          '</div></div>'+
+        '<button type="button" class="sig-project-card sig-'+p[3]+'" data-lnk-preview-src="'+p[2]+'" data-lnk-preview-title="'+p[0]+'">'+
+          '<div class="sig-project-browser"><div class="sig-browser-bar"><i></i><i></i><i></i></div><div class="sig-project-screen sig-project-image"><img src="'+p[2]+'" alt="'+p[0]+' — LNK DIGITAL preview" loading="lazy"></div></div>'+
           '<div class="sig-project-copy"><span>0'+(i+1)+'</span><div><h3>'+p[0]+'</h3><p>'+p[1]+'</p></div><b>'+c.portfolioBtn+' →</b></div>'+
-        '</a>').join('')+
+        '</button>').join('')+
       '</div></div>';
   }
 
@@ -195,6 +202,7 @@
     grid.innerHTML=c.packages.map((p,i)=>
       '<article class="lnk-card sig-package-card '+(i===1?'lnk-featured':'')+'">'+
         (i===1?'<div class="lnk-best">'+c.popular+'</div>':'')+
+        '<button type="button" class="sig-package-visual" data-lnk-preview-src="'+PACKAGE_VISUALS[i]+'" data-lnk-preview-title="'+p[0]+' — LNK DIGITAL"><img src="'+PACKAGE_VISUALS[i]+'" alt="'+p[0]+' — LNK DIGITAL website preview" loading="lazy"><span>Pogledaj primjer ↗</span></button>'+
         '<div class="sig-package-top"><span class="sig-package-name">'+p[0]+'</span><div class="lnk-price">'+p[1]+'</div></div>'+
         '<ul class="sig-package-list">'+p[2].map(x=>'<li>'+x+'</li>').join('')+'</ul>'+
         '<a class="lnk-order-btn web-pick sig-package-btn" href="#web-naruci" data-package="'+p[0]+' — '+p[1]+'">'+c.choose+' →</a>'+
