@@ -71,3 +71,27 @@ linear-gradient(180deg,#04070b 0%,#060a11 46%,#05070a 100%);border-top:1px solid
   .ls-product-visual{height:190px}
   .ls-card{min-height:390px!important}
 }
+
+
+/* ===== IMAGE-BACKED SHOP CATEGORIES V3 ===== */
+.ls-category{min-height:150px;padding:0!important;display:grid!important;grid-template-columns:118px 54px 1fr 42px;gap:14px;align-items:center}
+.ls-cat-media{align-self:stretch;overflow:hidden;position:relative;border-right:1px solid rgba(112,150,255,.16)}
+.ls-cat-media:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(6,11,18,.78))}
+.ls-cat-media img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(1.03) contrast(1.04);transition:transform .25s ease}
+.ls-category:hover .ls-cat-media img{transform:scale(1.04)}
+.ls-cat-copy{min-width:0}
+.ls-category .ls-arrow{margin-left:0;margin-right:14px}
+@media(max-width:760px){
+  .ls-categories{grid-template-columns:1fr!important;gap:12px!important}
+  .ls-category{grid-template-columns:128px 46px 1fr 38px!important;min-height:142px!important;border-radius:20px!important}
+  .ls-cat-icon{width:46px!important;height:46px!important;flex-basis:46px!important;font-size:21px!important}
+  .ls-category strong{font-size:18px!important}
+  .ls-category small{font-size:12px!important}
+  .ls-category .ls-arrow{width:36px!important;height:36px!important;margin-right:12px!important}
+}
+@media(max-width:430px){
+  .ls-category{grid-template-columns:105px 42px 1fr 34px!important;min-height:126px!important;gap:10px!important}
+  .ls-cat-icon{width:42px!important;height:42px!important;flex-basis:42px!important;font-size:19px!important}
+  .ls-category strong{font-size:16px!important}
+  .ls-category small{font-size:11px!important;line-height:1.35!important}
+}
