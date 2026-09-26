@@ -69,7 +69,7 @@
   addStyle('/lnk-navigation-v2.css?v=3', 'navigation-v2');
   addStyle('/lnk-web-showcase.css?v=5', 'web-showcase');
   addStyle('/lnk-vip-upgrade.css?v=4', 'vip-upgrade');
-  addStyle('/lnk-signature-2026.css?v=2', 'signature-2026');
+  addStyle('/lnk-signature-2026.css?v=3', 'signature-2026');
   addStyle('/lnk-shop.css?v=2', 'shop');
   addStyle('/lnk-mobile-nav-fix.css?v=1', 'mobile-nav-fix');
 
@@ -124,7 +124,7 @@
     await safeLoad('/lnk-navigation-v2.js?v=3');
     await safeLoad('/lnk-web-showcase.js?v=7');
     await safeLoad('/lnk-vip-upgrade.js?v=4');
-    await safeLoad('/lnk-signature-2026.js?v=2');
+    await safeLoad('/lnk-signature-2026.js?v=3');
     await safeLoad('/lnk-shop.js?v=4');
     await safeLoad('/lnk-mobile-nav-fix.js?v=1');
 
