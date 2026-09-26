@@ -67,7 +67,13 @@
     '</div></div>';
   }
   function card(icon,label,sub,href,cat){
-    return '<a class="lnk-qh-card" href="'+href+'"'+(cat?' data-cat="'+cat+'"':'')+'><span class="lnk-qh-icon">'+icon+'</span><span><strong>'+label+'</strong><small>'+sub+'</small></span></a>';
+    const image = cat==='brand' ? '/assets/previews/beauty.png?v=2' :
+      cat==='marketing' ? '/assets/previews/ecommerce.png?v=2' :
+      cat==='ai' ? '/assets/previews/truck.png?v=2' :
+      href==='#web-stranice' ? '/assets/previews/business.png?v=2' :
+      href==='#cenovnik' ? '/assets/music/vip.png?v=1' :
+      '/assets/previews/realestate.png?v=2';
+    return '<a class="lnk-qh-card" href="'+href+'"'+(cat?' data-cat="'+cat+'"':'')+'><span class="lnk-qh-media"><img src="'+image+'" alt="" loading="lazy"></span><span class="lnk-qh-icon">'+icon+'</span><span class="lnk-qh-copy"><strong>'+label+'</strong><small>'+sub+'</small></span></a>';
   }
 
   function ensureHub(){
