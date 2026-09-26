@@ -41,7 +41,19 @@
   function serviceSvg(name,cat='template',icon='✦'){
     const [a,b,bg,bg2]=palette(cat,name);
     const h=hash(name);
-    const v=h%6;
+    const low=String(name).toLowerCase();
+    let v=h%6;
+    if(low.includes('luxury')) v=4;
+    else if(low.includes('noir')) v=5;
+    else if(low.includes('barber')) v=0;
+    else if(low.includes('beauty')) v=2;
+    else if(low.includes('auto')) v=3;
+    else if(low.includes('truck')) v=1;
+    else if(low.includes('restaurant')) v=5;
+    else if(low.includes('real estate')) v=4;
+    else if(low.includes('dental')) v=2;
+    else if(low.includes('fitness')||low.includes('gym')) v=3;
+    else if(low.includes('e-commerce')||low.includes('shop')) v=1;
     const short=esc(name.length>38?name.slice(0,36)+'…':name);
     const label=esc(categoryName[cat]||'LNK DIGITAL');
     const glow='<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="'+a+'"/><stop offset="1" stop-color="'+b+'"/></linearGradient><radialGradient id="r"><stop stop-color="'+a+'" stop-opacity=".34"/><stop offset="1" stop-color="'+a+'" stop-opacity="0"/></radialGradient><filter id="blur"><feGaussianBlur stdDeviation="30"/></filter></defs>';
