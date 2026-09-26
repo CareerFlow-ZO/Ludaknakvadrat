@@ -108,6 +108,12 @@
     ecommerce:'/assets/previews/ecommerce.png?v=2',
     business:'/assets/previews/business.png?v=2'
   };
+  const CATEGORY_IMAGES=[
+    '/assets/music/vip.png?v=1',
+    '/assets/previews/ecommerce.png?v=2',
+    '/assets/previews/business.png?v=2'
+  ];
+
 
   function productPreview(p,kind){
     if(p.preset && PREVIEW_ASSETS[p.preset]) return PREVIEW_ASSETS[p.preset];
@@ -129,7 +135,7 @@
     const c=t();
     return '<div class="ls-wrap">'+
       '<div class="ls-head"><div><span class="ls-kicker">'+c.kicker+'</span><h2>'+c.title+'</h2><p>'+c.lead+'</p></div><div class="ls-head-side"><strong>'+c.sideTitle+'</strong><span>'+c.sideText+'</span></div></div>'+
-      '<div class="ls-categories">'+c.cats.map((x,i)=>'<a class="ls-category" style="--ls-glow:'+(i===0?'rgba(218,65,255,.32)':i===1?'rgba(43,148,255,.34)':'rgba(93,79,255,.32)')+'" href="#lnk-shop-'+x[3]+'"><span class="ls-cat-icon">'+x[0]+'</span><span><strong>'+x[1]+'</strong><small>'+x[2]+'</small></span><span class="ls-arrow">→</span></a>').join('')+'</div>'+
+      '<div class="ls-categories">'+c.cats.map((x,i)=>'<a class="ls-category" style="--ls-glow:'+(i===0?'rgba(218,65,255,.32)':i===1?'rgba(43,148,255,.34)':'rgba(93,79,255,.32)')+'" href="#lnk-shop-'+x[3]+'"><span class="ls-cat-media"><img src="'+CATEGORY_IMAGES[i]+'" alt="'+x[1]+' — LNK DIGITAL" loading="lazy"></span><span class="ls-cat-icon">'+x[0]+'</span><span class="ls-cat-copy"><strong>'+x[1]+'</strong><small>'+x[2]+'</small></span><span class="ls-arrow">→</span></a>').join('')+'</div>'+
       group('web',c.webK,c.webT,c.webP,webProducts)+
       group('music',c.musicK,c.musicT,c.musicP,musicProducts)+
       group('social',c.socialK,c.socialT,c.socialP,socialProducts)+
@@ -177,6 +183,6 @@
     if(nav) new MutationObserver(()=>ensureNav()).observe(nav,{childList:true});
   }
 
-  function boot(){ensure();bind();setTimeout(ensure,500)}
+  function boot(){ensure();bind();}
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
 })();
