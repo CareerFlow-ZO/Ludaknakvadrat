@@ -276,9 +276,17 @@
 
   function boot(){
     apply(); bind();
-    [250,700,1400,2600].forEach(ms=>setTimeout(apply,ms));
-    const obs=new MutationObserver(repair);
+    // One light repair after the remaining modules finish loading.
+    setTimeout(repair,420);
+    const obs=new MutationObserver(()=>{
+      if(
+        !document.getElementById('portfolio') ||
+        !document.querySelector('#lnk-usluge .sig-service-visual') ||
+        !document.querySelector('#web-stranice .sig-package-grid')
+      ) repair();
+    });
     obs.observe(document.body,{childList:true,subtree:true});
+    setTimeout(()=>obs.disconnect(),5000);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
