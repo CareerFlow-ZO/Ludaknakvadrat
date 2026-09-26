@@ -13,7 +13,14 @@
     ['REAL ESTATE PRIME','Property / lead generation concept','/assets/previews/realestate.png?v=2','violet']
   ];
 
-  const SERVICE_VISUAL='/assets/previews/services-signature-v1.png?v=1';
+  const SERVICE_VISUAL_FALLBACK='/assets/previews/all-services-v1.png?v=1';
+  function serviceVisual(name,cat,icon){
+    try{
+      return window.LNKVisuals?.dataUri(name,cat||'web',icon)||SERVICE_VISUAL_FALLBACK;
+    }catch(_){
+      return SERVICE_VISUAL_FALLBACK;
+    }
+  }
   const PACKAGE_VISUALS=[
     '/assets/previews/business.png?v=2',
     '/assets/previews/auto.png?v=2',
@@ -163,13 +170,15 @@
       '<span class="eyebrow">'+c.servicesEy+'</span>'+
       '<h2>'+c.servicesTitle+'</h2>'+
       '<p class="lnk-services-lead">'+c.servicesLead+'</p>'+
-      '<div class="lnk-quick-grid">'+c.serviceCards.map((x,i)=>
-        '<article class="lnk-card">'+
-          '<a class="sig-service-visual sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'" style="--sig-service-y:'+i+';background-image:url('+SERVICE_VISUAL+')"><span>Pogledaj primjer ↗</span></a>'+
+      '<div class="lnk-quick-grid">'+c.serviceCards.map((x,i)=>{
+        const visual=serviceVisual(x[1],x[4]||'web',x[0]);
+        return '<article class="lnk-card">'+
+          '<a class="sig-service-visual sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'"><img class="sig-service-img" src="'+visual+'" alt="'+x[1]+' — LNK DIGITAL" loading="lazy"><span>Pogledaj primjer ↗</span></a>'+
           '<div class="sig-service-icon">'+x[0]+'</div>'+
           '<h3>'+x[1]+'</h3><p>'+x[2]+'</p>'+
           '<a class="lnk-order-btn sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'">Open</a>'+
-        '</article>').join('')+
+        '</article>';
+      }).join('')+
       '</div></div>';
   }
 
@@ -239,6 +248,26 @@
       '<a href="https://wa.me/'+WA+'" target="_blank" rel="noopener" data-key="order"><span class="dock-icon">✆</span><span>'+c.nav[4]+'</span></a>';
   }
 
+  function dockBehavior(){
+    if(window.__LNK_DOCK_BEHAVIOR_V2)return;
+    window.__LNK_DOCK_BEHAVIOR_V2=true;
+    let lastY=window.scrollY||0;
+    const update=()=>{
+      const y=window.scrollY||0;
+      if(innerWidth>760){
+        document.body.classList.remove('lnk-dock-hidden');
+        lastY=y;
+        return;
+      }
+      const delta=y-lastY;
+      if(y<90 || delta<-7) document.body.classList.remove('lnk-dock-hidden');
+      else if(y>150 && delta>7) document.body.classList.add('lnk-dock-hidden');
+      lastY=y;
+    };
+    addEventListener('scroll',update,{passive:true});
+    addEventListener('resize',update,{passive:true});
+  }
+
   function bind(){
     if(document.body.dataset.sigV2Bound)return; document.body.dataset.sigV2Bound='1';
     document.addEventListener('click',e=>{
@@ -275,7 +304,7 @@
   }
 
   function boot(){
-    apply(); bind();
+    apply(); bind(); dockBehavior();
     // One light repair after the remaining modules finish loading.
     setTimeout(repair,420);
     const obs=new MutationObserver(()=>{
