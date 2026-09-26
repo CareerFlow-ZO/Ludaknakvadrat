@@ -355,3 +355,90 @@ body:before{
   .sig-package-list li{font-size:11.5px}
   #web-stranice .web-order-form{padding:19px!important;border-radius:18px!important}
 }
+
+
+/* ===== SERVICE IMAGE UPGRADE V3 ===== */
+#lnk-usluge .lnk-card{padding-top:0!important}
+.sig-service-visual{
+  display:block;
+  height:122px;
+  margin:0 -22px 18px;
+  width:calc(100% + 44px);
+  border-radius:20px 20px 0 0;
+  background-repeat:no-repeat;
+  background-size:auto 400%;
+  background-position:center calc(var(--sig-service-y) * 33.333333%);
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid rgba(78,203,255,.15);
+  text-decoration:none;
+}
+.sig-service-visual:after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(3,8,14,.02) 40%,rgba(3,8,14,.5) 100%);
+  pointer-events:none;
+}
+.sig-service-visual span{
+  position:absolute;z-index:2;right:10px;bottom:9px;
+  padding:6px 9px;border-radius:999px;
+  background:rgba(3,9,15,.82);
+  border:1px solid rgba(105,208,255,.24);
+  color:#ecfaff;
+  font:900 8px/1 Inter,system-ui,sans-serif;
+  letter-spacing:.07em;text-transform:uppercase;
+}
+#lnk-usluge .lnk-card:hover .sig-service-visual{filter:brightness(1.05)}
+#lnk-usluge .lnk-card .sig-service-icon{margin-top:0!important;margin-bottom:18px!important}
+
+.sig-project-card{
+  appearance:none;
+  width:100%;
+  text-align:left;
+  font:inherit;
+  cursor:pointer;
+}
+.sig-project-image{padding:0!important}
+.sig-project-image img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  transition:transform .28s ease,filter .28s ease;
+}
+.sig-project-card:hover .sig-project-image img{transform:scale(1.025);filter:brightness(1.06)}
+
+.sig-package-card{padding-top:0!important;overflow:hidden!important}
+.sig-package-visual{
+  display:block;width:calc(100% + 48px);height:145px;margin:0 -24px 18px;
+  padding:0;border:0;border-bottom:1px solid rgba(79,204,255,.14);
+  background:#070d14;position:relative;overflow:hidden;cursor:pointer;
+}
+.sig-package-visual img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .28s ease,filter .28s ease}
+.sig-package-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(3,8,14,.62));pointer-events:none}
+.sig-package-visual span{
+  position:absolute;z-index:2;right:10px;bottom:9px;padding:6px 9px;border-radius:999px;
+  background:rgba(3,9,15,.84);border:1px solid rgba(102,205,255,.25);color:#eaf9ff;
+  font:900 8px/1 Inter,system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase
+}
+.sig-package-card:hover .sig-package-visual img{transform:scale(1.025);filter:brightness(1.06)}
+.sig-package-card.lnk-featured .sig-package-visual{margin-top:0!important}
+
+@media(max-width:760px){
+  #lnk-usluge .lnk-card{padding-top:0!important}
+  .sig-service-visual{
+    height:118px;
+    margin:0 -18px 15px;
+    width:calc(100% + 36px);
+    border-radius:17px 17px 0 0;
+  }
+  #lnk-usluge .lnk-card{min-height:272px!important}
+  #lnk-usluge .lnk-card .sig-service-icon{width:42px;height:42px;margin-bottom:14px!important}
+  #lnk-usluge .lnk-card h3{font-size:17px!important;padding-right:36px}
+  #lnk-usluge .lnk-card p{font-size:12px!important;line-height:1.5!important}
+  .sig-package-visual{
+    height:185px;
+    width:calc(100% + 48px);
+  }
+}
+@media(max-width:410px){
+  #lnk-usluge .lnk-card{min-height:290px!important}
+  .sig-service-visual{height:138px}
+}
