@@ -77,7 +77,7 @@
   addStyle('/lnk-web-showcase.css?v=5', 'web-showcase');
   addStyle('/lnk-vip-upgrade.css?v=4', 'vip-upgrade');
   addStyle('/lnk-signature-2026.css?v=4', 'signature-2026');
-  addStyle('/lnk-shop.css?v=3', 'shop');
+  addStyle('/lnk-shop.css?v=4', 'shop');
   addStyle('/lnk-mobile-nav-fix.css?v=1', 'mobile-nav-fix');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
@@ -110,7 +110,7 @@
 
     await safeLoad('/script-core.js?v=2');
     await safeLoad('/web-services.js?v=5');
-    await safeLoad('/lnk-visuals.js?v=1');
+    await safeLoad('/lnk-visuals.js?v=2');
     await safeLoad('/digital-catalog.js?v=8');
 
     for (const src of [
@@ -132,7 +132,7 @@
     await safeLoad('/lnk-web-showcase.js?v=7');
     await safeLoad('/lnk-vip-upgrade.js?v=4');
     await safeLoad('/lnk-signature-2026.js?v=4');
-    await safeLoad('/lnk-shop.js?v=5');
+    await safeLoad('/lnk-shop.js?v=6');
     await safeLoad('/lnk-mobile-nav-fix.js?v=2');
 
     // Prevent flash/layout flicker: reveal only after the dynamically added CSS has settled.
