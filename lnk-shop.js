@@ -135,6 +135,7 @@
     const c=t();
     return '<div class="ls-wrap">'+
       '<div class="ls-head"><div><span class="ls-kicker">'+c.kicker+'</span><h2>'+c.title+'</h2><p>'+c.lead+'</p></div><div class="ls-head-side"><strong>'+c.sideTitle+'</strong><span>'+c.sideText+'</span></div></div>'+
+      '<button type="button" class="ls-master-preview" data-lnk-preview-src="/assets/previews/all-services-v1.png?v=1" data-lnk-preview-title="LNK DIGITAL — sve usluge"><img src="/assets/previews/all-services-v1.png?v=1" alt="LNK DIGITAL — pregled svih usluga" loading="lazy"><span>Pogledaj kompletan vizuelni pregled ↗</span></button>'+
       '<div class="ls-categories">'+c.cats.map((x,i)=>'<a class="ls-category" style="--ls-glow:'+(i===0?'rgba(218,65,255,.32)':i===1?'rgba(43,148,255,.34)':'rgba(93,79,255,.32)')+'" href="#lnk-shop-'+x[3]+'"><span class="ls-cat-media"><img src="'+CATEGORY_IMAGES[i]+'" alt="'+x[1]+' — LNK DIGITAL" loading="lazy"></span><span class="ls-cat-icon">'+x[0]+'</span><span class="ls-cat-copy"><strong>'+x[1]+'</strong><small>'+x[2]+'</small></span><span class="ls-arrow">→</span></a>').join('')+'</div>'+
       group('web',c.webK,c.webT,c.webP,webProducts)+
       group('music',c.musicK,c.musicT,c.musicP,musicProducts)+
