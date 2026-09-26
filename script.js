@@ -53,10 +53,17 @@
 
   installBootScreen();
   const bootFallback = setTimeout(finishBoot, 4200);
+  const styleLoads = [];
 
   function addStyle(href, key) {
     if (document.querySelector(`link[data-lnk-${key}]`)) return;
     const l = document.createElement('link');
+    const done = new Promise(resolve => {
+      l.addEventListener('load', resolve, { once:true });
+      l.addEventListener('error', resolve, { once:true });
+      setTimeout(resolve, 1800);
+    });
+    styleLoads.push(done);
     l.rel = 'stylesheet';
     l.href = href;
     l.dataset[`lnk${key.replace(/-([a-z])/g,(_,c)=>c.toUpperCase())}`] = '1';
@@ -66,11 +73,11 @@
   addStyle('/lnk-blue-theme.css?v=5', 'blue');
   addStyle('/lnk-final-polish.css?v=7', 'final-polish');
   addStyle('/lnk-compact-fix.css?v=2', 'compact-fix');
-  addStyle('/lnk-navigation-v2.css?v=3', 'navigation-v2');
+  addStyle('/lnk-navigation-v2.css?v=4', 'navigation-v2');
   addStyle('/lnk-web-showcase.css?v=5', 'web-showcase');
   addStyle('/lnk-vip-upgrade.css?v=4', 'vip-upgrade');
-  addStyle('/lnk-signature-2026.css?v=3', 'signature-2026');
-  addStyle('/lnk-shop.css?v=2', 'shop');
+  addStyle('/lnk-signature-2026.css?v=4', 'signature-2026');
+  addStyle('/lnk-shop.css?v=3', 'shop');
   addStyle('/lnk-mobile-nav-fix.css?v=1', 'mobile-nav-fix');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
@@ -121,13 +128,15 @@
     await safeLoad('/lnk-logo-final.js?v=1');
     await safeLoad('/lnk-price-fix.js?v=1');
     await safeLoad('/lnk-form-final.js?v=1');
-    await safeLoad('/lnk-navigation-v2.js?v=3');
+    await safeLoad('/lnk-navigation-v2.js?v=4');
     await safeLoad('/lnk-web-showcase.js?v=7');
     await safeLoad('/lnk-vip-upgrade.js?v=4');
-    await safeLoad('/lnk-signature-2026.js?v=3');
-    await safeLoad('/lnk-shop.js?v=4');
-    await safeLoad('/lnk-mobile-nav-fix.js?v=1');
+    await safeLoad('/lnk-signature-2026.js?v=4');
+    await safeLoad('/lnk-shop.js?v=5');
+    await safeLoad('/lnk-mobile-nav-fix.js?v=2');
 
+    // Prevent flash/layout flicker: reveal only after the dynamically added CSS has settled.
+    await Promise.allSettled(styleLoads);
     clearTimeout(bootFallback);
     finishBoot();
   };
