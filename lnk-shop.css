@@ -95,3 +95,23 @@ linear-gradient(180deg,#04070b 0%,#060a11 46%,#05070a 100%);border-top:1px solid
   .ls-category strong{font-size:16px!important}
   .ls-category small{font-size:11px!important;line-height:1.35!important}
 }
+
+
+/* ===== MASTER SHOP VISUAL V4 ===== */
+.ls-master-preview{
+  display:block;width:100%;aspect-ratio:16/8.2;margin:28px 0 20px;padding:0;
+  border:1px solid rgba(88,189,255,.20);border-radius:24px;background:#060d16;
+  overflow:hidden;position:relative;cursor:pointer;box-shadow:0 26px 80px rgba(0,0,0,.30)
+}
+.ls-master-preview img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s ease,filter .3s ease}
+.ls-master-preview:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,rgba(3,8,14,.56));pointer-events:none}
+.ls-master-preview span{
+  position:absolute;z-index:2;right:16px;bottom:15px;padding:9px 13px;border-radius:999px;
+  background:rgba(3,9,15,.86);border:1px solid rgba(104,205,255,.30);color:#f0fbff;
+  font:900 10px/1 Inter,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase
+}
+.ls-master-preview:hover img{transform:scale(1.018);filter:brightness(1.05)}
+@media(max-width:760px){
+  .ls-master-preview{aspect-ratio:16/10.5;border-radius:20px;margin:20px 0 16px}
+  .ls-master-preview span{right:10px;bottom:10px;font-size:8px;padding:7px 9px}
+}
