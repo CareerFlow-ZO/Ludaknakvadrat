@@ -118,9 +118,12 @@
   }
   function boot(){
     ensurePanel();patchHero();bind();repair();
-    [250,700,1500,2800].forEach(ms=>setTimeout(repair,ms));
-    const obs=new MutationObserver(()=>{clearTimeout(window.__lnkNavRepair);window.__lnkNavRepair=setTimeout(repair,60)});
+    setTimeout(repair,500);
+    const obs=new MutationObserver(()=>{
+      if(!document.getElementById('lnk-mobile-menu-panel')) ensurePanel();
+    });
     obs.observe(document.body,{childList:true,subtree:true});
+    setTimeout(()=>obs.disconnect(),5000);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
