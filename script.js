@@ -110,7 +110,7 @@
 
     await safeLoad('/script-core.js?v=2');
     await safeLoad('/web-services.js?v=5');
-    await safeLoad('/lnk-visuals.js?v=2');
+    await safeLoad('/lnk-visuals.js?v=3');
     await safeLoad('/digital-catalog.js?v=11');
 
     for (const src of [
