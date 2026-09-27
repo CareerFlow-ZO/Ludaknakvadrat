@@ -204,27 +204,14 @@
     return html;
   }
 
-  const STATIC_PREVIEWS={
-    web:'/assets/previews/business.png?v=3',
-    brand:'/assets/previews/beauty.png?v=3',
-    social:'/assets/previews/ecommerce.png?v=3',
-    marketing:'/assets/previews/services-signature-v1.png?v=3',
-    seo:'/assets/previews/realestate.png?v=3',
-    ai:'/assets/previews/services-signature-v1.png?v=3',
-    shop:'/assets/previews/ecommerce.png?v=3',
-    video:'/assets/music/raptrap.png?v=2',
-    content:'/assets/music/personalizovana.png?v=2',
-    career:'/assets/previews/business.png?v=3',
-    tech:'/assets/previews/services-signature-v1.png?v=3'
-  };
-  const MONTHLY_PREVIEWS={
-    'BASIC CARE':'/assets/previews/business.png?v=3',
-    'BUSINESS CARE':'/assets/previews/services-signature-v1.png?v=3',
-    'PREMIUM CARE':'/assets/previews/all-services-v1.png?v=2'
-  };
   function previewSrc(name,cat,icon){
-    if(MONTHLY_PREVIEWS[name]) return MONTHLY_PREVIEWS[name];
-    return STATIC_PREVIEWS[cat] || window.LNKVisuals?.dataUri(name,cat,icon) || STATIC_PREVIEWS.web;
+    // Generate the preview from the exact service/package name so every option
+    // gets its own visual instead of sharing one generic category image.
+    try{
+      const generated=window.LNKVisuals?.dataUri(name,cat||'template',icon||'✦');
+      if(generated) return generated;
+    }catch(_){}
+    return '/assets/previews/business.png?v=4';
   }
 
   function card(s,t){
