@@ -16,7 +16,7 @@
       formText: 'Izaberi uslugu, napiši šta ti treba i pripremićemo upit za slanje e-mailom.',
       name: 'Ime i prezime', email: 'Tvoj e-mail', phone: 'Telefon / WhatsApp', company: 'Naziv firme', details: 'Opiši šta ti treba, rok i sve važne detalje', send: 'Pošalji upit',
       note: 'Prikazane cijene su početne cijene. Konačna cijena zavisi od obima, rokova, broja stranica, sadržaja, integracija i dodatnih zahtjeva.',
-      noResults: 'Nema usluga za ovu pretragu.'
+      noResults: 'Nema usluga za ovu pretragu.', preview:'Pogledaj primjer', optional:'Telefon i firma (opcionalno)', monthlyDescriptions:['Održavanje sajta • manje izmjene • tehnička podrška','Ažuriranja • sigurnost • sadržajne izmjene • podrška','Prioritetna podrška • redovne izmjene • optimizacija • nadzor']
     },
     sl: {
       eyebrow: 'LNK DIGITAL • DIGITALNI KATALOG',
@@ -26,7 +26,7 @@
       monthlyText: 'Za podjetja, ki želijo stalno digitalno podporo na enem mestu.',
       formTitle: 'Naroči digitalno storitev', formText: 'Izberi storitev, opiši svoje potrebe in pripravi povpraševanje za e-pošto.',
       name: 'Ime in priimek', email: 'Tvoj e-mail', phone: 'Telefon / WhatsApp', company: 'Ime podjetja', details: 'Opiši, kaj potrebuješ, rok in pomembne podrobnosti', send: 'Pošlji povpraševanje',
-      note: 'Prikazane cene so začetne. Končna cena je odvisna od obsega, rokov, vsebine, integracij in dodatnih zahtev.', noResults: 'Ni rezultatov.'
+      note: 'Prikazane cene so začetne. Končna cena je odvisna od obsega, rokov, vsebine, integracij in dodatnih zahtev.', noResults: 'Ni rezultatov.', preview:'Poglej primer', optional:'Telefon in podjetje (neobvezno)', monthlyDescriptions:['Vzdrževanje strani • manjše spremembe • tehnična podpora','Posodobitve • varnost • vsebinske spremembe • podpora','Prednostna podpora • redne spremembe • optimizacija • nadzor']
     },
     en: {
       eyebrow: 'LNK DIGITAL • DIGITAL CATALOG', title: 'All digital services in one place.',
@@ -35,7 +35,7 @@
       monthlyText: 'For businesses that want ongoing digital support from one partner.',
       formTitle: 'Order a digital service', formText: 'Choose a service, describe what you need and prepare an email inquiry.',
       name: 'Full name', email: 'Your email', phone: 'Phone / WhatsApp', company: 'Company name', details: 'Describe what you need, deadline and important details', send: 'Send inquiry',
-      note: 'Displayed prices are starting prices. Final pricing depends on scope, deadlines, content, integrations and additional requirements.', noResults: 'No services found.'
+      note: 'Displayed prices are starting prices. Final pricing depends on scope, deadlines, content, integrations and additional requirements.', noResults: 'No services found.', preview:'View example', optional:'Phone and company (optional)', monthlyDescriptions:['Website care • small updates • technical support','Updates • security • content changes • support','Priority support • regular changes • optimization • monitoring']
     },
     de: {
       eyebrow: 'LNK DIGITAL • DIGITALER KATALOG', title: 'Alle digitalen Leistungen an einem Ort.',
@@ -44,7 +44,7 @@
       monthlyText: 'Für Unternehmen, die laufende digitale Unterstützung aus einer Hand möchten.',
       formTitle: 'Digitale Leistung bestellen', formText: 'Leistung auswählen, Bedarf beschreiben und E-Mail-Anfrage vorbereiten.',
       name: 'Vor- und Nachname', email: 'E-Mail', phone: 'Telefon / WhatsApp', company: 'Firmenname', details: 'Bedarf, Frist und wichtige Details beschreiben', send: 'Anfrage senden',
-      note: 'Die angezeigten Preise sind Startpreise. Der Endpreis hängt von Umfang, Frist, Inhalt, Integrationen und Zusatzwünschen ab.', noResults: 'Keine Leistungen gefunden.'
+      note: 'Die angezeigten Preise sind Startpreise. Der Endpreis hängt von Umfang, Frist, Inhalt, Integrationen und Zusatzwünschen ab.', noResults: 'Keine Leistungen gefunden.', preview:'Beispiel ansehen', optional:'Telefon und Firma (optional)', monthlyDescriptions:['Website-Pflege • kleine Änderungen • technischer Support','Updates • Sicherheit • Inhaltsänderungen • Support','Priorisierter Support • regelmäßige Änderungen • Optimierung • Überwachung']
     }
   };
   UI.bs = UI.sr; UI.hr = UI.sr; UI.fr = UI.en; UI.es = UI.en; UI.it = UI.en; UI.sq = UI.en;
@@ -161,10 +161,10 @@
   .dc-wrap{max-width:1220px;margin:auto}.dc-head{max-width:900px}.dc-head h2{font-family:Cinzel,serif;font-size:clamp(34px,5vw,62px);line-height:1.08;margin:14px 0}.dc-head p{color:#918c82;max-width:780px}
   .dc-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:30px 0 18px}.dc-search{flex:1;min-width:230px;background:#0b0a08;border:1px solid #3a2f1d;color:#fff;border-radius:12px;padding:14px 16px;font:inherit}
   .dc-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}.dc-filter{border:1px solid #3a2f1d;background:#0b0a08;color:#b9b2a5;padding:9px 12px;border-radius:999px;cursor:pointer;font-weight:700}.dc-filter.active,.dc-filter:hover{background:#d9aa48;color:#090806;border-color:#e8c46c}
-  .dc-count{color:#d9aa48;font-size:12px;font-weight:800;letter-spacing:.08em}.dc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.dc-card{display:flex;flex-direction:column;min-height:218px;padding:22px;border:1px solid #302617;border-radius:17px;background:linear-gradient(145deg,#0f0e0b,#090907)}.dc-icon{font-size:27px}.dc-visual{position:relative;margin:-22px -22px 14px;height:132px;border:0;border-bottom:1px solid rgba(93,182,255,.14);padding:0;background:#07101a;overflow:hidden;cursor:pointer;display:block}.dc-visual img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .28s ease,filter .28s ease}.dc-visual:after{content:'PREGLED ↗';position:absolute;right:10px;bottom:9px;padding:5px 8px;border-radius:999px;background:rgba(3,8,14,.82);border:1px solid rgba(107,196,255,.24);color:#dff6ff;font-size:8px;font-weight:900;letter-spacing:.08em}.dc-card:hover .dc-visual img{transform:scale(1.025);filter:brightness(1.06)}.dc-card h3{font-size:17px;margin:13px 0 7px;color:#f1eadc;line-height:1.3}.dc-cat{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#817867}.dc-price{font-family:Cinzel,serif;color:#e2b34b;font-weight:800;font-size:21px;margin:10px 0}.dc-card .lnk-order-btn{margin-top:auto;width:100%;box-sizing:border-box}
+  .dc-count{color:#d9aa48;font-size:12px;font-weight:800;letter-spacing:.08em}.dc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.dc-card{display:flex;flex-direction:column;min-height:218px;padding:22px;border:1px solid #302617;border-radius:17px;background:linear-gradient(145deg,#0f0e0b,#090907)}.dc-icon{font-size:27px}.dc-visual{position:relative;margin:-22px -22px 14px;height:132px;border:0;border-bottom:1px solid rgba(93,182,255,.14);padding:0;background:#07101a;overflow:hidden;cursor:pointer;display:block}.dc-visual img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .28s ease,filter .28s ease}.dc-visual:after{content:attr(data-preview-label);position:absolute;right:10px;bottom:9px;padding:5px 8px;border-radius:999px;background:rgba(3,8,14,.82);border:1px solid rgba(107,196,255,.24);color:#dff6ff;font-size:8px;font-weight:900;letter-spacing:.08em}.dc-card:hover .dc-visual img{transform:scale(1.025);filter:brightness(1.06)}.dc-visual:focus-visible,.dc-monthly-visual:focus-visible{outline:2px solid #72d9ff;outline-offset:3px}.dc-card h3{font-size:17px;margin:13px 0 7px;color:#f1eadc;line-height:1.3}.dc-cat{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#817867}.dc-price{font-family:Cinzel,serif;color:#e2b34b;font-weight:800;font-size:21px;margin:10px 0}.dc-card .lnk-order-btn{margin-top:auto;width:100%;box-sizing:border-box}
   .dc-note{margin-top:18px;padding:14px 17px;border:1px solid #302617;border-radius:12px;background:#0b0a08;color:#8f887c;font-size:12px}.dc-empty{padding:30px;text-align:center;color:#8f887c;border:1px dashed #3a2f1d;border-radius:14px;grid-column:1/-1}
   .dc-monthly{margin-top:65px}.dc-monthly h3{font-family:Cinzel,serif;font-size:34px;margin-bottom:8px}.dc-monthly>p{color:#918c82}.dc-monthly-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.dc-monthly-card{padding:26px;border:1px solid #3a2d17;border-radius:18px;background:#0d0c09}.dc-monthly-visual{position:relative;height:145px;margin:-26px -26px 17px;border:0;border-bottom:1px solid rgba(95,185,255,.13);padding:0;background:#07101a;overflow:hidden;display:block;cursor:pointer}.dc-monthly-visual img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}.dc-monthly-card:hover .dc-monthly-visual img{transform:scale(1.025)}.dc-monthly-visual span{position:absolute;z-index:2;right:10px;bottom:9px;padding:6px 9px;border-radius:999px;background:rgba(3,8,14,.84);border:1px solid rgba(91,197,255,.24);color:#dff7ff;font-size:8px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.dc-monthly-card h4{color:#e2b34b;font-size:18px}.dc-monthly-card .dc-price{font-size:26px}.dc-monthly-card p{color:#918c82;min-height:70px}
-  .dc-form{max-width:900px;margin:65px auto 0;padding:30px;border:1px solid #3a2d17;border-radius:22px;background:#0d0c09}.dc-form h3{font-size:30px;margin-bottom:7px}.dc-form>p{color:#918c82}.dc-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}.dc-form input,.dc-form select,.dc-form textarea{width:100%;background:#080806;color:#fff;border:1px solid #3a3020;border-radius:12px;padding:14px;font:inherit;box-sizing:border-box}.dc-form textarea{min-height:135px;resize:vertical}.dc-full{grid-column:1/-1}.dc-status{margin-top:12px;color:#e2b34b}
+  .dc-optional{border:1px solid #3a3020;border-radius:12px;padding:12px 14px;color:#b7c9d8}.dc-optional summary{cursor:pointer}.dc-optional>div{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}@media(max-width:560px){.dc-optional>div{grid-template-columns:1fr}}  .dc-form{max-width:900px;margin:65px auto 0;padding:30px;border:1px solid #3a2d17;border-radius:22px;background:#0d0c09}.dc-form h3{font-size:30px;margin-bottom:7px}.dc-form>p{color:#918c82}.dc-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}.dc-form input,.dc-form select,.dc-form textarea{width:100%;background:#080806;color:#fff;border:1px solid #3a3020;border-radius:12px;padding:14px;font:inherit;box-sizing:border-box}.dc-form textarea{min-height:135px;resize:vertical}.dc-full{grid-column:1/-1}.dc-status{margin-top:12px;color:#e2b34b}
   @media(max-width:1050px){.dc-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:800px){.dc-grid{grid-template-columns:repeat(2,1fr)}.dc-monthly-grid{grid-template-columns:1fr}}
   @media(max-width:560px){#digital-catalog{padding:70px 20px}.dc-grid,.dc-form-grid{grid-template-columns:1fr}.dc-full{grid-column:auto}.dc-tools{align-items:stretch}.dc-search{width:100%}}
   `;
@@ -205,6 +205,16 @@
   }
 
   function previewSrc(name,cat,icon){
+    if(cat==='web'){
+      const webExamples={
+        'Landing page':'/assets/previews/barbershop.png?v=2',
+        'Basic website do 5 stranica':'/assets/previews/business.png?v=2',
+        'Premium website do 10 stranica':'/assets/previews/beauty.png?v=2',
+        'VIP custom website do 15 stranica':'/assets/previews/auto.png?v=2',
+        'Booking / rezervacioni sistem':'/assets/previews/restaurant.png?v=2'
+      };
+      if(webExamples[name]) return webExamples[name];
+    }
     // Generate the preview from the exact service/package name so every option
     // gets its own visual instead of sharing one generic category image.
     try{
@@ -216,8 +226,9 @@
 
   function card(s,t){
     const img=previewSrc(s.name,s.cat,s.icon);
+    const index=services.indexOf(s);
     const safe=s.name.replace(/"/g,'&quot;');
-    return `<article class="dc-card" data-cat="${s.cat}" data-search="${(s.name+' '+catLabel(s.cat)).toLowerCase()}"><button type="button" class="dc-visual" data-lnk-preview-src="${img}" data-lnk-preview-title="${safe}"><img src="${img}" alt="${safe} — LNK DIGITAL preview" loading="eager" decoding="async" onerror="this.onerror=null;this.src='/assets/previews/business.png?v=4'"></button><div class="dc-icon">${s.icon}</div><span class="dc-cat">${catLabel(s.cat)}</span><h3>${s.name}</h3><div class="dc-price">${t.from} ${s.price}</div><a class="lnk-order-btn dc-order" href="#digital-order" data-service="${s.name} — ${s.price}">${t.order}</a></article>`;
+    return `<article class="dc-card" data-service-index="${index}" data-cat="${s.cat}" data-search="${(s.name+' '+catLabel(s.cat)).toLowerCase()}"><button type="button" class="dc-visual" data-preview-label="${t.preview} ↗" aria-label="${t.preview}: ${safe}" data-lnk-preview-src="${img}" data-lnk-preview-title="${safe}"><img src="${img}" alt="${safe} — LNK DIGITAL preview" loading="eager" decoding="async" onerror="this.onerror=null;this.src='/assets/previews/business.png?v=4'"></button><div class="dc-icon">${s.icon}</div><span class="dc-cat">${catLabel(s.cat)}</span><h3>${s.name}</h3><div class="dc-price">${t.from} ${s.price}</div><a class="lnk-order-btn dc-order" href="#digital-order" data-service="${s.name} — ${s.price}">${t.order}</a></article>`;
   }
 
   function renderCards(){
@@ -225,6 +236,9 @@
     const t=txt();
     const filtered=services.filter(s=>(activeCat==='all'||s.cat===activeCat)&&(!query||(s.name+' '+catLabel(s.cat)).toLowerCase().includes(query)));
     grid.innerHTML=filtered.length?filtered.map(s=>card(s,t)).join(''):`<div class="dc-empty">${t.noResults}</div>`;
+    grid.classList.add('lnk-collapsed');
+    const toggle=document.getElementById('lnk-catalog-toggle');
+    if(toggle){toggle.hidden=filtered.length<=6;toggle.textContent='＋ '+(({sl:'Prikaži vse storitve',en:'Show all services',de:'Alle Leistungen anzeigen'})[lang()]||'Prikaži sve usluge');}
     const count=document.querySelector('#digital-catalog .dc-count'); if(count) count.textContent=`${filtered.length} / ${services.length}`;
     document.querySelectorAll('.dc-order').forEach(a=>a.onclick=()=>pick(a.dataset.service));
   }
@@ -241,8 +255,8 @@
       <div class="dc-tools"><input class="dc-search" type="search" placeholder="${t.search}" value="${query.replace(/"/g,'&quot;')}"><span class="dc-count"></span></div>
       <div class="dc-filters"><button class="dc-filter ${activeCat==='all'?'active':''}" data-cat="all">${t.all}</button>${Object.keys(c).map(k=>`<button class="dc-filter ${activeCat===k?'active':''}" data-cat="${k}">${c[k]}</button>`).join('')}</div>
       <div class="dc-grid"></div><div class="dc-note">ℹ️ ${t.note}</div>
-      <div class="dc-monthly"><h3>${t.monthly}</h3><p>${t.monthlyText}</p><div class="dc-monthly-grid">${monthly.map(m=>{const img=previewSrc(m.name,'tech','✦');return `<div class="dc-monthly-card"><button type="button" class="dc-monthly-visual" data-lnk-preview-src="${img}" data-lnk-preview-title="${m.name}"><img src="${img}" alt="${m.name} — LNK DIGITAL preview" loading="eager" decoding="async" onerror="this.onerror=null;this.src='/assets/previews/business.png?v=4'"><span>PREGLED ↗</span></button><h4>${m.name}</h4><div class="dc-price">${t.from} ${m.price}</div><p>${m.text}</p><a class="lnk-order-btn dc-month-order" href="#digital-order" data-service="${m.name} — ${m.price}">${t.order}</a></div>`}).join('')}</div></div>
-      <form id="digital-order" class="dc-form"><h3>${t.formTitle}</h3><p>${t.formText}</p><div class="dc-form-grid"><input required name="name" placeholder="${t.name}"><input required type="email" name="email" placeholder="${t.email}"><input name="phone" placeholder="${t.phone}"><input name="company" placeholder="${t.company}"><select class="dc-full" required name="service">${selectOptions()}</select><textarea class="dc-full" required name="details" placeholder="${t.details}"></textarea><button class="lnk-order-btn dc-full" type="submit">✉️ ${t.send}</button></div><div class="dc-status" aria-live="polite"></div></form></div>`;
+      <div class="dc-monthly"><h3>${t.monthly}</h3><p>${t.monthlyText}</p><div class="dc-monthly-grid">${monthly.map((m,i)=>{const img=previewSrc(m.name,'tech','✦');return `<div class="dc-monthly-card"><button type="button" class="dc-monthly-visual" aria-label="${t.preview}: ${m.name}" data-lnk-preview-src="${img}" data-lnk-preview-title="${m.name}"><img src="${img}" alt="${m.name} — LNK DIGITAL preview" loading="eager" decoding="async" onerror="this.onerror=null;this.src='/assets/previews/business.png?v=4'"><span>${t.preview} ↗</span></button><h4>${m.name}</h4><div class="dc-price">${t.from} ${m.price}</div><p>${t.monthlyDescriptions[i]}</p><a class="lnk-order-btn dc-month-order" href="#digital-order" data-service="${m.name} — ${m.price}">${t.order}</a></div>`}).join('')}</div></div>
+      <form id="digital-order" class="dc-form"><h3>${t.formTitle}</h3><p>${t.formText}</p><div class="dc-form-grid"><input required name="name" placeholder="${t.name}"><input required type="email" name="email" placeholder="${t.email}"><details class="dc-optional dc-full"><summary>${t.optional}</summary><div><input name="phone" placeholder="${t.phone}"><input name="company" placeholder="${t.company}"></div></details><select class="dc-full" required name="service">${selectOptions()}</select><textarea class="dc-full" required name="details" placeholder="${t.details}"></textarea><button class="lnk-order-btn dc-full" type="submit">✉️ ${t.send}</button></div><div class="dc-status" aria-live="polite"></div></form></div>`;
 
     const nav=document.querySelector('.desktop-nav');
     if(nav){ const links=nav.querySelectorAll('a'); if(links[2]) links[2].href='#digital-catalog'; }
@@ -251,7 +265,7 @@
     section.querySelectorAll('.dc-filter').forEach(b=>b.onclick=()=>{activeCat=b.dataset.cat; section.querySelectorAll('.dc-filter').forEach(x=>x.classList.toggle('active',x===b)); renderCards();});
     section.querySelectorAll('.dc-month-order').forEach(a=>a.onclick=()=>pick(a.dataset.service));
     const form=document.getElementById('digital-order');
-    if(selectedService) form.elements.service.value=selectedService;
+    if(selectedService && [...form.elements.service.options].some(o=>o.value===selectedService)) form.elements.service.value=selectedService;
     form.onsubmit=e=>{
       e.preventDefault(); const d=new FormData(form); const service=d.get('service');
       const subject=`LNK DIGITAL — Upit: ${service}`;
