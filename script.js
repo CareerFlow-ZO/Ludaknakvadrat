@@ -111,7 +111,7 @@
     await safeLoad('/script-core.js?v=2');
     await safeLoad('/web-services.js?v=5');
     await safeLoad('/lnk-visuals.js?v=2');
-    await safeLoad('/digital-catalog.js?v=8');
+    await safeLoad('/digital-catalog.js?v=9');
 
     for (const src of [
       '/lnk-core-bs-hr.js?v=2','/lnk-core-1.js?v=2','/lnk-core-2.js?v=2','/lnk-core-3.js?v=2',
@@ -132,7 +132,7 @@
     await safeLoad('/lnk-web-showcase.js?v=8');
     await safeLoad('/lnk-vip-upgrade.js?v=4');
     await safeLoad('/lnk-signature-2026.js?v=6');
-    await safeLoad('/lnk-shop.js?v=6');
+    await safeLoad('/lnk-shop.js?v=7');
     await safeLoad('/lnk-mobile-nav-fix.js?v=2');
 
     // Prevent flash/layout flicker: reveal only after the dynamically added CSS has settled.
