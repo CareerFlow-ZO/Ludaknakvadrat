@@ -41,6 +41,26 @@
     return card.querySelector('.dc-cat')?.textContent || '';
   }
 
+  function syncCatalogPreview(card,name) {
+    const visual=card.querySelector('.dc-visual');
+    const img=visual?.querySelector('img');
+    if(!visual || !img || !name) return;
+
+    const cat=card.dataset.cat || 'template';
+    const icon=card.querySelector('.dc-icon')?.textContent?.trim() || '✦';
+    let src='';
+    try{ src=window.LNKVisuals?.dataUri(name,cat,icon) || ''; }catch(_){}
+    if(!src) return;
+
+    // Always keep preview image, modal source and translated title in sync.
+    if(img.src !== src) img.src=src;
+    img.loading='eager';
+    img.decoding='async';
+    img.alt=name+' — LNK DIGITAL preview';
+    visual.dataset.lnkPreviewSrc=src;
+    visual.dataset.lnkPreviewTitle=name;
+  }
+
   function translateCatalogNames() {
     const current = lang();
     const names = namesFor(current);
@@ -51,6 +71,7 @@
       const h3 = card.querySelector('h3');
       if (h3 && h3.textContent !== name) h3.textContent = name;
       card.dataset.search = (name + ' ' + categoryText(card)).toLowerCase();
+      syncCatalogPreview(card,name);
       const order = card.querySelector('.dc-order');
       if (order) {
         const currentValue = order.dataset.service || '';
