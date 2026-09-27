@@ -78,7 +78,7 @@
   addStyle('/lnk-vip-upgrade.css?v=4', 'vip-upgrade');
   addStyle('/lnk-signature-2026.css?v=4', 'signature-2026');
   addStyle('/lnk-shop.css?v=4', 'shop');
-  addStyle('/lnk-mobile-nav-fix.css?v=3', 'mobile-nav-fix');
+  addStyle('/lnk-mobile-nav-fix.css?v=4', 'mobile-nav-fix');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
     img.src = '/lnk-digital-logo.svg?v=1';
@@ -111,7 +111,7 @@
     await safeLoad('/script-core.js?v=2');
     await safeLoad('/web-services.js?v=5');
     await safeLoad('/lnk-visuals.js?v=2');
-    await safeLoad('/digital-catalog.js?v=9');
+    await safeLoad('/digital-catalog.js?v=10');
 
     for (const src of [
       '/lnk-core-bs-hr.js?v=2','/lnk-core-1.js?v=2','/lnk-core-2.js?v=2','/lnk-core-3.js?v=2',
