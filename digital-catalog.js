@@ -228,7 +228,7 @@
     const img=previewSrc(s.name,s.cat,s.icon);
     const index=services.indexOf(s);
     const safe=s.name.replace(/"/g,'&quot;');
-    return `<article class="dc-card" data-service-index="${index}" data-cat="${s.cat}" data-search="${(s.name+' '+catLabel(s.cat)).toLowerCase()}"><button type="button" class="dc-visual" data-preview-label="${t.preview} ↗" aria-label="${t.preview}: ${safe}" data-lnk-preview-src="${img}" data-lnk-preview-title="${safe}"><img src="${img}" alt="${safe} — LNK DIGITAL preview" loading="eager" decoding="async" onerror="this.onerror=null;this.src='/assets/previews/business.png?v=4'"></button><div class="dc-icon">${s.icon}</div><span class="dc-cat">${catLabel(s.cat)}</span><h3>${s.name}</h3><div class="dc-price">${t.from} ${s.price}</div><a class="lnk-order-btn dc-order" href="#digital-order" data-service="${s.name} — ${s.price}">${t.order}</a></article>`;
+    return `<article class="dc-card" data-service-index="${index}" data-original-name="${safe}" data-cat="${s.cat}" data-search="${(s.name+' '+catLabel(s.cat)).toLowerCase()}"><button type="button" class="dc-visual" data-preview-label="${t.preview} ↗" aria-label="${t.preview}: ${safe}" data-lnk-preview-src="${img}" data-lnk-preview-title="${safe}"><img src="${img}" alt="${safe} — LNK DIGITAL preview" loading="eager" decoding="async" onerror="this.onerror=null;this.src='/assets/previews/business.png?v=4'"></button><div class="dc-icon">${s.icon}</div><span class="dc-cat">${catLabel(s.cat)}</span><h3>${s.name}</h3><div class="dc-price">${t.from} ${s.price}</div><a class="lnk-order-btn dc-order" href="#digital-order" data-service="${s.name} — ${s.price}">${t.order}</a></article>`;
   }
 
   function renderCards(){
