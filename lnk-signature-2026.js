@@ -13,13 +13,22 @@
     ['REAL ESTATE PRIME','Property / lead generation concept','/assets/previews/realestate.png?v=2','violet']
   ];
 
-  const SERVICE_VISUAL_FALLBACK='/assets/previews/all-services-v1.png?v=1';
+  const SERVICE_VISUALS=Object.freeze({
+    web:'/assets/previews/business.png?v=3',
+    marketing:'/assets/previews/ecommerce.png?v=3',
+    brand:'/assets/previews/beauty.png?v=3',
+    ai:'/assets/previews/services-signature-v1.png?v=3'
+  });
   function serviceVisual(name,cat,icon){
-    try{
-      return window.LNKVisuals?.dataUri(name,cat||'web',icon)||SERVICE_VISUAL_FALLBACK;
-    }catch(_){
-      return SERVICE_VISUAL_FALLBACK;
-    }
+    const key=cat||'web';
+    return SERVICE_VISUALS[key]||SERVICE_VISUALS.web;
+  }
+  function exampleLabel(){
+    const l=lang();
+    if(l==='sl')return 'Poglej primer';
+    if(l==='de')return 'Beispiel ansehen';
+    if(l==='en')return 'View example';
+    return 'Pogledaj primjer';
   }
   const PACKAGE_VISUALS=[
     '/assets/previews/business.png?v=2',
@@ -173,7 +182,7 @@
       '<div class="lnk-quick-grid">'+c.serviceCards.map((x,i)=>{
         const visual=serviceVisual(x[1],x[4]||'web',x[0]);
         return '<article class="lnk-card">'+
-          '<a class="sig-service-visual sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'"><img class="sig-service-img" src="'+visual+'" alt="'+x[1]+' — LNK DIGITAL" loading="lazy"><span>Pogledaj primjer ↗</span></a>'+
+          '<a class="sig-service-visual sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'"><img class="sig-service-img" src="'+visual+'" alt="'+x[1]+' — LNK DIGITAL" loading="lazy"><span>'+exampleLabel()+' ↗</span></a>'+
           '<div class="sig-service-icon">'+x[0]+'</div>'+
           '<h3>'+x[1]+'</h3><p>'+x[2]+'</p>'+
           '<a class="lnk-order-btn sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'">Open</a>'+
