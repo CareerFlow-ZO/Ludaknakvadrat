@@ -53,7 +53,8 @@
     if(!src) return;
 
     // Always keep preview image, modal source and translated title in sync.
-    if(img.src !== src) img.src=src;
+    if(img.src.includes('/assets/previews/')) src=img.src;
+    else if(img.src !== src) img.src=src;
     img.loading='eager';
     img.decoding='async';
     img.alt=name+' — LNK DIGITAL preview';
@@ -66,20 +67,15 @@
     const names = namesFor(current);
     const cards = document.querySelectorAll('#digital-catalog .dc-card');
     cards.forEach((card, i) => {
-      const name = names[i];
+      const index = Number(card.dataset.serviceIndex);
+      const name = names[Number.isInteger(index) ? index : i];
       if (!name) return;
       const h3 = card.querySelector('h3');
       if (h3 && h3.textContent !== name) h3.textContent = name;
       card.dataset.search = (name + ' ' + categoryText(card)).toLowerCase();
       syncCatalogPreview(card,name);
       const order = card.querySelector('.dc-order');
-      if (order) {
-        const currentValue = order.dataset.service || '';
-        const divider = currentValue.indexOf(' — ');
-        const price = divider >= 0 ? currentValue.slice(divider + 3) : '';
-        order.dataset.service = price ? `${name} — ${price}` : name;
-        order.textContent = buttonLabel(current);
-      }
+      if (order) order.textContent = buttonLabel(current);
     });
   }
 
