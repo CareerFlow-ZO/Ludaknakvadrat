@@ -80,17 +80,17 @@
     {icon:'💼',name:'Premium Business Website',desc:'Univerzalni high-end poslovni template za ozbiljan prvi utisak.',price:'79,99 €',preset:'business'}
   ];
   const musicProducts=[
-    {icon:'✍️',name:'Personalizovani tekst pjesme',desc:'Originalan tekst prema tvojoj priči.',price:'19,99 €',cat:'content'},
-    {icon:'🖼️',name:'Cover za pjesmu',desc:'16:9 + 9:16 vizual za YouTube i TikTok.',price:'14,99 €',cat:'video'},
-    {icon:'🎬',name:'Lyric video',desc:'Video sa tekstom spreman za objavu.',price:'29,99 €',cat:'video'},
-    {icon:'🎵',name:'Personalizovana pjesma + cover',desc:'Pjesma i kompletan cover paket.',price:'49,99 €',cat:'music'},
-    {icon:'💿',name:'Pjesma + cover + lyric video',desc:'Kompletan paket spreman za objavu.',price:'79,99 €',cat:'music'},
-    {icon:'❤️',name:'Digital Love Gift',desc:'Personalizovana pjesma + cover + QR poklon.',price:'39,99 €',featured:true,cat:'music'}
+    {icon:'✍️',name:'Personalizovani tekst pjesme',desc:'Originalan tekst prema tvojoj priči.',price:'19,99 €',cat:'content',preview:'/assets/music/personalizovana.png?v=2'},
+    {icon:'🖼️',name:'Cover za pjesmu',desc:'16:9 + 9:16 vizual za YouTube i TikTok.',price:'14,99 €',cat:'video',preview:'/assets/music/ljubavna.png?v=2'},
+    {icon:'🎬',name:'Lyric video',desc:'Video sa tekstom spreman za objavu.',price:'29,99 €',cat:'video',preview:'/assets/music/raptrap.png?v=2'},
+    {icon:'🎵',name:'Personalizovana pjesma + cover',desc:'Pjesma i kompletan cover paket.',price:'49,99 €',cat:'music',preview:'/assets/music/balkanturkey.png?v=2'},
+    {icon:'💿',name:'Pjesma + cover + lyric video',desc:'Kompletan paket spreman za objavu.',price:'79,99 €',cat:'music',preview:'/assets/music/vip.png?v=2'},
+    {icon:'❤️',name:'Digital Love Gift',desc:'Personalizovana pjesma + cover + QR poklon.',price:'39,99 €',featured:true,cat:'music',preview:'/assets/music/godisnjica.png?v=2'}
   ];
   const socialProducts=[
-    {icon:'🛍️',name:'Starter Pack',desc:'10 Instagram/TikTok dizajnova spremnih za objavu.',price:'19,99 €',cat:'social'},
-    {icon:'👑',name:'Business Pack',desc:'Logo + profilna + 20 objava + story dizajni.',price:'39,99 €',cat:'brand'},
-    {icon:'💎',name:'Premium Branding Pack',desc:'Logo + cover + social kit + vizuelni identitet.',price:'69,99 €',cat:'brand'}
+    {icon:'🛍️',name:'Starter Pack',desc:'10 Instagram/TikTok dizajnova spremnih za objavu.',price:'19,99 €',cat:'social',preview:'/assets/previews/ecommerce.png?v=3'},
+    {icon:'👑',name:'Business Pack',desc:'Logo + profilna + 20 objava + story dizajni.',price:'39,99 €',cat:'brand',preview:'/assets/previews/business.png?v=3'},
+    {icon:'💎',name:'Premium Branding Pack',desc:'Logo + cover + social kit + vizuelni identitet.',price:'69,99 €',cat:'brand',preview:'/assets/previews/beauty.png?v=3'}
   ];
 
   function lang(){return document.getElementById('language')?.value || localStorage.getItem('lnkDisplayLang') || localStorage.getItem('ludakLang') || 'sr'}
@@ -116,6 +116,7 @@
 
 
   function productPreview(p,kind){
+    if(p.preview) return p.preview;
     if(p.preset && PREVIEW_ASSETS[p.preset]) return PREVIEW_ASSETS[p.preset];
     return window.LNKVisuals?.dataUri(p.name,p.cat||kind,p.icon) || PREVIEW_ASSETS.business;
   }
@@ -125,7 +126,7 @@
     actions.push('<button type="button" class="ls-btn ls-preview-open" data-lnk-preview-src="'+img+'" data-lnk-preview-title="'+p.name.replace(/\"/g,'&quot;')+'">'+c.demo+'</button>');
     actions.push('<a class="ls-btn primary" href="'+wa(p.name,p.price)+'" target="_blank" rel="noopener">'+c.buy+'</a>');
     return '<article class="ls-card'+(p.featured?' featured':'')+'">'+(p.featured?'<span class="ls-popular">'+c.popular+'</span>':'')+
-      '<button type="button" class="ls-product-visual" data-lnk-preview-src="'+img+'" data-lnk-preview-title="'+p.name.replace(/\"/g,'&quot;')+'"><img src="'+img+'" alt="'+p.name.replace(/\"/g,'&quot;')+' — LNK DIGITAL preview" loading="lazy"><span>'+c.demo+' ↗</span></button>'+
+      '<button type="button" class="ls-product-visual" data-lnk-preview-src="'+img+'" data-lnk-preview-title="'+p.name.replace(/\"/g,'&quot;')+'"><img src="'+img+'" alt="'+p.name.replace(/\"/g,'&quot;')+' — LNK DIGITAL preview" loading="lazy" onerror="this.onerror=null;this.src='/assets/previews/business.png?v=3'"><span>'+c.demo+' ↗</span></button>'+
       '<div class="ls-card-copy"><div class="ls-card-top-mini"><span class="ls-card-icon">'+p.icon+'</span><span class="ls-preview-badge">LNK DIGITAL</span></div>'+
       '<h4>'+p.name+'</h4><p>'+p.desc+'</p><div class="ls-price">'+p.price+'</div>'+
       '<div class="ls-actions two">'+actions.join('')+'</div></div></article>';
