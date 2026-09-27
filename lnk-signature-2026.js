@@ -152,6 +152,10 @@
     setTimeout(()=>scrollToId('#digital-catalog'),30);
   }
 
+  function songAction(){
+    return ({sl:'Personalizirana pesem',en:'Personalized song',de:'Personalisiertes Lied',fr:'Chanson personnalisée',es:'Canción personalizada',it:'Canzone personalizzata'})[lang()] || 'Personalizovana pjesma';
+  }
+
   function hero(){
     const c=t(), copy=document.querySelector('.hero-copy'), art=document.querySelector('.hero-art');
     if(copy){
@@ -162,7 +166,7 @@
         '<div class="lnk-hero-trust">'+c.trust.map(x=>'<span>'+x+'</span>').join('')+'</div>'+
         '<div class="hero-buttons">'+
           '<a class="lnk-order-btn sig-primary" href="#web-naruci">✦ &nbsp;'+c.cta+' &nbsp;→</a>'+
-          '<a class="lnk-order-btn sig-secondary" href="#lnk-usluge">'+c.second+'</a>'+
+          '<a class="lnk-order-btn sig-secondary" href="#cenovnik">♫ &nbsp;'+songAction()+'</a>'+
         '</div>';
     }
     if(art) art.innerHTML='<div class="halo"></div><img src="/lnk-digital-logo.svg?v=4" alt="LNK DIGITAL" class="hero-logo">';
