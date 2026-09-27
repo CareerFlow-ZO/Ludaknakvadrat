@@ -127,19 +127,47 @@
       .lvm-close{width:42px;height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#0e1622;color:#fff;font-size:24px;cursor:pointer}
       .lvm-media{padding:18px}.lvm-media img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:#05090f}
       .lvm-foot{padding:0 20px 20px;color:#8497aa;font:500 12px/1.65 Inter,Arial,sans-serif}
+      .lvm-details{padding:0 20px 22px;color:#dceaf7;font:500 15px/1.6 Inter,Arial,sans-serif}.lvm-details h4{font-size:18px;margin:0 0 8px}.lvm-details ul{margin:0 0 16px;padding-left:20px}.lvm-details li{margin:5px 0}.lvm-examples{display:flex;gap:9px;flex-wrap:wrap}.lvm-examples a{padding:10px 13px;border-radius:10px;color:#e8f8ff;background:#10283e;border:1px solid #3b88af;text-decoration:none;font-weight:700}.lvm-examples a:focus-visible,.lvm-close:focus-visible{outline:2px solid #6dd9ff;outline-offset:3px}
       body.lvm-lock{overflow:hidden!important}
     `;
     document.head.appendChild(style);
     m=document.createElement('div');m.id='lnk-visual-modal';m.setAttribute('aria-hidden','true');
-    m.innerHTML='<div class="lvm-backdrop" data-lvm-close></div><div class="lvm-card" role="dialog" aria-modal="true"><div class="lvm-head"><div><small>LNK DIGITAL • VISUAL PREVIEW</small><h3></h3></div><button class="lvm-close" type="button" data-lvm-close aria-label="Close">×</button></div><div class="lvm-media"><img alt=""></div><div class="lvm-foot">Vizuelni prikaz služi kao primjer stila. Boje, tekstovi, fotografije, sadržaj i funkcije prilagođavaju se projektu i brendu klijenta.</div></div>';
+    m.innerHTML='<div class="lvm-backdrop" data-lvm-close></div><div class="lvm-card" role="dialog" aria-modal="true"><div class="lvm-head"><div><small>LNK DIGITAL • VISUAL PREVIEW</small><h3></h3></div><button class="lvm-close" type="button" data-lvm-close aria-label="Close">×</button></div><div class="lvm-media"><img alt=""></div><div class="lvm-details" hidden></div><div class="lvm-foot">Vizuelni prikaz služi kao primjer stila. Boje, tekstovi, fotografije, sadržaj i funkcije prilagođavaju se projektu i brendu klijenta.</div></div>';
     document.body.appendChild(m);
     m.addEventListener('click',e=>{if(e.target.closest('[data-lvm-close]'))close()});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open'))close()});
     return m;
   }
 
-  function open(src,title='Preview'){
+  const catalogExamples=[
+    ['Barber', 'https://lnk-barber-demo.vercel.app/'],
+    ['Auto servis', 'https://dbs-servis-previeww.vercel.app/'],
+    ['Salon', 'https://rocna-stil-preview.vercel.app/']
+  ];
+  const monthlyDetails={
+    'BASIC CARE':['Website care and regular checks','Small content updates','Technical support'],
+    'BUSINESS CARE':['Website updates and security checks','Small content changes','Ongoing technical support'],
+    'PREMIUM CARE':['Priority support','Regular website changes','Performance optimization and monitoring']
+  };
+  function catalogDetails(button){
+    const card=button.closest('.dc-card,.dc-monthly-card');
+    if(!card)return '';
+    const name=card.querySelector('h3,h4')?.textContent?.trim()||'';
+    const price=card.querySelector('.dc-price')?.textContent?.trim()||'';
+    const isMonthly=card.classList.contains('dc-monthly-card');
+    const category=card.dataset.cat||'';
+    const details=isMonthly ? monthlyDetails[name] : null;
+    const heading=isMonthly?'Package overview':'Service overview';
+    const list=details||[name,category==='web'?'Design adapted to your business and content':'Delivered to match your brand and project brief'];
+    const items=list.map(item=>'<li>'+esc(item)+'</li>').join('');
+    const examples=category==='web'?'<p>Open a working example:</p><div class="lvm-examples">'+catalogExamples.map(([label,url])=>'<a href="'+url+'" target="_blank" rel="noopener noreferrer">'+esc(label)+' ↗</a>').join('')+'</div>':'';
+    return '<h4>'+heading+(price?' · '+esc(price):'')+'</h4><ul>'+items+'</ul>'+examples;
+  }
+  function open(src,title='Preview',button){
     const m=ensureModal();
+    const details=m.querySelector('.lvm-details');
+    details.innerHTML=button?catalogDetails(button):'';
+    details.hidden=!details.innerHTML;
     m.querySelector('h3').textContent=title;
     const img=m.querySelector('img');img.src=src;img.alt=title;
     m.classList.add('open');m.setAttribute('aria-hidden','false');document.body.classList.add('lvm-lock');
@@ -153,7 +181,7 @@
     const b=e.target.closest('[data-lnk-preview-src]');
     if(!b)return;
     e.preventDefault();
-    open(b.dataset.lnkPreviewSrc,b.dataset.lnkPreviewTitle||'LNK DIGITAL Preview');
+    open(b.dataset.lnkPreviewSrc,b.dataset.lnkPreviewTitle||'LNK DIGITAL Preview',b);
   });
 
   window.LNKVisuals={dataUri,serviceSvg,open,close};
