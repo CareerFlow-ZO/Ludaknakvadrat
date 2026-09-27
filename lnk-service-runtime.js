@@ -67,8 +67,14 @@
     const names = namesFor(current);
     const cards = document.querySelectorAll('#digital-catalog .dc-card');
     cards.forEach((card, i) => {
-      const index = Number(card.dataset.serviceIndex);
-      const name = names[Number.isInteger(index) ? index : i];
+      const original = card.dataset.originalName || '';
+      const aliases = {
+        en:{'Basic website do 5 stranica':'Basic website up to 5 pages','Premium website do 10 stranica':'Premium website up to 10 pages','VIP custom website do 15 stranica':'VIP custom website up to 15 pages','Basic redesign postojeće web stranice':'Basic website redesign','Premium redesign postojeće web stranice':'Premium website redesign','VIP redesign postojeće web stranice':'VIP website redesign','Osnovna SEO optimizacija':'Basic SEO optimization','Napredni SEO paket':'Advanced SEO package','Start web shop':'Starter online store','Business web shop':'Business online store','Premium web shop':'Premium online store'},
+        sl:{'Basic website do 5 stranica':'Osnovna spletna stran do 5 strani','Premium website do 10 stranica':'Premium spletna stran do 10 strani','VIP custom website do 15 stranica':'VIP spletna stran do 15 strani','Basic redesign postojeće web stranice':'Osnovna prenova spletne strani','Premium redesign postojeće web stranice':'Premium prenova spletne strani','VIP redesign postojeće web stranice':'VIP prenova spletne strani','Osnovna SEO optimizacija':'Osnovna SEO optimizacija','Napredni SEO paket':'Napredni SEO paket','Start web shop':'Osnovna spletna trgovina','Business web shop':'Poslovna spletna trgovina','Premium web shop':'Premium spletna trgovina'},
+        de:{'Basic website do 5 stranica':'Basis-Website bis 5 Seiten','Premium website do 10 stranica':'Premium-Website bis 10 Seiten','VIP custom website do 15 stranica':'VIP-Website bis 15 Seiten','Basic redesign postojeće web stranice':'Einfaches Website-Redesign','Premium redesign postojeće web stranice':'Premium Website-Redesign','VIP redesign postojeće web stranice':'VIP Website-Redesign','Osnovna SEO optimizacija':'Grundlegende SEO-Optimierung','Napredni SEO paket':'Erweitertes SEO-Paket','Start web shop':'Starter-Onlineshop','Business web shop':'Business-Onlineshop','Premium web shop':'Premium-Onlineshop'}
+      };
+      const sourceIndex = SERVICE_SR.indexOf(original);
+      const name = ['sr','bs','hr'].includes(current) ? original : (aliases[current]?.[original] || (sourceIndex>=0 ? names[sourceIndex] : original));
       if (!name) return;
       const h3 = card.querySelector('h3');
       if (h3 && h3.textContent !== name) h3.textContent = name;
