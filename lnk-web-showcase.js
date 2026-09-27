@@ -33,23 +33,45 @@
   function dtext(d){const l=lang();return d.desc[l] || d.desc.sr || d.desc.en}
 
   const SHOWCASE_IMAGES={
-    clean:'/assets/previews/business.png?v=2',
-    barber:'/assets/previews/barbershop.png?v=2',
-    beauty:'/assets/previews/beauty.png?v=2',
-    modern:'/assets/previews/business.png?v=2',
-    auto:'/assets/previews/auto.png?v=2',
-    truck:'/assets/previews/truck.png?v=2',
-    restaurant:'/assets/previews/restaurant.png?v=2',
-    realestate:'/assets/previews/realestate.png?v=2',
-    dental:'/assets/previews/dental.png?v=2',
-    gym:'/assets/previews/fitness.png?v=2',
-    luxury:null,
-    noir:null
+    clean:'/assets/previews/business.png?v=3',
+    barber:'/assets/previews/barbershop.png?v=3',
+    beauty:'/assets/previews/beauty.png?v=3',
+    modern:'/assets/previews/business.png?v=3',
+    auto:'/assets/previews/auto.png?v=3',
+    truck:'/assets/previews/truck.png?v=3',
+    restaurant:'/assets/previews/restaurant.png?v=3',
+    realestate:'/assets/previews/realestate.png?v=3',
+    dental:'/assets/previews/dental.png?v=3',
+    gym:'/assets/previews/fitness.png?v=3',
+    luxury:'/assets/previews/realestate.png?v=3',
+    noir:'/assets/previews/auto.png?v=3'
   };
 
+  const SHOWCASE_GALLERIES={
+    luxury:[
+      '/assets/previews/realestate.png?v=3',
+      '/assets/previews/beauty.png?v=3',
+      '/assets/previews/business.png?v=3'
+    ],
+    noir:[
+      '/assets/previews/auto.png?v=3',
+      '/assets/previews/truck.png?v=3',
+      '/assets/previews/barbershop.png?v=3'
+    ]
+  };
+
+  function galleryFor(d){
+    const first=SHOWCASE_IMAGES[d.theme] || window.LNKVisuals?.dataUri(d.name+' • '+d.theme,'template','✦') || SHOWCASE_IMAGES.modern;
+    return SHOWCASE_GALLERIES[d.theme] || [first];
+  }
+
   function preview(d,large=false){
-    const img=SHOWCASE_IMAGES[d.theme] || window.LNKVisuals?.dataUri(d.name+' • '+d.theme,'template','✦') || SHOWCASE_IMAGES.modern;
-    return '<button type="button" class="wds-image-preview '+(large?'large':'')+'" data-lnk-preview-src="'+img+'" data-lnk-preview-title="'+d.name.replace(/\"/g,'&quot;')+'"><img src="'+img+'" alt="'+d.name.replace(/\"/g,'&quot;')+' — LNK DIGITAL design preview" loading="lazy"></button>';
+    const gallery=galleryFor(d), img=gallery[0], title=d.name.replace(/\"/g,'&quot;');
+    const main='<button type="button" class="wds-image-preview '+(large?'large':'')+'" data-lnk-preview-src="'+img+'" data-lnk-preview-title="'+title+'"><img src="'+img+'" alt="'+title+' — LNK DIGITAL design preview" loading="lazy"></button>';
+    if(large || gallery.length<2) return main;
+    return main+'<div class="wds-preview-thumbs" aria-label="'+title+' previews">'+gallery.map((src,i)=>
+      '<button type="button" class="wds-thumb '+(i===0?'active':'')+'" data-thumb-src="'+src+'" aria-label="'+title+' preview '+(i+1)+'"><img src="'+src+'" alt="" loading="lazy"></button>'
+    ).join('')+'</div>';
   }
 
   function card(d){
@@ -121,6 +143,18 @@
     section.addEventListener('click',e=>{
       const filter=e.target.closest('[data-filter]');
       if(filter){section.querySelectorAll('.wds-filter').forEach(b=>b.classList.toggle('active',b===filter));const f=filter.dataset.filter;section.querySelectorAll('.wds-card').forEach(c=>c.hidden=f!=='all'&&c.dataset.tier!==f);return}
+      const thumb=e.target.closest('[data-thumb-src]');
+      if(thumb){
+        const wrap=thumb.closest('.wds-preview-wrap');
+        const main=wrap?.querySelector('.wds-image-preview');
+        const img=main?.querySelector('img');
+        if(main&&img){
+          img.src=thumb.dataset.thumbSrc;
+          main.dataset.lnkPreviewSrc=thumb.dataset.thumbSrc;
+          wrap.querySelectorAll('.wds-thumb').forEach(b=>b.classList.toggle('active',b===thumb));
+        }
+        return;
+      }
       const view=e.target.closest('[data-view]');if(view){openModal(view.dataset.view);return}
       const pick=e.target.closest('[data-choose]');if(pick){choose(pick.dataset.choose);return}
     });
