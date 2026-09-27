@@ -132,3 +132,67 @@
   .dc-card{padding-left:14px!important;padding-right:14px!important}
   .dc-visual{width:calc(100% + 28px)!important;margin-left:-14px!important;margin-right:-14px!important}
 }
+
+
+/* ===== MOBILE SERVICE CARDS V3 ===== */
+@media(max-width:760px){
+  #lnk-usluge .lnk-quick-grid{
+    grid-template-columns:1fr!important;
+    gap:16px!important;
+  }
+  #lnk-usluge .lnk-card{
+    min-height:0!important;
+    padding:0 18px 72px!important;
+    border-radius:22px!important;
+    overflow:hidden!important;
+  }
+  #lnk-usluge .sig-service-visual{
+    width:calc(100% + 36px)!important;
+    margin:0 -18px 18px!important;
+    aspect-ratio:16/9!important;
+    border-radius:22px 22px 0 0!important;
+    background:#07111a!important;
+  }
+  #lnk-usluge .sig-service-img{
+    width:100%!important;
+    height:100%!important;
+    display:block!important;
+    object-fit:cover!important;
+    object-position:center!important;
+    transform:none!important;
+  }
+  #lnk-usluge .sig-service-visual:after{
+    background:linear-gradient(180deg,rgba(3,8,14,0) 46%,rgba(3,8,14,.58) 100%)!important;
+  }
+  #lnk-usluge .sig-service-visual span{
+    right:12px!important;
+    bottom:11px!important;
+    padding:7px 10px!important;
+    font-size:8px!important;
+  }
+  #lnk-usluge .lnk-card .sig-service-icon{
+    width:52px!important;
+    height:52px!important;
+    margin:0 0 14px!important;
+  }
+  #lnk-usluge .lnk-card h3{
+    font-size:22px!important;
+    line-height:1.15!important;
+    padding-right:48px!important;
+    margin:0 0 8px!important;
+  }
+  #lnk-usluge .lnk-card p{
+    font-size:14px!important;
+    line-height:1.55!important;
+    margin:0!important;
+    max-width:92%!important;
+  }
+  #lnk-usluge .lnk-card .lnk-order-btn{
+    right:18px!important;
+    bottom:18px!important;
+    width:42px!important;
+    min-width:42px!important;
+    height:42px!important;
+    min-height:42px!important;
+  }
+}
