@@ -157,15 +157,18 @@
     const isMonthly=card.classList.contains('dc-monthly-card');
     const category=card.dataset.cat||'';
     const details=isMonthly ? monthlyDetails[name] : null;
-    const heading=isMonthly?'Package overview':'Service overview';
-    const list=details||[name,category==='web'?'Design adapted to your business and content':'Delivered to match your brand and project brief'];
+    const language=document.getElementById('language')?.value||'sr';
+    const labels={sr:['Šta uključuje','Pogledaj stvarne web primjere'],bs:['Šta uključuje','Pogledaj stvarne web primjere'],hr:['Šta uključuje','Pogledaj stvarne web primjere'],sl:['Kaj vključuje','Oglej si delujoče spletne primere'],en:['What is included','Open working website examples'],de:['Leistungsumfang','Funktionierende Webseiten ansehen']};
+    const [heading,examplesLabel]=labels[language]||labels.en;
+    const list=details||[name,category==='web' ? ({sl:'Dizajn, prilagojen tvojemu podjetju in vsebini',en:'Design tailored to your business and content',de:'Design passend zu Unternehmen und Inhalten'})[language]||'Dizajn prilagođen tvom poslu i sadržaju' : ({sl:'Prilagojeno tvoji znamki in projektnim potrebam',en:'Tailored to your brand and project brief',de:'Passend zu Marke und Projektanforderungen'})[language]||'Prilagođeno tvom brendu i projektu'];
     const items=list.map(item=>'<li>'+esc(item)+'</li>').join('');
-    const examples=category==='web'?'<p>Open a working example:</p><div class="lvm-examples">'+catalogExamples.map(([label,url])=>'<a href="'+url+'" target="_blank" rel="noopener noreferrer">'+esc(label)+' ↗</a>').join('')+'</div>':'';
+    const examples=category==='web'?'<p>'+examplesLabel+':</p><div class="lvm-examples">'+catalogExamples.map(([label,url])=>'<a href="'+url+'" target="_blank" rel="noopener noreferrer">'+esc(label)+' ↗</a>').join('')+'</div>':'';
     return '<h4>'+heading+(price?' · '+esc(price):'')+'</h4><ul>'+items+'</ul>'+examples;
   }
   function open(src,title='Preview',button){
     const m=ensureModal();
     const details=m.querySelector('.lvm-details');
+    m.querySelector('.lvm-head small').textContent=(document.getElementById('language')?.value==='en'?'LNK DIGITAL • EXAMPLE':'LNK DIGITAL • PRIMJER');
     details.innerHTML=button?catalogDetails(button):'';
     details.hidden=!details.innerHTML;
     m.querySelector('h3').textContent=title;
