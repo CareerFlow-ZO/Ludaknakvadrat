@@ -67,7 +67,7 @@
     // Always keep preview image, modal source and translated title in sync.
     if(img.src.includes('/assets/previews/')) src=img.src;
     else if(img.src !== src) img.src=src;
-    img.loading='eager';
+    img.loading='lazy';
     img.decoding='async';
     img.alt=name+' — LNK DIGITAL preview';
     visual.dataset.lnkPreviewSrc=src;
