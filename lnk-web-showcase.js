@@ -96,7 +96,18 @@
     modal=document.createElement('div');modal.id='wds-modal';modal.className='wds-modal';modal.setAttribute('aria-hidden','true');
     modal.innerHTML='<div class="wds-modal-backdrop" data-close></div><div class="wds-modal-card" role="dialog" aria-modal="true"><div class="wds-modal-top"><div><small></small><h4></h4></div><button class="wds-close" type="button" data-close aria-label="Close">×</button></div><div class="wds-modal-preview"></div><div class="wds-modal-foot"><p></p><button type="button" class="wds-btn wds-choose wds-modal-choose"></button></div></div>';
     document.body.appendChild(modal);
-    modal.addEventListener('click',e=>{const pick=e.target.closest('[data-choose]');if(pick){choose(pick.dataset.choose);return}if(e.target.closest('[data-close]')) closeModal()});
+    modal.addEventListener('click',e=>{
+      const thumb=e.target.closest('[data-thumb-src]');
+      if(thumb){
+        const wrap=thumb.closest('.wds-preview-wrap');
+        const main=wrap?.querySelector('.wds-image-preview');
+        const img=main?.querySelector('img');
+        if(main&&img){img.src=thumb.dataset.thumbSrc;main.dataset.lnkPreviewSrc=thumb.dataset.thumbSrc;wrap.querySelectorAll('.wds-thumb').forEach(b=>b.classList.toggle('active',b===thumb))}
+        return;
+      }
+      const pick=e.target.closest('[data-choose]');if(pick){choose(pick.dataset.choose);return}
+      if(e.target.closest('[data-close]')) closeModal();
+    });
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeModal()});
     return modal;
   }
