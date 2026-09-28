@@ -204,6 +204,37 @@
     return html;
   }
 
+  function localPreviewSrc(name,cat,icon){
+    const palettes={
+      web:['#42c9ff','#315cff'],brand:['#c86cff','#ff5aa8'],social:['#ff668d','#8d69ff'],
+      marketing:['#ff8550','#ffd061'],seo:['#54e0ad','#1aa7ff'],ai:['#5fe6ff','#8064ff'],
+      shop:['#5de0b4','#347dff'],video:['#ff627b','#a865ff'],content:['#ffd36a','#ff925f'],
+      career:['#6bc8ff','#8190ff'],tech:['#63efff','#2f84ff']
+    };
+    const p=palettes[cat]||['#5fe0ff','#6b5cff'];
+    const esc=v=>String(v||'').replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+    const title=esc(name.length>42?name.slice(0,40)+'…':name);
+    const badge=esc((cat||'DIGITAL').toUpperCase());
+    const mark=esc(icon||'✦');
+    const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">'+
+      '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="'+p[0]+'"/><stop offset="1" stop-color="'+p[1]+'"/></linearGradient><radialGradient id="r"><stop stop-color="'+p[0]+'" stop-opacity=".36"/><stop offset="1" stop-color="'+p[0]+'" stop-opacity="0"/></radialGradient></defs>'+
+      '<rect width="1200" height="720" rx="36" fill="#06101a"/><circle cx="1010" cy="90" r="260" fill="url(#r)"/>'+
+      '<rect x="28" y="26" width="1144" height="668" rx="30" fill="#08131f" stroke="#ffffff" stroke-opacity=".12"/>'+
+      '<rect x="28" y="26" width="1144" height="60" rx="30" fill="#0e1926"/><circle cx="64" cy="56" r="7" fill="#ff5f57"/><circle cx="90" cy="56" r="7" fill="#ffbd2e"/><circle cx="116" cy="56" r="7" fill="#28c840"/>'+
+      '<rect x="160" y="44" width="480" height="22" rx="11" fill="#1b2b3d"/>'+
+      '<text x="86" y="148" fill="'+p[0]+'" font-family="Arial,sans-serif" font-size="18" font-weight="800" letter-spacing="3">'+badge+'</text>'+
+      '<text x="86" y="203" fill="#f4fbff" font-family="Arial,sans-serif" font-size="38" font-weight="900">'+title+'</text>'+
+      '<text x="86" y="252" fill="#8fa8bb" font-family="Arial,sans-serif" font-size="20">LNK DIGITAL • VISUAL PREVIEW</text>'+
+      '<rect x="86" y="304" width="500" height="260" rx="28" fill="#0d1a27" stroke="'+p[0]+'" stroke-opacity=".28"/>'+
+      '<rect x="126" y="350" width="320" height="22" rx="11" fill="#eef8ff" opacity=".92"/><rect x="126" y="397" width="390" height="16" rx="8" fill="#71889d" opacity=".45"/><rect x="126" y="431" width="300" height="16" rx="8" fill="#71889d" opacity=".28"/>'+
+      '<rect x="126" y="488" width="166" height="48" rx="14" fill="url(#g)"/>'+
+      '<rect x="644" y="304" width="444" height="260" rx="30" fill="url(#g)" opacity=".16"/><circle cx="866" cy="431" r="104" fill="url(#r)"/>'+
+      '<text x="866" y="456" text-anchor="middle" fill="#ffffff" font-family="Arial,sans-serif" font-size="76" font-weight="900">'+mark+'</text>'+
+      '<rect x="884" y="608" width="204" height="46" rx="23" fill="url(#g)"/><text x="986" y="638" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="900">PREVIEW</text>'+
+      '</svg>';
+    return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+  }
+
   function previewSrc(name,cat,icon){
     if(cat==='web'){
       const webExamples={
@@ -215,13 +246,11 @@
       };
       if(webExamples[name]) return webExamples[name];
     }
-    // Generate the preview from the exact service/package name so every option
-    // gets its own visual instead of sharing one generic category image.
     try{
       const generated=window.LNKVisuals?.dataUri(name,cat||'template',icon||'✦');
       if(generated) return generated;
     }catch(_){}
-    return '/assets/previews/business.png?v=4';
+    return localPreviewSrc(name,cat||'template',icon||'✦');
   }
 
   function card(s,t){
