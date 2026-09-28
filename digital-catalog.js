@@ -234,7 +234,11 @@
   function renderCards(){
     const grid=document.querySelector('#digital-catalog .dc-grid'); if(!grid) return;
     const t=txt();
-    const filtered=services.filter(s=>(activeCat==='all'||s.cat===activeCat)&&(!query||(s.name+' '+catLabel(s.cat)).toLowerCase().includes(query)));
+    const filtered=services.filter(s=>{
+      const translated=window.LNKServiceName?.(s.name,lang()) || s.name;
+      const terms=(s.name+' '+translated+' '+catLabel(s.cat)+' '+s.cat).toLowerCase();
+      return (activeCat==='all'||s.cat===activeCat)&&(!query||terms.includes(query));
+    });
     grid.innerHTML=filtered.length?filtered.map(s=>card(s,t)).join(''):`<div class="dc-empty">${t.noResults}</div>`;
     grid.classList.add('lnk-collapsed');
     const toggle=document.getElementById('lnk-catalog-toggle');
