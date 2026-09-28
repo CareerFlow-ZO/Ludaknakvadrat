@@ -150,10 +150,10 @@
     'PREMIUM CARE':['Priority support','Regular website changes','Performance optimization and monitoring']
   };
   function catalogDetails(button){
-    const card=button.closest('.dc-card,.dc-monthly-card,.sig-project-card,.sig-package-card');
+    const card=button.closest('.dc-card,.dc-monthly-card,.sig-project-card,.sig-package-card,.ls-card');
     if(!card)return '';
     const name=card.querySelector('h3,h4,.sig-package-name')?.textContent?.trim()||'';
-    const price=card.querySelector('.dc-price')?.textContent?.trim()||'';
+    const price=card.querySelector('.dc-price,.ls-price')?.textContent?.trim()||'';
     const isMonthly=card.classList.contains('dc-monthly-card');
     const category=card.dataset.cat||'';
     const projectLinks={'BARBER PRO':'https://lnk-barber-demo.vercel.app/','BEAUTY LUXE':'https://rocna-stil-preview.vercel.app/','AUTO PERFORMANCE':'https://dbs-servis-previeww.vercel.app/'};
@@ -162,9 +162,12 @@
     const labels={sr:['Šta uključuje','Pogledaj stvarne web primjere'],bs:['Šta uključuje','Pogledaj stvarne web primjere'],hr:['Šta uključuje','Pogledaj stvarne web primjere'],sl:['Kaj vključuje','Oglej si delujoče spletne primere'],en:['What is included','Open working website examples'],de:['Leistungsumfang','Funktionierende Webseiten ansehen']};
     const [heading,examplesLabel]=labels[language]||labels.en;
     const packageItems=[...card.querySelectorAll('.sig-package-list li')].map(li=>li.textContent.trim());
-    const list=details||((packageItems.length && packageItems) || [name,category==='web' ? ({sl:'Dizajn, prilagojen tvojemu podjetju in vsebini',en:'Design tailored to your business and content',de:'Design passend zu Unternehmen und Inhalten'})[language]||'Dizajn prilagođen tvom poslu i sadržaju' : ({sl:'Prilagojeno tvoji znamki in projektnim potrebam',en:'Tailored to your brand and project brief',de:'Passend zu Marke und Projektanforderungen'})[language]||'Prilagođeno tvom brendu i projektu']);
+    const shopDescription=card.classList.contains('ls-card') ? card.querySelector('.ls-card-copy p')?.textContent?.trim() : '';
+    const list=details||((packageItems.length && packageItems) || (shopDescription ? [shopDescription] : [name,category==='web' ? ({sl:'Dizajn, prilagojen tvojemu podjetju in vsebini',en:'Design tailored to your business and content',de:'Design passend zu Unternehmen und Inhalten'})[language]||'Dizajn prilagođen tvom poslu i sadržaju' : ({sl:'Prilagojeno tvoji znamki in projektnim potrebam',en:'Tailored to your brand and project brief',de:'Passend zu Marke und Projektanforderungen'})[language]||'Prilagođeno tvom brendu i projektu']));
     const items=list.map(item=>'<li>'+esc(item)+'</li>').join('');
-    const websiteExamples=projectLinks[name] ? [[name,projectLinks[name]]] : (category==='web' ? catalogExamples : []);
+    const shopLinks={'Barbershop Website':'https://lnk-barber-demo.vercel.app/','Beauty Salon Website':'https://rocna-stil-preview.vercel.app/','Auto Service Website':'https://dbs-servis-previeww.vercel.app/'};
+    const liveLink=projectLinks[name]||shopLinks[name];
+    const websiteExamples=liveLink ? [[name,liveLink]] : (category==='web' ? catalogExamples : []);
     const examples=websiteExamples.length?'<p>'+examplesLabel+':</p><div class="lvm-examples">'+websiteExamples.map(([label,url])=>'<a href="'+url+'" target="_blank" rel="noopener noreferrer">'+esc(label)+' ↗</a>').join('')+'</div>':'';
     return '<h4>'+heading+(price?' · '+esc(price):'')+'</h4><ul>'+items+'</ul>'+examples;
   }
