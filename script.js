@@ -110,7 +110,7 @@
 
     await safeLoad('/script-core.js?v=2');
     await safeLoad('/web-services.js?v=5');
-    await safeLoad('/lnk-visuals.js?v=5');
+    await safeLoad('/lnk-visuals.js?v=6');
     await safeLoad('/digital-catalog.js?v=15');
 
     for (const src of [
@@ -129,7 +129,7 @@
     await safeLoad('/lnk-price-fix.js?v=1');
     await safeLoad('/lnk-form-final.js?v=1');
     await safeLoad('/lnk-navigation-v2.js?v=4');
-    await safeLoad('/lnk-web-showcase.js?v=8');
+    await safeLoad('/lnk-web-showcase.js?v=9');
     await safeLoad('/lnk-vip-upgrade.js?v=4');
     await safeLoad('/lnk-signature-2026.js?v=8');
     await safeLoad('/lnk-shop.js?v=7');
