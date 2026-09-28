@@ -366,3 +366,11 @@
     min-width:89%!important;
   }
 }
+
+/* Clear catalog controls on narrow screens */
+@media(max-width:760px){
+  #digital-catalog .dc-card h3{font-size:17px!important;line-height:1.35!important}
+  #digital-catalog .dc-visual:after,#digital-catalog .dc-monthly-visual span{font-size:12px!important;line-height:1.2!important;padding:8px 11px!important}
+  #digital-catalog .dc-note{font-size:14px!important;line-height:1.5!important}
+  #digital-catalog .dc-filter{font-size:14px!important;min-height:42px!important}
+}
