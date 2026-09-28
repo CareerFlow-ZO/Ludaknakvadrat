@@ -183,6 +183,13 @@
     m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.classList.remove('lvm-lock');
   }
 
+  document.addEventListener('load',e=>{
+    const img=e.target;
+    if(img?.tagName!=='IMG')return;
+    const preview=img.closest('[data-lnk-preview-src]');
+    if(preview && img.currentSrc && img.naturalWidth) preview.dataset.lnkPreviewSrc=img.currentSrc;
+  },true);
+
   document.addEventListener('click',e=>{
     const b=e.target.closest('[data-lnk-preview-src]');
     if(!b)return;
