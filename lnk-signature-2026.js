@@ -23,6 +23,20 @@
     const key=cat||'web';
     return SERVICE_VISUALS[key]||SERVICE_VISUALS.web;
   }
+  function serviceBrowseLabel(){
+    const l=lang();
+    if(l==='sl')return 'Poglej storitve';
+    if(l==='de')return 'Leistungen ansehen';
+    if(l==='en')return 'View services';
+    return 'Pogledaj usluge';
+  }
+  function openLabel(){
+    const l=lang();
+    if(l==='sl')return 'Odpri';
+    if(l==='de')return 'Öffnen';
+    if(l==='en')return 'Open';
+    return 'Otvori';
+  }
   function exampleLabel(){
     const l=lang();
     if(l==='sl')return 'Poglej primer';
@@ -186,10 +200,10 @@
       '<div class="lnk-quick-grid">'+c.serviceCards.map((x,i)=>{
         const visual=serviceVisual(x[1],x[4]||'web',x[0]);
         return '<article class="lnk-card">'+
-          '<a class="sig-service-visual sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'"><img class="sig-service-img" src="'+visual+'" alt="'+x[1]+' — LNK DIGITAL" loading="lazy"><span>'+exampleLabel()+' ↗</span></a>'+
+          '<a class="sig-service-visual sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'"><img class="sig-service-img" src="'+visual+'" alt="'+x[1]+' — LNK DIGITAL" loading="lazy"><span>'+serviceBrowseLabel()+' ↗</span></a>'+
           '<div class="sig-service-icon">'+x[0]+'</div>'+
           '<h3>'+x[1]+'</h3><p>'+x[2]+'</p>'+
-          '<a class="lnk-order-btn sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'">Open</a>'+
+          '<a class="lnk-order-btn sig-service-link" href="'+x[3]+'" data-cat="'+x[4]+'" aria-label="'+x[1]+'" >'+openLabel()+' →</a>'+
         '</article>';
       }).join('')+
       '</div></div>';
@@ -224,7 +238,7 @@
     grid.innerHTML=c.packages.map((p,i)=>
       '<article class="lnk-card sig-package-card '+(i===1?'lnk-featured':'')+'">'+
         (i===1?'<div class="lnk-best">'+c.popular+'</div>':'')+
-        '<button type="button" class="sig-package-visual" data-lnk-preview-src="'+PACKAGE_VISUALS[i]+'" data-lnk-preview-title="'+p[0]+' — LNK DIGITAL"><img src="'+PACKAGE_VISUALS[i]+'" alt="'+p[0]+' — LNK DIGITAL website preview" loading="lazy"><span>Pogledaj primjer ↗</span></button>'+
+        '<button type="button" class="sig-package-visual" data-lnk-preview-src="'+PACKAGE_VISUALS[i]+'" data-lnk-preview-title="'+p[0]+' — LNK DIGITAL"><img src="'+PACKAGE_VISUALS[i]+'" alt="'+p[0]+' — LNK DIGITAL website preview" loading="lazy"><span>'+exampleLabel()+' ↗</span></button>'+
         '<div class="sig-package-top"><span class="sig-package-name">'+p[0]+'</span><div class="lnk-price">'+p[1]+'</div></div>'+
         '<ul class="sig-package-list">'+p[2].map(x=>'<li>'+x+'</li>').join('')+'</ul>'+
         '<a class="lnk-order-btn web-pick sig-package-btn" href="#web-naruci" data-package="'+p[0]+' — '+p[1]+'">'+c.choose+' →</a>'+
