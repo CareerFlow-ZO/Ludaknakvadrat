@@ -26,6 +26,15 @@
     mk:{nav:'За нас',eyebrow:'LNK-DIGITAL • ЗА НАС',title:'Ваш дигитален партнер за модерен бизнис.',text:'LNK-DIGITAL нуди веб-страници, брендинг, маркетинг, SEO, AI автоматизација, е-трговија, видео, содржина и други дигитални услуги на едно место. Нашата цел е секој проект да изгледа професионално, да работи брзо и да биде подготвен за раст.',owner:'Сопственик',vat:'ДДВ ID',account:'Сметка / IBAN',bank:'Банка',address:'Адреса',phone:'Контакт',email:'Е-пошта',company:'LNK-DIGITAL'}
   };
 
+  const REVIEW = {
+    sr:['Preko 2.000 zadovoljnih klijenata','Ocijeni naš rad','Sarađivali smo? Odaberi ocjenu i napiši svoje iskustvo.','Tvoje ime','Tvoj komentar (opcionalno)','Pošalji ocjenu putem WhatsAppa','Ocjena'],
+    bs:['Preko 2.000 zadovoljnih klijenata','Ocijeni naš rad','Sarađivali smo? Odaberi ocjenu i napiši svoje iskustvo.','Tvoje ime','Tvoj komentar (opcionalno)','Pošalji ocjenu putem WhatsAppa','Ocjena'],
+    hr:['Više od 2.000 zadovoljnih klijenata','Ocijeni naš rad','Surađivali smo? Odaberi ocjenu i napiši svoje iskustvo.','Tvoje ime','Tvoj komentar (neobavezno)','Pošalji ocjenu putem WhatsAppa','Ocjena'],
+    sl:['Več kot 2.000 zadovoljnih strank','Ocenite naše delo','Ste sodelovali z nami? Izberite oceno in napišite svojo izkušnjo.','Vaše ime','Vaš komentar (neobvezno)','Pošlji oceno prek WhatsAppa','Ocena'],
+    en:['Over 2,000 satisfied clients','Rate our work','Worked with us? Choose a rating and tell us about your experience.','Your name','Your comment (optional)','Send rating via WhatsApp','Rating'],
+    de:['Über 2.000 zufriedene Kunden','Bewerten Sie unsere Arbeit','Sie haben mit uns gearbeitet? Geben Sie eine Bewertung ab.','Ihr Name','Ihr Kommentar (optional)','Bewertung per WhatsApp senden','Bewertung']
+  };
+
   function lang(){
     return document.getElementById('language')?.value || localStorage.getItem('lnkDisplayLang') || localStorage.getItem('ludakLang') || 'sr';
   }
@@ -42,7 +51,11 @@
       .about-card{padding:25px;border-radius:22px;background:linear-gradient(145deg,rgba(10,27,43,.96),rgba(4,12,20,.97));border:1px solid rgba(69,183,255,.22);box-shadow:0 22px 60px rgba(0,0,0,.25),0 0 50px rgba(0,135,255,.06)}
       .about-brand{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid rgba(70,184,255,.15)}.about-mark{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#102d45,#05101a);border:1px solid rgba(82,208,255,.42);color:#effaff;font-weight:900;box-shadow:0 0 25px rgba(0,145,255,.16)}.about-brand strong{display:block;color:#f5fbff;font-size:19px}.about-brand small{color:#56d7ff;font-size:11px;letter-spacing:.12em;font-weight:800}
       .about-details{display:grid;gap:10px}.about-row{display:grid;grid-template-columns:145px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid rgba(70,184,255,.10)}.about-row:last-child{border-bottom:0}.about-row span{color:#6f8ca2;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em}.about-row b,.about-row a{color:#eaf7ff;font-size:14px;line-height:1.5;word-break:break-word}.about-row a{text-decoration:none}.about-row a:hover{color:#55d9ff}
+      .about-proof{margin-top:26px;padding:18px 22px;border-radius:17px;border:1px solid rgba(82,207,255,.25);background:linear-gradient(110deg,rgba(12,67,104,.64),rgba(11,28,45,.7));color:#edfaff;font-size:20px;font-weight:800;line-height:1.35}.about-proof strong{color:#5cdbff;font-size:27px}
+      .about-review{max-width:1180px;margin:28px auto 0;padding:25px;border:1px solid rgba(69,183,255,.2);border-radius:22px;background:rgba(5,17,29,.9)}.about-review h3{font:800 25px/1.2 Inter,system-ui,sans-serif;margin:0 0 8px;color:#f4f9ff}.about-review p{color:#9bb0c1;font-size:16px;line-height:1.5;margin:0 0 18px}.about-review form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:12px;align-items:end}.about-review label{display:grid;gap:7px;color:#b7cede;font-size:14px;font-weight:700}.about-review input,.about-review textarea{width:100%;box-sizing:border-box;border:1px solid rgba(110,184,225,.3);border-radius:11px;padding:12px 14px;color:#eefaff;background:#081827;font:inherit;font-size:16px}.about-review textarea{min-height:48px;resize:vertical}.about-review button{border:0;border-radius:11px;padding:14px 18px;background:linear-gradient(115deg,#087fc6,#244cf0);color:#fff;font:800 14px/1.3 Inter,system-ui,sans-serif;cursor:pointer}.about-review :focus-visible{outline:2px solid #75ddff;outline-offset:3px}.about-stars{display:flex;gap:6px;margin-bottom:13px}.about-stars label{display:block;cursor:pointer}.about-stars input{position:absolute;opacity:0;width:1px;height:1px}.about-stars span{display:block;padding:4px;color:#72899c;font-size:32px;line-height:1;transition:color .15s}.about-stars input:checked + span,.about-stars:has(input[value="1"]:checked) label:nth-child(-n+1) span,.about-stars:has(input[value="2"]:checked) label:nth-child(-n+2) span,.about-stars:has(input[value="3"]:checked) label:nth-child(-n+3) span,.about-stars:has(input[value="4"]:checked) label:nth-child(-n+4) span,.about-stars:has(input[value="5"]:checked) label:nth-child(-n+5) span{color:#ffca55}
+      .about-review-rating{grid-column:1/-1}.about-review button{grid-column:1/-1;justify-self:start}
       @media(max-width:820px){#o-nama{padding:54px 18px}.about-wrap{grid-template-columns:1fr;gap:24px}.about-card{padding:20px}.about-row{grid-template-columns:1fr;gap:5px}.about-copy h2{font-size:36px}.about-copy p{font-size:15px}}
+      @media(max-width:820px){.about-review form{grid-template-columns:1fr}.about-review button{width:100%}.about-proof{font-size:18px}}
     `;
     document.head.appendChild(s);
   }
@@ -62,6 +75,7 @@
   }
 
   function ensureSection(t){
+    const review=REVIEW[lang()] || REVIEW.en;
     let sec=document.getElementById('o-nama');
     if(!sec){
       sec=document.createElement('section');
@@ -75,6 +89,7 @@
           <span class="eyebrow">${t.eyebrow}</span>
           <h2>${t.title}</h2>
           <p>${t.text}</p>
+          <div class="about-proof"><strong>2.000+</strong> ${review[0].replace(/^(Preko|Više od|Več kot|Over|Über) (2[.,]000) /,'')}</div>
         </div>
         <div class="about-card">
           <div class="about-brand"><div class="about-mark notranslate">LNK</div><div><strong class="notranslate">${t.company}</strong><small>DIGITAL SERVICES</small></div></div>
@@ -88,7 +103,24 @@
             <div class="about-row"><span>${t.email}</span><b><a class="notranslate" href="mailto:${INFO.email}">${INFO.email}</a></b></div>
           </div>
         </div>
+      </div>
+      <div class="about-review">
+        <h3>${review[1]}</h3><p>${review[2]}</p>
+        <form id="lnk-review-form">
+          <div class="about-review-rating"><div class="about-stars" role="radiogroup" aria-label="${review[6]}">${[1,2,3,4,5].map(n=>`<label><input type="radio" name="rating" value="${n}" aria-label="${n} / 5" required><span aria-hidden="true">★</span></label>`).join('')}</div></div>
+          <label>${review[3]}<input name="name" required maxlength="80" autocomplete="name"></label>
+          <label>${review[4]}<textarea name="comment" maxlength="800"></textarea></label>
+          <button type="submit">${review[5]}</button>
+        </form>
       </div>`;
+    sec.querySelector('#lnk-review-form').addEventListener('submit',event=>{
+      event.preventDefault();
+      const data=new FormData(event.currentTarget);
+      const rating=data.get('rating');
+      if(!rating){event.currentTarget.reportValidity();return;}
+      const message=`LNK DIGITAL — ocjena rada\nOcjena: ${rating}/5\nIme: ${data.get('name')}\nKomentar: ${data.get('comment')||'-'}`;
+      window.open(`https://wa.me/38631244612?text=${encodeURIComponent(message)}`,'_blank','noopener,noreferrer');
+    });
   }
 
   function apply(){
