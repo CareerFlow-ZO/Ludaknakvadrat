@@ -78,7 +78,7 @@
   addStyle('/lnk-vip-upgrade.css?v=4', 'vip-upgrade');
   addStyle('/lnk-signature-2026.css?v=4', 'signature-2026');
   addStyle('/lnk-shop.css?v=4', 'shop');
-  addStyle('/lnk-mobile-nav-fix.css?v=4', 'mobile-nav-fix');
+  addStyle('/lnk-mobile-nav-fix.css?v=5', 'mobile-nav-fix');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
     img.src = '/lnk-digital-logo.svg?v=1';
@@ -110,8 +110,8 @@
 
     await safeLoad('/script-core.js?v=2');
     await safeLoad('/web-services.js?v=5');
-    await safeLoad('/lnk-visuals.js?v=4');
-    await safeLoad('/digital-catalog.js?v=14');
+    await safeLoad('/lnk-visuals.js?v=5');
+    await safeLoad('/digital-catalog.js?v=15');
 
     for (const src of [
       '/lnk-core-bs-hr.js?v=2','/lnk-core-1.js?v=2','/lnk-core-2.js?v=2','/lnk-core-3.js?v=2',
@@ -119,7 +119,7 @@
     ]) await safeLoad(src);
 
     await safeLoad('/lnk-runtime.js?v=2');
-    await safeLoad('/lnk-service-runtime.js?v=5');
+    await safeLoad('/lnk-service-runtime.js?v=6');
     await safeLoad('/lnk-about.js?v=2');
     await safeLoad('/lnk-extra-languages.js?v=2');
 
@@ -131,7 +131,7 @@
     await safeLoad('/lnk-navigation-v2.js?v=4');
     await safeLoad('/lnk-web-showcase.js?v=8');
     await safeLoad('/lnk-vip-upgrade.js?v=4');
-    await safeLoad('/lnk-signature-2026.js?v=7');
+    await safeLoad('/lnk-signature-2026.js?v=8');
     await safeLoad('/lnk-shop.js?v=7');
     await safeLoad('/lnk-mobile-nav-fix.js?v=2');
 
