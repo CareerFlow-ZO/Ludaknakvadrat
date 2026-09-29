@@ -37,22 +37,28 @@ module.exports=async(req,res)=>{
         `Plaćeno: ${session.amount_total?(session.amount_total/100).toFixed(2)+" "+String(session.currency||"EUR").toUpperCase():"-"}`
       ];
 
-      if(process.env.RESEND_API_KEY&&process.env.NOTIFICATION_EMAIL){
+      if(process.env.RESEND_API_KEY&&process.env.EMAIL_FROM){
         const resend=new Resend(process.env.RESEND_API_KEY);
-        await resend.emails.send({
-          from:process.env.EMAIL_FROM||"Ludak Na Kvadrat <onboarding@resend.dev>",
-          to:[process.env.NOTIFICATION_EMAIL],
-          subject:`💰 Plaćeno — ${o.recipient||"pesma"} — ${o.package||""}`,
-          text:lines.join("\n")
-        });
         if(customerEmail){
-          await resend.emails.send({
-            from:process.env.EMAIL_FROM||"Ludak Na Kvadrat <onboarding@resend.dev>",
+          const result=await resend.emails.send({
+            from:process.env.EMAIL_FROM,
             to:[customerEmail],
             subject:"Ludak Na Kvadrat — uplata je primljena 🎵",
             text:`Hvala na narudžbini!\n\nUplata je uspešno primljena i tvoja narudžbina je sada u statusu „Plaćeno“.\n\nPaket: ${o.package||"-"}\nPesma za: ${o.recipient||"-"}\n\nLudak Na Kvadrat`
           });
+          if(result.error) throw new Error(`Potvrda kupcu: ${result.error.message}`);
         }
+        if(process.env.NOTIFICATION_EMAIL){
+          const result=await resend.emails.send({
+            from:process.env.EMAIL_FROM,
+            to:[process.env.NOTIFICATION_EMAIL],
+            subject:`💰 Plaćeno — ${o.recipient||"pesma"} — ${o.package||""}`,
+            text:lines.join("\n")
+          });
+          if(result.error) throw new Error(`Obavijest vlasniku: ${result.error.message}`);
+        }
+      }else{
+        console.error("Automatski e-mail nije podešen: potrebni su RESEND_API_KEY i verificirani EMAIL_FROM.");
       }
     }
   }catch(err){
