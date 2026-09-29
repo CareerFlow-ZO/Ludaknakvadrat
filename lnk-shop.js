@@ -4,6 +4,21 @@
   window.__LNK_SHOP_V1 = true;
 
   const WA='38631244612';
+  // Public campaign codes. Orders arrive on WhatsApp, so the code is also sent
+  // in the order message for manual verification and partner attribution.
+  const PROMO_CODES={MISTICIZEM10:{percent:10,category:'music'}};
+  const requestedPromo=new URLSearchParams(location.search).get('promo')?.trim().toUpperCase()||'';
+  let activePromo=PROMO_CODES[requestedPromo]?.category==='music'?requestedPromo:'';
+  const promoText={
+    sl:{label:'Koda za popust',apply:'Uporabi',valid:'Koda je aktivna: 10 % popusta na glasbene izdelke.',invalid:'Ta koda ne velja za glasbene izdelke.',note:'Popust in kodo potrdimo pred plačilom.'},
+    sr:{label:'Kod za popust',apply:'Primijeni',valid:'Kod je aktivan: 10% popusta na muzičke proizvode.',invalid:'Ovaj kod ne važi za muzičke proizvode.',note:'Popust i kod potvrđujemo prije plaćanja.'},
+    en:{label:'Discount code',apply:'Apply',valid:'Code applied: 10% off music products.',invalid:'This code is not valid for music products.',note:'We confirm the discount before payment.'},
+    de:{label:'Rabattcode',apply:'Anwenden',valid:'Code aktiv: 10 % Rabatt auf Musikprodukte.',invalid:'Dieser Code gilt nicht für Musikprodukte.',note:'Wir bestätigen den Rabatt vor der Zahlung.'}
+  };
+  function promoCopy(){return promoText[lang()]||promoText.sr}
+  function euros(cents){return (cents/100).toFixed(2).replace('.',',')+' €'}
+  function cents(price){return Math.round(Number(price.replace(/[^\d,]/g,'').replace(',','.'))*100)}
+  function discounted(price){return Math.round(cents(price)*(100-PROMO_CODES[activePromo].percent)/100)}
 
   const COPY={
     sr:{
@@ -95,7 +110,13 @@
 
   function lang(){return document.getElementById('language')?.value || localStorage.getItem('lnkDisplayLang') || localStorage.getItem('ludakLang') || 'sr'}
   function t(){return COPY[lang()]||COPY.sr}
-  function wa(product,price){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(t().orderText+product+' — '+price)}
+  function wa(product,price,kind){
+    let message=t().orderText+product+' — '+price;
+    if(kind==='music' && activePromo){
+      message+='\nKod: '+activePromo+' (10%)\nCijena s popustom: '+euros(discounted(price));
+    }
+    return 'https://wa.me/'+WA+'?text='+encodeURIComponent(message);
+  }
   const PREVIEW_ASSETS={
     barber:'/assets/previews/barbershop.png?v=2',
     beauty:'/assets/previews/beauty.png?v=2',
@@ -124,11 +145,14 @@
   function card(p,kind){
     const c=t(), img=productPreview(p,kind), actions=[];
     actions.push('<button type="button" class="ls-btn ls-preview-open" data-lnk-preview-src="'+img+'" data-lnk-preview-title="'+p.name.replace(/\"/g,'&quot;')+'">'+c.demo+'</button>');
-    actions.push('<a class="ls-btn primary" href="'+wa(p.name,p.price)+'" target="_blank" rel="noopener">'+c.buy+'</a>');
+    actions.push('<a class="ls-btn primary" href="'+wa(p.name,p.price,kind)+'" target="_blank" rel="noopener">'+c.buy+'</a>');
+    const price=(kind==='music'&&activePromo)
+      ? '<s class="ls-price-old">'+p.price+'</s> '+euros(discounted(p.price))
+      : p.price;
     return '<article class="ls-card'+(p.featured?' featured':'')+'">'+(p.featured?'<span class="ls-popular">'+c.popular+'</span>':'')+
-      '<button type="button" class="ls-product-visual" data-lnk-preview-src="'+img+'" data-lnk-preview-title="'+p.name.replace(/\"/g,'&quot;')+'"><img src="'+img+'" alt="'+p.name.replace(/\"/g,'&quot;')+' — LNK DIGITAL preview" loading="lazy" onerror="this.onerror=null;this.src='/assets/previews/business.png?v=3'"><span>'+c.demo+' ↗</span></button>'+
+      '<button type="button" class="ls-product-visual" data-lnk-preview-src="'+img+'" data-lnk-preview-title="'+p.name.replace(/\"/g,'&quot;')+'"><img src="'+img+'" alt="'+p.name.replace(/\"/g,'&quot;')+' — LNK DIGITAL preview" loading="lazy" onerror="this.onerror=null;this.src=&quot;/assets/previews/business.png?v=3&quot;"><span>'+c.demo+' ↗</span></button>'+
       '<div class="ls-card-copy"><div class="ls-card-top-mini"><span class="ls-card-icon">'+p.icon+'</span><span class="ls-preview-badge">LNK DIGITAL</span></div>'+
-      '<h4>'+p.name+'</h4><p>'+p.desc+'</p><div class="ls-price">'+p.price+'</div>'+
+      '<h4>'+p.name+'</h4><p>'+p.desc+'</p><div class="ls-price">'+price+'</div>'+
       '<div class="ls-actions two">'+actions.join('')+'</div></div></article>';
   }
 
@@ -145,7 +169,8 @@
       '<div class="ls-note">'+c.note+'</div></div>';
   }
   function group(id,kicker,title,desc,items){
-    return '<section class="ls-group" id="lnk-shop-'+id+'"><div class="ls-group-head"><div><span class="ls-group-kicker">'+kicker+'</span><h3>'+title+'</h3></div><p>'+desc+'</p></div><div class="ls-grid '+id+'">'+items.map(p=>card(p,id)).join('')+'</div></section>';
+    const promo=id==='music'?'<div class="ls-promo"><label for="ls-promo-code">'+promoCopy().label+'</label><div class="ls-promo-controls"><input id="ls-promo-code" type="text" maxlength="32" autocomplete="off" value="'+activePromo+'" placeholder="KOD"><button type="button" id="ls-promo-apply">'+promoCopy().apply+'</button></div><p id="ls-promo-status" role="status" aria-live="polite">'+(activePromo?promoCopy().valid:promoCopy().note)+'</p></div>':'';
+    return '<section class="ls-group" id="lnk-shop-'+id+'"><div class="ls-group-head"><div><span class="ls-group-kicker">'+kicker+'</span><h3>'+title+'</h3></div><p>'+desc+'</p></div>'+promo+'<div class="ls-grid '+id+'">'+items.map(p=>card(p,id)).join('')+'</div></section>';
   }
 
   function ensure(){
@@ -172,6 +197,7 @@
 
   function bind(){
     document.addEventListener('click',e=>{
+      if(e.target.closest('#ls-promo-apply')){applyPromo();return;}
       const a=e.target.closest('a[href^="#lnk-shop"]');
       if(!a) return;
       const target=document.querySelector(a.getAttribute('href'));
@@ -180,9 +206,24 @@
       const h=document.querySelector('.site-header')?.offsetHeight||72;
       window.scrollTo({top:target.getBoundingClientRect().top+scrollY-h-12,behavior:'smooth'});
     });
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Enter' && e.target.id==='ls-promo-code'){e.preventDefault();applyPromo();}
+    });
     document.getElementById('language')?.addEventListener('change',()=>setTimeout(ensure,280));
     const nav=document.querySelector('.desktop-nav');
     if(nav) new MutationObserver(()=>ensureNav()).observe(nav,{childList:true});
+  }
+
+  function applyPromo(){
+    const input=document.getElementById('ls-promo-code');
+    const code=input?.value.trim().toUpperCase()||'';
+    if(code && PROMO_CODES[code]?.category!=='music'){
+      document.getElementById('ls-promo-status').textContent=promoCopy().invalid;
+      input.setAttribute('aria-invalid','true');
+      return;
+    }
+    activePromo=code;
+    ensure();
   }
 
   function boot(){ensure();bind();}
