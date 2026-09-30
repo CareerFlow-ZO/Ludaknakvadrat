@@ -4,226 +4,269 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#0b1812">
-<title>Landforce — Premium Digital Concept by LNK DIGITAL</title>
-<meta name="description" content="A non-binding premium brand and website concept prepared by LNK DIGITAL for Landforce.">
+<meta name="theme-color" content="#07120d">
+<title>Landforce — VIP Digital Concept by LNK DIGITAL</title>
+<meta name="description" content="A non-binding VIP brand and website concept prepared by LNK DIGITAL for Landforce.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0c1b14;--forest:#123c2a;--forest2:#0a281c;--leaf:#2e7048;--lime:#dff071;
-  --sand:#efe9dd;--cream:#fbfaf5;--paper:#fffef9;--wood:#bb7147;--sky:#dfece4;
-  --muted:#68756e;--line:rgba(12,27,20,.14);--white:#fff;
-  --shadow:0 22px 70px rgba(12,27,20,.12)
+  --ink:#091710;--forest:#103d2a;--forest2:#071b12;--forest3:#0d291d;--leaf:#2f7449;
+  --lime:#e7f878;--lime2:#cced54;--sand:#efe9dc;--cream:#faf8f2;--paper:#fffef9;
+  --wood:#ba7148;--sky:#dfece5;--muted:#68766e;--line:rgba(9,23,16,.13);
+  --glass:rgba(255,255,255,.72);--shadow:0 28px 90px rgba(7,27,18,.14);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
 a{color:inherit}
-.wrap{width:min(1220px,calc(100% - 40px));margin:auto}
-.previewbar{position:relative;z-index:80;background:#07120d;color:#cfd9d2;font-size:11px;text-align:center;padding:9px 16px;letter-spacing:.08em;text-transform:uppercase}
+.wrap{width:min(1240px,calc(100% - 44px));margin:auto}
+.previewbar{position:relative;z-index:100;background:#050d09;color:#d2ddd6;font-size:10px;text-align:center;padding:9px 16px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.08)}
 .previewbar b{color:var(--lime)}
-header{position:sticky;top:0;z-index:70;background:rgba(251,250,245,.82);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:.25s}
-header.scrolled{border-color:var(--line);box-shadow:0 8px 30px rgba(8,20,14,.06)}
-.nav{height:80px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-.brand{display:flex;align-items:center;gap:12px;font:800 24px/1 "Manrope";letter-spacing:-.055em;text-decoration:none}
-.brandmark{position:relative;width:28px;height:28px;border-radius:50%;background:var(--forest);overflow:hidden;box-shadow:inset 0 0 0 6px var(--lime)}
-.brandmark:before,.brandmark:after{content:"";position:absolute;background:var(--lime);border-radius:99px}
-.brandmark:before{width:6px;height:30px;left:11px;top:-1px;transform:rotate(34deg)}
-.brandmark:after{width:24px;height:5px;left:2px;top:12px;transform:rotate(-22deg)}
-nav{display:flex;gap:26px;align-items:center}
-nav a{text-decoration:none;font-size:13px;font-weight:700;color:#30423a}
-.navcta{padding:12px 17px;border-radius:999px;background:var(--ink);color:white!important}
-.mobile-cta{display:none;text-decoration:none;background:var(--ink);color:white;border-radius:999px;padding:11px 14px;font-weight:700;font-size:12px}
-
-.hero{padding:54px 0 26px;position:relative}
-.hero:before{content:"";position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(223,240,113,.24),transparent 65%);top:-280px;right:-260px;pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:54px;align-items:center}
-.kicker{display:flex;align-items:center;gap:10px;color:var(--leaf);font:800 11px "Manrope";letter-spacing:.14em;text-transform:uppercase}
-.kicker:before{content:"";width:30px;height:2px;background:var(--leaf)}
-h1{font:800 clamp(54px,7.2vw,100px)/.9 "Manrope";letter-spacing:-.072em;margin:20px 0 26px;max-width:800px}
-h1 .line2{color:var(--leaf)}
-.lead{font-size:19px;line-height:1.65;color:var(--muted);max-width:720px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;border-radius:999px;padding:14px 19px;font-weight:800;font-size:13px;transition:.2s transform,.2s background,.2s box-shadow;border:1px solid var(--ink)}
+.progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--lime),#7ce3a6);z-index:120;width:0}
+header{position:sticky;top:0;z-index:90;background:rgba(250,248,242,.78);backdrop-filter:blur(22px) saturate(130%);border-bottom:1px solid transparent;transition:.25s}
+header.scrolled{border-color:var(--line);box-shadow:0 14px 40px rgba(8,22,15,.06)}
+.nav{height:80px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font:800 24px/1 "Manrope";letter-spacing:-.055em}
+.brandmark{position:relative;width:30px;height:30px;border-radius:50%;background:var(--forest2);box-shadow:inset 0 0 0 7px var(--lime);overflow:hidden}
+.brandmark:before,.brandmark:after{content:"";position:absolute;background:var(--lime);border-radius:999px}
+.brandmark:before{width:6px;height:34px;left:12px;top:-2px;transform:rotate(33deg)}
+.brandmark:after{width:25px;height:5px;left:2px;top:13px;transform:rotate(-22deg)}
+nav{display:flex;align-items:center;gap:24px}
+nav a{text-decoration:none;font-size:12px;font-weight:800;color:#33463c}
+.navcta{background:var(--ink);color:#fff!important;border-radius:999px;padding:12px 17px}
+.mobile-cta{display:none;text-decoration:none;background:var(--ink);color:#fff;padding:11px 14px;border-radius:999px;font-size:11px;font-weight:800}
+.section-label{font:800 10px "Manrope";letter-spacing:.16em;text-transform:uppercase;color:var(--leaf)}
+.dark .section-label{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:800;border:1px solid var(--ink);transition:.22s transform,.22s box-shadow,.22s background}
 .btn:hover{transform:translateY(-2px)}
-.btn.primary{background:var(--ink);color:#fff;box-shadow:0 12px 26px rgba(12,27,20,.14)}
-.btn.ghost{background:#fff;border-color:var(--line)}
-.hero-note{font-size:12px;color:#7d8982;margin-top:16px}
+.btn.primary{background:var(--ink);color:#fff;box-shadow:0 12px 30px rgba(9,23,16,.14)}
+.btn.light{background:#fff;border-color:var(--line)}
+.btn.lime{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+.reveal{opacity:0;transform:translateY(24px);transition:.75s opacity cubic-bezier(.2,.7,.2,1),.75s transform cubic-bezier(.2,.7,.2,1)}
+.reveal.show{opacity:1;transform:none}
 
-.hero-stage{position:relative;min-height:640px}
-.stage-card{position:absolute;inset:0;border-radius:42px;background:linear-gradient(145deg,#123e2b,#0b2017 72%);overflow:hidden;box-shadow:0 32px 90px rgba(10,39,27,.22)}
-.stage-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,#000,transparent 78%)}
-.terrain{position:absolute;width:540px;height:540px;border-radius:50%;right:-110px;top:-40px;background:
- repeating-radial-gradient(ellipse at 50% 50%,rgba(223,240,113,.93) 0 3px,transparent 4px 21px);
- opacity:.45;transform:rotate(-16deg)}
-.stage-logo{position:absolute;left:34px;top:34px;color:#fff;display:flex;align-items:center;gap:10px;font:800 15px "Manrope";letter-spacing:.04em}
-.stage-logo i{width:10px;height:10px;background:var(--lime);border-radius:50%;display:block}
-.stage-content{position:absolute;left:36px;right:36px;bottom:38px;color:#fff}
-.stage-content .mini{font:800 10px "Manrope";letter-spacing:.16em;color:var(--lime);text-transform:uppercase}
-.stage-content h2{font:800 clamp(38px,4.4vw,62px)/.96 "Manrope";letter-spacing:-.055em;margin:13px 0 14px;max-width:500px}
-.stage-content p{color:#cbd8d0;max-width:500px;line-height:1.55;font-size:15px}
-.float-card{position:absolute;right:-24px;top:96px;width:235px;padding:18px;border-radius:22px;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.8)}
-.float-card .label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:800}
-.float-card strong{display:block;font:800 24px/1 "Manrope";letter-spacing:-.04em;margin-top:8px}
-.float-card p{font-size:12px;line-height:1.45;color:var(--muted);margin:8px 0 0}
-.float-card.two{left:-28px;right:auto;top:auto;bottom:74px;background:var(--lime);width:220px}
-.float-card.two p{color:#3d523e}
-.pulse{display:inline-block;width:8px;height:8px;background:var(--leaf);border-radius:50%;box-shadow:0 0 0 0 rgba(46,112,72,.35);animation:pulse 1.8s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(46,112,72,0)}100%{box-shadow:0 0 0 0 rgba(46,112,72,0)}}
+.hero{position:relative;padding:48px 0 38px;isolation:isolate}
+.hero:before{content:"";position:absolute;z-index:-1;width:820px;height:820px;border-radius:50%;right:-300px;top:-390px;background:radial-gradient(circle,rgba(231,248,120,.34),rgba(231,248,120,.08) 38%,transparent 68%)}
+.hero:after{content:"";position:absolute;z-index:-1;width:540px;height:540px;border-radius:50%;left:-320px;bottom:-180px;background:radial-gradient(circle,rgba(47,116,73,.14),transparent 68%)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+.hero-copy{padding:28px 0}
+.kicker{display:flex;align-items:center;gap:10px;font:800 10px "Manrope";letter-spacing:.16em;text-transform:uppercase;color:var(--leaf)}
+.kicker:before{content:"";width:32px;height:2px;background:var(--leaf)}
+h1{font:800 clamp(58px,7.3vw,102px)/.9 "Manrope";letter-spacing:-.075em;margin:20px 0 25px;max-width:800px}
+h1 .accent{color:var(--leaf)}
+.lead{font-size:19px;line-height:1.65;color:var(--muted);max-width:700px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-note{margin-top:16px;font-size:11px;color:#7f8a84}
+.hero-stage{min-height:650px;position:relative}
+.stage{position:absolute;inset:0;border-radius:42px;background:linear-gradient(155deg,#12442f 0%,#0b2b1e 46%,#071b12 100%);overflow:hidden;box-shadow:0 40px 100px rgba(6,27,18,.24)}
+.stage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 44%,rgba(4,15,10,.65) 100%)}
+.gridlines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,#000,transparent 80%)}
+.contours{position:absolute;width:620px;height:620px;border-radius:50%;right:-155px;top:-60px;background:repeating-radial-gradient(ellipse at 50% 50%,rgba(231,248,120,.92) 0 3px,transparent 4px 20px);opacity:.31;transform:rotate(-15deg)}
+.glow{position:absolute;width:360px;height:360px;border-radius:50%;left:-90px;bottom:-100px;background:radial-gradient(circle,rgba(124,227,166,.38),transparent 68%)}
+.stage-top{position:absolute;z-index:2;left:34px;right:34px;top:32px;display:flex;justify-content:space-between;color:#fff}
+.stage-brand{font:800 13px "Manrope";letter-spacing:.08em}.stage-brand i{display:inline-block;width:8px;height:8px;background:var(--lime);border-radius:50%;margin-right:7px}
+.stage-top span{font-size:10px;color:#b5c9bd;text-transform:uppercase;letter-spacing:.12em}
+.stage-copy{position:absolute;z-index:3;left:36px;right:36px;bottom:36px;color:white}
+.stage-copy small{font:800 9px "Manrope";letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}
+.stage-copy h2{font:800 clamp(42px,5vw,68px)/.95 "Manrope";letter-spacing:-.058em;margin:12px 0 14px;max-width:540px}
+.stage-copy p{max-width:500px;color:#c9d7cf;line-height:1.55;font-size:14px}
+.float-card{position:absolute;z-index:8;padding:17px;border-radius:20px;background:rgba(255,255,255,.93);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.76);box-shadow:var(--shadow);width:225px}
+.float-card.a{right:-24px;top:92px}.float-card.b{left:-28px;bottom:72px;background:var(--lime)}
+.float-card .lab{font:800 9px "Manrope";letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.float-card strong{display:block;font:800 26px/1 "Manrope";letter-spacing:-.045em;margin-top:8px}
+.float-card p{font-size:11px;line-height:1.45;color:var(--muted);margin:7px 0 0}.float-card.b p{color:#415440}
+.pulse{display:inline-block;width:7px;height:7px;background:var(--leaf);border-radius:50%;margin-right:5px;box-shadow:0 0 0 0 rgba(47,116,73,.4);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 11px rgba(47,116,73,0)}100%{box-shadow:0 0 0 0 rgba(47,116,73,0)}}
 
-.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--paper);margin-top:56px}
-.track{display:flex;width:max-content;animation:scroll 28s linear infinite}
-.track span{padding:15px 26px;font:800 11px "Manrope";letter-spacing:.12em;text-transform:uppercase;color:#456052;white-space:nowrap}
-.track span:after{content:"✦";color:var(--leaf);margin-left:28px}
-@keyframes scroll{to{transform:translateX(-50%)}}
+.brand-ribbon{margin-top:56px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.66);overflow:hidden}
+.ribbon-track{display:flex;width:max-content;animation:marquee 26s linear infinite}
+.ribbon-track span{white-space:nowrap;padding:15px 25px;font:800 10px "Manrope";letter-spacing:.14em;text-transform:uppercase;color:#42584d}
+.ribbon-track span:after{content:"✦";color:var(--leaf);margin-left:27px}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
-.section{padding:96px 0}
-.section.dark{background:var(--forest2);color:white}
+.section{padding:100px 0}
+.section.dark{background:var(--forest2);color:#fff}
 .section.sand{background:var(--sand)}
-.section-head{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:end;margin-bottom:36px}
-.eyebrow{font:800 10px "Manrope";letter-spacing:.15em;text-transform:uppercase;color:var(--leaf);margin-bottom:12px}
-.dark .eyebrow{color:var(--lime)}
-.section-head h2,.big-copy h2{font:800 clamp(40px,5vw,70px)/.96 "Manrope";letter-spacing:-.06em;margin:0}
-.section-head p,.big-copy p{font-size:16px;line-height:1.7;color:var(--muted);max-width:560px}
-.dark .section-head p,.dark .big-copy p{color:#b8c9bf}
+.section-head{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:end;margin-bottom:38px}
+.section-head h2,.story-copy h2{font:800 clamp(42px,5.2vw,72px)/.95 "Manrope";letter-spacing:-.065em;margin:10px 0 0}
+.section-head p,.story-copy p{font-size:16px;line-height:1.72;color:var(--muted);max-width:570px;margin:0}
+.dark .section-head p,.dark .story-copy p{color:#b7c8be}
+
+.mockup-wrap{position:relative;padding:20px 0 10px}
+.browser{border:1px solid var(--line);background:#fff;border-radius:30px;overflow:hidden;box-shadow:0 32px 90px rgba(9,23,16,.12)}
+.browserbar{height:52px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 18px;gap:9px;background:#fbfbf8}
+.dot{width:8px;height:8px;border-radius:50%;background:#cdd5d0}.dot:nth-child(2){background:#b8c7be}.dot:nth-child(3){background:#9fb5a8}
+.url{margin-left:12px;border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:999px;font-size:10px;color:#728078;flex:1}
+.screen{display:grid;grid-template-columns:1fr 1fr;min-height:520px}
+.screen-left{padding:50px;background:linear-gradient(150deg,#fbfaf5,#f2efe7)}
+.screen-left h3{font:800 55px/.95 "Manrope";letter-spacing:-.06em;margin:15px 0}.screen-left p{color:var(--muted);line-height:1.6}
+.screen-right{position:relative;background:linear-gradient(160deg,#164831,#0a271b);overflow:hidden}.screen-right:after{content:"";position:absolute;inset:-15%;background:repeating-radial-gradient(ellipse at 65% 50%,rgba(231,248,120,.42) 0 2px,transparent 3px 19px);transform:rotate(-10deg);opacity:.5}
+.mock-menu{display:flex;gap:10px;margin-top:26px}.mock-pill{padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:10px;font-weight:800}
+.phone{position:absolute;right:-18px;bottom:-28px;width:220px;background:#07120d;border:7px solid #07120d;border-radius:34px;box-shadow:0 30px 80px rgba(7,27,18,.25);overflow:hidden}
+.phone-top{height:22px;background:#07120d;position:relative}.phone-top:after{content:"";position:absolute;left:50%;top:6px;transform:translateX(-50%);width:60px;height:6px;border-radius:99px;background:#1b2a22}
+.phone-screen{background:#f9f7f1;padding:18px 15px 22px;min-height:410px}.phone-screen .mini-brand{font:800 12px "Manrope";margin-bottom:18px}.phone-screen .hero-mini{border-radius:18px;padding:20px;background:#123d2a;color:#fff}.phone-screen h4{font:800 27px/.96 "Manrope";letter-spacing:-.05em;margin:12px 0}.phone-screen p{font-size:10px;color:#d2ded6;line-height:1.45}.phone-screen .action-mini{margin-top:12px;display:inline-block;background:var(--lime);color:var(--ink);padding:8px 10px;border-radius:999px;font-size:9px;font-weight:800}.phone-screen .mini-list{display:grid;gap:8px;margin-top:12px}.phone-screen .mini-row{border:1px solid var(--line);border-radius:12px;padding:10px;font-size:9px;font-weight:800;background:#fff}
 
 .bento{display:grid;grid-template-columns:1.25fr .75fr .75fr;grid-template-rows:260px 260px;gap:16px}
 .panel{position:relative;border-radius:28px;border:1px solid var(--line);background:#fff;padding:28px;overflow:hidden}
-.panel.primary{grid-row:1/3;background:var(--forest);color:#fff;border:0}
-.panel.primary:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-120px;bottom:-120px;background:radial-gradient(circle at 40% 40%,var(--lime),transparent 62%);opacity:.45}
-.panel h3{font:800 28px/1.05 "Manrope";letter-spacing:-.04em;margin:12px 0 10px}
-.panel p{color:var(--muted);font-size:14px;line-height:1.55;max-width:480px}
-.panel.primary p{color:#cfe0d5}.panel small{font:800 10px "Manrope";letter-spacing:.12em;text-transform:uppercase;color:var(--leaf)}
-.panel.primary small{color:var(--lime)}
-.panel .big-num{position:absolute;left:28px;bottom:22px;font:800 82px/1 "Manrope";letter-spacing:-.07em;color:var(--lime)}
-.panel .caption{position:absolute;left:28px;bottom:25px;color:var(--muted);font-size:12px}
-.panel.stat .value{font:800 62px/1 "Manrope";letter-spacing:-.06em;margin-top:36px;color:var(--leaf)}
-.panel.stat .sub{font-size:12px;color:var(--muted);margin-top:8px}
+.panel.main{grid-row:1/3;background:var(--forest);color:#fff;border:0}
+.panel.main:after{content:"";position:absolute;width:370px;height:370px;border-radius:50%;right:-130px;bottom:-140px;background:radial-gradient(circle,var(--lime),transparent 65%);opacity:.4}
+.panel small{font:800 9px "Manrope";letter-spacing:.14em;text-transform:uppercase;color:var(--leaf)}
+.panel.main small{color:var(--lime)}.panel h3{font:800 28px/1.04 "Manrope";letter-spacing:-.045em;margin:12px 0 10px}.panel p{font-size:13px;line-height:1.55;color:var(--muted);max-width:470px}.panel.main p{color:#cfddd4}
+.panel .num{font:800 72px/1 "Manrope";letter-spacing:-.065em;color:var(--leaf);margin-top:38px}.panel.main .num{position:absolute;left:28px;bottom:22px;color:var(--lime)}
+.panel .caption{position:absolute;left:28px;bottom:24px;font-size:11px;color:var(--muted)}
 
 .paths{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.path{position:relative;border-radius:30px;padding:28px;min-height:420px;border:1px solid rgba(255,255,255,.13);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));overflow:hidden;transition:.25s transform,.25s border}
-.path:hover{transform:translateY(-6px);border-color:rgba(223,240,113,.48)}
-.path .n{font:800 11px "Manrope";color:var(--lime);letter-spacing:.12em}.path h3{font:800 34px/1 "Manrope";letter-spacing:-.05em;margin:50px 0 14px}.path p{color:#b9c8c0;line-height:1.55}
-.path .go{position:absolute;bottom:26px;left:28px;font-weight:800;font-size:13px;color:#fff}
-.path .orb{position:absolute;width:170px;height:170px;border-radius:50%;right:-45px;bottom:-50px;border:34px solid rgba(223,240,113,.14)}
-.path.wood .orb{border-color:rgba(187,113,71,.28)}
-.path.work .orb{border-color:rgba(130,189,157,.2)}
+.path{position:relative;min-height:420px;border-radius:30px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));padding:28px;overflow:hidden;transition:.25s transform,.25s border-color}
+.path:hover{transform:translateY(-6px);border-color:rgba(231,248,120,.42)}
+.path .n{font:800 10px "Manrope";letter-spacing:.13em;color:var(--lime)}.path h3{font:800 34px/1 "Manrope";letter-spacing:-.05em;margin:50px 0 14px}.path p{color:#b8c7bf;line-height:1.55}.path .go{position:absolute;left:28px;bottom:27px;font-size:12px;font-weight:800}.path .orb{position:absolute;width:180px;height:180px;border-radius:50%;right:-55px;bottom:-55px;border:36px solid rgba(231,248,120,.12)}.path:nth-child(1) .orb{border-color:rgba(124,227,166,.18)}.path:nth-child(3) .orb{border-color:rgba(186,113,72,.25)}
 
-.audience-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:52px;align-items:start}
-.big-copy{position:sticky;top:130px}
-.routes{display:grid;gap:12px}
-.route{background:#fff;border:1px solid var(--line);border-radius:20px;padding:19px 20px;display:grid;grid-template-columns:42px 1fr auto;gap:15px;align-items:center;transition:.22s transform,.22s box-shadow}
-.route:hover{transform:translateX(6px);box-shadow:0 15px 35px rgba(12,27,20,.08)}
-.route .ico{width:42px;height:42px;border-radius:13px;background:var(--sky);display:grid;place-items:center;font-weight:800;color:var(--leaf)}
-.route b{display:block;font:800 15px "Manrope";margin-bottom:4px}.route span{font-size:12px;color:var(--muted)}.route .arr{font-size:20px;color:var(--leaf)}
+.audience-shell{display:grid;grid-template-columns:.88fr 1.12fr;gap:54px}
+.story-copy{position:sticky;top:126px;height:max-content}
+.selector{display:grid;gap:10px}
+.selector button{width:100%;border:1px solid var(--line);background:#fff;border-radius:18px;padding:17px 18px;text-align:left;display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:center;font-family:inherit;color:var(--ink);cursor:pointer;transition:.2s transform,.2s box-shadow,.2s background}
+.selector button:hover,.selector button.active{transform:translateX(5px);box-shadow:0 15px 35px rgba(9,23,16,.08);background:#fdfef8}
+.sel-num{width:40px;height:40px;border-radius:12px;background:var(--sky);display:grid;place-items:center;font:800 11px "Manrope";color:var(--leaf)}.selector b{display:block;font:800 14px "Manrope";margin-bottom:3px}.selector span{font-size:11px;color:var(--muted)}.selector .arr{font-size:19px;color:var(--leaf)}
+.audience-preview{margin-top:16px;border-radius:24px;background:var(--forest2);color:#fff;padding:24px;min-height:180px;position:relative;overflow:hidden}.audience-preview:after{content:"";position:absolute;inset:-20%;background:repeating-radial-gradient(ellipse at 80% 50%,rgba(231,248,120,.18) 0 2px,transparent 3px 17px);opacity:.45}.audience-preview .inside{position:relative;z-index:2}.audience-preview small{font:800 9px "Manrope";letter-spacing:.13em;text-transform:uppercase;color:var(--lime)}.audience-preview h4{font:800 26px/1 "Manrope";letter-spacing:-.045em;margin:10px 0 8px}.audience-preview p{font-size:12px;line-height:1.55;color:#c0cec6;max-width:520px}
+
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.metric{padding:28px;border-top:1px solid rgba(255,255,255,.15);background:linear-gradient(180deg,rgba(255,255,255,.035),transparent);border-radius:0 0 20px 20px}.metric strong{display:block;font:800 clamp(56px,6.4vw,88px)/.95 "Manrope";letter-spacing:-.07em;color:var(--lime)}.metric span{display:block;margin-top:10px;color:#c1d0c7;font-size:12px;line-height:1.55}
 
 .wood-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:58px;align-items:center}
-.wood-visual{aspect-ratio:1;border-radius:38px;position:relative;overflow:hidden;background:linear-gradient(145deg,#c88459,#74472f);box-shadow:0 28px 75px rgba(85,47,29,.22)}
-.wood-visual:before{content:"";position:absolute;inset:8%;border-radius:50%;background:repeating-radial-gradient(ellipse at 46% 54%,rgba(255,244,221,.52) 0 2px,transparent 3px 17px);transform:rotate(5deg)}
-.wood-chip{position:absolute;right:22px;top:22px;background:rgba(255,255,255,.93);padding:13px 15px;border-radius:16px;font-size:11px;font-weight:800;color:#6f4a37}
-.product-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
-.product{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px}
-.product .swatch{height:64px;border-radius:11px;margin-bottom:12px;background:linear-gradient(120deg,#d7a27b,#8a5639)}
-.product:nth-child(2) .swatch{background:linear-gradient(120deg,#c9a77a,#6f5139)}
-.product:nth-child(3) .swatch{background:linear-gradient(120deg,#debc8b,#875a3d)}
-.product b{font-size:12px}.product span{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.wood-art{aspect-ratio:1;border-radius:40px;position:relative;overflow:hidden;background:linear-gradient(145deg,#ce8c62,#74452e);box-shadow:0 34px 90px rgba(94,55,34,.22)}
+.wood-art:before{content:"";position:absolute;inset:7%;border-radius:50%;background:repeating-radial-gradient(ellipse at 45% 54%,rgba(255,247,228,.52) 0 2px,transparent 3px 18px);transform:rotate(4deg)}.wood-art:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;left:-70px;bottom:-80px;background:radial-gradient(circle,rgba(255,236,193,.34),transparent 67%)}
+.wood-chip{position:absolute;z-index:2;right:22px;top:22px;background:rgba(255,255,255,.93);padding:12px 14px;border-radius:15px;font:800 9px "Manrope";letter-spacing:.08em;color:#6c4937}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.product{border:1px solid var(--line);background:#fff;border-radius:16px;padding:14px}.swatch{height:62px;border-radius:10px;margin-bottom:11px;background:linear-gradient(120deg,#d9a67c,#84513a)}.product:nth-child(2) .swatch{background:linear-gradient(120deg,#c6a176,#67513d)}.product:nth-child(3) .swatch{background:linear-gradient(120deg,#dfbc8a,#885a3d)}.product b{font-size:11px}.product span{display:block;color:var(--muted);font-size:9px;margin-top:3px}
 
-.delivery{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px}
-.spec{display:grid;gap:12px}
-.spec-row{display:grid;grid-template-columns:1fr auto;gap:30px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.14)}
-.spec-row b{font-size:13px}.spec-row span{color:#b7c6bd;font-size:12px;text-align:right}
-.timeline{display:grid;gap:13px}
-.tline{display:grid;grid-template-columns:66px 1fr;gap:18px}
-.week{font:800 11px "Manrope";color:var(--lime);padding-top:3px}
-.tbody{border-left:1px solid rgba(255,255,255,.18);padding:0 0 24px 18px;position:relative}
-.tbody:before{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--lime);left:-4px;top:5px}.tbody b{font:800 15px "Manrope"}.tbody p{font-size:12px;color:#b7c6bd;line-height:1.5;margin:6px 0 0}
+.brand-system{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:start}
+.palette{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.sw{height:140px;border-radius:20px;padding:15px;display:flex;flex-direction:column;justify-content:flex-end;font-size:10px;font-weight:800}.sw:nth-child(1){background:#071b12;color:#fff}.sw:nth-child(2){background:#2f7449;color:#fff}.sw:nth-child(3){background:#e7f878}.sw:nth-child(4){background:#efe9dc}.typography{border:1px solid var(--line);background:#fff;border-radius:28px;padding:28px}.typography .display{font:800 52px/.95 "Manrope";letter-spacing:-.06em;margin:12px 0}.typography .bodyline{font-size:15px;color:var(--muted);line-height:1.65}.type-meta{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:18px;margin-top:22px;font-size:10px;color:var(--muted)}
 
-.cta{padding:28px 0 100px}.cta-box{border-radius:36px;background:var(--lime);padding:52px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;box-shadow:0 28px 80px rgba(107,128,42,.16)}
-.cta-box h2{font:800 clamp(38px,5vw,66px)/.95 "Manrope";letter-spacing:-.06em;margin:0 0 12px}.cta-box p{margin:0;color:#3d533c;max-width:700px;line-height:1.55}
-footer{border-top:1px solid var(--line);padding:34px 0 44px}.footer-grid{display:flex;justify-content:space-between;gap:30px;color:var(--muted);font-size:12px}.concept{max-width:720px;line-height:1.5}
-.reveal{opacity:0;transform:translateY(20px);transition:.7s opacity,.7s transform}.reveal.show{opacity:1;transform:none}
+.delivery-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:54px}
+.specs{display:grid;gap:11px}.spec{display:grid;grid-template-columns:1fr auto;gap:24px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.14)}.spec b{font-size:12px}.spec span{font-size:11px;color:#b4c4bb;text-align:right}
+.timeline{display:grid;gap:12px}.tl{display:grid;grid-template-columns:68px 1fr;gap:18px}.week{font:800 10px "Manrope";color:var(--lime);padding-top:3px}.tlbody{border-left:1px solid rgba(255,255,255,.18);padding:0 0 23px 18px;position:relative}.tlbody:before{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--lime);left:-4px;top:5px}.tlbody b{font:800 14px "Manrope"}.tlbody p{font-size:11px;color:#b6c5bd;line-height:1.5;margin:5px 0 0}
 
-@media(max-width:980px){
-  nav{display:none}.mobile-cta{display:inline-flex}.hero-grid,.section-head,.audience-grid,.wood-grid,.delivery{grid-template-columns:1fr}
-  .hero-stage{min-height:540px;margin-top:12px}.float-card{right:16px}.float-card.two{left:16px}
-  .bento{grid-template-columns:1fr 1fr;grid-template-rows:auto}.panel.primary{grid-row:auto;grid-column:1/3;min-height:320px}
-  .paths{grid-template-columns:1fr}.big-copy{position:static}.section{padding:76px 0}
+.cta{padding:28px 0 100px}.cta-card{border-radius:38px;background:linear-gradient(135deg,var(--lime),#d0ef5a);padding:54px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;box-shadow:0 30px 90px rgba(122,144,52,.18);position:relative;overflow:hidden}.cta-card:after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;right:-170px;top:-180px;border:70px solid rgba(255,255,255,.23)}.cta-card>*{position:relative;z-index:2}.cta-card h2{font:800 clamp(40px,5.2vw,68px)/.95 "Manrope";letter-spacing:-.065em;margin:0 0 12px}.cta-card p{margin:0;color:#3f523d;max-width:720px;line-height:1.6}
+footer{border-top:1px solid var(--line);padding:34px 0 46px}.footer-grid{display:flex;justify-content:space-between;gap:30px;color:var(--muted);font-size:11px}.concept{max-width:760px;line-height:1.55}
+
+@media(max-width:1000px){
+  nav{display:none}.mobile-cta{display:inline-flex}.hero-grid,.section-head,.audience-shell,.wood-grid,.brand-system,.delivery-grid{grid-template-columns:1fr}
+  .hero-stage{min-height:560px;margin-top:10px}.float-card.a{right:14px}.float-card.b{left:14px}
+  .screen{grid-template-columns:1fr}.screen-right{min-height:320px}.phone{right:16px}
+  .bento{grid-template-columns:1fr 1fr;grid-template-rows:auto}.panel.main{grid-row:auto;grid-column:1/3;min-height:320px}
+  .paths,.impact-grid{grid-template-columns:1fr}.story-copy{position:static}.section{padding:78px 0}
 }
-@media(max-width:640px){
-  .wrap{width:min(100% - 24px,1220px)}.previewbar{font-size:9px}.nav{height:68px}.brand{font-size:21px}
-  h1{font-size:52px}.lead{font-size:16px}.hero{padding-top:34px}.hero-stage{min-height:500px}
-  .stage-card{border-radius:28px}.stage-content{left:24px;right:24px;bottom:28px}.stage-content h2{font-size:38px}
-  .float-card{width:185px}.float-card.two{width:178px}.marquee{margin-top:38px}
-  .bento{display:block}.panel{margin-bottom:12px;min-height:230px}.panel.primary{min-height:310px}
-  .product-strip{grid-template-columns:1fr}.cta-box{padding:32px 24px;grid-template-columns:1fr}.footer-grid{display:block}.footer-grid>div+div{margin-top:20px}
+@media(max-width:650px){
+  .wrap{width:min(100% - 24px,1240px)}.previewbar{font-size:8px}.nav{height:68px}.brand{font-size:20px}
+  .hero{padding-top:28px}.hero-copy{padding-top:10px}h1{font-size:50px}.lead{font-size:16px}.hero-stage{min-height:505px}.stage{border-radius:28px}.stage-copy{left:23px;right:23px;bottom:26px}.stage-copy h2{font-size:39px}
+  .float-card{width:182px;padding:14px}.float-card strong{font-size:21px}.brand-ribbon{margin-top:38px}
+  .browser{border-radius:20px}.screen-left{padding:30px 22px}.screen-left h3{font-size:38px}.phone{position:relative;width:86%;right:auto;bottom:auto;margin:-80px auto 16px}
+  .bento{display:block}.panel{margin-bottom:12px;min-height:220px}.panel.main{min-height:300px}
+  .products{grid-template-columns:1fr}.palette{grid-template-columns:1fr 1fr}.sw{height:110px}
+  .cta-card{padding:34px 24px;grid-template-columns:1fr}.footer-grid{display:block}.footer-grid>div+div{margin-top:18px}
 }
 </style>
 </head>
 <body>
-<div class="previewbar"><b>Premium Concept Preview</b> — Non-binding design exploration by LNK DIGITAL for Landforce</div>
+<div class="progress" id="progress"></div>
+<div class="previewbar"><b>VIP Concept Preview</b> — Non-binding design exploration by LNK DIGITAL for Landforce</div>
+
 <header id="hdr">
   <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="Landforce concept home"><span class="brandmark"></span>LANDFORCE</a>
+    <a class="brand" href="#top"><span class="brandmark"></span>LANDFORCE</a>
     <nav>
-      <a href="#system">The System</a><a href="#programs">Programs</a><a href="#audiences">Audiences</a><a href="#wood">Responsible Wood</a><a href="#delivery">Delivery</a>
-      <a class="navcta" href="#contact">Take action ↗</a>
+      <a href="#vision">Vision</a><a href="#system">System</a><a href="#programs">Programs</a><a href="#audiences">Audiences</a><a href="#wood">Wood</a><a href="#delivery">Delivery</a>
+      <a class="navcta" href="#contact">Discuss concept ↗</a>
     </nav>
-    <a class="mobile-cta" href="#contact">Take action ↗</a>
+    <a class="mobile-cta" href="#contact">Discuss ↗</a>
   </div>
 </header>
 
 <main id="top">
 <section class="hero">
   <div class="wrap hero-grid">
-    <div class="reveal">
-      <div class="kicker">People + land + opportunity</div>
-      <h1>Work that changes<br><span class="line2">landscapes — and lives.</span></h1>
-      <p class="lead">A premium digital system that makes Landforce easier to understand, easier to navigate, and easier to act on — from joining a crew to hiring one, supporting the mission, or exploring Responsible Wood Products.</p>
+    <div class="hero-copy reveal">
+      <div class="kicker">Pittsburgh / People / Land / Opportunity</div>
+      <h1>Build people.<br><span class="accent">Restore land.</span><br>Move a city forward.</h1>
+      <p class="lead">A premium digital system designed to make Landforce instantly understandable, emotionally compelling, and effortless to act on — whether someone wants to join a crew, hire one, support the mission, or explore Responsible Wood Products.</p>
       <div class="hero-actions">
-        <a class="btn primary" href="#programs">Explore the concept ↗</a>
-        <a class="btn ghost" href="#delivery">See the digital system</a>
+        <a class="btn primary" href="#vision">Enter the concept ↗</a>
+        <a class="btn light" href="#delivery">See the build system</a>
       </div>
-      <div class="hero-note">Concept direction only — final branding, copy, photography and functionality would be developed collaboratively with Landforce.</div>
+      <div class="hero-note">Concept direction only. Final brand, copy, imagery and functionality would be developed collaboratively with Landforce.</div>
     </div>
+
     <div class="hero-stage reveal">
-      <div class="stage-card">
-        <div class="stage-grid"></div><div class="terrain"></div>
-        <div class="stage-logo"><i></i> LANDFORCE / PITTSBURGH</div>
-        <div class="stage-content">
-          <div class="mini">Land stewardship + workforce development</div>
-          <h2>One mission.<br>Many ways in.</h2>
-          <p>A clearer experience for crew candidates, municipalities, nonprofits, partners, donors, and Responsible Wood customers.</p>
+      <div class="stage">
+        <div class="gridlines"></div><div class="contours"></div><div class="glow"></div>
+        <div class="stage-top"><div class="stage-brand"><i></i> LANDFORCE</div><span>Digital concept / 2026</span></div>
+        <div class="stage-copy">
+          <small>Workforce development + environmental stewardship</small>
+          <h2>One mission.<br>Four clear actions.</h2>
+          <p>Join the Crew. Hire Landforce. Explore Responsible Wood. Support the Mission.</p>
         </div>
       </div>
-      <div class="float-card"><div class="label">Live impact</div><strong>90,000+</strong><p>hours of environmental stewardship contributed</p></div>
-      <div class="float-card two"><div class="label"><span class="pulse"></span> Audience routing</div><strong>4 clear actions</strong><p>Join. Hire. Shop. Support.</p></div>
+      <div class="float-card a"><div class="lab">Public impact</div><strong>90K+</strong><p>hours of environmental stewardship contributed</p></div>
+      <div class="float-card b"><div class="lab"><span class="pulse"></span> UX principle</div><strong>Action first</strong><p>Every visitor gets a clear next step.</p></div>
     </div>
   </div>
 </section>
 
-<div class="marquee"><div class="track">
-  <span>Workforce Development</span><span>Land Stewardship</span><span>Responsible Wood Production</span><span>Accessible by design</span><span>CMS-powered</span><span>SEO-ready</span>
-  <span>Workforce Development</span><span>Land Stewardship</span><span>Responsible Wood Production</span><span>Accessible by design</span><span>CMS-powered</span><span>SEO-ready</span>
-</div></div>
+<div class="brand-ribbon">
+  <div class="ribbon-track">
+    <span>Workforce Development</span><span>Land Stewardship</span><span>Responsible Wood</span><span>Accessible by Design</span><span>CMS Powered</span><span>SEO Ready</span>
+    <span>Workforce Development</span><span>Land Stewardship</span><span>Responsible Wood</span><span>Accessible by Design</span><span>CMS Powered</span><span>SEO Ready</span>
+  </div>
+</div>
 
-<section class="section" id="system">
+<section class="section" id="vision">
   <div class="wrap">
     <div class="section-head reveal">
-      <div><div class="eyebrow">The digital system</div><h2>Make the organization feel simple — without making it smaller.</h2></div>
-      <p>The concept turns a complex organization into a clear, audience-first experience: one brand system, distinct program identities, strong pathways to action, and a flexible CMS underneath it all.</p>
+      <div><div class="section-label">The vision</div><h2>Not a redesign.<br>A clearer Landforce.</h2></div>
+      <p>The strongest version of this project is bigger than a new homepage. It is a digital operating system for the brand: clearer architecture, cleaner audience routing, stronger proof of impact, flexible content management, and room for each business line to grow.</p>
+    </div>
+
+    <div class="mockup-wrap reveal">
+      <div class="browser">
+        <div class="browserbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><div class="url">landforcepgh.org / concept</div></div>
+        <div class="screen">
+          <div class="screen-left">
+            <div class="section-label">Audience-first home</div>
+            <h3>Work that changes landscapes — and lives.</h3>
+            <p>Mission, services and opportunities become one coherent experience instead of separate content silos.</p>
+            <div class="mock-menu"><span class="mock-pill">Join the Crew</span><span class="mock-pill">Hire Landforce</span><span class="mock-pill">Responsible Wood</span></div>
+          </div>
+          <div class="screen-right"></div>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="phone-top"></div>
+        <div class="phone-screen">
+          <div class="mini-brand">LANDFORCE ●</div>
+          <div class="hero-mini"><small>PEOPLE + LAND</small><h4>One mission. Many ways in.</h4><p>Clear pathways designed for real mobile behavior.</p><span class="action-mini">Explore ↗</span></div>
+          <div class="mini-list"><div class="mini-row">Join the Crew ↗</div><div class="mini-row">Hire Landforce ↗</div><div class="mini-row">Responsible Wood ↗</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section sand" id="system">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="section-label">Brand + digital system</div><h2>Complex organization.<br>Simple experience.</h2></div>
+      <p>A successful architecture lets each audience find what matters to them in seconds while preserving the depth of Landforce's programs, services, impact and social-enterprise work.</p>
     </div>
     <div class="bento">
-      <article class="panel primary reveal">
-        <small>Brand architecture</small><h3>One Landforce.<br>Three connected engines.</h3>
-        <p>Workforce Development, Land Stewardship and Responsible Wood Production become distinct but visibly connected — helping every audience understand how the mission, services and revenue-generating work reinforce one another.</p>
-        <div class="big-num">01</div>
+      <article class="panel main reveal">
+        <small>Brand architecture</small><h3>One Landforce.<br>Three connected engines.</h3><p>Workforce Development, Land Stewardship and Responsible Wood become distinct enough to understand — but connected enough to feel like one organization.</p><div class="num">01</div>
       </article>
-      <article class="panel stat reveal"><small>Proof of impact</small><div class="value">201</div><div class="sub">people hired as Landforce Crew Members since 2015</div></article>
-      <article class="panel stat reveal"><small>Job readiness</small><div class="value">100%</div><div class="sub">of crew members showed an increase in job readiness</div></article>
-      <article class="panel reveal"><small>Conversion architecture</small><h3>Action first.</h3><p>Primary tasks stay visible: Hire Landforce, Join the Crew, Explore Responsible Wood, Donate.</p><div class="caption">Fewer dead ends. More qualified actions.</div></article>
-      <article class="panel reveal"><small>Experience standards</small><h3>Fast. Accessible. Editable.</h3><p>WCAG 2.2 AA-oriented patterns, reusable content blocks, clean analytics and performance-first delivery.</p><div class="caption">Built for staff, not just visitors.</div></article>
+      <article class="panel reveal"><small>Impact proof</small><div class="num counter" data-target="201">0</div><p>people hired as Landforce Crew Members since 2015</p></article>
+      <article class="panel reveal"><small>Job readiness</small><div class="num counter" data-target="100" data-suffix="%">0</div><p>of crew members showed an increase in job readiness</p></article>
+      <article class="panel reveal"><small>Conversion structure</small><h3>Action first.</h3><p>Primary tasks stay visible across desktop and mobile.</p><div class="caption">Join. Hire. Shop. Support.</div></article>
+      <article class="panel reveal"><small>Editorial system</small><h3>Built for staff.</h3><p>Reusable CMS blocks, cleaner governance and flexible campaign pages.</p><div class="caption">Easy to publish. Hard to break.</div></article>
     </div>
   </div>
 </section>
@@ -231,42 +274,59 @@ footer{border-top:1px solid var(--line);padding:34px 0 44px}.footer-grid{display
 <section class="section dark" id="programs">
   <div class="wrap">
     <div class="section-head reveal">
-      <div><div class="eyebrow">Programs + business lines</div><h2>Three stories.<br>One unmistakable mission.</h2></div>
-      <p>Each area gets its own visual rhythm, calls to action and content hierarchy — while staying inside a single Landforce design system.</p>
+      <div><div class="section-label">Programs + business lines</div><h2>Three stories.<br>One unmistakable mission.</h2></div>
+      <p>Each area gets its own content rhythm, visual cues and calls to action while staying inside a single Landforce design system.</p>
     </div>
     <div class="paths">
-      <article class="path work reveal"><div class="n">01 / PEOPLE</div><h3>Workforce<br>Development</h3><p>Training, paid experience, career coaching and pathways toward life-sustaining employment.</p><div class="go">Join the crew ↗</div><div class="orb"></div></article>
-      <article class="path reveal"><div class="n">02 / LAND</div><h3>Land<br>Stewardship</h3><p>Professionally skilled crews improving vacant land, trails, habitats, trees and green infrastructure.</p><div class="go">Hire Landforce ↗</div><div class="orb"></div></article>
-      <article class="path wood reveal"><div class="n">03 / MATERIAL</div><h3>Responsible<br>Wood</h3><p>Recovering Pittsburgh-area urban logs and extending their life through useful wood products and services.</p><div class="go">Explore wood ↗</div><div class="orb"></div></article>
+      <article class="path reveal"><div class="n">01 / PEOPLE</div><h3>Workforce<br>Development</h3><p>Training, paid experience, career coaching and pathways toward stable employment.</p><div class="go">Join the Crew ↗</div><div class="orb"></div></article>
+      <article class="path reveal"><div class="n">02 / LAND</div><h3>Land<br>Stewardship</h3><p>Professional crews improving land, trails, habitats, trees and green infrastructure.</p><div class="go">Hire Landforce ↗</div><div class="orb"></div></article>
+      <article class="path reveal"><div class="n">03 / MATERIAL</div><h3>Responsible<br>Wood</h3><p>Recovering urban trees and extending their life through useful wood products and services.</p><div class="go">Explore Wood ↗</div><div class="orb"></div></article>
     </div>
   </div>
 </section>
 
-<section class="section sand" id="audiences">
-  <div class="wrap audience-grid">
-    <div class="big-copy reveal">
-      <div class="eyebrow">Audience-first navigation</div>
+<section class="section" id="audiences">
+  <div class="wrap audience-shell">
+    <div class="story-copy reveal">
+      <div class="section-label">Audience routing</div>
       <h2>The site should know why you came.</h2>
-      <p>Instead of forcing visitors to decode organizational structure first, the experience routes them immediately toward the job they need to do.</p>
+      <p>Instead of asking visitors to decode the organization first, the interface routes them directly toward the job they need to do.</p>
+      <div class="audience-preview" id="audPreview">
+        <div class="inside"><small>Selected journey</small><h4>Join the Crew</h4><p>Eligibility, program experience, benefits, expectations, application steps and a clear call to apply.</p></div>
+      </div>
     </div>
-    <div class="routes">
-      <div class="route reveal"><div class="ico">01</div><div><b>I want to work with Landforce</b><span>Training, eligibility, crew experience, next steps</span></div><div class="arr">↗</div></div>
-      <div class="route reveal"><div class="ico">02</div><div><b>I need a professional crew</b><span>Services, project fit, capabilities, inquiry flow</span></div><div class="arr">↗</div></div>
-      <div class="route reveal"><div class="ico">03</div><div><b>I want local responsible wood</b><span>Products, services, species, availability, log donation</span></div><div class="arr">↗</div></div>
-      <div class="route reveal"><div class="ico">04</div><div><b>I want to support the mission</b><span>Donate, partner, volunteer, impact stories</span></div><div class="arr">↗</div></div>
-      <div class="route reveal"><div class="ico">05</div><div><b>I want to understand the impact</b><span>Outcomes, reports, projects, stories and evidence</span></div><div class="arr">↗</div></div>
+    <div class="selector reveal">
+      <button class="active" data-title="Join the Crew" data-copy="Eligibility, program experience, benefits, expectations, application steps and a clear call to apply."><span class="sel-num">01</span><span><b>I want to work with Landforce</b><span>Training, crew experience, next steps</span></span><span class="arr">↗</span></button>
+      <button data-title="Hire Landforce" data-copy="Service categories, project fit, capabilities, proof of work and a frictionless inquiry flow for organizations and partners."><span class="sel-num">02</span><span><b>I need a professional crew</b><span>Services, capabilities, project inquiry</span></span><span class="arr">↗</span></button>
+      <button data-title="Explore Responsible Wood" data-copy="Product discovery, custom services, material story, availability and a guided path for customers or log donors."><span class="sel-num">03</span><span><b>I want local responsible wood</b><span>Products, services, material, log donation</span></span><span class="arr">↗</span></button>
+      <button data-title="Support the Mission" data-copy="Donation, partnership and supporter journeys that connect giving directly to people, places and measurable outcomes."><span class="sel-num">04</span><span><b>I want to support the mission</b><span>Donate, partner, volunteer, learn</span></span><span class="arr">↗</span></button>
+      <button data-title="Understand the Impact" data-copy="Stories, metrics, reports and projects organized around evidence, outcomes and real community transformation."><span class="sel-num">05</span><span><b>I want to understand the impact</b><span>Outcomes, reports, projects, stories</span></span><span class="arr">↗</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="section-label">Impact system</div><h2>Make proof impossible to miss.</h2></div>
+      <p>Impact data should not live only in reports. It can become part of the core narrative — supported by stories, projects and downloadable evidence.</p>
+    </div>
+    <div class="impact-grid">
+      <div class="metric reveal"><strong>201</strong><span>people hired as Landforce Crew Members since 2015</span></div>
+      <div class="metric reveal"><strong>90K+</strong><span>hours of environmental stewardship contributed</span></div>
+      <div class="metric reveal"><strong>100%</strong><span>of crew members showed an increase in job readiness</span></div>
     </div>
   </div>
 </section>
 
 <section class="section" id="wood">
   <div class="wrap wood-grid">
-    <div class="wood-visual reveal"><div class="wood-chip">RESPONSIBLE WOOD / CONCEPT</div></div>
-    <div class="big-copy reveal">
-      <div class="eyebrow">Responsible Wood Products</div>
+    <div class="wood-art reveal"><div class="wood-chip">RESPONSIBLE WOOD / VIP CONCEPT</div></div>
+    <div class="story-copy reveal" style="position:static">
+      <div class="section-label">Responsible Wood Products</div>
       <h2>Give the business line room to sell.</h2>
-      <p>Responsible Wood can feel like a premium product experience without disconnecting from the wider Landforce mission. Product discovery, custom milling, kiln drying, transportation, chipping, wood splitting and log donation can all live in one focused flow.</p>
-      <div class="product-strip">
+      <p>Responsible Wood can feel like a focused product experience without losing its connection to Landforce's mission. The result: clearer product discovery, stronger inquiries, and a credible foundation for future commerce.</p>
+      <div class="products">
         <div class="product"><div class="swatch"></div><b>Kiln-dried lumber</b><span>Product discovery</span></div>
         <div class="product"><div class="swatch"></div><b>Custom milling</b><span>Service inquiry</span></div>
         <div class="product"><div class="swatch"></div><b>Donate a log</b><span>Guided intake flow</span></div>
@@ -275,35 +335,57 @@ footer{border-top:1px solid var(--line);padding:34px 0 44px}.footer-grid{display
   </div>
 </section>
 
+<section class="section sand">
+  <div class="wrap brand-system">
+    <div class="story-copy reveal" style="position:static">
+      <div class="section-label">Visual language</div>
+      <h2>Built to feel grounded, modern and alive.</h2>
+      <p>A premium system can use a deep forest foundation, high-visibility lime for action, natural earth tones for warmth, and typography with enough authority for civic and institutional audiences.</p>
+      <div class="palette">
+        <div class="sw">Deep Forest<br>#071B12</div>
+        <div class="sw">Land Green<br>#2F7449</div>
+        <div class="sw">Action Lime<br>#E7F878</div>
+        <div class="sw">Natural Sand<br>#EFE9DC</div>
+      </div>
+    </div>
+    <div class="typography reveal">
+      <div class="section-label">Typography system</div>
+      <div class="display">Work that<br>moves people.</div>
+      <div class="bodyline">A flexible type system balances bold public-facing storytelling with highly readable program, service, report and application content.</div>
+      <div class="type-meta"><span>Display / Manrope 800</span><span>Body / DM Sans</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="section dark" id="delivery">
-  <div class="wrap delivery">
+  <div class="wrap delivery-grid">
     <div class="reveal">
-      <div class="eyebrow">RFP alignment</div>
-      <h2 style="font:800 clamp(38px,5vw,64px)/.98 'Manrope';letter-spacing:-.055em;margin:0 0 30px">Designed to become a real system — not just a pretty homepage.</h2>
-      <div class="spec">
-        <div class="spec-row"><b>Brand architecture</b><span>Clear + scalable</span></div>
-        <div class="spec-row"><b>CMS</b><span>Reusable editorial blocks</span></div>
-        <div class="spec-row"><b>Accessibility</b><span>WCAG 2.2 AA target</span></div>
-        <div class="spec-row"><b>Integrations</b><span>Forms / newsletter / CRM-ready</span></div>
-        <div class="spec-row"><b>SEO + analytics</b><span>Structured from launch</span></div>
-        <div class="spec-row"><b>Performance</b><span>Mobile-first</span></div>
+      <div class="section-label">RFP alignment</div>
+      <h2 style="font:800 clamp(40px,5vw,66px)/.95 'Manrope';letter-spacing:-.06em;margin:10px 0 28px">Designed to become a real operating system — not just a beautiful homepage.</h2>
+      <div class="specs">
+        <div class="spec"><b>Brand architecture</b><span>Clear + scalable</span></div>
+        <div class="spec"><b>CMS</b><span>Reusable editorial components</span></div>
+        <div class="spec"><b>Accessibility</b><span>WCAG 2.2 AA target</span></div>
+        <div class="spec"><b>Integrations</b><span>Forms / newsletter / CRM-ready</span></div>
+        <div class="spec"><b>SEO + analytics</b><span>Structured from launch</span></div>
+        <div class="spec"><b>Performance</b><span>Mobile-first</span></div>
       </div>
     </div>
     <div class="timeline reveal">
-      <div class="tline"><div class="week">W01–02</div><div class="tbody"><b>Discovery + brand strategy</b><p>Stakeholders, audiences, analytics, content and brand architecture.</p></div></div>
-      <div class="tline"><div class="week">W03–05</div><div class="tbody"><b>Messaging + visual system</b><p>Naming support, messaging, visual rules and priority collateral direction.</p></div></div>
-      <div class="tline"><div class="week">W06–08</div><div class="tbody"><b>UX + UI</b><p>Sitemap, journeys, wireframes and responsive interface system.</p></div></div>
-      <div class="tline"><div class="week">W09–14</div><div class="tbody"><b>Development + integrations</b><p>CMS build, components, forms, integrations and migration.</p></div></div>
-      <div class="tline"><div class="week">W15–16</div><div class="tbody"><b>Accessibility + QA + launch</b><p>Validation, performance, training, documentation and production launch.</p></div></div>
+      <div class="tl"><div class="week">W01–02</div><div class="tlbody"><b>Discovery + brand strategy</b><p>Stakeholders, audiences, analytics, content and architecture.</p></div></div>
+      <div class="tl"><div class="week">W03–05</div><div class="tlbody"><b>Messaging + visual system</b><p>Naming support, messaging, visual rules and core collateral direction.</p></div></div>
+      <div class="tl"><div class="week">W06–08</div><div class="tlbody"><b>UX + UI</b><p>Sitemap, journeys, wireframes and responsive interface system.</p></div></div>
+      <div class="tl"><div class="week">W09–14</div><div class="tlbody"><b>Development + integrations</b><p>CMS build, components, forms, integrations and migration.</p></div></div>
+      <div class="tl"><div class="week">W15–16</div><div class="tlbody"><b>Accessibility + QA + launch</b><p>Validation, performance, training, documentation and production launch.</p></div></div>
     </div>
   </div>
 </section>
 
 <section class="cta" id="contact">
   <div class="wrap">
-    <div class="cta-box reveal">
-      <div><h2>One mission.<br>A clearer next chapter.</h2><p>This preview shows the level of clarity, craft and digital structure LNK DIGITAL would bring to the Landforce RFP — with final brand decisions developed collaboratively, not imposed upfront.</p></div>
-      <a class="btn primary" href="mailto:elijah@landforcepgh.org?subject=Landforce%20Digital%20Concept">Discuss the concept ↗</a>
+    <div class="cta-card reveal">
+      <div><h2>One mission.<br>A much clearer next chapter.</h2><p>This VIP preview demonstrates the level of strategic thinking, interaction design and visual craft LNK DIGITAL would bring to the Landforce RFP — while keeping all final brand decisions collaborative.</p></div>
+      <a class="btn primary" href="mailto:contact@ludaknakvadrat.com?subject=Landforce%20VIP%20Digital%20Concept">Discuss the concept ↗</a>
     </div>
   </div>
 </section>
@@ -318,9 +400,44 @@ footer{border-top:1px solid var(--line);padding:34px 0 44px}.footer-grid{display
 
 <script>
 const hdr=document.getElementById('hdr');
-addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>8),{passive:true});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
+const progress=document.getElementById('progress');
+addEventListener('scroll',()=>{
+  hdr.classList.toggle('scrolled',scrollY>8);
+  const h=document.documentElement.scrollHeight-innerHeight;
+  progress.style.width=(h>0?(scrollY/h)*100:0)+'%';
+},{passive:true});
+
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.classList.add('show');
+    if(e.target.querySelectorAll) e.target.querySelectorAll('.counter').forEach(runCounter);
+    io.unobserve(e.target);
+  }
+}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+function runCounter(el){
+  if(el.dataset.done)return;
+  el.dataset.done='1';
+  const target=Number(el.dataset.target||0), suffix=el.dataset.suffix||'';
+  const start=performance.now(), dur=1100;
+  function tick(t){
+    const p=Math.min(1,(t-start)/dur);
+    const eased=1-Math.pow(1-p,3);
+    el.textContent=Math.round(target*eased)+suffix;
+    if(p<1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const buttons=[...document.querySelectorAll('.selector button')];
+const preview=document.getElementById('audPreview');
+buttons.forEach(btn=>btn.addEventListener('click',()=>{
+  buttons.forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  preview.querySelector('h4').textContent=btn.dataset.title;
+  preview.querySelector('p').textContent=btn.dataset.copy;
+}));
 </script>
 </body>
 </html>
