@@ -151,21 +151,45 @@ h1 .accent{color:var(--leaf)}
 .cta{padding:28px 0 100px}.cta-card{border-radius:38px;background:linear-gradient(135deg,var(--lime),#d0ef5a);padding:54px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;box-shadow:0 30px 90px rgba(122,144,52,.18);position:relative;overflow:hidden}.cta-card:after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;right:-170px;top:-180px;border:70px solid rgba(255,255,255,.23)}.cta-card>*{position:relative;z-index:2}.cta-card h2{font:800 clamp(40px,5.2vw,68px)/.95 "Manrope";letter-spacing:-.065em;margin:0 0 12px}.cta-card p{margin:0;color:#3f523d;max-width:720px;line-height:1.6}
 footer{border-top:1px solid var(--line);padding:34px 0 46px}.footer-grid{display:flex;justify-content:space-between;gap:30px;color:var(--muted);font-size:11px}.concept{max-width:760px;line-height:1.55}
 
+
+.official-logo{display:block;object-fit:contain}
+.header-logo{width:178px;height:58px;object-position:left center}
+.stage-logo-img{width:150px;height:52px;object-position:left center;filter:drop-shadow(0 3px 16px rgba(0,0,0,.16))}
+.stage-photo{position:absolute;inset:0;background-image:url("https://www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F5822-scaled.jpg");background-size:cover;background-position:58% center;filter:saturate(.88) contrast(1.04)}
+.stage-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,13,8,.14),rgba(3,13,8,.18) 38%,rgba(3,13,8,.45) 100%),linear-gradient(180deg,rgba(4,15,10,.06),rgba(4,15,10,.72) 78%);z-index:1}
+.gridlines,.contours,.glow{z-index:2}.stage-top,.stage-copy{z-index:5}
+.photo-proof{padding:74px 0 14px}
+.proof-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+.proof-media{position:relative;min-height:560px;border-radius:38px;overflow:hidden;box-shadow:0 34px 90px rgba(8,28,18,.16)}
+.proof-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 46%,rgba(5,18,11,.62) 100%)}
+.proof-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.proof-badge{position:absolute;z-index:3;left:24px;right:24px;bottom:22px;display:flex;align-items:end;justify-content:space-between;gap:24px;color:#fff}
+.proof-badge span{font:700 10px "Manrope";letter-spacing:.12em;text-transform:uppercase;color:#d7e4dc}
+.proof-badge b{font:800 23px/1 "Manrope";letter-spacing:-.04em;text-align:right}
+.proof-copy h2{font:800 clamp(42px,5vw,70px)/.95 "Manrope";letter-spacing:-.065em;margin:10px 0 20px}
+.proof-copy p{font-size:16px;line-height:1.72;color:var(--muted)}
+.proof-points{display:grid;gap:10px;margin-top:26px}
+.proof-points div{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:14px;padding:15px 0;border-top:1px solid var(--line)}
+.proof-points strong{font:800 11px "Manrope";color:var(--leaf)}
+.proof-points span{font-size:13px;font-weight:700;color:#35483e}
+.footer-branding{display:flex;align-items:center;gap:18px}.footer-logo{width:118px;height:56px;object-position:left center}
+.brandmark{display:none}
+
 @media(max-width:1000px){
-  nav{display:none}.mobile-cta{display:inline-flex}.hero-grid,.section-head,.audience-shell,.wood-grid,.brand-system,.delivery-grid{grid-template-columns:1fr}
-  .hero-stage{min-height:560px;margin-top:10px}.float-card.a{right:14px}.float-card.b{left:14px}
+  nav{display:none}.mobile-cta{display:inline-flex}.hero-grid,.section-head,.audience-shell,.wood-grid,.brand-system,.delivery-grid,.proof-grid{grid-template-columns:1fr}
+  .hero-stage{min-height:560px;margin-top:10px}.proof-media{min-height:460px}.float-card.a{right:14px}.float-card.b{left:14px}
   .screen{grid-template-columns:1fr}.screen-right{min-height:320px}.phone{right:16px}
   .bento{grid-template-columns:1fr 1fr;grid-template-rows:auto}.panel.main{grid-row:auto;grid-column:1/3;min-height:320px}
   .paths,.impact-grid{grid-template-columns:1fr}.story-copy{position:static}.section{padding:78px 0}
 }
 @media(max-width:650px){
-  .wrap{width:min(100% - 24px,1240px)}.previewbar{font-size:8px}.nav{height:68px}.brand{font-size:20px}
+  .wrap{width:min(100% - 24px,1240px)}.previewbar{font-size:8px}.nav{height:68px}.brand{font-size:20px}.header-logo{width:145px;height:50px}
   .hero{padding-top:28px}.hero-copy{padding-top:10px}h1{font-size:50px}.lead{font-size:16px}.hero-stage{min-height:505px}.stage{border-radius:28px}.stage-copy{left:23px;right:23px;bottom:26px}.stage-copy h2{font-size:39px}
   .float-card{width:182px;padding:14px}.float-card strong{font-size:21px}.brand-ribbon{margin-top:38px}
   .browser{border-radius:20px}.screen-left{padding:30px 22px}.screen-left h3{font-size:38px}.phone{position:relative;width:86%;right:auto;bottom:auto;margin:-80px auto 16px}
   .bento{display:block}.panel{margin-bottom:12px;min-height:220px}.panel.main{min-height:300px}
   .products{grid-template-columns:1fr}.palette{grid-template-columns:1fr 1fr}.sw{height:110px}
-  .cta-card{padding:34px 24px;grid-template-columns:1fr}.footer-grid{display:block}.footer-grid>div+div{margin-top:18px}
+  .cta-card{padding:34px 24px;grid-template-columns:1fr}.proof-media{min-height:390px;border-radius:26px}.proof-badge{display:block}.proof-badge b{display:block;text-align:left;margin-top:8px}.footer-grid{display:block}.footer-grid>div+div{margin-top:18px}
 }
 </style>
 </head>
@@ -175,7 +199,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 46px}.footer-grid{display
 
 <header id="hdr">
   <div class="wrap nav">
-    <a class="brand" href="#top"><span class="brandmark"></span>LANDFORCE</a>
+    <a class="brand" href="#top" aria-label="Landforce concept home"><img class="official-logo header-logo" src="https://www.landforcepgh.org/wp-content/uploads/2024/05/Landforce-normal-2-300x150.png" alt="Landforce logo"></a>
     <nav>
       <a href="#vision">Vision</a><a href="#system">System</a><a href="#programs">Programs</a><a href="#audiences">Audiences</a><a href="#wood">Wood</a><a href="#delivery">Delivery</a>
       <a class="navcta" href="#contact">Discuss concept ↗</a>
@@ -190,9 +214,9 @@ footer{border-top:1px solid var(--line);padding:34px 0 46px}.footer-grid{display
     <div class="hero-copy reveal">
       <div class="kicker">Pittsburgh / People / Land / Opportunity</div>
       <h1>Build people.<br><span class="accent">Restore land.</span><br>Move a city forward.</h1>
-      <p class="lead">A premium digital system designed to make Landforce instantly understandable, emotionally compelling, and effortless to act on — whether someone wants to join a crew, hire one, support the mission, or explore Responsible Wood Products.</p>
+      <p class="lead">A high-impact digital brand system designed to make Landforce instantly understandable, emotionally compelling, and effortless to act on — whether someone wants to join a crew, hire one, support the mission, or explore Responsible Wood Products.</p>
       <div class="hero-actions">
-        <a class="btn primary" href="#vision">Enter the concept ↗</a>
+        <a class="btn primary" href="#vision">Experience the concept ↗</a>
         <a class="btn light" href="#delivery">See the build system</a>
       </div>
       <div class="hero-note">Concept direction only. Final brand, copy, imagery and functionality would be developed collaboratively with Landforce.</div>
@@ -200,8 +224,8 @@ footer{border-top:1px solid var(--line);padding:34px 0 46px}.footer-grid{display
 
     <div class="hero-stage reveal">
       <div class="stage">
-        <div class="gridlines"></div><div class="contours"></div><div class="glow"></div>
-        <div class="stage-top"><div class="stage-brand"><i></i> LANDFORCE</div><span>Digital concept / 2026</span></div>
+        <div class="stage-photo" role="img" aria-label="Landforce crew member working outdoors"></div><div class="stage-shade"></div><div class="gridlines"></div><div class="contours"></div><div class="glow"></div>
+        <div class="stage-top"><img class="official-logo stage-logo-img" src="https://www.landforcepgh.org/wp-content/uploads/2024/05/Landforce-light-1-300x150.png" alt="Landforce logo"><span>Digital concept / 2026</span></div>
         <div class="stage-copy">
           <small>Workforce development + environmental stewardship</small>
           <h2>One mission.<br>Four clear actions.</h2>
@@ -394,7 +418,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 46px}.footer-grid{display
 <footer>
   <div class="wrap footer-grid">
     <div class="concept"><b>Concept preview only.</b> This is a non-binding design exploration prepared by LNK DIGITAL for the Landforce RFP process. It is not an official Landforce website and does not represent final approved branding, content, photography, functionality, or legal claims. Impact figures shown are based on public information currently displayed by Landforce.</div>
-    <div><b>LNK DIGITAL</b><br>contact@ludaknakvadrat.com<br>+386 31 244 612<br>ludaknakvadrat.com</div>
+    <div class="footer-branding"><img class="official-logo footer-logo" src="https://www.landforcepgh.org/wp-content/uploads/2024/05/Landforce-normal-2-300x150.png" alt="Landforce logo"><div><b>Concept by LNK DIGITAL</b><br>contact@ludaknakvadrat.com<br>+386 31 244 612<br>ludaknakvadrat.com</div></div>
   </div>
 </footer>
 
