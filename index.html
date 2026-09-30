@@ -1,66 +1,467 @@
-<!DOCTYPE html>
-<html lang="sr">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050505">
-  <meta name="description" content="LNK DIGITAL izrađuje web stranice, brending i digitalna rješenja. Ludak Na Kvadrat stvara personalizovane pjesme po tvojoj priči.">
-  <meta name="google-site-verification" content="KU_b6sTnNx8-14W_GmuUqAA5M1iJRF1WeAqUc-IwttU">
-  <link rel="canonical" href="https://www.ludaknakvadrat.com/">
-  <title>LNK DIGITAL — Web stranice i digitalne usluge | Ludak Na Kvadrat</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#07120d">
+<title>Landforce — VIP Digital Concept by LNK DIGITAL</title>
+<meta name="description" content="A non-binding VIP brand and website concept prepared by LNK DIGITAL for Landforce.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#091710;--forest:#103d2a;--forest2:#071b12;--forest3:#0d291d;--leaf:#2f7449;
+  --lime:#e7f878;--lime2:#cced54;--sand:#efe9dc;--cream:#faf8f2;--paper:#fffef9;
+  --wood:#ba7148;--sky:#dfece5;--muted:#68766e;--line:rgba(9,23,16,.13);
+  --glass:rgba(255,255,255,.72);--shadow:0 28px 90px rgba(7,27,18,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+a{color:inherit}
+.wrap{width:min(1240px,calc(100% - 44px));margin:auto}
+.previewbar{position:relative;z-index:100;background:#050d09;color:#d2ddd6;font-size:10px;text-align:center;padding:9px 16px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.08)}
+.previewbar b{color:var(--lime)}
+.progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--lime),#7ce3a6);z-index:120;width:0}
+header{position:sticky;top:0;z-index:90;background:rgba(250,248,242,.78);backdrop-filter:blur(22px) saturate(130%);border-bottom:1px solid transparent;transition:.25s}
+header.scrolled{border-color:var(--line);box-shadow:0 14px 40px rgba(8,22,15,.06)}
+.nav{height:80px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font:800 24px/1 "Manrope";letter-spacing:-.055em}
+.brandmark{position:relative;width:30px;height:30px;border-radius:50%;background:var(--forest2);box-shadow:inset 0 0 0 7px var(--lime);overflow:hidden}
+.brandmark:before,.brandmark:after{content:"";position:absolute;background:var(--lime);border-radius:999px}
+.brandmark:before{width:6px;height:34px;left:12px;top:-2px;transform:rotate(33deg)}
+.brandmark:after{width:25px;height:5px;left:2px;top:13px;transform:rotate(-22deg)}
+nav{display:flex;align-items:center;gap:24px}
+nav a{text-decoration:none;font-size:12px;font-weight:800;color:#33463c}
+.navcta{background:var(--ink);color:#fff!important;border-radius:999px;padding:12px 17px}
+.mobile-cta{display:none;text-decoration:none;background:var(--ink);color:#fff;padding:11px 14px;border-radius:999px;font-size:11px;font-weight:800}
+.section-label{font:800 10px "Manrope";letter-spacing:.16em;text-transform:uppercase;color:var(--leaf)}
+.dark .section-label{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:800;border:1px solid var(--ink);transition:.22s transform,.22s box-shadow,.22s background}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--ink);color:#fff;box-shadow:0 12px 30px rgba(9,23,16,.14)}
+.btn.light{background:#fff;border-color:var(--line)}
+.btn.lime{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+.reveal{opacity:0;transform:translateY(24px);transition:.75s opacity cubic-bezier(.2,.7,.2,1),.75s transform cubic-bezier(.2,.7,.2,1)}
+.reveal.show{opacity:1;transform:none}
+
+.hero{position:relative;padding:48px 0 38px;isolation:isolate}
+.hero:before{content:"";position:absolute;z-index:-1;width:820px;height:820px;border-radius:50%;right:-300px;top:-390px;background:radial-gradient(circle,rgba(231,248,120,.34),rgba(231,248,120,.08) 38%,transparent 68%)}
+.hero:after{content:"";position:absolute;z-index:-1;width:540px;height:540px;border-radius:50%;left:-320px;bottom:-180px;background:radial-gradient(circle,rgba(47,116,73,.14),transparent 68%)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+.hero-copy{padding:28px 0}
+.kicker{display:flex;align-items:center;gap:10px;font:800 10px "Manrope";letter-spacing:.16em;text-transform:uppercase;color:var(--leaf)}
+.kicker:before{content:"";width:32px;height:2px;background:var(--leaf)}
+h1{font:800 clamp(58px,7.3vw,102px)/.9 "Manrope";letter-spacing:-.075em;margin:20px 0 25px;max-width:800px}
+h1 .accent{color:var(--leaf)}
+.lead{font-size:19px;line-height:1.65;color:var(--muted);max-width:700px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-note{margin-top:16px;font-size:11px;color:#7f8a84}
+.hero-stage{min-height:650px;position:relative}
+.stage{position:absolute;inset:0;border-radius:42px;background:linear-gradient(155deg,#12442f 0%,#0b2b1e 46%,#071b12 100%);overflow:hidden;box-shadow:0 40px 100px rgba(6,27,18,.24)}
+.stage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 44%,rgba(4,15,10,.65) 100%)}
+.gridlines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,#000,transparent 80%)}
+.contours{position:absolute;width:620px;height:620px;border-radius:50%;right:-155px;top:-60px;background:repeating-radial-gradient(ellipse at 50% 50%,rgba(231,248,120,.92) 0 3px,transparent 4px 20px);opacity:.31;transform:rotate(-15deg)}
+.glow{position:absolute;width:360px;height:360px;border-radius:50%;left:-90px;bottom:-100px;background:radial-gradient(circle,rgba(124,227,166,.38),transparent 68%)}
+.stage-top{position:absolute;z-index:2;left:34px;right:34px;top:32px;display:flex;justify-content:space-between;color:#fff}
+.stage-brand{font:800 13px "Manrope";letter-spacing:.08em}.stage-brand i{display:inline-block;width:8px;height:8px;background:var(--lime);border-radius:50%;margin-right:7px}
+.stage-top span{font-size:10px;color:#b5c9bd;text-transform:uppercase;letter-spacing:.12em}
+.stage-copy{position:absolute;z-index:3;left:36px;right:36px;bottom:36px;color:white}
+.stage-copy small{font:800 9px "Manrope";letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}
+.stage-copy h2{font:800 clamp(42px,5vw,68px)/.95 "Manrope";letter-spacing:-.058em;margin:12px 0 14px;max-width:540px}
+.stage-copy p{max-width:500px;color:#c9d7cf;line-height:1.55;font-size:14px}
+.float-card{position:absolute;z-index:8;padding:17px;border-radius:20px;background:rgba(255,255,255,.93);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.76);box-shadow:var(--shadow);width:225px}
+.float-card.a{right:-24px;top:92px}.float-card.b{left:-28px;bottom:72px;background:var(--lime)}
+.float-card .lab{font:800 9px "Manrope";letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.float-card strong{display:block;font:800 26px/1 "Manrope";letter-spacing:-.045em;margin-top:8px}
+.float-card p{font-size:11px;line-height:1.45;color:var(--muted);margin:7px 0 0}.float-card.b p{color:#415440}
+.pulse{display:inline-block;width:7px;height:7px;background:var(--leaf);border-radius:50%;margin-right:5px;box-shadow:0 0 0 0 rgba(47,116,73,.4);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 11px rgba(47,116,73,0)}100%{box-shadow:0 0 0 0 rgba(47,116,73,0)}}
+
+.brand-ribbon{margin-top:56px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.66);overflow:hidden}
+.ribbon-track{display:flex;width:max-content;animation:marquee 26s linear infinite}
+.ribbon-track span{white-space:nowrap;padding:15px 25px;font:800 10px "Manrope";letter-spacing:.14em;text-transform:uppercase;color:#42584d}
+.ribbon-track span:after{content:"✦";color:var(--leaf);margin-left:27px}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+.section{padding:100px 0}
+.section.dark{background:var(--forest2);color:#fff}
+.section.sand{background:var(--sand)}
+.section-head{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:end;margin-bottom:38px}
+.section-head h2,.story-copy h2{font:800 clamp(42px,5.2vw,72px)/.95 "Manrope";letter-spacing:-.065em;margin:10px 0 0}
+.section-head p,.story-copy p{font-size:16px;line-height:1.72;color:var(--muted);max-width:570px;margin:0}
+.dark .section-head p,.dark .story-copy p{color:#b7c8be}
+
+.mockup-wrap{position:relative;padding:20px 0 10px}
+.browser{border:1px solid var(--line);background:#fff;border-radius:30px;overflow:hidden;box-shadow:0 32px 90px rgba(9,23,16,.12)}
+.browserbar{height:52px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 18px;gap:9px;background:#fbfbf8}
+.dot{width:8px;height:8px;border-radius:50%;background:#cdd5d0}.dot:nth-child(2){background:#b8c7be}.dot:nth-child(3){background:#9fb5a8}
+.url{margin-left:12px;border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:999px;font-size:10px;color:#728078;flex:1}
+.screen{display:grid;grid-template-columns:1fr 1fr;min-height:520px}
+.screen-left{padding:50px;background:linear-gradient(150deg,#fbfaf5,#f2efe7)}
+.screen-left h3{font:800 55px/.95 "Manrope";letter-spacing:-.06em;margin:15px 0}.screen-left p{color:var(--muted);line-height:1.6}
+.screen-right{position:relative;background:linear-gradient(160deg,#164831,#0a271b);overflow:hidden}.screen-right:after{content:"";position:absolute;inset:-15%;background:repeating-radial-gradient(ellipse at 65% 50%,rgba(231,248,120,.42) 0 2px,transparent 3px 19px);transform:rotate(-10deg);opacity:.5}
+.mock-menu{display:flex;gap:10px;margin-top:26px}.mock-pill{padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:10px;font-weight:800}
+.phone{position:absolute;right:-18px;bottom:-28px;width:220px;background:#07120d;border:7px solid #07120d;border-radius:34px;box-shadow:0 30px 80px rgba(7,27,18,.25);overflow:hidden}
+.phone-top{height:22px;background:#07120d;position:relative}.phone-top:after{content:"";position:absolute;left:50%;top:6px;transform:translateX(-50%);width:60px;height:6px;border-radius:99px;background:#1b2a22}
+.phone-screen{background:#f9f7f1;padding:18px 15px 22px;min-height:410px}.phone-screen .mini-brand{font:800 12px "Manrope";margin-bottom:18px}.phone-screen .hero-mini{border-radius:18px;padding:20px;background:#123d2a;color:#fff}.phone-screen h4{font:800 27px/.96 "Manrope";letter-spacing:-.05em;margin:12px 0}.phone-screen p{font-size:10px;color:#d2ded6;line-height:1.45}.phone-screen .action-mini{margin-top:12px;display:inline-block;background:var(--lime);color:var(--ink);padding:8px 10px;border-radius:999px;font-size:9px;font-weight:800}.phone-screen .mini-list{display:grid;gap:8px;margin-top:12px}.phone-screen .mini-row{border:1px solid var(--line);border-radius:12px;padding:10px;font-size:9px;font-weight:800;background:#fff}
+
+.bento{display:grid;grid-template-columns:1.25fr .75fr .75fr;grid-template-rows:260px 260px;gap:16px}
+.panel{position:relative;border-radius:28px;border:1px solid var(--line);background:#fff;padding:28px;overflow:hidden}
+.panel.main{grid-row:1/3;background:var(--forest);color:#fff;border:0}
+.panel.main:after{content:"";position:absolute;width:370px;height:370px;border-radius:50%;right:-130px;bottom:-140px;background:radial-gradient(circle,var(--lime),transparent 65%);opacity:.4}
+.panel small{font:800 9px "Manrope";letter-spacing:.14em;text-transform:uppercase;color:var(--leaf)}
+.panel.main small{color:var(--lime)}.panel h3{font:800 28px/1.04 "Manrope";letter-spacing:-.045em;margin:12px 0 10px}.panel p{font-size:13px;line-height:1.55;color:var(--muted);max-width:470px}.panel.main p{color:#cfddd4}
+.panel .num{font:800 72px/1 "Manrope";letter-spacing:-.065em;color:var(--leaf);margin-top:38px}.panel.main .num{position:absolute;left:28px;bottom:22px;color:var(--lime)}
+.panel .caption{position:absolute;left:28px;bottom:24px;font-size:11px;color:var(--muted)}
+
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.path{position:relative;min-height:420px;border-radius:30px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));padding:28px;overflow:hidden;transition:.25s transform,.25s border-color}
+.path:hover{transform:translateY(-6px);border-color:rgba(231,248,120,.42)}
+.path .n{font:800 10px "Manrope";letter-spacing:.13em;color:var(--lime)}.path h3{font:800 34px/1 "Manrope";letter-spacing:-.05em;margin:50px 0 14px}.path p{color:#b8c7bf;line-height:1.55}.path .go{position:absolute;left:28px;bottom:27px;font-size:12px;font-weight:800}.path .orb{position:absolute;width:180px;height:180px;border-radius:50%;right:-55px;bottom:-55px;border:36px solid rgba(231,248,120,.12)}.path:nth-child(1) .orb{border-color:rgba(124,227,166,.18)}.path:nth-child(3) .orb{border-color:rgba(186,113,72,.25)}
+
+.audience-shell{display:grid;grid-template-columns:.88fr 1.12fr;gap:54px}
+.story-copy{position:sticky;top:126px;height:max-content}
+.selector{display:grid;gap:10px}
+.selector button{width:100%;border:1px solid var(--line);background:#fff;border-radius:18px;padding:17px 18px;text-align:left;display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:center;font-family:inherit;color:var(--ink);cursor:pointer;transition:.2s transform,.2s box-shadow,.2s background}
+.selector button:hover,.selector button.active{transform:translateX(5px);box-shadow:0 15px 35px rgba(9,23,16,.08);background:#fdfef8}
+.sel-num{width:40px;height:40px;border-radius:12px;background:var(--sky);display:grid;place-items:center;font:800 11px "Manrope";color:var(--leaf)}.selector b{display:block;font:800 14px "Manrope";margin-bottom:3px}.selector span{font-size:11px;color:var(--muted)}.selector .arr{font-size:19px;color:var(--leaf)}
+.audience-preview{margin-top:16px;border-radius:24px;background:var(--forest2);color:#fff;padding:24px;min-height:180px;position:relative;overflow:hidden}.audience-preview:after{content:"";position:absolute;inset:-20%;background:repeating-radial-gradient(ellipse at 80% 50%,rgba(231,248,120,.18) 0 2px,transparent 3px 17px);opacity:.45}.audience-preview .inside{position:relative;z-index:2}.audience-preview small{font:800 9px "Manrope";letter-spacing:.13em;text-transform:uppercase;color:var(--lime)}.audience-preview h4{font:800 26px/1 "Manrope";letter-spacing:-.045em;margin:10px 0 8px}.audience-preview p{font-size:12px;line-height:1.55;color:#c0cec6;max-width:520px}
+
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.metric{padding:28px;border-top:1px solid rgba(255,255,255,.15);background:linear-gradient(180deg,rgba(255,255,255,.035),transparent);border-radius:0 0 20px 20px}.metric strong{display:block;font:800 clamp(56px,6.4vw,88px)/.95 "Manrope";letter-spacing:-.07em;color:var(--lime)}.metric span{display:block;margin-top:10px;color:#c1d0c7;font-size:12px;line-height:1.55}
+
+.wood-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:58px;align-items:center}
+.wood-art{aspect-ratio:1;border-radius:40px;position:relative;overflow:hidden;background:linear-gradient(145deg,#ce8c62,#74452e);box-shadow:0 34px 90px rgba(94,55,34,.22)}
+.wood-art:before{content:"";position:absolute;inset:7%;border-radius:50%;background:repeating-radial-gradient(ellipse at 45% 54%,rgba(255,247,228,.52) 0 2px,transparent 3px 18px);transform:rotate(4deg)}.wood-art:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;left:-70px;bottom:-80px;background:radial-gradient(circle,rgba(255,236,193,.34),transparent 67%)}
+.wood-chip{position:absolute;z-index:2;right:22px;top:22px;background:rgba(255,255,255,.93);padding:12px 14px;border-radius:15px;font:800 9px "Manrope";letter-spacing:.08em;color:#6c4937}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.product{border:1px solid var(--line);background:#fff;border-radius:16px;padding:14px}.swatch{height:62px;border-radius:10px;margin-bottom:11px;background:linear-gradient(120deg,#d9a67c,#84513a)}.product:nth-child(2) .swatch{background:linear-gradient(120deg,#c6a176,#67513d)}.product:nth-child(3) .swatch{background:linear-gradient(120deg,#dfbc8a,#885a3d)}.product b{font-size:11px}.product span{display:block;color:var(--muted);font-size:9px;margin-top:3px}
+
+.brand-system{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:start}
+.palette{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.sw{height:140px;border-radius:20px;padding:15px;display:flex;flex-direction:column;justify-content:flex-end;font-size:10px;font-weight:800}.sw:nth-child(1){background:#071b12;color:#fff}.sw:nth-child(2){background:#2f7449;color:#fff}.sw:nth-child(3){background:#e7f878}.sw:nth-child(4){background:#efe9dc}.typography{border:1px solid var(--line);background:#fff;border-radius:28px;padding:28px}.typography .display{font:800 52px/.95 "Manrope";letter-spacing:-.06em;margin:12px 0}.typography .bodyline{font-size:15px;color:var(--muted);line-height:1.65}.type-meta{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:18px;margin-top:22px;font-size:10px;color:var(--muted)}
+
+.delivery-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:54px}
+.specs{display:grid;gap:11px}.spec{display:grid;grid-template-columns:1fr auto;gap:24px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.14)}.spec b{font-size:12px}.spec span{font-size:11px;color:#b4c4bb;text-align:right}
+.timeline{display:grid;gap:12px}.tl{display:grid;grid-template-columns:68px 1fr;gap:18px}.week{font:800 10px "Manrope";color:var(--lime);padding-top:3px}.tlbody{border-left:1px solid rgba(255,255,255,.18);padding:0 0 23px 18px;position:relative}.tlbody:before{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--lime);left:-4px;top:5px}.tlbody b{font:800 14px "Manrope"}.tlbody p{font-size:11px;color:#b6c5bd;line-height:1.5;margin:5px 0 0}
+
+.cta{padding:28px 0 100px}.cta-card{border-radius:38px;background:linear-gradient(135deg,var(--lime),#d0ef5a);padding:54px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;box-shadow:0 30px 90px rgba(122,144,52,.18);position:relative;overflow:hidden}.cta-card:after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;right:-170px;top:-180px;border:70px solid rgba(255,255,255,.23)}.cta-card>*{position:relative;z-index:2}.cta-card h2{font:800 clamp(40px,5.2vw,68px)/.95 "Manrope";letter-spacing:-.065em;margin:0 0 12px}.cta-card p{margin:0;color:#3f523d;max-width:720px;line-height:1.6}
+footer{border-top:1px solid var(--line);padding:34px 0 46px}.footer-grid{display:flex;justify-content:space-between;gap:30px;color:var(--muted);font-size:11px}.concept{max-width:760px;line-height:1.55}
+
+
+.official-logo{display:block;object-fit:contain}
+.header-logo{width:178px;height:58px;object-position:left center}
+.stage-logo-img{width:150px;height:52px;object-position:left center;filter:drop-shadow(0 3px 16px rgba(0,0,0,.16))}
+.stage-photo{position:absolute;inset:0;background-image:url("https://www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F5822-scaled.jpg");background-size:cover;background-position:58% center;filter:saturate(.88) contrast(1.04)}
+.stage-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,13,8,.14),rgba(3,13,8,.18) 38%,rgba(3,13,8,.45) 100%),linear-gradient(180deg,rgba(4,15,10,.06),rgba(4,15,10,.72) 78%);z-index:1}
+.gridlines,.contours,.glow{z-index:2}.stage-top,.stage-copy{z-index:5}
+.photo-proof{padding:74px 0 14px}
+.proof-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+.proof-media{position:relative;min-height:560px;border-radius:38px;overflow:hidden;box-shadow:0 34px 90px rgba(8,28,18,.16)}
+.proof-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 46%,rgba(5,18,11,.62) 100%)}
+.proof-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.proof-badge{position:absolute;z-index:3;left:24px;right:24px;bottom:22px;display:flex;align-items:end;justify-content:space-between;gap:24px;color:#fff}
+.proof-badge span{font:700 10px "Manrope";letter-spacing:.12em;text-transform:uppercase;color:#d7e4dc}
+.proof-badge b{font:800 23px/1 "Manrope";letter-spacing:-.04em;text-align:right}
+.proof-copy h2{font:800 clamp(42px,5vw,70px)/.95 "Manrope";letter-spacing:-.065em;margin:10px 0 20px}
+.proof-copy p{font-size:16px;line-height:1.72;color:var(--muted)}
+.proof-points{display:grid;gap:10px;margin-top:26px}
+.proof-points div{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:14px;padding:15px 0;border-top:1px solid var(--line)}
+.proof-points strong{font:800 11px "Manrope";color:var(--leaf)}
+.proof-points span{font-size:13px;font-weight:700;color:#35483e}
+.footer-branding{display:flex;align-items:center;gap:18px}.footer-logo{width:118px;height:56px;object-position:left center}
+.brandmark{display:none}
+
+@media(max-width:1000px){
+  nav{display:none}.mobile-cta{display:inline-flex}.hero-grid,.section-head,.audience-shell,.wood-grid,.brand-system,.delivery-grid,.proof-grid{grid-template-columns:1fr}
+  .hero-stage{min-height:560px;margin-top:10px}.proof-media{min-height:460px}.float-card.a{right:14px}.float-card.b{left:14px}
+  .screen{grid-template-columns:1fr}.screen-right{min-height:320px}.phone{right:16px}
+  .bento{grid-template-columns:1fr 1fr;grid-template-rows:auto}.panel.main{grid-row:auto;grid-column:1/3;min-height:320px}
+  .paths,.impact-grid{grid-template-columns:1fr}.story-copy{position:static}.section{padding:78px 0}
+}
+@media(max-width:650px){
+  .wrap{width:min(100% - 24px,1240px)}.previewbar{font-size:8px}.nav{height:68px}.brand{font-size:20px}.header-logo{width:145px;height:50px}
+  .hero{padding-top:28px}.hero-copy{padding-top:10px}h1{font-size:50px}.lead{font-size:16px}.hero-stage{min-height:505px}.stage{border-radius:28px}.stage-copy{left:23px;right:23px;bottom:26px}.stage-copy h2{font-size:39px}
+  .float-card{width:182px;padding:14px}.float-card strong{font-size:21px}.brand-ribbon{margin-top:38px}
+  .browser{border-radius:20px}.screen-left{padding:30px 22px}.screen-left h3{font-size:38px}.phone{position:relative;width:86%;right:auto;bottom:auto;margin:-80px auto 16px}
+  .bento{display:block}.panel{margin-bottom:12px;min-height:220px}.panel.main{min-height:300px}
+  .products{grid-template-columns:1fr}.palette{grid-template-columns:1fr 1fr}.sw{height:110px}
+  .cta-card{padding:34px 24px;grid-template-columns:1fr}.proof-media{min-height:390px;border-radius:26px}.proof-badge{display:block}.proof-badge b{display:block;text-align:left;margin-top:8px}.footer-grid{display:block}.footer-grid>div+div{margin-top:18px}
+}
+</style>
 </head>
 <body>
-  <div class="noise"></div>
+<div class="progress" id="progress"></div>
+<div class="previewbar"><b>VIP Concept Preview</b> — Non-binding design exploration by LNK DIGITAL for Landforce</div>
 
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="Ludak Na Kvadrat"><img src="logo.jpeg" alt="Ludak Na Kvadrat logo"><span>Ludak Na Kvadrat</span></a>
-    <nav class="desktop-nav"><a href="#usluge" data-i18n="nav_services">Usluge</a><a href="#cenovnik" data-i18n="nav_prices">Cenovnik</a><a href="#primeri" data-i18n="nav_examples">Primeri</a><a href="#naruci" data-i18n="nav_order">Naruči</a></nav>
-    <div class="header-actions">
-      <select id="language" aria-label="Language"><option value="sr">SR</option><option value="bs">BS</option><option value="hr">HR</option><option value="sl">SL</option><option value="en">EN</option><option value="de">DE</option><option value="fr">FR</option><option value="es">ES</option><option value="it">IT</option><option value="sq">SQ</option></select>
-      <a class="btn btn-gold btn-small" href="#naruci" data-i18n="nav_cta">Naruči pesmu</a><button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+<header id="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Landforce concept home"><img class="official-logo header-logo" src="https://www.landforcepgh.org/wp-content/uploads/2024/05/Landforce-normal-2-300x150.png" alt="Landforce logo"></a>
+    <nav>
+      <a href="#vision">Vision</a><a href="#system">System</a><a href="#programs">Programs</a><a href="#audiences">Audiences</a><a href="#wood">Wood</a><a href="#delivery">Delivery</a>
+      <a class="navcta" href="#contact">Discuss concept ↗</a>
+    </nav>
+    <a class="mobile-cta" href="#contact">Discuss ↗</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy reveal">
+      <div class="kicker">Pittsburgh / People / Land / Opportunity</div>
+      <h1>Build people.<br><span class="accent">Restore land.</span><br>Move a city forward.</h1>
+      <p class="lead">A high-impact digital brand system designed to make Landforce instantly understandable, emotionally compelling, and effortless to act on — whether someone wants to join a crew, hire one, support the mission, or explore Responsible Wood Products.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#vision">Experience the concept ↗</a>
+        <a class="btn light" href="#delivery">See the build system</a>
+      </div>
+      <div class="hero-note">Concept direction only. Final brand, copy, imagery and functionality would be developed collaboratively with Landforce.</div>
     </div>
-  </header>
 
-  <main id="top">
-    <section class="hero"><div class="hero-copy reveal"><div class="eyebrow"><span></span><span data-i18n="eyebrow">PERSONALIZOVANA MUZIKA</span><span></span></div><h1 data-i18n="hero_title">Tvoja priča.<br><em>Tvoja pesma.</em></h1><p data-i18n="hero_text">Napravi poklon koji se pamti. Napišemo i kreiramo personalizovanu pesmu po tvojoj priči, osobi i emociji.</p><div class="hero-buttons"><a class="btn btn-gold" href="#cenovnik" data-i18n="hero_btn">Pogledaj cenovnik</a><a class="btn btn-outline" href="https://wa.me/38631244612" target="_blank" rel="noopener" data-i18n="hero_whatsapp">Piši na WhatsApp</a></div><div class="trust-row"><span>✦ <span data-i18n="trust1">Sve vrste pesama</span></span><span>✦ <span data-i18n="trust2">Brza izrada</span></span><span>✦ <span data-i18n="trust3">Po tvojoj priči</span></span></div></div><div class="hero-art reveal"><div class="halo"></div><img src="logo.jpeg" alt="Ludak Na Kvadrat" class="hero-logo"><div class="floating-card"><span class="mini-icon">♫</span><div><strong data-i18n="float_title">Pesma samo za tebe</strong><small data-i18n="float_text">Od ideje do gotove pesme.</small></div></div></div></section>
-    <section class="stats"><div><strong>10</strong><span data-i18n="stat1">jezika</span></div><div><strong>∞</strong><span data-i18n="stat2">stilova i ideja</span></div><div><strong>100%</strong><span data-i18n="stat3">personalizovano</span></div><div><strong>24h</strong><span data-i18n="stat4">VIP izrada</span></div></section>
-    <section class="seo-web-entry" aria-labelledby="seo-web-title" style="max-width:1160px;margin:38px auto;padding:24px;border:1px solid #31577c;border-radius:18px;background:#101f32;color:#f4f8ff"><h2 id="seo-web-title" style="margin:0 0 10px">LNK DIGITAL · Izrada web stranica</h2><p style="margin:0 0 14px;color:#bdd0e3">Sajtovi za firme, salone, barbere i auto servise. Pogledaj usluge i primjere dizajna.</p><a href="/izdelava-spletnih-strani.html" style="color:#8bd6ff;margin-right:20px">Izdelava spletnih strani (SL) →</a><a href="/web-design.html" style="color:#8bd6ff">Web design (EN) →</a></section>
+    <div class="hero-stage reveal">
+      <div class="stage">
+        <div class="stage-photo" role="img" aria-label="Landforce crew member working outdoors"></div><div class="stage-shade"></div><div class="gridlines"></div><div class="contours"></div><div class="glow"></div>
+        <div class="stage-top"><img class="official-logo stage-logo-img" src="https://www.landforcepgh.org/wp-content/uploads/2024/05/Landforce-light-1-300x150.png" alt="Landforce logo"><span>Digital concept / 2026</span></div>
+        <div class="stage-copy">
+          <small>Workforce development + environmental stewardship</small>
+          <h2>One mission.<br>Four clear actions.</h2>
+          <p>Join the Crew. Hire Landforce. Explore Responsible Wood. Support the Mission.</p>
+        </div>
+      </div>
+      <div class="float-card a"><div class="lab">Public impact</div><strong>90K+</strong><p>hours of environmental stewardship contributed</p></div>
+      <div class="float-card b"><div class="lab"><span class="pulse"></span> UX principle</div><strong>Action first</strong><p>Every visitor gets a clear next step.</p></div>
+    </div>
+  </div>
+</section>
 
-    <section id="usluge" class="section"><div class="section-heading reveal"><span class="eyebrow">01 — <span data-i18n="services_eyebrow">USLUGE</span></span><h2 data-i18n="services_title">Ne prodajemo samo pesmu.<br><em>Pravimo uspomenu.</em></h2><p data-i18n="services_text">Ti nam daš priču, ime, emociju ili događaj. Mi to pretvaramo u pesmu koju možeš pokloniti i sačuvati zauvek.</p></div><div class="service-grid"><article class="service-card reveal"><div class="number">01</div><div class="icon">✍</div><h3 data-i18n="service1_title">Tekst</h3><p data-i18n="service1_text">Originalan tekst sa refrenom i strofama, prilagođen tvojoj priči.</p></article><article class="service-card reveal"><button type="button" class="song-service-visual" data-lnk-preview-src="https://img.youtube.com/vi/ZUggrg1D1rs/hqdefault.jpg" data-lnk-preview-title="Gotova personalizovana pesma — LNK DIGITAL"><img src="https://img.youtube.com/vi/ZUggrg1D1rs/hqdefault.jpg" alt="Gotova personalizovana pesma — LNK DIGITAL" loading="lazy"></button><div class="number">02</div><div class="icon">♫</div><h3 data-i18n="service2_title">Pesma</h3><p data-i18n="service2_text">Kompletna pesma sa muzikom i vokalom u stilu koji izabereš.</p></article><article class="service-card reveal"><button type="button" class="song-service-visual" data-lnk-preview-src="https://img.youtube.com/vi/5Mmq_uxnMhQ/hqdefault.jpg" data-lnk-preview-title="Pesma za posebnu priliku — LNK DIGITAL"><img src="https://img.youtube.com/vi/5Mmq_uxnMhQ/hqdefault.jpg" alt="Pesma za posebnu priliku — LNK DIGITAL" loading="lazy"></button><div class="number">03</div><div class="icon">♥</div><h3 data-i18n="service3_title">Posebna prilika</h3><p data-i18n="service3_text">Rođendan, svadba, godišnjica, prosidba, prijatelji, porodica ili bilo koji povod.</p></article></div></section>
+<div class="brand-ribbon">
+  <div class="ribbon-track">
+    <span>Workforce Development</span><span>Land Stewardship</span><span>Responsible Wood</span><span>Accessible by Design</span><span>CMS Powered</span><span>SEO Ready</span>
+    <span>Workforce Development</span><span>Land Stewardship</span><span>Responsible Wood</span><span>Accessible by Design</span><span>CMS Powered</span><span>SEO Ready</span>
+  </div>
+</div>
 
-    <section id="cenovnik" class="section pricing-section"><div class="section-heading reveal"><span class="eyebrow">02 — <span data-i18n="prices_eyebrow">CENOVNIK</span></span><h2 data-i18n="prices_title">Izaberi svoj paket.</h2><p data-i18n="prices_text">Jednostavno, jasno i bez skrivenih troškova.</p></div><div class="pricing-grid">
-      <article class="price-card reveal"><button type="button" class="song-price-visual" data-lnk-preview-src="/assets/music/personalizovana.png?v=1" data-lnk-preview-title="BASIC — Personalizovana pesma"><img src="/assets/music/personalizovana.png?v=1" alt="BASIC personalizovana pesma" loading="lazy"><span>Pogledaj primjer ↗</span></button><div class="price-top"><span class="plan">BASIC</span><span class="price">15,99€</span></div><h3 data-i18n="basic_title">Za početak</h3><ul><li data-i18n="basic1">Personalizovan tekst</li><li data-i18n="basic2">Refren + 2 strofe</li><li data-i18n="basic3">Pesma po tvojoj priči</li><li data-i18n="basic4">1 verzija</li><li data-i18n="basic5">Rok 1–2 dana</li></ul><a class="btn btn-outline full" href="#naruci" data-i18n="choose">Izaberi paket</a></article>
-      <article class="price-card featured reveal"><button type="button" class="song-price-visual" data-lnk-preview-src="/assets/music/raptrap.png?v=1" data-lnk-preview-title="PREMIUM — Rap / Trap produkcija"><img src="/assets/music/raptrap.png?v=1" alt="PREMIUM rap trap pesma" loading="lazy"><span>Pogledaj primjer ↗</span></button><div class="popular" data-i18n="popular">NAJPOPULARNIJI</div><div class="price-top"><span class="plan">PREMIUM</span><span class="price">29,99€</span></div><h3 data-i18n="premium_title">Najbolji izbor</h3><ul><li data-i18n="premium1">Kompletan personalizovan tekst</li><li data-i18n="premium2">Izbor žanra i atmosfere</li><li data-i18n="premium3">2–3 verzije pesme</li><li data-i18n="premium4">Biraš najbolju verziju</li><li data-i18n="premium5">2 izmene</li><li data-i18n="premium6">Rok 1–2 dana</li></ul><a class="btn btn-gold full" href="#naruci" data-i18n="choose">Izaberi paket</a></article>
-      <article class="price-card reveal"><button type="button" class="song-price-visual" data-lnk-preview-src="/assets/music/vip.png?v=1" data-lnk-preview-title="VIP — Premium personalizovana pesma"><img src="/assets/music/vip.png?v=1" alt="VIP premium pesma" loading="lazy"><span>Pogledaj primjer ↗</span></button><span class="plan">VIP</span><span class="price">49,99€</span><h3 data-i18n="vip_title">Za poseban trenutak</h3><ul><li data-i18n="vip1">Pesma potpuno po tvojoj priči</li><li data-i18n="vip2">Detaljna personalizacija</li><li data-i18n="vip3">Više verzija</li><li data-i18n="vip4">Do 3 izmene</li><li data-i18n="vip5">Prioritetna izrada</li><li data-i18n="vip6">Rok 24h</li></ul><a class="btn btn-outline full" href="#naruci" data-i18n="choose">Izaberi paket</a></article>
-    </div><div class="occasion-wrap reveal"><h3 data-i18n="occasion_title">Pesme za posebne prilike</h3><div class="occasion-grid">
-<span class="occasion-card"> <button type="button" class="occasion-visual" data-lnk-preview-src="/assets/music/rodjendan.png?v=1" data-lnk-preview-title="Rođendanska pesma"><img src="/assets/music/rodjendan.png?v=1" alt="Rođendanska pesma" loading="lazy"></button><span class="occasion-copy">🎂 <b data-i18n="occ_birthday">Rođendan</b> <i>39€</i></span></span>
-<span class="occasion-card"> <button type="button" class="occasion-visual" data-lnk-preview-src="/assets/music/godisnjica.png?v=1" data-lnk-preview-title="Pesma za godišnjicu"><img src="/assets/music/godisnjica.png?v=1" alt="Pesma za godišnjicu" loading="lazy"></button><span class="occasion-copy">❤️ <b data-i18n="occ_anniversary">Godišnjica</b> <i>49€</i></span></span>
-<span class="occasion-card"> <button type="button" class="occasion-visual" data-lnk-preview-src="/assets/music/svadba.png?v=1" data-lnk-preview-title="Svadbena pesma"><img src="/assets/music/svadba.png?v=1" alt="Svadbena pesma" loading="lazy"></button><span class="occasion-copy">💍 <b data-i18n="occ_wedding">Svadba</b> <i>59€</i></span></span>
-<span class="occasion-card"> <button type="button" class="occasion-visual" data-lnk-preview-src="/assets/music/ljubavna.png?v=1" data-lnk-preview-title="Pesma za prosidbu"><img src="/assets/music/ljubavna.png?v=1" alt="Pesma za prosidbu" loading="lazy"></button><span class="occasion-copy">💖 <b data-i18n="occ_proposal">Prosidba</b> <i>59€</i></span></span>
-<span class="occasion-card"> <button type="button" class="occasion-visual" data-lnk-preview-src="/assets/music/balkanturkey.png?v=1" data-lnk-preview-title="Pesma za partnera / partnerku"><img src="/assets/music/balkanturkey.png?v=1" alt="Pesma za partnera ili partnerku" loading="lazy"></button><span class="occasion-copy">🎁 <b data-i18n="occ_partner">Partner/partnerka</b> <i>49€</i></span></span>
-<span class="occasion-card"> <button type="button" class="occasion-visual" data-lnk-preview-src="https://img.youtube.com/vi/C0Yys63YZ5w/hqdefault.jpg" data-lnk-preview-title="Pesma za prijatelja"><img src="https://img.youtube.com/vi/C0Yys63YZ5w/hqdefault.jpg" alt="Pesma za prijatelja" loading="lazy"></button><span class="occasion-copy">😂 <b data-i18n="occ_friend">Prijatelj</b> <i>39€</i></span></span>
-<span class="occasion-card"> <button type="button" class="occasion-visual" data-lnk-preview-src="/assets/music/porodica.png?v=1" data-lnk-preview-title="Pesma za porodicu"><img src="/assets/music/porodica.png?v=1" alt="Pesma za porodicu" loading="lazy"></button><span class="occasion-copy">👨‍👩‍👧 <b data-i18n="occ_family">Porodica</b> <i>49€</i></span></span>
-<span class="occasion-card"> <button type="button" class="occasion-visual" data-lnk-preview-src="/assets/music/saljiva.png?v=1" data-lnk-preview-title="Šaljiva pesma"><img src="/assets/music/saljiva.png?v=1" alt="Šaljiva pesma" loading="lazy"></button><span class="occasion-copy">🔥 <b data-i18n="occ_funny">Šaljiva pesma</b> <i>39€</i></span></span>
-</div><p class="extras" data-i18n="extras">+10€ ekspresna izrada · +15€ dodatna verzija · +10€ veća izmena · +20€ tri dodatne verzije</p></div></section>
+<section class="section" id="vision">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="section-label">The vision</div><h2>Not a redesign.<br>A clearer Landforce.</h2></div>
+      <p>The strongest version of this project is bigger than a new homepage. It is a digital operating system for the brand: clearer architecture, cleaner audience routing, stronger proof of impact, flexible content management, and room for each business line to grow.</p>
+    </div>
 
-    <section id="primeri" class="section examples-section"><div class="section-heading reveal"><span class="eyebrow">03 — <span data-i18n="examples_eyebrow">PRIMERI</span></span><h2 data-i18n="examples_title">Poslušaj naš rad.</h2><p data-i18n="examples_text">Pogledaj primere i oseti stil. Tvoja sledeća pesma može biti potpuno drugačija — jer je pravimo po tvojoj priči.</p></div><div class="video-grid"><a class="video-card reveal" href="https://youtu.be/IxG9VmDO7YU?is=EzkO7av23byuH97c" target="_blank" rel="noopener"><div class="video-thumb"><img src="https://img.youtube.com/vi/IxG9VmDO7YU/hqdefault.jpg" alt=""><span>▶</span></div><h3>JOŠ TE VOLIM</h3><small>Ludak Na Kvadrat</small></a><a class="video-card reveal" href="https://youtu.be/ZUggrg1D1rs?is=b9fz1tdITp6nFynu" target="_blank" rel="noopener"><div class="video-thumb"><img src="https://img.youtube.com/vi/ZUggrg1D1rs/hqdefault.jpg" alt=""><span>▶</span></div><h3>NISAM JA TEBE BIRAO</h3><small>Ludak Na Kvadrat</small></a><a class="video-card reveal" href="https://youtu.be/5Mmq_uxnMhQ?is=N3ue9XEdsj97Rdor" target="_blank" rel="noopener"><div class="video-thumb"><img src="https://img.youtube.com/vi/5Mmq_uxnMhQ/hqdefault.jpg" alt=""><span>▶</span></div><h3>KEXI</h3><small>Ludak Na Kvadrat</small></a><a class="video-card reveal" href="https://youtu.be/C0Yys63YZ5w?is=K-BsGI-YgYc7JNpb" target="_blank" rel="noopener"><div class="video-thumb"><img src="https://img.youtube.com/vi/C0Yys63YZ5w/hqdefault.jpg" alt=""><span>▶</span></div><h3>MALENA</h3><small>Ludak Na Kvadrat</small></a></div></section>
+    <div class="mockup-wrap reveal">
+      <div class="browser">
+        <div class="browserbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><div class="url">landforcepgh.org / concept</div></div>
+        <div class="screen">
+          <div class="screen-left">
+            <div class="section-label">Audience-first home</div>
+            <h3>Work that changes landscapes — and lives.</h3>
+            <p>Mission, services and opportunities become one coherent experience instead of separate content silos.</p>
+            <div class="mock-menu"><span class="mock-pill">Join the Crew</span><span class="mock-pill">Hire Landforce</span><span class="mock-pill">Responsible Wood</span></div>
+          </div>
+          <div class="screen-right"></div>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="phone-top"></div>
+        <div class="phone-screen">
+          <div class="mini-brand">LANDFORCE ●</div>
+          <div class="hero-mini"><small>PEOPLE + LAND</small><h4>One mission. Many ways in.</h4><p>Clear pathways designed for real mobile behavior.</p><span class="action-mini">Explore ↗</span></div>
+          <div class="mini-list"><div class="mini-row">Join the Crew ↗</div><div class="mini-row">Hire Landforce ↗</div><div class="mini-row">Responsible Wood ↗</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="process section"><div class="section-heading reveal"><span class="eyebrow">04 — <span data-i18n="process_eyebrow">KAKO FUNKCIONIŠE</span></span><h2 data-i18n="process_title">Od tvoje poruke do pesme.</h2></div><div class="steps"><div class="step reveal"><span>01</span><h3 data-i18n="step1_title">Pošalji priču</h3><p data-i18n="step1_text">Napiši kome je pesma namenjena, povod i kakav stil želiš.</p></div><div class="step reveal"><span>02</span><h3 data-i18n="step2_title">Dogovorimo paket</h3><p data-i18n="step2_text">Izaberi paket i način plaćanja koji ti odgovara.</p></div><div class="step reveal"><span>03</span><h3 data-i18n="step3_title">Mi stvaramo</h3><p data-i18n="step3_text">Pišemo tekst i kreiramo pesmu prema tvojoj ideji.</p></div><div class="step reveal"><span>04</span><h3 data-i18n="step4_title">Dobijaš pesmu</h3><p data-i18n="step4_text">Dobijaš gotov rezultat i, zavisno od paketa, mogućnost izmena.</p></div></div></section>
+<section class="section sand" id="system">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="section-label">Brand + digital system</div><h2>Complex organization.<br>Simple experience.</h2></div>
+      <p>A successful architecture lets each audience find what matters to them in seconds while preserving the depth of Landforce's programs, services, impact and social-enterprise work.</p>
+    </div>
+    <div class="bento">
+      <article class="panel main reveal">
+        <small>Brand architecture</small><h3>One Landforce.<br>Three connected engines.</h3><p>Workforce Development, Land Stewardship and Responsible Wood become distinct enough to understand — but connected enough to feel like one organization.</p><div class="num">01</div>
+      </article>
+      <article class="panel reveal"><small>Impact proof</small><div class="num counter" data-target="201">0</div><p>people hired as Landforce Crew Members since 2015</p></article>
+      <article class="panel reveal"><small>Job readiness</small><div class="num counter" data-target="100" data-suffix="%">0</div><p>of crew members showed an increase in job readiness</p></article>
+      <article class="panel reveal"><small>Conversion structure</small><h3>Action first.</h3><p>Primary tasks stay visible across desktop and mobile.</p><div class="caption">Join. Hire. Shop. Support.</div></article>
+      <article class="panel reveal"><small>Editorial system</small><h3>Built for staff.</h3><p>Reusable CMS blocks, cleaner governance and flexible campaign pages.</p><div class="caption">Easy to publish. Hard to break.</div></article>
+    </div>
+  </div>
+</section>
 
-    <section id="naruci" class="order-section"><div class="order-inner order-inner-form"><div class="order-copy reveal"><span class="eyebrow">05 — <span data-i18n="order_eyebrow">NARUČIVANJE</span></span><h2 data-i18n="order_title">Spreman/na da svoju priču pretvoriš u pesmu?</h2><p data-i18n="order_text">Popuni formular. Nakon slanja otvara se WhatsApp sa spremnom porukom za narudžbu.</p><div class="order-note"><span>✦</span><div><strong data-i18n="order_note_title">Kako funkcioniše?</strong><p data-i18n="order_note_text">Popuni podatke, izaberi paket i klikni „Pošalji na WhatsApp“. Mi ćemo ti se javiti i dogovoriti detalje i plaćanje.</p></div></div><div class="contact-buttons"><a class="btn btn-outline" href="mailto:contactludak@gmail.com">E-mail</a><a class="btn btn-outline" href="https://instagram.com/official_ludak" target="_blank" rel="noopener">Instagram</a></div></div>
-      <form class="order-form reveal" id="songOrderForm"><div class="form-header"><span class="form-kicker">LNK • ORDER</span><h3 data-i18n="form_title">Naruči svoju pesmu</h3><p data-i18n="form_subtitle">Što više detalja napišeš, pesma će biti ličnija.</p></div><div class="form-grid">
-        <label><span data-i18n="f_name">Tvoje ime *</span><input type="text" name="name" required maxlength="80" placeholder="Npr. Marko"></label><label><span data-i18n="f_email">Tvoj e-mail *</span><input type="email" name="email" required maxlength="160" placeholder="ime@email.com"></label><label><span data-i18n="f_recipient">Kome je pesma namenjena? *</span><input type="text" name="recipient" required maxlength="80" placeholder="Npr. Ana"></label>
-        <label><span data-i18n="f_occasion">Povod *</span><select name="occasion" required><option value="" selected disabled data-i18n="f_select">Izaberi povod</option><option data-i18n="occ_birthday">Rođendan</option><option data-i18n="occ_anniversary">Godišnjica</option><option data-i18n="occ_wedding">Svadba</option><option data-i18n="occ_proposal">Prosidba</option><option data-i18n="occ_partner">Partner/partnerka</option><option data-i18n="occ_friend">Prijatelj</option><option data-i18n="occ_family">Porodica</option><option data-i18n="occ_funny">Šaljiva pesma</option><option value="Drugo" data-i18n="occ_other">Drugo</option></select></label>
-        <label><span data-i18n="f_style">Žanr / stil *</span><input type="text" name="style" required maxlength="100" placeholder="Npr. pop, folk, rap, balada..."></label><label><span data-i18n="f_language">Jezik pesme *</span><select name="language" required><option value="Srpski">Srpski</option><option value="Bosanski">Bosanski</option><option value="Hrvatski">Hrvatski</option><option value="Slovenački">Slovenački</option><option value="English">English</option><option value="Deutsch">Deutsch</option><option value="Français">Français</option><option value="Español">Español</option><option value="Shqip">Shqip</option><option value="Italiano">Italiano</option></select></label><label><span data-i18n="f_package">Paket *</span><select name="package" id="packageSelect" required><option value="" selected disabled data-i18n="f_select_package">Izaberi paket</option><option value="BASIC — 15,99 €">BASIC — 15,99 €</option><option value="PREMIUM — 29,99 €">PREMIUM — 29,99 €</option><option value="VIP — 49,99 €">VIP — 49,99 €</option></select></label>
-      </div><label class="full-field"><span data-i18n="f_story">Opiši priču i šta želiš da bude u pesmi *</span><textarea name="story" required maxlength="1800" rows="6" placeholder="Napiši imena, uspomene, karakter, važne događaje, interne šale, poruku koju želiš da preneseš..."></textarea><small class="char-counter"><span id="charCount">0</span>/1800</small></label><div class="form-grid"><label><span data-i18n="f_mood">Atmosfera</span><select name="mood"><option value="Emotivna">❤️ Emotivna</option><option value="Vesela">🎉 Vesela</option><option value="Romantična">💕 Romantična</option><option value="Moćna">🔥 Moćna</option><option value="Setna">🌙 Setna</option><option value="Šaljiva">😂 Šaljiva</option><option value="Po izboru autora">✨ Po izboru autora</option></select></label><label><span data-i18n="f_deadline">Željeni rok</span><select name="deadline"><option value="Standardno (1–2 dana)">Standardno (1–2 dana)</option><option value="VIP prioritet (24h)">VIP prioritet (24h)</option><option value="Ekspres (+10 €)">Ekspres (+10 €)</option></select></label></div><label class="check-row"><input type="checkbox" name="privacy" required><span data-i18n="f_consent">Potvrđujem da su podaci koje šaljem namenjeni izradi moje narudžbe. *</span></label><button class="btn btn-gold submit-btn" type="submit" data-i18n="form_submit">Pošalji narudžbu na WhatsApp →</button><button class="btn btn-gold pay-submit" type="button" id="payOrder" data-i18n="form_pay">💳 Plati karticom i naruči</button><button class="btn btn-outline email-submit" type="button" id="emailOrder" data-i18n="form_email">Pošalji narudžbu na E-mail</button><p class="form-help" data-i18n="form_help">Klikom na WhatsApp otvara se razgovor sa unapred pripremljenom porukom. Ne unosite podatke kartice u ovaj formular.</p><div class="form-status" id="formStatus" role="status" aria-live="polite"></div></form>
-    </div></section>
-  </main>
-  <footer><div class="footer-brand"><img src="logo.jpeg" alt=""><div><strong>Ludak Na Kvadrat</strong><small data-i18n="footer_tag">Tvoja priča. Tvoja pesma.</small></div></div><div class="socials"><a href="https://instagram.com/official_ludak" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com/@official_ludak2" target="_blank" rel="noopener">TikTok</a><a href="mailto:contactludak@gmail.com">E-mail</a></div><p>© 2026 Ludak Na Kvadrat. <span data-i18n="footer_rights">Sva prava zadržana.</span></p><!-- Admin link intentionally omitted from public navigation. --></footer>
-  <script src="script.js?v=8"></script>
-  <script src="form-translations.js"></script>
+<section class="section dark" id="programs">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="section-label">Programs + business lines</div><h2>Three stories.<br>One unmistakable mission.</h2></div>
+      <p>Each area gets its own content rhythm, visual cues and calls to action while staying inside a single Landforce design system.</p>
+    </div>
+    <div class="paths">
+      <article class="path reveal"><div class="n">01 / PEOPLE</div><h3>Workforce<br>Development</h3><p>Training, paid experience, career coaching and pathways toward stable employment.</p><div class="go">Join the Crew ↗</div><div class="orb"></div></article>
+      <article class="path reveal"><div class="n">02 / LAND</div><h3>Land<br>Stewardship</h3><p>Professional crews improving land, trails, habitats, trees and green infrastructure.</p><div class="go">Hire Landforce ↗</div><div class="orb"></div></article>
+      <article class="path reveal"><div class="n">03 / MATERIAL</div><h3>Responsible<br>Wood</h3><p>Recovering urban trees and extending their life through useful wood products and services.</p><div class="go">Explore Wood ↗</div><div class="orb"></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="audiences">
+  <div class="wrap audience-shell">
+    <div class="story-copy reveal">
+      <div class="section-label">Audience routing</div>
+      <h2>The site should know why you came.</h2>
+      <p>Instead of asking visitors to decode the organization first, the interface routes them directly toward the job they need to do.</p>
+      <div class="audience-preview" id="audPreview">
+        <div class="inside"><small>Selected journey</small><h4>Join the Crew</h4><p>Eligibility, program experience, benefits, expectations, application steps and a clear call to apply.</p></div>
+      </div>
+    </div>
+    <div class="selector reveal">
+      <button class="active" data-title="Join the Crew" data-copy="Eligibility, program experience, benefits, expectations, application steps and a clear call to apply."><span class="sel-num">01</span><span><b>I want to work with Landforce</b><span>Training, crew experience, next steps</span></span><span class="arr">↗</span></button>
+      <button data-title="Hire Landforce" data-copy="Service categories, project fit, capabilities, proof of work and a frictionless inquiry flow for organizations and partners."><span class="sel-num">02</span><span><b>I need a professional crew</b><span>Services, capabilities, project inquiry</span></span><span class="arr">↗</span></button>
+      <button data-title="Explore Responsible Wood" data-copy="Product discovery, custom services, material story, availability and a guided path for customers or log donors."><span class="sel-num">03</span><span><b>I want local responsible wood</b><span>Products, services, material, log donation</span></span><span class="arr">↗</span></button>
+      <button data-title="Support the Mission" data-copy="Donation, partnership and supporter journeys that connect giving directly to people, places and measurable outcomes."><span class="sel-num">04</span><span><b>I want to support the mission</b><span>Donate, partner, volunteer, learn</span></span><span class="arr">↗</span></button>
+      <button data-title="Understand the Impact" data-copy="Stories, metrics, reports and projects organized around evidence, outcomes and real community transformation."><span class="sel-num">05</span><span><b>I want to understand the impact</b><span>Outcomes, reports, projects, stories</span></span><span class="arr">↗</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div><div class="section-label">Impact system</div><h2>Make proof impossible to miss.</h2></div>
+      <p>Impact data should not live only in reports. It can become part of the core narrative — supported by stories, projects and downloadable evidence.</p>
+    </div>
+    <div class="impact-grid">
+      <div class="metric reveal"><strong>201</strong><span>people hired as Landforce Crew Members since 2015</span></div>
+      <div class="metric reveal"><strong>90K+</strong><span>hours of environmental stewardship contributed</span></div>
+      <div class="metric reveal"><strong>100%</strong><span>of crew members showed an increase in job readiness</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="wood">
+  <div class="wrap wood-grid">
+    <div class="wood-art reveal"><div class="wood-chip">RESPONSIBLE WOOD / VIP CONCEPT</div></div>
+    <div class="story-copy reveal" style="position:static">
+      <div class="section-label">Responsible Wood Products</div>
+      <h2>Give the business line room to sell.</h2>
+      <p>Responsible Wood can feel like a focused product experience without losing its connection to Landforce's mission. The result: clearer product discovery, stronger inquiries, and a credible foundation for future commerce.</p>
+      <div class="products">
+        <div class="product"><div class="swatch"></div><b>Kiln-dried lumber</b><span>Product discovery</span></div>
+        <div class="product"><div class="swatch"></div><b>Custom milling</b><span>Service inquiry</span></div>
+        <div class="product"><div class="swatch"></div><b>Donate a log</b><span>Guided intake flow</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section sand">
+  <div class="wrap brand-system">
+    <div class="story-copy reveal" style="position:static">
+      <div class="section-label">Visual language</div>
+      <h2>Built to feel grounded, modern and alive.</h2>
+      <p>A premium system can use a deep forest foundation, high-visibility lime for action, natural earth tones for warmth, and typography with enough authority for civic and institutional audiences.</p>
+      <div class="palette">
+        <div class="sw">Deep Forest<br>#071B12</div>
+        <div class="sw">Land Green<br>#2F7449</div>
+        <div class="sw">Action Lime<br>#E7F878</div>
+        <div class="sw">Natural Sand<br>#EFE9DC</div>
+      </div>
+    </div>
+    <div class="typography reveal">
+      <div class="section-label">Typography system</div>
+      <div class="display">Work that<br>moves people.</div>
+      <div class="bodyline">A flexible type system balances bold public-facing storytelling with highly readable program, service, report and application content.</div>
+      <div class="type-meta"><span>Display / Manrope 800</span><span>Body / DM Sans</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="delivery">
+  <div class="wrap delivery-grid">
+    <div class="reveal">
+      <div class="section-label">RFP alignment</div>
+      <h2 style="font:800 clamp(40px,5vw,66px)/.95 'Manrope';letter-spacing:-.06em;margin:10px 0 28px">Designed to become a real operating system — not just a beautiful homepage.</h2>
+      <div class="specs">
+        <div class="spec"><b>Brand architecture</b><span>Clear + scalable</span></div>
+        <div class="spec"><b>CMS</b><span>Reusable editorial components</span></div>
+        <div class="spec"><b>Accessibility</b><span>WCAG 2.2 AA target</span></div>
+        <div class="spec"><b>Integrations</b><span>Forms / newsletter / CRM-ready</span></div>
+        <div class="spec"><b>SEO + analytics</b><span>Structured from launch</span></div>
+        <div class="spec"><b>Performance</b><span>Mobile-first</span></div>
+      </div>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl"><div class="week">W01–02</div><div class="tlbody"><b>Discovery + brand strategy</b><p>Stakeholders, audiences, analytics, content and architecture.</p></div></div>
+      <div class="tl"><div class="week">W03–05</div><div class="tlbody"><b>Messaging + visual system</b><p>Naming support, messaging, visual rules and core collateral direction.</p></div></div>
+      <div class="tl"><div class="week">W06–08</div><div class="tlbody"><b>UX + UI</b><p>Sitemap, journeys, wireframes and responsive interface system.</p></div></div>
+      <div class="tl"><div class="week">W09–14</div><div class="tlbody"><b>Development + integrations</b><p>CMS build, components, forms, integrations and migration.</p></div></div>
+      <div class="tl"><div class="week">W15–16</div><div class="tlbody"><b>Accessibility + QA + launch</b><p>Validation, performance, training, documentation and production launch.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <div><h2>One mission.<br>A much clearer next chapter.</h2><p>This VIP preview demonstrates the level of strategic thinking, interaction design and visual craft LNK DIGITAL would bring to the Landforce RFP — while keeping all final brand decisions collaborative.</p></div>
+      <a class="btn primary" href="mailto:contact@ludaknakvadrat.com?subject=Landforce%20VIP%20Digital%20Concept">Discuss the concept ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="concept"><b>Concept preview only.</b> This is a non-binding design exploration prepared by LNK DIGITAL for the Landforce RFP process. It is not an official Landforce website and does not represent final approved branding, content, photography, functionality, or legal claims. Impact figures shown are based on public information currently displayed by Landforce.</div>
+    <div class="footer-branding"><img class="official-logo footer-logo" src="https://www.landforcepgh.org/wp-content/uploads/2024/05/Landforce-normal-2-300x150.png" alt="Landforce logo"><div><b>Concept by LNK DIGITAL</b><br>contact@ludaknakvadrat.com<br>+386 31 244 612<br>ludaknakvadrat.com</div></div>
+  </div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');
+const progress=document.getElementById('progress');
+addEventListener('scroll',()=>{
+  hdr.classList.toggle('scrolled',scrollY>8);
+  const h=document.documentElement.scrollHeight-innerHeight;
+  progress.style.width=(h>0?(scrollY/h)*100:0)+'%';
+},{passive:true});
+
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.classList.add('show');
+    if(e.target.querySelectorAll) e.target.querySelectorAll('.counter').forEach(runCounter);
+    io.unobserve(e.target);
+  }
+}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+function runCounter(el){
+  if(el.dataset.done)return;
+  el.dataset.done='1';
+  const target=Number(el.dataset.target||0), suffix=el.dataset.suffix||'';
+  const start=performance.now(), dur=1100;
+  function tick(t){
+    const p=Math.min(1,(t-start)/dur);
+    const eased=1-Math.pow(1-p,3);
+    el.textContent=Math.round(target*eased)+suffix;
+    if(p<1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const buttons=[...document.querySelectorAll('.selector button')];
+const preview=document.getElementById('audPreview');
+buttons.forEach(btn=>btn.addEventListener('click',()=>{
+  buttons.forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  preview.querySelector('h4').textContent=btn.dataset.title;
+  preview.querySelector('p').textContent=btn.dataset.copy;
+}));
+</script>
 </body>
 </html>
