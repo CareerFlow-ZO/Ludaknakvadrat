@@ -2,375 +2,434 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#071b12">
+<meta name="theme-color" content="#061711">
 <title>Landforce — Future Experience Concept by LNK DIGITAL</title>
-<meta name="description" content="Non-binding premium website concept prepared by LNK DIGITAL for Landforce.">
+<meta name="description" content="Non-binding VIP website experience concept prepared by LNK DIGITAL for Landforce.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --deep:#061811;--forest:#0d3a27;--forest2:#135034;--green:#2d7a4b;--lime:#d9f060;
-  --cream:#f7f4ec;--paper:#fffef9;--sand:#ebe4d6;--ink:#0d1913;--muted:#66736b;
-  --wood:#b86f42;--sky:#dce9e2;--line:rgba(13,25,19,.13);--white:#fff;
-  --shadow:0 32px 90px rgba(7,27,18,.16);--soft:0 18px 50px rgba(7,27,18,.09);
+ --deep:#05140e;--deep2:#0a2419;--forest:#0f3d29;--forest2:#1b6742;--green:#2f7d4f;
+ --lime:#d9f263;--lime2:#bfe347;--cream:#f7f3e9;--sand:#e9e1d1;--paper:#fffdf8;
+ --ink:#0c1712;--muted:#66736b;--line:rgba(11,25,18,.13);--sky:#dce9e2;--wood:#a96840;
+ --shadow:0 34px 100px rgba(4,20,13,.17);--soft:0 18px 50px rgba(5,23,15,.10);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
 button{font:inherit}
-.wrap{width:min(1260px,calc(100% - 44px));margin:auto}
-.preview{background:#04100b;color:#d5dfd8;text-align:center;padding:9px 14px;font:700 10px "Manrope";letter-spacing:.12em;text-transform:uppercase}
-.preview b{color:var(--lime)}
-.progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--lime),#66d9a0);width:0;z-index:150}
-header{position:sticky;top:0;z-index:100;background:rgba(247,244,236,.86);backdrop-filter:blur(22px) saturate(130%);border-bottom:1px solid transparent;transition:.25s}
-header.scrolled{border-color:var(--line);box-shadow:0 12px 35px rgba(8,24,16,.06)}
+img{max-width:100%}
+.wrap{width:min(1280px,calc(100% - 44px));margin:auto}
+.progress{position:fixed;top:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--lime),#63df9f);z-index:300}
+.conceptbar{background:#031009;color:#cad7cf;text-align:center;padding:9px 14px;font:800 10px "Manrope";letter-spacing:.14em;text-transform:uppercase}
+.conceptbar b{color:var(--lime)}
+header{position:sticky;top:0;z-index:150;background:rgba(247,243,233,.86);backdrop-filter:blur(22px) saturate(135%);border-bottom:1px solid transparent;transition:.25s}
+header.scrolled{border-color:var(--line);box-shadow:0 12px 38px rgba(4,20,13,.06)}
 .nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo img{width:170px;height:56px;object-fit:contain;object-position:left center}
-.links{display:flex;align-items:center;gap:23px}
-.links a{font-size:12px;font-weight:800;color:#2f4237}
-.links .navcta{background:var(--deep);color:#fff;padding:12px 17px;border-radius:999px}
-.mobile-menu{display:none;border:0;background:var(--deep);color:#fff;border-radius:999px;padding:11px 14px;font-weight:800}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--ink);padding:14px 20px;border-radius:999px;font-weight:800;font-size:13px;transition:.22s transform,.22s box-shadow,.22s background;cursor:pointer}
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(7,27,18,.14)}
-.btn.dark{background:var(--deep);color:#fff;border-color:var(--deep)}
-.btn.light{background:#fff;border-color:rgba(255,255,255,.55);color:var(--deep)}
-.btn.lime{background:var(--lime);border-color:var(--lime);color:var(--deep)}
+.brand img{width:175px;height:58px;object-fit:contain;object-position:left center}
+.navlinks{display:flex;align-items:center;gap:22px}
+.navlinks a{font-size:12px;font-weight:800;color:#304339}
+.navlinks .cta{padding:12px 17px;border-radius:999px;background:var(--deep);color:white}
+.menu{display:none;border:0;background:var(--deep);color:white;border-radius:999px;min-height:44px;padding:11px 15px;font-weight:800}
 .kicker{font:800 10px "Manrope";letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
 .dark .kicker{color:var(--lime)}
-.reveal{opacity:0;transform:translateY(24px);transition:.75s opacity cubic-bezier(.2,.7,.2,1),.75s transform cubic-bezier(.2,.7,.2,1)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 20px;border-radius:999px;border:1px solid var(--ink);font-size:13px;font-weight:800;cursor:pointer;transition:.2s transform,.2s box-shadow,.2s background}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(5,25,16,.13)}
+.btn.dark{background:var(--deep);border-color:var(--deep);color:white}
+.btn.light{background:white;border-color:rgba(255,255,255,.7);color:var(--deep)}
+.btn.lime{background:var(--lime);border-color:var(--lime);color:var(--deep)}
+.reveal{opacity:0;transform:translateY(25px);transition:.75s opacity cubic-bezier(.2,.7,.2,1),.75s transform cubic-bezier(.2,.7,.2,1)}
 .reveal.show{opacity:1;transform:none}
 
-/* HERO */
-.hero{position:relative;min-height:760px;isolation:isolate;overflow:hidden;background:#071b12;color:#fff}
-.hero-media{position:absolute;inset:0;z-index:-3;background:
-  linear-gradient(90deg,rgba(3,15,9,.93) 0%,rgba(3,15,9,.72) 38%,rgba(3,15,9,.2) 69%,rgba(3,15,9,.08) 100%),
-  linear-gradient(180deg,rgba(3,15,9,.08),rgba(3,15,9,.48)),
-  url("https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F5942-1-scaled.jpg?ssl=1") center/cover no-repeat;
-}
-.hero:after{content:"";position:absolute;right:-260px;top:-220px;width:700px;height:700px;border-radius:50%;border:1px solid rgba(217,240,96,.25);box-shadow:0 0 0 90px rgba(217,240,96,.045),0 0 0 180px rgba(217,240,96,.025);z-index:-1}
-.hero-inner{min-height:760px;display:grid;grid-template-columns:1.06fr .94fr;align-items:end;padding:94px 0 54px;gap:40px}
-.hero-copy{padding-bottom:48px}
-.hero h1{font:800 clamp(62px,7.4vw,108px)/.87 "Manrope";letter-spacing:-.078em;margin:18px 0 24px;max-width:920px}
-.hero h1 em{font-family:"Newsreader",serif;font-weight:500;color:var(--lime)}
-.hero p{font-size:18px;line-height:1.65;color:#d0ded5;max-width:660px}
+/* CINEMATIC HERO */
+.hero{position:relative;min-height:790px;background:var(--deep);color:white;overflow:hidden;isolation:isolate}
+.hero-photo{position:absolute;inset:0 0 0 46%;z-index:-3;background:
+ linear-gradient(90deg,var(--deep) 0,rgba(5,20,14,.78) 18%,rgba(5,20,14,.12) 52%,rgba(5,20,14,.05) 100%),
+ linear-gradient(180deg,rgba(5,20,14,.05),rgba(5,20,14,.52)),
+ url("https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F5942-1-scaled.jpg?ssl=1") center/cover no-repeat}
+.hero:before{content:"";position:absolute;z-index:-2;left:-180px;top:-210px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(217,242,99,.18),transparent 66%)}
+.hero:after{content:"";position:absolute;z-index:-1;right:-220px;bottom:-230px;width:600px;height:600px;border-radius:50%;border:1px solid rgba(217,242,99,.25);box-shadow:0 0 0 85px rgba(217,242,99,.045),0 0 0 170px rgba(217,242,99,.025)}
+.hero-grid{min-height:790px;display:grid;grid-template-columns:1.08fr .92fr;gap:42px;align-items:end;padding:96px 0 58px}
+.hero-copy{padding-bottom:46px}
+.hero h1{font:800 clamp(64px,7.5vw,112px)/.86 "Manrope";letter-spacing:-.08em;margin:18px 0 26px;max-width:900px}
+.hero h1 em{display:block;font-family:"Newsreader",serif;font-weight:500;color:var(--lime)}
+.hero p{max-width:660px;color:#d0ddd5;font-size:18px;line-height:1.64}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
-.hero-side{align-self:end;display:grid;gap:12px}
-.glass-card{background:rgba(5,24,16,.57);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(16px);border-radius:24px;padding:22px;box-shadow:0 22px 60px rgba(0,0,0,.16)}
-.glass-card small{font:800 9px "Manrope";letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
-.glass-card h3{font:800 25px/1.05 "Manrope";letter-spacing:-.045em;margin:10px 0 8px}
-.glass-card p{font-size:12px;line-height:1.5;margin:0;color:#c7d5cc}
-.hero-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.hero-mini{background:rgba(255,255,255,.92);color:var(--ink);border-radius:20px;padding:17px}
-.hero-mini b{display:block;font:800 28px/1 "Manrope";letter-spacing:-.05em;color:var(--forest2)}
-.hero-mini span{font-size:10px;color:var(--muted);line-height:1.35;display:block;margin-top:7px}
+.hero-panel{align-self:end;display:grid;gap:12px;margin-bottom:8px}
+.hero-glass{padding:23px;border-radius:25px;border:1px solid rgba(255,255,255,.16);background:rgba(5,25,16,.58);backdrop-filter:blur(18px);box-shadow:0 24px 60px rgba(0,0,0,.18)}
+.hero-glass small{font:800 9px "Manrope";letter-spacing:.15em;text-transform:uppercase;color:var(--lime)}
+.hero-glass h3{font:800 27px/1.03 "Manrope";letter-spacing:-.048em;margin:10px 0 8px}
+.hero-glass p{font-size:12px;line-height:1.5;margin:0;color:#c7d5cd}
+.hero-numbers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hero-number{background:rgba(255,255,255,.95);color:var(--ink);border-radius:20px;padding:17px}
+.hero-number b{font:800 31px/1 "Manrope";letter-spacing:-.055em;color:var(--forest2);display:block}
+.hero-number span{display:block;font-size:10px;line-height:1.35;color:var(--muted);margin-top:6px}
 
-/* IMPACT STRIP */
-.impact-strip{position:relative;z-index:4;margin-top:-34px}
-.impact-card{background:#fff;border-radius:28px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.2fr repeat(3,.8fr);overflow:hidden}
-.impact-intro{padding:28px 30px;background:var(--deep);color:#fff}
-.impact-intro h3{font:800 22px/1.08 "Manrope";letter-spacing:-.04em;margin:8px 0 0}
-.metric{padding:26px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
-.metric:last-child{border:0}.metric strong{font:800 38px/1 "Manrope";letter-spacing:-.055em;color:var(--green)}.metric span{font-size:11px;color:var(--muted);line-height:1.35;margin-top:8px}
+/* PHOTO GATEWAY */
+.gateway{padding:44px 0 106px;background:var(--cream)}
+.gateway-head{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:end;margin-bottom:28px}
+.gateway-head h2,.section-head h2,.story h2{font:800 clamp(43px,5.3vw,76px)/.94 "Manrope";letter-spacing:-.067em;margin:10px 0 0}
+.gateway-head p,.section-head p,.story p{font-size:16px;line-height:1.7;color:var(--muted);margin:0;max-width:610px}
+.gateway-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gate{position:relative;min-height:455px;border-radius:29px;overflow:hidden;color:white;cursor:pointer;box-shadow:var(--soft);border:0;text-align:left;padding:0}
+.gate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.55s transform,.55s filter}
+.gate:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,18,12,.04),rgba(4,18,12,.78) 78%)}
+.gate:hover img{transform:scale(1.055);filter:saturate(1.07)}
+.gate-content{position:absolute;z-index:3;left:22px;right:22px;bottom:22px}
+.gate-content small{font:800 9px "Manrope";letter-spacing:.13em;text-transform:uppercase;color:var(--lime)}
+.gate-content h3{font:800 27px/1 "Manrope";letter-spacing:-.047em;margin:9px 0 7px}
+.gate-content p{font-size:11px;line-height:1.45;color:#d6e1da;margin:0}
+.gate-arrow{position:absolute;z-index:4;right:18px;top:18px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.9);color:var(--deep);display:grid;place-items:center;font-size:18px}
 
-/* SECTIONS */
-.section{padding:105px 0}.section.dark{background:var(--deep);color:#fff}.section.sand{background:var(--sand)}
-.section-head{display:grid;grid-template-columns:1.08fr .92fr;gap:70px;align-items:end;margin-bottom:40px}
-.section-head h2,.story h2{font:800 clamp(42px,5.4vw,76px)/.95 "Manrope";letter-spacing:-.067em;margin:10px 0 0}
-.section-head p,.story p{font-size:16px;line-height:1.72;color:var(--muted);max-width:590px;margin:0}.dark .section-head p,.dark .story p{color:#b9c9c0}
+/* MARQUEE */
+.marquee{background:var(--deep);overflow:hidden;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}
+.track{display:flex;width:max-content;animation:scroll 28s linear infinite}
+.track span{white-space:nowrap;padding:16px 27px;color:#c9d7cf;font:800 10px "Manrope";letter-spacing:.14em;text-transform:uppercase}
+.track span:after{content:"✦";color:var(--lime);margin-left:28px}
+@keyframes scroll{to{transform:translateX(-50%)}}
 
-/* PATHS */
-.path-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.path-tabs button{border:1px solid var(--line);background:#fff;padding:10px 14px;border-radius:999px;font-size:11px;font-weight:800;cursor:pointer}
-.path-tabs button.active{background:var(--deep);color:#fff;border-color:var(--deep)}
-.path-stage{border-radius:34px;overflow:hidden;min-height:560px;display:grid;grid-template-columns:.88fr 1.12fr;background:#fff;box-shadow:var(--soft)}
-.path-copy{padding:48px}
-.path-copy .label{font:800 9px "Manrope";letter-spacing:.14em;color:var(--green);text-transform:uppercase}
-.path-copy h3{font:800 46px/.96 "Manrope";letter-spacing:-.06em;margin:15px 0}.path-copy p{color:var(--muted);line-height:1.65}
-.path-bullets{display:grid;gap:10px;margin:25px 0}.path-bullets div{display:flex;gap:10px;font-size:12px;font-weight:700;align-items:center}.path-bullets i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--sky);font-style:normal;color:var(--green)}
-.path-image{position:relative;min-height:500px;background-size:cover;background-position:center}
-.path-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,24,17,.05),rgba(6,24,17,.14))}
-.image-badge{position:absolute;z-index:2;right:22px;bottom:22px;background:rgba(255,255,255,.92);padding:13px 15px;border-radius:15px;font:800 9px "Manrope";letter-spacing:.08em;text-transform:uppercase}
+/* CINEMATIC MANIFESTO */
+.manifesto{position:relative;min-height:680px;color:white;display:grid;align-items:end;overflow:hidden;background:var(--deep)}
+.manifesto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.manifesto:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,18,12,.9),rgba(4,18,12,.45) 55%,rgba(4,18,12,.12)),linear-gradient(180deg,transparent 45%,rgba(4,18,12,.72))}
+.manifesto-inner{position:relative;z-index:3;padding:95px 0 70px}
+.manifesto h2{font:800 clamp(52px,6.5vw,92px)/.9 "Manrope";letter-spacing:-.075em;max-width:920px;margin:12px 0 20px}
+.manifesto h2 em{font-family:"Newsreader",serif;font-weight:500;color:var(--lime)}
+.manifesto p{max-width:670px;color:#d2dfd7;line-height:1.65;font-size:17px}
 
-/* MOSAIC */
-.mosaic{display:grid;grid-template-columns:1.05fr .95fr .7fr;grid-template-rows:260px 260px;gap:12px}
-.photo{position:relative;border-radius:24px;overflow:hidden;background:#ccc}
-.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:.45s transform}
-.photo:hover img{transform:scale(1.035)}
-.photo.big{grid-row:1/3}.photo.wide{grid-column:2/4}
-.photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 54%,rgba(5,21,14,.55))}
-.photo .cap{position:absolute;z-index:2;left:18px;bottom:16px;color:#fff;font-size:11px;font-weight:800}
+/* COMMON SECTIONS */
+.section{padding:106px 0}
+.section.dark{background:var(--deep);color:white}
+.section.sand{background:var(--sand)}
+.section-head{display:grid;grid-template-columns:1.06fr .94fr;gap:70px;align-items:end;margin-bottom:38px}
+.dark .section-head p,.dark .story p{color:#b9c8c0}
 
-/* SERVICES */
-.services{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.service{position:relative;min-height:410px;border-radius:28px;overflow:hidden;background:#123;color:#fff;box-shadow:0 18px 45px rgba(0,0,0,.08)}
-.service img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.45s transform}
-.service:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,20,13,.08),rgba(5,20,13,.76) 78%)}
-.service:hover img{transform:scale(1.05)}
-.service-copy{position:absolute;z-index:3;left:22px;right:22px;bottom:22px}.service-copy small{font:800 9px "Manrope";letter-spacing:.12em;text-transform:uppercase;color:var(--lime)}.service-copy h3{font:800 24px/1.04 "Manrope";letter-spacing:-.04em;margin:9px 0 6px}.service-copy p{font-size:11px;line-height:1.45;color:#d1ddd6}
+/* SERVICES MOSAIC */
+.services{display:grid;grid-template-columns:1.15fr .85fr .85fr;grid-template-rows:280px 280px;gap:12px}
+.service{position:relative;border-radius:28px;overflow:hidden;color:white;min-height:260px}
+.service.large{grid-row:1/3}
+.service img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.48s transform}
+.service:hover img{transform:scale(1.04)}
+.service:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,20,13,.04),rgba(5,20,13,.76) 79%)}
+.service-copy{position:absolute;z-index:3;left:23px;right:23px;bottom:21px}
+.service-copy small{font:800 9px "Manrope";letter-spacing:.13em;text-transform:uppercase;color:var(--lime)}
+.service-copy h3{font:800 25px/1.03 "Manrope";letter-spacing:-.045em;margin:9px 0 6px}
+.service-copy p{font-size:10px;line-height:1.45;color:#d2ddd6;margin:0}
+
+/* IMPACT */
+.impact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px}
+.impact-numbers{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.impact-stat{border-radius:24px;background:#fff;padding:25px;box-shadow:var(--soft)}
+.impact-stat b{display:block;font:800 clamp(44px,5vw,72px)/1 "Manrope";letter-spacing:-.065em;color:var(--forest2)}
+.impact-stat span{font-size:11px;line-height:1.4;color:var(--muted);display:block;margin-top:8px}
+.impact-reel{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.reel-card{position:relative;min-height:245px;border-radius:25px;overflow:hidden;color:white}
+.reel-card:first-child{grid-column:1/3;min-height:300px}
+.reel-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reel-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(5,20,13,.68))}
+.reel-card div{position:absolute;z-index:3;left:20px;right:20px;bottom:18px;font-weight:800}
 
 /* PROJECT EXPLORER */
-.explorer{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
-.map{min-height:600px;border-radius:32px;position:relative;overflow:hidden;background:
-  radial-gradient(circle at 20% 30%,rgba(51,115,75,.18),transparent 18%),
-  radial-gradient(circle at 75% 70%,rgba(51,115,75,.17),transparent 20%),
-  linear-gradient(25deg,transparent 48%,rgba(255,255,255,.42) 49%,transparent 50%) 0 0/95px 95px,
-  linear-gradient(110deg,transparent 48%,rgba(255,255,255,.32) 49%,transparent 50%) 0 0/120px 120px,
-  #cad5c8;
+.explorer{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.map{min-height:620px;border-radius:32px;position:relative;overflow:hidden;background:
+radial-gradient(circle at 20% 30%,rgba(48,123,78,.20),transparent 18%),
+radial-gradient(circle at 75% 72%,rgba(48,123,78,.18),transparent 20%),
+linear-gradient(25deg,transparent 48%,rgba(255,255,255,.44) 49%,transparent 50%) 0 0/95px 95px,
+linear-gradient(110deg,transparent 48%,rgba(255,255,255,.34) 49%,transparent 50%) 0 0/120px 120px,#c9d5c8}
+.map:before{content:"PITTSBURGH";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:800 58px "Manrope";letter-spacing:.09em;color:rgba(13,58,39,.08)}
+.river{position:absolute;left:-10%;top:46%;width:120%;height:85px;background:#9fc8d0;transform:rotate(-7deg);border-radius:45%}
+.pin{position:absolute;width:26px;height:26px;border-radius:50% 50% 50% 0;background:var(--forest);border:4px solid white;box-shadow:0 9px 20px rgba(0,0,0,.18);transform:rotate(-45deg);cursor:pointer;z-index:5}
+.pin:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--lime);left:5px;top:5px}
+.p1{left:27%;top:28%}.p2{left:58%;top:35%}.p3{left:68%;top:68%}.p4{left:36%;top:71%}.p5{left:78%;top:23%}
+.map-pop{position:absolute;z-index:9;min-width:210px;background:var(--deep);color:white;border-radius:15px;padding:13px;display:none;box-shadow:var(--shadow)}
+.map-pop.on{display:block}.map-pop b{font-size:12px}.map-pop span{font-size:10px;color:#c4d2ca}
+.project-side{background:#fff;border-radius:32px;padding:27px;box-shadow:var(--soft)}
+.project-side h3{font:800 33px/1 "Manrope";letter-spacing:-.052em;margin:11px 0 12px}
+.project-side>p{color:var(--muted);font-size:12px;line-height:1.55}
+.project-list{display:grid;gap:9px;margin-top:20px}
+.project-card{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:center;border:1px solid var(--line);border-radius:17px;padding:9px;background:#fff}
+.project-card img{width:72px;height:58px;border-radius:11px;object-fit:cover}
+.project-card b{font-size:11px}.project-card span{display:block;font-size:9px;color:var(--muted);margin-top:3px}.project-card em{font-style:normal;font-size:17px;color:var(--green)}
+
+/* RWP */
+.rwp{background:linear-gradient(145deg,#081d14,#102d20 52%,#20140d);color:white;overflow:hidden}
+.rwp-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:55px;align-items:center}
+.rwp-visual{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:250px 250px;gap:10px}
+.rwp-photo{position:relative;border-radius:26px;overflow:hidden}
+.rwp-photo:first-child{grid-row:1/3}
+.rwp-photo img{width:100%;height:100%;object-fit:cover}
+.rwp-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 56%,rgba(5,17,11,.5))}
+.rwp-photo b{position:absolute;z-index:2;left:15px;bottom:13px;font-size:10px}
+.shopbar{display:flex;gap:7px;flex-wrap:wrap;margin:22px 0 14px}
+.shopbar button{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:white;padding:9px 12px;border-radius:999px;font-size:10px;font-weight:800;cursor:pointer}
+.shopbar button.active{background:var(--lime);border-color:var(--lime);color:var(--deep)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.product{background:#fff;color:var(--ink);border-radius:17px;padding:10px}
+.product img{width:100%;height:110px;object-fit:cover;border-radius:11px}
+.product b{display:block;font-size:11px;margin-top:9px}.product span{display:block;font-size:9px;color:var(--muted);margin-top:3px;line-height:1.35}
+.product a{display:inline-flex;margin-top:8px;font-size:9px;font-weight:800;color:var(--green);cursor:pointer}
+
+/* WORKFORCE JOURNEY */
+.journey{display:grid;grid-template-columns:.85fr 1.15fr;gap:58px}
+.journey-hero{position:relative;min-height:670px;border-radius:36px;overflow:hidden}
+.journey-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.journey-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,rgba(5,20,13,.68))}
+.journey-caption{position:absolute;z-index:3;left:22px;right:22px;bottom:22px;color:white}.journey-caption small{font:800 9px "Manrope";letter-spacing:.13em;text-transform:uppercase;color:var(--lime)}.journey-caption b{display:block;font:800 28px/1.02 "Manrope";letter-spacing:-.045em;margin-top:8px}
+.steps{display:grid;gap:9px;margin-top:24px}
+.step{display:grid;grid-template-columns:86px 1fr;gap:14px;align-items:center;border-top:1px solid var(--line);padding:13px 0}
+.step img{width:86px;height:66px;border-radius:13px;object-fit:cover}
+.step small{font:800 9px "Manrope";letter-spacing:.12em;color:var(--green)}.step b{display:block;font:800 14px "Manrope";margin:3px 0}.step p{font-size:10px;line-height:1.4;color:var(--muted);margin:0}
+
+/* FINAL CTA */
+.final{padding:30px 0 100px}
+.final-card{position:relative;min-height:420px;border-radius:38px;overflow:hidden;color:white;display:grid;align-items:end;box-shadow:var(--shadow)}
+.final-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.final-card:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,17,11,.9),rgba(4,17,11,.42) 62%,rgba(4,17,11,.12))}
+.final-copy{position:relative;z-index:3;padding:46px;max-width:850px}.final-copy h2{font:800 clamp(44px,5.4vw,76px)/.93 "Manrope";letter-spacing:-.068em;margin:10px 0 14px}.final-copy p{color:#d6e1da;line-height:1.6;max-width:650px}
+footer{background:#04140d;color:#d6e1da;padding:52px 0}
+.footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:40px}.footer-logo{width:180px;margin-bottom:16px}.footer-grid p{font-size:11px;line-height:1.55;color:#9eafa5}.footer-grid h4{font:800 10px "Manrope";letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}.footer-grid a{display:block;font-size:11px;color:#c8d5cd;margin:8px 0}
+.legal{border-top:1px solid rgba(255,255,255,.1);margin-top:30px;padding-top:18px;display:flex;justify-content:space-between;gap:20px;font-size:9px;color:#8fa197}
+
+/* MODALS */
+.modal{position:fixed;inset:0;background:rgba(3,12,8,.73);z-index:240;display:none;place-items:center;padding:20px;backdrop-filter:blur(12px)}
+.modal.on{display:grid}.modalbox{width:min(760px,100%);max-height:86vh;overflow:auto;background:white;border-radius:29px;padding:28px;position:relative}.close{position:absolute;right:16px;top:16px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:white;font-size:20px;cursor:pointer}.modalbox h2{font:800 39px/.98 "Manrope";letter-spacing:-.052em;margin:11px 0}.modalbox p{color:var(--muted);line-height:1.6}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.field{border:1px solid var(--line);border-radius:14px;padding:13px;font-size:11px;color:var(--muted)}
+.toast{position:fixed;right:18px;bottom:18px;z-index:260;background:var(--deep);color:white;padding:12px 16px;border-radius:14px;opacity:0;transform:translateY(80px);transition:.22s}
+.toast.on{opacity:1;transform:none}
+.cart{position:fixed;right:17px;bottom:17px;z-index:170;background:var(--deep);color:white;padding:11px 14px;border-radius:999px;font-size:10px;font-weight:800;box-shadow:var(--shadow);cursor:pointer;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(15px);transition:.22s}
+.cart.visible{opacity:1;visibility:visible;pointer-events:auto;transform:none}.cart b{color:var(--lime)}
+
+/* RESPONSIVE */
+@media(max-width:1080px){
+ .navlinks{display:none}.menu{display:block}.hero-grid,.gateway-head,.section-head,.impact-grid,.explorer,.rwp-grid,.journey{grid-template-columns:1fr}
+ .hero-panel{display:none}.hero-photo{inset:0}.hero-photo:after{content:"";position:absolute;inset:0;background:rgba(3,14,9,.26)}
+ .gateway-grid{grid-template-columns:1fr 1fr}.services{grid-template-columns:1fr 1fr;grid-template-rows:auto}.service.large{grid-row:auto;grid-column:1/3;min-height:430px}
+ .impact-grid{gap:12px}.section{padding:80px 0}.rwp-visual{order:2}
 }
-.map:before{content:"PITTSBURGH";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:800 58px "Manrope";letter-spacing:.08em;color:rgba(13,58,39,.08)}
-.river{position:absolute;left:-10%;top:46%;width:120%;height:80px;background:#9fc8d0;transform:rotate(-7deg);border-radius:45%}
-.pin{position:absolute;width:25px;height:25px;border-radius:50% 50% 50% 0;background:var(--forest);border:4px solid #fff;box-shadow:0 8px 18px rgba(0,0,0,.18);transform:rotate(-45deg);cursor:pointer;z-index:4}.pin:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--lime);left:5px;top:5px}
-.pin.p1{left:28%;top:28%}.pin.p2{left:58%;top:36%}.pin.p3{left:67%;top:67%}.pin.p4{left:35%;top:70%}.pin.p5{left:78%;top:24%}
-.map-pop{position:absolute;z-index:7;min-width:200px;background:#071b12;color:#fff;padding:13px;border-radius:14px;display:none;box-shadow:var(--shadow)}.map-pop.on{display:block}.map-pop b{font-size:12px}.map-pop span{font-size:10px;color:#c4d1c9}
-.project-panel{border-radius:32px;background:#fff;padding:30px;box-shadow:var(--soft)}
-.project-panel h3{font:800 31px/1 "Manrope";letter-spacing:-.05em;margin:12px 0 12px}.project-panel p{color:var(--muted);line-height:1.6;font-size:13px}
-.project-list{display:grid;gap:10px;margin-top:20px}.project-row{border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center}.project-row .icon{width:42px;height:42px;border-radius:12px;background:var(--sky);display:grid;place-items:center;font-weight:800;color:var(--green)}.project-row b{font-size:12px}.project-row span{display:block;font-size:9px;color:var(--muted);margin-top:3px}.project-row em{font-style:normal;font-size:18px;color:var(--green)}
-
-/* WOOD */
-.wood-wrap{display:grid;grid-template-columns:.86fr 1.14fr;gap:56px;align-items:center}
-.wood-art{min-height:590px;border-radius:38px;position:relative;overflow:hidden;background:
- linear-gradient(180deg,rgba(25,11,5,.05),rgba(25,11,5,.55)),
- url("https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1") center/cover;
- box-shadow:var(--shadow)}
-.wood-art:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-100px;bottom:-100px;border:55px solid rgba(255,255,255,.12)}
-.wood-label{position:absolute;left:22px;bottom:22px;background:rgba(255,255,255,.94);border-radius:18px;padding:16px;max-width:280px}.wood-label small{font:800 9px "Manrope";letter-spacing:.12em;color:#8b5838}.wood-label b{display:block;font:800 23px/1 "Manrope";letter-spacing:-.04em;margin-top:8px}
-.shopbar{display:flex;gap:7px;flex-wrap:wrap;margin:22px 0 14px}.shopbar button{border:1px solid var(--line);background:#fff;padding:9px 12px;border-radius:999px;font-size:10px;font-weight:800;cursor:pointer}.shopbar button.active{background:var(--deep);color:#fff}
-.shopgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.product{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px}.grain{height:80px;border-radius:12px;background:linear-gradient(120deg,#dcb285,#7c4f35);position:relative;overflow:hidden}.grain:after{content:"";position:absolute;inset:0;background:repeating-radial-gradient(ellipse at 30% 50%,rgba(255,255,255,.33) 0 1px,transparent 2px 10px);opacity:.7}.product:nth-child(2) .grain{background:linear-gradient(120deg,#c2a77c,#6a513c)}.product:nth-child(3) .grain{background:linear-gradient(120deg,#e0c291,#8c603f)}.product b{display:block;font-size:12px;margin-top:10px}.product span{display:block;font-size:10px;line-height:1.4;color:var(--muted);margin-top:4px}.product a{display:inline-flex;align-items:center;gap:5px;margin-top:10px;color:var(--green);font-size:10px;line-height:1.25;font-weight:800;cursor:pointer;padding:4px 0}
-
-/* WORKFORCE */
-.journey{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px}
-.journey-photo{border-radius:34px;overflow:hidden;min-height:620px;position:relative}.journey-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.journey-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(5,20,13,.65))}
-.journey-steps{display:grid}.step{display:grid;grid-template-columns:55px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}.step .n{font:800 11px "Manrope";color:var(--green)}.step b{font:800 16px "Manrope";display:block}.step p{font-size:12px;color:var(--muted);line-height:1.5;margin:5px 0 0}
-
-/* CTA */
-.cta{padding:30px 0 100px}.cta-card{background:linear-gradient(135deg,var(--lime),#bfdf46);border-radius:38px;padding:54px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;position:relative;overflow:hidden;box-shadow:0 28px 75px rgba(118,142,46,.18)}.cta-card:after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;right:-170px;top:-180px;border:70px solid rgba(255,255,255,.25)}.cta-card>*{position:relative;z-index:2}.cta-card h2{font:800 clamp(42px,5.4vw,74px)/.94 "Manrope";letter-spacing:-.068em;margin:0 0 12px}.cta-card p{max-width:720px;line-height:1.6;color:#40543e;margin:0}
-footer{background:#061811;color:#d6e0da;padding:52px 0}.footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:40px}.footer-logo{width:180px;filter:brightness(0) invert(1);margin-bottom:18px}.footer-grid p{font-size:11px;color:#9fb1a6;line-height:1.6;max-width:460px}.footer-grid h4{font:800 11px "Manrope";text-transform:uppercase;letter-spacing:.12em;color:var(--lime)}.footer-grid a{display:block;font-size:11px;color:#cbd7d0;margin:8px 0}
-.legal{border-top:1px solid rgba(255,255,255,.1);margin-top:34px;padding-top:18px;font-size:9px;color:#91a499;display:flex;justify-content:space-between;gap:20px}
-
-/* MODAL / TOAST */
-.modal{position:fixed;inset:0;background:rgba(3,12,8,.72);z-index:180;display:none;place-items:center;padding:20px;backdrop-filter:blur(12px)}.modal.on{display:grid}.modalbox{width:min(760px,100%);max-height:86vh;overflow:auto;background:#fff;border-radius:28px;padding:28px;position:relative}.close{position:absolute;right:16px;top:16px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:20px;cursor:pointer}.modalbox h2{font:800 38px/.98 "Manrope";letter-spacing:-.05em;margin:12px 0}.modalbox p{color:var(--muted);line-height:1.6}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.field{border:1px solid var(--line);border-radius:14px;padding:13px;font-size:11px;color:var(--muted)}
-.toast{position:fixed;right:20px;bottom:20px;z-index:190;background:var(--deep);color:#fff;padding:13px 17px;border-radius:14px;transform:translateY(90px);opacity:0;transition:.25s}.toast.on{transform:none;opacity:1}
-.cart{position:fixed;right:18px;bottom:18px;z-index:90;background:var(--deep);color:#fff;border-radius:999px;padding:11px 15px;font-size:11px;font-weight:800;box-shadow:var(--shadow);cursor:pointer;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(14px);transition:.22s opacity,.22s transform,.22s visibility}.cart.visible{opacity:1;visibility:visible;pointer-events:auto;transform:none}.cart b{color:var(--lime)}
-
-@media(max-width:1050px){
-  .links{display:none}.mobile-menu{display:block}.hero-inner,.section-head,.path-stage,.explorer,.wood-wrap,.journey{grid-template-columns:1fr}.hero-side{display:none}.hero-media{background-position:62% center}
-  .impact-card{grid-template-columns:1fr 1fr}.impact-intro{grid-column:1/3}.metric{border-bottom:1px solid var(--line)}
-  .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:300px 220px 220px}.photo.big{grid-row:1;grid-column:1/3}.photo.wide{grid-column:1/3}
-  .services{grid-template-columns:1fr 1fr}.section{padding:78px 0}.path-image{min-height:440px}
-}
-@media(max-width:650px){
-  .wrap{width:min(100% - 24px,1260px)}.preview{font-size:8px;line-height:1.35}.nav{height:72px}.logo img{width:174px;height:54px}.mobile-menu{padding:12px 16px;min-height:44px}
-  .hero,.hero-inner{min-height:720px}.hero-inner{padding-top:58px;padding-bottom:70px}.hero h1{font-size:50px;line-height:.9}.hero p{font-size:15px;line-height:1.58}.hero-actions{gap:9px}.hero-actions .btn{min-height:50px;padding:13px 18px}.hero-media{background-position:66% center}
-  .impact-card{display:block;margin:0 0}.impact-strip{margin-top:-22px}.metric{border-right:0}.section{padding:68px 0}.section-head{gap:20px}
-  .path-copy{padding:28px 22px}.path-copy h3{font-size:38px}.path-image{min-height:360px}
-  .mosaic{display:block}.photo{height:260px;margin-bottom:10px}.services{grid-template-columns:1fr}.service{min-height:360px}
-  .map{min-height:460px}.project-panel{padding:22px}.shopgrid{grid-template-columns:1fr}.product{padding:14px}.grain{height:140px}.journey-photo{min-height:440px}.cta-card{padding:34px 24px;grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.legal{display:block}.formgrid{grid-template-columns:1fr}.cart{right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);font-size:10px;padding:10px 13px}.toast{right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);font-size:11px;max-width:calc(100% - 24px)}
+@media(max-width:680px){
+ .wrap{width:min(100% - 24px,1280px)}.conceptbar{font-size:8px;line-height:1.35}.nav{height:72px}.brand img{width:176px;height:54px}.menu{padding:12px 16px}
+ .hero,.hero-grid{min-height:745px}.hero-grid{padding:58px 0 68px}.hero-copy{padding-bottom:0}.hero h1{font-size:51px;line-height:.89}.hero p{font-size:15px;line-height:1.58}.hero-actions .btn{min-height:50px;padding:13px 18px}
+ .hero-photo{background-position:66% center}.gateway{padding:34px 0 68px}.gateway-head{gap:18px}.gateway-grid{grid-template-columns:1fr}.gate{min-height:360px}
+ .track span{padding:14px 20px}.manifesto{min-height:610px}.manifesto-inner{padding:70px 0 54px}.manifesto h2{font-size:50px}
+ .section{padding:68px 0}.section-head{gap:18px}.services{display:block}.service,.service.large{min-height:350px;margin-bottom:10px}.impact-numbers{grid-template-columns:1fr 1fr}.impact-stat{padding:18px}.impact-stat b{font-size:46px}
+ .impact-reel{display:block}.reel-card,.reel-card:first-child{min-height:260px;margin-bottom:10px}.map{min-height:470px}.project-side{padding:22px}.project-card{grid-template-columns:64px 1fr auto}.project-card img{width:64px;height:55px}
+ .rwp-visual{grid-template-columns:1fr 1fr;grid-template-rows:240px 190px}.products{grid-template-columns:1fr}.product{padding:13px}.product img{height:150px}.journey-hero{min-height:470px}.step{grid-template-columns:78px 1fr}.step img{width:78px;height:62px}
+ .final{padding-bottom:70px}.final-card{min-height:500px}.final-copy{padding:28px 22px}.footer-grid{grid-template-columns:1fr}.legal{display:block}
+ .formgrid{grid-template-columns:1fr}.cart{right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px)}.toast{right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);max-width:calc(100% - 24px)}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 <div class="progress" id="progress"></div>
-<div class="preview"><b>VIP CONCEPT PREVIEW</b> — non-binding experience exploration prepared by LNK DIGITAL for Landforce</div>
+<div class="conceptbar"><b>VIP CONCEPT PREVIEW</b> — non-binding future-experience exploration prepared by LNK DIGITAL</div>
 
 <header id="header">
-  <div class="wrap nav">
-    <a class="logo" href="#top"><img src="https://www.landforcepgh.org/wp-content/uploads/2024/05/Landforce-normal-2-300x150.png" alt="Landforce"></a>
-    <div class="links">
-      <a href="#paths">Who We Serve</a><a href="#services">Services</a><a href="#projects">Impact</a><a href="#wood">Responsible Wood</a><a href="#journey">Join the Crew</a><a href="#about">About</a>
-      <a class="navcta" href="#contact">Take Action ↗</a>
-    </div>
-    <button class="mobile-menu" onclick="openModal('Navigate Landforce','Choose a pathway below.','nav')">Menu</button>
+ <div class="wrap nav">
+  <a class="brand" href="#top"><img src="https://www.landforcepgh.org/wp-content/uploads/2024/05/Landforce-normal-2-300x150.png" alt="Landforce"></a>
+  <div class="navlinks">
+   <a href="#gateway">Explore</a><a href="#services">Services</a><a href="#impact">Impact</a><a href="#projects">Projects</a><a href="#wood">Responsible Wood</a><a href="#workforce">Workforce</a>
+   <a class="cta" href="#contact">Take Action ↗</a>
   </div>
+  <button class="menu" onclick="openModal('Navigate Landforce','Choose a pathway below.','nav')">Menu</button>
+ </div>
 </header>
 
 <main id="top">
 <section class="hero">
-  <div class="hero-media"></div>
-  <div class="wrap hero-inner">
-    <div class="hero-copy reveal">
-      <div class="kicker" style="color:var(--lime)">Pittsburgh · People · Land · Opportunity</div>
-      <h1>Build people.<br>Restore land.<br><em>Lasting impact.</em></h1>
-      <p>Landforce connects meaningful, paid workforce development with professional environmental stewardship — creating stronger career pathways and healthier communities at the same time. </p>
-      <div class="hero-actions">
-        <button class="btn lime" onclick="openModal('Join the Crew','A mobile-first application journey designed to make eligibility, expectations, support and next steps easy to understand.','crew')">Join Our Crew ↗</button>
-        <button class="btn light" onclick="document.getElementById('services').scrollIntoView()">Hire Landforce</button>
-        <button class="btn light" onclick="document.getElementById('wood').scrollIntoView()">Explore Responsible Wood</button>
-      </div>
-    </div>
-    <div class="hero-side reveal">
-      <div class="glass-card"><small>One connected model</small><h3>Workforce development × environmental stewardship.</h3><p>Training, paid transitional employment, career coaching and real projects become one coherent story.</p></div>
-      <div class="hero-mini-grid">
-        <div class="hero-mini"><b>People</b><span>Paid training, certifications and career pathways.</span></div>
-        <div class="hero-mini"><b>Land</b><span>Professional environmental work across Pittsburgh.</span></div>
-      </div>
-    </div>
+ <div class="hero-photo"></div>
+ <div class="wrap hero-grid">
+  <div class="hero-copy reveal">
+   <div class="kicker" style="color:var(--lime)">People · Land · Opportunity · Pittsburgh</div>
+   <h1>Build people.<br>Restore land.<br><em>Change what comes next.</em></h1>
+   <p>A bolder digital expression of Landforce: meaningful workforce development, professional environmental stewardship and a growing Responsible Wood enterprise — connected in one premium experience.</p>
+   <div class="hero-actions">
+    <button class="btn lime" onclick="openModal('Join the Crew','Preview a mobile-first workforce-development journey.','crew')">Join Our Crew ↗</button>
+    <button class="btn light" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Hire Landforce</button>
+    <button class="btn light" onclick="document.getElementById('wood').scrollIntoView({behavior:'smooth'})">Explore Responsible Wood</button>
+   </div>
   </div>
+  <div class="hero-panel reveal">
+   <div class="hero-glass"><small>One connected story</small><h3>Workforce development × environmental stewardship × circular material.</h3><p>A website architecture that gives each audience a direct route while keeping the mission visibly connected.</p></div>
+   <div class="hero-numbers">
+    <div class="hero-number"><b>207</b><span>Crew Members trained and hired in Landforce's 10-year anniversary reporting.</span></div>
+    <div class="hero-number"><b>193</b><span>community projects highlighted in the same 10-year milestone.</span></div>
+   </div>
+  </div>
+ </div>
 </section>
 
-<section class="impact-strip">
-  <div class="wrap impact-card reveal">
-    <div class="impact-intro"><div class="kicker" style="color:var(--lime)">Public impact</div><h3>Proof belongs in the experience — not buried in a report.</h3></div>
-    <div class="metric"><strong>220+</strong><span>people trained since 2016, based on current RFP information</span></div>
-    <div class="metric"><strong>91K+</strong><span>hours of stewardship work reported in the RFP</span></div>
-    <div class="metric"><strong>83</strong><span>neighborhoods reached, based on the RFP</span></div>
+<section class="gateway" id="gateway">
+ <div class="wrap">
+  <div class="gateway-head reveal">
+   <div><div class="kicker">Choose your path</div><h2>Every audience gets a visual doorway — not another menu maze.</h2></div>
+   <p>Four high-intent routes make the organization easy to understand in seconds. Each pathway has its own imagery, tone, content system and conversion goal.</p>
   </div>
+  <div class="gateway-grid">
+   <button class="gate reveal" onclick="openModal('Join the Crew','A respectful, mobile-first application and workforce journey.','crew')">
+    <img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1" alt="Landforce crew member">
+    <span class="gate-arrow">↗</span><span class="gate-content"><small>01 / Workforce</small><h3>Join the Crew</h3><p>Training, paid work experience, career support and a clear application path.</p></span>
+   </button>
+   <button class="gate reveal" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+    <img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6469-1-scaled.jpg?ssl=1" alt="Landforce environmental stewardship work">
+    <span class="gate-arrow">↗</span><span class="gate-content"><small>02 / Services</small><h3>Hire Landforce</h3><p>Professional land stewardship capabilities, projects, proof and inquiry flow.</p></span>
+   </button>
+   <button class="gate reveal" onclick="document.getElementById('wood').scrollIntoView({behavior:'smooth'})">
+    <img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1" alt="Landforce responsible wood concept">
+    <span class="gate-arrow">↗</span><span class="gate-content"><small>03 / Enterprise</small><h3>Responsible Wood</h3><p>Recovered urban wood, services, catalog, quotes and future commerce.</p></span>
+   </button>
+   <button class="gate reveal" onclick="document.getElementById('impact').scrollIntoView({behavior:'smooth'})">
+    <img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.33.52-1-scaled.jpg?ssl=1" alt="Landforce impact">
+    <span class="gate-arrow">↗</span><span class="gate-content"><small>04 / Mission</small><h3>Support the Work</h3><p>Impact, partnerships, volunteers, funders, donors and community stories.</p></span>
+   </button>
+  </div>
+ </div>
 </section>
 
-<section class="section" id="paths">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div><div class="kicker">Audience-first navigation</div><h2>The site should know why you came.</h2></div>
-      <p>Instead of asking visitors to understand Landforce's internal structure, the future experience routes people by intent: work, hire, buy, supply, volunteer, partner, donate or learn.</p>
-    </div>
-    <div class="path-tabs reveal">
-      <button class="active" onclick="setPath(this,'crew')">Join the Crew</button>
-      <button onclick="setPath(this,'hire')">Hire Landforce</button>
-      <button onclick="setPath(this,'wood')">Responsible Wood</button>
-      <button onclick="setPath(this,'support')">Support the Mission</button>
-    </div>
-    <div class="path-stage reveal">
-      <div class="path-copy">
-        <div class="label" id="pathLabel">Workforce Development</div>
-        <h3 id="pathTitle">A clearer path into meaningful work.</h3>
-        <p id="pathText">Explain paid training, certifications, career coaching, transitional employment, eligibility and the application process without friction.</p>
-        <div class="path-bullets" id="pathBullets">
-          <div><i>✓</i>Paid training and real project experience</div>
-          <div><i>✓</i>Industry-recognized certifications</div>
-          <div><i>✓</i>Career coaching and support</div>
-        </div>
-        <button class="btn dark" id="pathButton" onclick="handlePathAction()">Preview journey ↗</button>
-      </div>
-      <div class="path-image" id="pathImage" style="background-image:url('https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1')"><div class="image-badge">Real Landforce photography · concept layout</div></div>
-    </div>
-  </div>
-</section>
+<div class="marquee"><div class="track">
+ <span>Workforce Development</span><span>Land Stewardship</span><span>Responsible Wood</span><span>Paid Training</span><span>Professional Crews</span><span>Community Impact</span>
+ <span>Workforce Development</span><span>Land Stewardship</span><span>Responsible Wood</span><span>Paid Training</span><span>Professional Crews</span><span>Community Impact</span>
+</div></div>
 
-<section class="section dark" id="about">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div><div class="kicker">Mission + identity</div><h2>A just world. Healthy environments. Meaningful opportunity.</h2></div>
-      <p>Landforce's published vision centers belonging, healthy environments and people surpassing their greatest dreams; its mission focuses on self-empowerment toward meaningful, stable employment while protecting and improving the environment. </p>
-    </div>
-    <div class="mosaic reveal">
-      <div class="photo big"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.33.52-1-scaled.jpg?ssl=1" alt="Landforce field work"><div class="cap">People-first workforce development</div></div>
-      <div class="photo"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.32.58-1-scaled.jpg?ssl=1" alt="Landforce crew"><div class="cap">Real work experience</div></div>
-      <div class="photo"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.42.59-1-scaled.jpg?ssl=1" alt="Landforce environmental work"><div class="cap">Environmental stewardship</div></div>
-      <div class="photo wide"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1" alt="Landforce team"><div class="cap">Skills, support and stronger communities</div></div>
-    </div>
-  </div>
+<section class="manifesto">
+ <img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1" alt="Landforce team at work">
+ <div class="wrap manifesto-inner reveal">
+  <div class="kicker" style="color:var(--lime)">The brand feeling</div>
+  <h2>Grounded enough to feel real.<br><em>Bold enough to feel inevitable.</em></h2>
+  <p>The redesign should not imitate Landforce's current site. It should elevate the organization into a confident regional brand while keeping the people, work and land at the center.</p>
+ </div>
 </section>
 
 <section class="section" id="services">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div><div class="kicker">Land Stewardship</div><h2>Professional crews. Clear capabilities. Stronger conversion.</h2></div>
-      <p>Landforce publicly lists services ranging from habitat and invasive-plant work to vacant-land stabilization, trails, tree care, erosion control and green infrastructure maintenance. </p>
-    </div>
-    <div class="services">
-      <article class="service reveal"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6469-1-scaled.jpg?ssl=1" alt=""><div class="service-copy"><small>01 / Trails</small><h3>Trail Construction + Upgrades</h3><p>Project-led pages with services, proof, case studies and a direct inquiry path.</p></div></article>
-      <article class="service reveal"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1" alt=""><div class="service-copy"><small>02 / Habitat</small><h3>Habitat Restoration</h3><p>Show technical capability without losing the workforce-development story.</p></div></article>
-      <article class="service reveal"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F5942-1-scaled.jpg?ssl=1" alt=""><div class="service-copy"><small>03 / Green Infrastructure</small><h3>Stormwater + Land Care</h3><p>Clear service fit, project types, outcomes and contact pathways.</p></div></article>
-      <article class="service reveal"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1" alt=""><div class="service-copy"><small>04 / Stewardship</small><h3>Tree + Site Maintenance</h3><p>Flexible presentation for repeat clients, partners and municipalities.</p></div></article>
-    </div>
+ <div class="wrap">
+  <div class="section-head reveal">
+   <div><div class="kicker">Land Stewardship</div><h2>Every service becomes a visual proof point.</h2></div>
+   <p>Instead of text-heavy service pages, each capability is presented through strong photography, real projects, outcomes and a direct route to request work.</p>
   </div>
+  <div class="services">
+   <article class="service large reveal"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6469-1-scaled.jpg?ssl=1" alt=""><div class="service-copy"><small>01 / Trails</small><h3>Trail Construction + Upgrades</h3><p>Project stories, technical capabilities, partners, outcomes and direct inquiry.</p></div></article>
+   <article class="service reveal"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.32.58-1-scaled.jpg?ssl=1" alt=""><div class="service-copy"><small>02 / Habitat</small><h3>Habitat Restoration</h3><p>Show expertise through real work and visible outcomes.</p></div></article>
+   <article class="service reveal"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F5942-1-scaled.jpg?ssl=1" alt=""><div class="service-copy"><small>03 / Green Infrastructure</small><h3>Stormwater + Green Infrastructure</h3><p>Clear capabilities for agencies, nonprofits and public partners.</p></div></article>
+   <article class="service reveal"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1" alt=""><div class="service-copy"><small>04 / Sites</small><h3>Vacant Land Stabilization</h3><p>Before/after proof, neighborhood context and maintenance pathways.</p></div></article>
+   <article class="service reveal"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.42.59-1-scaled.jpg?ssl=1" alt=""><div class="service-copy"><small>05 / Trees</small><h3>Tree + Site Care</h3><p>Recurring service relationships presented with clarity and confidence.</p></div></article>
+  </div>
+ </div>
 </section>
 
-<section class="section sand" id="projects">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div><div class="kicker">Project Explorer concept</div><h2>Turn years of field work into an explorable impact story.</h2></div>
-      <p>A future project explorer could help funders, clients, partners and community members understand where Landforce works and what changes because of it. The pins below are illustrative concept data, not verified project locations.</p>
-    </div>
-    <div class="explorer">
-      <div class="map reveal" id="map">
-        <div class="river"></div>
-        <button class="pin p1" aria-label="Project pin" onclick="showPin(this,'Trail & habitat project','Illustrative project location')"></button>
-        <button class="pin p2" aria-label="Project pin" onclick="showPin(this,'Green infrastructure project','Illustrative project location')"></button>
-        <button class="pin p3" aria-label="Project pin" onclick="showPin(this,'Vacant land stabilization','Illustrative project location')"></button>
-        <button class="pin p4" aria-label="Project pin" onclick="showPin(this,'Community stewardship','Illustrative project location')"></button>
-        <button class="pin p5" aria-label="Project pin" onclick="showPin(this,'Tree-care project','Illustrative project location')"></button>
-        <div class="map-pop" id="mapPop"></div>
-      </div>
-      <div class="project-panel reveal">
-        <div class="kicker">Impact navigation</div><h3>One map. Many stories.</h3><p>Filter by project type, neighborhood, year, partner or status. Connect each project to photography, services delivered, workforce participation and verified impact data.</p>
-        <div class="project-list">
-          <div class="project-row"><div class="icon">01</div><div><b>Active Projects</b><span>Current field work + updates</span></div><em>↗</em></div>
-          <div class="project-row"><div class="icon">02</div><div><b>Completed Work</b><span>Before/after, outcomes, partners</span></div><em>↗</em></div>
-          <div class="project-row"><div class="icon">03</div><div><b>Volunteer Opportunities</b><span>Open events + seasonal needs</span></div><em>↗</em></div>
-          <div class="project-row"><div class="icon">04</div><div><b>Impact Reports</b><span>Credible data + downloadable evidence</span></div><em>↗</em></div>
-        </div>
-      </div>
-    </div>
+<section class="section sand" id="impact">
+ <div class="wrap">
+  <div class="section-head reveal">
+   <div><div class="kicker">10 years of impact</div><h2>Make the proof impossible to miss.</h2></div>
+   <p>Impact becomes part of the core experience, paired with real people and projects instead of buried in downloadable reports.</p>
   </div>
+  <div class="impact-grid">
+   <div class="impact-numbers reveal">
+    <div class="impact-stat"><b>207</b><span>Crew Members trained and hired in Landforce's 10-year anniversary reporting.</span></div>
+    <div class="impact-stat"><b>193</b><span>community projects completed in the same milestone reporting.</span></div>
+    <div class="impact-stat"><b>75K+</b><span>hours of environmental service reported across the region.</span></div>
+    <div class="impact-stat"><b>91%</b><span>job placement rate highlighted for the 10-year milestone.</span></div>
+   </div>
+   <div class="impact-reel reveal">
+    <div class="reel-card"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.33.52-1-scaled.jpg?ssl=1" alt=""><div>Real work. Real places. Real stories.</div></div>
+    <div class="reel-card"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1" alt=""><div>Workforce growth</div></div>
+    <div class="reel-card"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1" alt=""><div>Environmental stewardship</div></div>
+   </div>
+  </div>
+ </div>
 </section>
 
-<section class="section" id="wood">
-  <div class="wrap wood-wrap">
-    <div class="wood-art reveal"><div class="wood-label"><small>Responsible Wood Production</small><b>Local material. Real work. A second life for urban trees.</b></div></div>
-    <div class="story reveal">
-      <div class="kicker">Responsible Wood</div>
-      <h2>Make the social enterprise feel ready to sell.</h2>
-      <p>The RFP describes RWP as a growing business line built around recovered urban trees, lumber and future products/services. The site can support a maintainable catalog, inventory updates, quotes, reservations and future commerce without disconnecting from Landforce's mission.</p>
-      <div class="shopbar">
-        <button class="active" onclick="filterShop(this,'all')">All</button><button onclick="filterShop(this,'slab')">Slabs</button><button onclick="filterShop(this,'dimensional')">Dimensional</button><button onclick="filterShop(this,'limited')">Limited</button>
-      </div>
-      <div class="shopgrid">
-        <div class="product" data-cat="slab"><div class="grain"></div><b>Black Walnut</b><span>Live-edge slabs</span><a onclick="addCart()">Add to demo cart ↗</a></div>
-        <div class="product" data-cat="dimensional"><div class="grain"></div><b>White Oak</b><span>Dimensional lumber</span><a onclick="addCart()">Add to demo cart ↗</a></div>
-        <div class="product" data-cat="limited"><div class="grain"></div><b>Maple</b><span>Limited material</span><a onclick="openModal('Request a Custom Quote','A structured inquiry can capture species, dimensions, quantity, timeline and pickup/delivery needs.','quote')">Request quote ↗</a></div>
-      </div>
-    </div>
+<section class="section" id="projects">
+ <div class="wrap">
+  <div class="section-head reveal">
+   <div><div class="kicker">Interactive project explorer</div><h2>Let Pittsburgh see where the work happens.</h2></div>
+   <p>A future explorer can connect neighborhoods, services, photography, partners and verified outcomes. Pins below are illustrative concept locations.</p>
   </div>
+  <div class="explorer">
+   <div class="map reveal" id="map"><div class="river"></div>
+    <button class="pin p1" aria-label="Project pin" onclick="showPin(this,'Trail + habitat project','Illustrative concept location')"></button>
+    <button class="pin p2" aria-label="Project pin" onclick="showPin(this,'Green infrastructure project','Illustrative concept location')"></button>
+    <button class="pin p3" aria-label="Project pin" onclick="showPin(this,'Vacant land stabilization','Illustrative concept location')"></button>
+    <button class="pin p4" aria-label="Project pin" onclick="showPin(this,'Community stewardship','Illustrative concept location')"></button>
+    <button class="pin p5" aria-label="Project pin" onclick="showPin(this,'Tree-care project','Illustrative concept location')"></button>
+    <div class="map-pop" id="mapPop"></div>
+   </div>
+   <aside class="project-side reveal">
+    <div class="kicker">Explore by outcome</div><h3>One map. Many visual stories.</h3><p>Every option gets imagery and context, so the explorer feels editorial rather than database-like.</p>
+    <div class="project-list">
+     <div class="project-card"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6469-1-scaled.jpg?ssl=1" alt=""><div><b>Active stewardship</b><span>Current projects + updates</span></div><em>↗</em></div>
+     <div class="project-card"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.32.58-1-scaled.jpg?ssl=1" alt=""><div><b>Completed work</b><span>Photos + outcomes + partners</span></div><em>↗</em></div>
+     <div class="project-card"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F5942-1-scaled.jpg?ssl=1" alt=""><div><b>Volunteer opportunities</b><span>Open events + seasonal needs</span></div><em>↗</em></div>
+     <div class="project-card"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1" alt=""><div><b>Impact reports</b><span>Verified results + evidence</span></div><em>↗</em></div>
+    </div>
+   </aside>
+  </div>
+ </div>
 </section>
 
-<section class="section sand" id="journey">
-  <div class="wrap journey">
-    <div class="journey-photo reveal"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.42.59-1-scaled.jpg?ssl=1" alt="Landforce crew experience"></div>
-    <div class="story reveal">
-      <div class="kicker">Workforce Development</div>
-      <h2>From interest to opportunity — with less friction.</h2>
-      <p>Landforce says its work includes recruiting, training, educating, employing and supporting adults while providing career coaching and real environmental work. The future site can turn that into a clear, respectful journey. </p>
-      <div class="journey-steps">
-        <div class="step"><div class="n">01</div><div><b>Understand the opportunity</b><p>Paid training, certifications, expectations, timing and support.</p></div></div>
-        <div class="step"><div class="n">02</div><div><b>Check fit + eligibility</b><p>Simple language, accessible content and a clear route to ask questions.</p></div></div>
-        <div class="step"><div class="n">03</div><div><b>Apply without friction</b><p>Mobile-first forms, save-and-return patterns and staff-friendly routing.</p></div></div>
-        <div class="step"><div class="n">04</div><div><b>Grow through real work</b><p>Show how training, coaching and social-enterprise employment connect.</p></div></div>
-      </div>
-      <button class="btn dark" onclick="openModal('Crew Application Preview','This concept flow illustrates how a future application can reduce friction while keeping staff in control.','crew')">Open application preview ↗</button>
-    </div>
+<section class="section rwp dark" id="wood">
+ <div class="wrap rwp-grid">
+  <div class="rwp-visual reveal">
+   <div class="rwp-photo"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1" alt=""><b>Recovered material</b></div>
+   <div class="rwp-photo"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.42.59-1-scaled.jpg?ssl=1" alt=""><b>Skills + production</b></div>
+   <div class="rwp-photo"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1" alt=""><b>Local circular impact</b></div>
   </div>
+  <div class="story reveal">
+   <div class="kicker">Responsible Wood Production</div><h2>Turn a growing social enterprise into a premium digital storefront.</h2>
+   <p>Responsible Wood recovers urban logs and extends their useful life through lumber and services. The digital experience can support discovery, inventory updates, quotes, reservations and future commerce while keeping workforce training and environmental value visible.</p>
+   <div class="shopbar"><button class="active" onclick="filterShop(this,'all')">All</button><button onclick="filterShop(this,'slab')">Slabs</button><button onclick="filterShop(this,'dimensional')">Dimensional</button><button onclick="filterShop(this,'limited')">Limited</button></div>
+   <div class="products">
+    <div class="product" data-cat="slab"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1" alt=""><b>Black Walnut</b><span>Concept product presentation · live-edge slabs</span><a onclick="addCart()">Add to demo cart ↗</a></div>
+    <div class="product" data-cat="dimensional"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.32.58-1-scaled.jpg?ssl=1" alt=""><b>White Oak</b><span>Concept product presentation · dimensional lumber</span><a onclick="addCart()">Add to demo cart ↗</a></div>
+    <div class="product" data-cat="limited"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1" alt=""><b>Custom Material</b><span>Concept inquiry path · limited / special stock</span><a onclick="openModal('Request a Custom Quote','A structured inquiry can capture species, dimensions, quantity, timeline and pickup/delivery needs.','quote')">Request quote ↗</a></div>
+   </div>
+  </div>
+ </div>
 </section>
 
-<section class="cta" id="contact">
-  <div class="wrap">
-    <div class="cta-card reveal">
-      <div><h2>One mission.<br>A much stronger digital future.</h2><p>This concept shows how Landforce can feel premium, human, credible and action-oriented — while preserving the recognition and values already built into the organization.</p></div>
-      <button class="btn dark" onclick="openModal('Take Action','Choose the outcome that matters to you.','nav')">Take action ↗</button>
-    </div>
+<section class="section" id="workforce">
+ <div class="wrap journey">
+  <div class="journey-hero reveal"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.42.59-1-scaled.jpg?ssl=1" alt=""><div class="journey-caption"><small>Workforce Development</small><b>From first click to first day on the crew.</b></div></div>
+  <div class="story reveal">
+   <div class="kicker">A more human journey</div><h2>Every step gets its own visual story.</h2><p>Instead of a single application page, the experience can explain what the program is, who it serves, what work looks like and what comes next.</p>
+   <div class="steps">
+    <div class="step"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1" alt=""><div><small>01</small><b>See yourself in the opportunity</b><p>Real photography, clear expectations and respectful language.</p></div></div>
+    <div class="step"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.33.52-1-scaled.jpg?ssl=1" alt=""><div><small>02</small><b>Understand training + support</b><p>Skills, certifications, coaching and paid experience explained simply.</p></div></div>
+    <div class="step"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F5942-1-scaled.jpg?ssl=1" alt=""><div><small>03</small><b>Apply on mobile without friction</b><p>Accessible forms, save-and-return patterns and clear next steps.</p></div></div>
+    <div class="step"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1" alt=""><div><small>04</small><b>Connect work to a future career</b><p>Show the relationship between crew experience and long-term employment.</p></div></div>
+   </div>
+   <button class="btn dark" onclick="openModal('Crew Application Preview','A mobile-first preview of how a future application journey could work.','crew')">Open application preview ↗</button>
   </div>
+ </div>
+</section>
+
+<section class="final" id="contact">
+ <div class="wrap">
+  <div class="final-card reveal"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.33.52-1-scaled.jpg?ssl=1" alt="">
+   <div class="final-copy"><div class="kicker" style="color:var(--lime)">Future Landforce</div><h2>Not a prettier old website.<br>A completely stronger digital brand.</h2><p>This concept intentionally moves away from the current website's structure and presentation. It uses bold editorial storytelling, immersive photography, clear audience pathways, visual proof and interactive product/project experiences.</p><button class="btn lime" onclick="openModal('Take Action','Choose the outcome that matters to you.','nav')">Explore the experience ↗</button></div>
+  </div>
+ </div>
 </section>
 </main>
 
 <footer>
-  <div class="wrap footer-grid">
-    <div><img class="footer-logo" src="https://www.landforcepgh.org/wp-content/uploads/2024/05/Landforce-light-1-300x150.png" alt="Landforce"><p>Concept preview only. Final content, metrics, photography rights, integrations and architecture would be verified and approved with Landforce before production.</p></div>
-    <div><h4>Explore</h4><a href="#paths">Who We Serve</a><a href="#services">Services</a><a href="#projects">Impact</a><a href="#wood">Responsible Wood</a></div>
-    <div><h4>Concept by LNK DIGITAL</h4><a href="mailto:contact@ludaknakvadrat.com">contact@ludaknakvadrat.com</a><a href="https://ludaknakvadrat.com">ludaknakvadrat.com</a><a href="tel:+38631244612">+386 31 244 612</a></div>
-  </div>
-  <div class="wrap legal"><span>NON-BINDING DESIGN EXPLORATION · NOT AN OFFICIAL LANDFORCE WEBSITE</span><span>Prepared for the 2026 Brand + Website RFP</span></div>
+ <div class="wrap footer-grid">
+  <div><img class="footer-logo" src="https://www.landforcepgh.org/wp-content/uploads/2024/05/Landforce-light-1-300x150.png" alt="Landforce"><p>Concept preview only. Final imagery rights, factual content, metrics, commerce requirements and production architecture would be verified with Landforce before implementation.</p></div>
+  <div><h4>Explore</h4><a href="#gateway">Audience Paths</a><a href="#services">Services</a><a href="#impact">Impact</a><a href="#projects">Projects</a><a href="#wood">Responsible Wood</a></div>
+  <div><h4>Concept by LNK DIGITAL</h4><a href="mailto:contact@ludaknakvadrat.com">contact@ludaknakvadrat.com</a><a href="https://ludaknakvadrat.com">ludaknakvadrat.com</a><a href="tel:+38631244612">+386 31 244 612</a></div>
+ </div>
+ <div class="wrap legal"><span>NON-BINDING DESIGN EXPLORATION · NOT AN OFFICIAL LANDFORCE WEBSITE</span><span>Prepared for the 2026 Brand + Website RFP</span></div>
 </footer>
 
 <div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modalbox"><button class="close" onclick="closeModal()">×</button><div class="kicker">Interactive concept</div><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalBody"></div></div>
+ <div class="modalbox"><button class="close" onclick="closeModal()">×</button><div class="kicker">Interactive concept</div><h2 id="modalTitle"></h2><p id="modalText"></p><div id="modalBody"></div></div>
 </div>
 <div class="toast" id="toast">Added to demo cart ✓</div>
-<div class="cart" onclick="openModal('Demo Cart','A future RWP cart could support pickup, delivery, reservation, quote and secure payment logic.','cart')">Demo cart <b id="cartCount">0</b></div>
+<div class="cart" id="cart" onclick="openModal('Demo Cart','A future Responsible Wood cart could support pickup, delivery, reservation, quote and secure payment logic.','cart')">Demo cart <b id="cartCount">0</b></div>
 
 <script>
 const header=document.getElementById('header'),progress=document.getElementById('progress');
@@ -378,46 +437,28 @@ addEventListener('scroll',()=>{header.classList.toggle('scrolled',scrollY>8);con
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-let currentPath='crew';
-const paths={
- crew:{label:'Workforce Development',title:'A clearer path into meaningful work.',text:'Explain paid training, certifications, career coaching, transitional employment, eligibility and the application process without friction.',bullets:['Paid training and real project experience','Industry-recognized certifications','Career coaching and support'],img:'https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1',btn:'Preview journey ↗'},
- hire:{label:'Land Stewardship',title:'Turn capabilities into qualified project inquiries.',text:'Help municipalities, nonprofits, public agencies and private clients quickly understand capabilities, experience, project fit and how to request work.',bullets:['Service-led information architecture','Project proof + case-study system','Fast project inquiry and routing'],img:'https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6469-1-scaled.jpg?ssl=1',btn:'Explore services ↗'},
- wood:{label:'Responsible Wood Production',title:'Give the business line room to grow.',text:'Create a credible customer experience for lumber, log suppliers, quote requests, service inquiries, material updates and future transactions.',bullets:['Catalog + inventory-ready structure','Quote / reserve / purchase pathways','Commercial clarity without losing the mission'],img:'https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1',btn:'Explore RWP ↗'},
- support:{label:'Organization-wide',title:'Make support feel connected to outcomes.',text:'Give donors, funders, volunteers, employers and corporate partners direct pathways to understand impact and act.',bullets:['Donation and partnership journeys','Impact proof + reports + stories','Volunteer and corporate engagement'],img:'https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.33.52-1-scaled.jpg?ssl=1',btn:'Support the mission ↗'}
-};
-function setPath(btn,key){
- currentPath=key;
- document.querySelectorAll('.path-tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
- const p=paths[key];document.getElementById('pathLabel').textContent=p.label;document.getElementById('pathTitle').textContent=p.title;document.getElementById('pathText').textContent=p.text;
- document.getElementById('pathBullets').innerHTML=p.bullets.map(x=>'<div><i>✓</i>'+x+'</div>').join('');
- document.getElementById('pathImage').style.backgroundImage='url("'+p.img+'")';document.getElementById('pathButton').textContent=p.btn;
-}
-
-function handlePathAction(){
- if(currentPath==='crew') return openModal('Join the Crew','Preview the application journey and how staff-managed recruitment cycles could work.','crew');
- if(currentPath==='hire') return document.getElementById('services').scrollIntoView({behavior:'smooth'});
- if(currentPath==='wood') return document.getElementById('wood').scrollIntoView({behavior:'smooth'});
- return openModal('Support the Mission','Choose a way to connect with Landforce.','nav');
-}
-
 function showPin(pin,title,sub){
  const pop=document.getElementById('mapPop'),map=document.getElementById('map');
  pop.innerHTML='<b>'+title+'</b><br><span>'+sub+'</span><br><span style="color:var(--lime);font-weight:800">View concept story →</span>';
- pop.style.left=Math.min(pin.offsetLeft+30,map.clientWidth-220)+'px';pop.style.top=Math.max(16,pin.offsetTop-16)+'px';pop.classList.add('on');
+ pop.style.left=Math.min(pin.offsetLeft+30,map.clientWidth-225)+'px';
+ pop.style.top=Math.max(16,pin.offsetTop-16)+'px';
+ pop.classList.add('on');
 }
-function filterShop(btn,cat){document.querySelectorAll('.shopbar button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.product').forEach(p=>p.style.display=(cat==='all'||p.dataset.cat===cat)?'block':'none')}
+function filterShop(btn,cat){
+ document.querySelectorAll('.shopbar button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+ document.querySelectorAll('.product').forEach(p=>p.style.display=(cat==='all'||p.dataset.cat===cat)?'block':'none');
+}
 function showToast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('on');clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>t.classList.remove('on'),1700)}
-let cart=0;function addCart(){cart++;document.getElementById('cartCount').textContent=cart;document.querySelector('.cart').classList.add('visible');showToast('Added to demo cart ✓')}
-function demoSubmit(message){showToast(message);closeModal()}
-
+let cart=0;
+function addCart(){cart++;document.getElementById('cartCount').textContent=cart;document.getElementById('cart').classList.add('visible');showToast('Added to demo cart ✓')}
+function demoSubmit(message){closeModal();showToast(message)}
 function openModal(title,text,type){
- document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=text;
- let body='';
- if(type==='crew') body='<div class="formgrid"><div class="field">First name</div><div class="field">Last name</div><div class="field">Email</div><div class="field">Phone</div><div class="field">Program interest</div><div class="field">Availability</div></div><button class="btn dark" onclick="demoSubmit(&quot;Application preview complete — no data was sent.&quot;)">Continue application →</button>';
- if(type==='quote') body='<div class="formgrid"><div class="field">Project type</div><div class="field">Wood species</div><div class="field">Dimensions / quantity</div><div class="field">Target timeline</div><div class="field">Pickup or delivery</div><div class="field">Contact details</div></div><button class="btn dark" onclick="demoSubmit(&quot;Quote preview complete — no data was sent.&quot;)">Submit request →</button>';
- if(type==='cart') body='<div class="project-list"><div class="project-row"><div class="icon">01</div><div><b>Selected material</b><span>'+cart+' demo item(s)</span></div><em>↗</em></div><div class="project-row"><div class="icon">02</div><div><b>Fulfillment</b><span>Pickup / delivery concept</span></div><em>↗</em></div><div class="project-row"><div class="icon">03</div><div><b>Payment / quote</b><span>Production flow determined in discovery</span></div><em>↗</em></div></div>';
- if(type==='nav') body='<div class="project-list"><a class="project-row" href="#journey" onclick="closeModal()"><div class="icon">01</div><div><b>Join the Crew</b><span>Training + employment</span></div><em>↗</em></a><a class="project-row" href="#services" onclick="closeModal()"><div class="icon">02</div><div><b>Hire Landforce</b><span>Environmental services</span></div><em>↗</em></a><a class="project-row" href="#wood" onclick="closeModal()"><div class="icon">03</div><div><b>Responsible Wood</b><span>Products + services</span></div><em>↗</em></a><a class="project-row" href="#projects" onclick="closeModal()"><div class="icon">04</div><div><b>Explore Impact</b><span>Projects + outcomes</span></div><em>↗</em></a></div>';
- document.getElementById('modalBody').innerHTML=body;document.getElementById('modal').classList.add('on');document.body.style.overflow='hidden'
+ document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=text;let body='';
+ if(type==='crew')body='<div class="formgrid"><div class="field">First name</div><div class="field">Last name</div><div class="field">Email</div><div class="field">Phone</div><div class="field">Program interest</div><div class="field">Availability</div></div><button class="btn dark" onclick="demoSubmit(&quot;Application preview complete — no data was sent.&quot;)">Continue application →</button>';
+ if(type==='quote')body='<div class="formgrid"><div class="field">Project type</div><div class="field">Wood species</div><div class="field">Dimensions / quantity</div><div class="field">Target timeline</div><div class="field">Pickup or delivery</div><div class="field">Contact details</div></div><button class="btn dark" onclick="demoSubmit(&quot;Quote preview complete — no data was sent.&quot;)">Submit request →</button>';
+ if(type==='cart')body='<div class="project-list"><div class="project-card"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1" alt=""><div><b>Selected material</b><span>'+cart+' demo item(s)</span></div><em>↗</em></div><div class="project-card"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1" alt=""><div><b>Fulfillment</b><span>Pickup / delivery concept</span></div><em>↗</em></div></div>';
+ if(type==='nav')body='<div class="project-list"><a class="project-card" href="#workforce" onclick="closeModal()"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1" alt=""><div><b>Join the Crew</b><span>Workforce pathway</span></div><em>↗</em></a><a class="project-card" href="#services" onclick="closeModal()"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6469-1-scaled.jpg?ssl=1" alt=""><div><b>Hire Landforce</b><span>Environmental services</span></div><em>↗</em></a><a class="project-card" href="#wood" onclick="closeModal()"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1" alt=""><div><b>Responsible Wood</b><span>Products + services</span></div><em>↗</em></a><a class="project-card" href="#impact" onclick="closeModal()"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1" alt=""><div><b>Explore Impact</b><span>Projects + outcomes</span></div><em>↗</em></a></div>';
+ document.getElementById('modalBody').innerHTML=body;document.getElementById('modal').classList.add('on');document.body.style.overflow='hidden';
 }
 function closeModal(){document.getElementById('modal').classList.remove('on');document.body.style.overflow=''}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
