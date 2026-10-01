@@ -140,7 +140,7 @@ header.scrolled{border-color:var(--line);box-shadow:0 12px 35px rgba(8,24,16,.06
 .wood-art:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;right:-100px;bottom:-100px;border:55px solid rgba(255,255,255,.12)}
 .wood-label{position:absolute;left:22px;bottom:22px;background:rgba(255,255,255,.94);border-radius:18px;padding:16px;max-width:280px}.wood-label small{font:800 9px "Manrope";letter-spacing:.12em;color:#8b5838}.wood-label b{display:block;font:800 23px/1 "Manrope";letter-spacing:-.04em;margin-top:8px}
 .shopbar{display:flex;gap:7px;flex-wrap:wrap;margin:22px 0 14px}.shopbar button{border:1px solid var(--line);background:#fff;padding:9px 12px;border-radius:999px;font-size:10px;font-weight:800;cursor:pointer}.shopbar button.active{background:var(--deep);color:#fff}
-.shopgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.product{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px}.grain{height:80px;border-radius:12px;background:linear-gradient(120deg,#dcb285,#7c4f35);position:relative;overflow:hidden}.grain:after{content:"";position:absolute;inset:0;background:repeating-radial-gradient(ellipse at 30% 50%,rgba(255,255,255,.33) 0 1px,transparent 2px 10px);opacity:.7}.product:nth-child(2) .grain{background:linear-gradient(120deg,#c2a77c,#6a513c)}.product:nth-child(3) .grain{background:linear-gradient(120deg,#e0c291,#8c603f)}.product b{display:block;font-size:11px;margin-top:10px}.product span{font-size:9px;color:var(--muted)}.product a{display:inline-block;margin-top:9px;color:var(--green);font-size:9px;font-weight:800;cursor:pointer}
+.shopgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.product{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px}.grain{height:80px;border-radius:12px;background:linear-gradient(120deg,#dcb285,#7c4f35);position:relative;overflow:hidden}.grain:after{content:"";position:absolute;inset:0;background:repeating-radial-gradient(ellipse at 30% 50%,rgba(255,255,255,.33) 0 1px,transparent 2px 10px);opacity:.7}.product:nth-child(2) .grain{background:linear-gradient(120deg,#c2a77c,#6a513c)}.product:nth-child(3) .grain{background:linear-gradient(120deg,#e0c291,#8c603f)}.product b{display:block;font-size:12px;margin-top:10px}.product span{display:block;font-size:10px;line-height:1.4;color:var(--muted);margin-top:4px}.product a{display:inline-flex;align-items:center;gap:5px;margin-top:10px;color:var(--green);font-size:10px;line-height:1.25;font-weight:800;cursor:pointer;padding:4px 0}
 
 /* WORKFORCE */
 .journey{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px}
@@ -155,7 +155,7 @@ footer{background:#061811;color:#d6e0da;padding:52px 0}.footer-grid{display:grid
 /* MODAL / TOAST */
 .modal{position:fixed;inset:0;background:rgba(3,12,8,.72);z-index:180;display:none;place-items:center;padding:20px;backdrop-filter:blur(12px)}.modal.on{display:grid}.modalbox{width:min(760px,100%);max-height:86vh;overflow:auto;background:#fff;border-radius:28px;padding:28px;position:relative}.close{position:absolute;right:16px;top:16px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:20px;cursor:pointer}.modalbox h2{font:800 38px/.98 "Manrope";letter-spacing:-.05em;margin:12px 0}.modalbox p{color:var(--muted);line-height:1.6}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.field{border:1px solid var(--line);border-radius:14px;padding:13px;font-size:11px;color:var(--muted)}
 .toast{position:fixed;right:20px;bottom:20px;z-index:190;background:var(--deep);color:#fff;padding:13px 17px;border-radius:14px;transform:translateY(90px);opacity:0;transition:.25s}.toast.on{transform:none;opacity:1}
-.cart{position:fixed;right:18px;bottom:18px;z-index:90;background:var(--deep);color:#fff;border-radius:999px;padding:11px 15px;font-size:11px;font-weight:800;box-shadow:var(--shadow);cursor:pointer}.cart b{color:var(--lime)}
+.cart{position:fixed;right:18px;bottom:18px;z-index:90;background:var(--deep);color:#fff;border-radius:999px;padding:11px 15px;font-size:11px;font-weight:800;box-shadow:var(--shadow);cursor:pointer;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(14px);transition:.22s opacity,.22s transform,.22s visibility}.cart.visible{opacity:1;visibility:visible;pointer-events:auto;transform:none}.cart b{color:var(--lime)}
 
 @media(max-width:1050px){
   .links{display:none}.mobile-menu{display:block}.hero-inner,.section-head,.path-stage,.explorer,.wood-wrap,.journey{grid-template-columns:1fr}.hero-side{display:none}.hero-media{background-position:62% center}
@@ -164,12 +164,12 @@ footer{background:#061811;color:#d6e0da;padding:52px 0}.footer-grid{display:grid
   .services{grid-template-columns:1fr 1fr}.section{padding:78px 0}.path-image{min-height:440px}
 }
 @media(max-width:650px){
-  .wrap{width:min(100% - 24px,1260px)}.preview{font-size:8px}.nav{height:68px}.logo img{width:142px;height:48px}
-  .hero,.hero-inner{min-height:760px}.hero-inner{padding-top:75px}.hero h1{font-size:52px}.hero p{font-size:15px}.hero-media{background-position:68% center}
+  .wrap{width:min(100% - 24px,1260px)}.preview{font-size:8px;line-height:1.35}.nav{height:72px}.logo img{width:174px;height:54px}.mobile-menu{padding:12px 16px;min-height:44px}
+  .hero,.hero-inner{min-height:720px}.hero-inner{padding-top:58px;padding-bottom:70px}.hero h1{font-size:50px;line-height:.9}.hero p{font-size:15px;line-height:1.58}.hero-actions{gap:9px}.hero-actions .btn{min-height:50px;padding:13px 18px}.hero-media{background-position:66% center}
   .impact-card{display:block;margin:0 0}.impact-strip{margin-top:-22px}.metric{border-right:0}.section{padding:68px 0}.section-head{gap:20px}
   .path-copy{padding:28px 22px}.path-copy h3{font-size:38px}.path-image{min-height:360px}
   .mosaic{display:block}.photo{height:260px;margin-bottom:10px}.services{grid-template-columns:1fr}.service{min-height:360px}
-  .map{min-height:460px}.project-panel{padding:22px}.shopgrid{grid-template-columns:1fr}.journey-photo{min-height:440px}.cta-card{padding:34px 24px;grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.legal{display:block}.formgrid{grid-template-columns:1fr}
+  .map{min-height:460px}.project-panel{padding:22px}.shopgrid{grid-template-columns:1fr}.product{padding:14px}.grain{height:140px}.journey-photo{min-height:440px}.cta-card{padding:34px 24px;grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.legal{display:block}.formgrid{grid-template-columns:1fr}.cart{right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);font-size:10px;padding:10px 13px}.toast{right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);font-size:11px;max-width:calc(100% - 24px)}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
@@ -196,7 +196,7 @@ footer{background:#061811;color:#d6e0da;padding:52px 0}.footer-grid{display:grid
     <div class="hero-copy reveal">
       <div class="kicker" style="color:var(--lime)">Pittsburgh · People · Land · Opportunity</div>
       <h1>Build people.<br>Restore land.<br><em>Lasting impact.</em></h1>
-      <p>Landforce connects meaningful, paid workforce development with professional environmental stewardship — creating stronger career pathways and healthier communities at the same time. citeturn280998view0</p>
+      <p>Landforce connects meaningful, paid workforce development with professional environmental stewardship — creating stronger career pathways and healthier communities at the same time. </p>
       <div class="hero-actions">
         <button class="btn lime" onclick="openModal('Join the Crew','A mobile-first application journey designed to make eligibility, expectations, support and next steps easy to understand.','crew')">Join Our Crew ↗</button>
         <button class="btn light" onclick="document.getElementById('services').scrollIntoView()">Hire Landforce</button>
@@ -244,7 +244,7 @@ footer{background:#061811;color:#d6e0da;padding:52px 0}.footer-grid{display:grid
           <div><i>✓</i>Industry-recognized certifications</div>
           <div><i>✓</i>Career coaching and support</div>
         </div>
-        <button class="btn dark" id="pathButton" onclick="openModal('Join the Crew','Preview the application journey and how staff-managed recruitment cycles could work.','crew')">Preview journey ↗</button>
+        <button class="btn dark" id="pathButton" onclick="handlePathAction()">Preview journey ↗</button>
       </div>
       <div class="path-image" id="pathImage" style="background-image:url('https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1')"><div class="image-badge">Real Landforce photography · concept layout</div></div>
     </div>
@@ -255,7 +255,7 @@ footer{background:#061811;color:#d6e0da;padding:52px 0}.footer-grid{display:grid
   <div class="wrap">
     <div class="section-head reveal">
       <div><div class="kicker">Mission + identity</div><h2>A just world. Healthy environments. Meaningful opportunity.</h2></div>
-      <p>Landforce's published vision centers belonging, healthy environments and people surpassing their greatest dreams; its mission focuses on self-empowerment toward meaningful, stable employment while protecting and improving the environment. citeturn280998view0</p>
+      <p>Landforce's published vision centers belonging, healthy environments and people surpassing their greatest dreams; its mission focuses on self-empowerment toward meaningful, stable employment while protecting and improving the environment. </p>
     </div>
     <div class="mosaic reveal">
       <div class="photo big"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.33.52-1-scaled.jpg?ssl=1" alt="Landforce field work"><div class="cap">People-first workforce development</div></div>
@@ -270,7 +270,7 @@ footer{background:#061811;color:#d6e0da;padding:52px 0}.footer-grid{display:grid
   <div class="wrap">
     <div class="section-head reveal">
       <div><div class="kicker">Land Stewardship</div><h2>Professional crews. Clear capabilities. Stronger conversion.</h2></div>
-      <p>Landforce publicly lists services ranging from habitat and invasive-plant work to vacant-land stabilization, trails, tree care, erosion control and green infrastructure maintenance. citeturn280998view0</p>
+      <p>Landforce publicly lists services ranging from habitat and invasive-plant work to vacant-land stabilization, trails, tree care, erosion control and green infrastructure maintenance. </p>
     </div>
     <div class="services">
       <article class="service reveal"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6469-1-scaled.jpg?ssl=1" alt=""><div class="service-copy"><small>01 / Trails</small><h3>Trail Construction + Upgrades</h3><p>Project-led pages with services, proof, case studies and a direct inquiry path.</p></div></article>
@@ -335,7 +335,7 @@ footer{background:#061811;color:#d6e0da;padding:52px 0}.footer-grid{display:grid
     <div class="story reveal">
       <div class="kicker">Workforce Development</div>
       <h2>From interest to opportunity — with less friction.</h2>
-      <p>Landforce says its work includes recruiting, training, educating, employing and supporting adults while providing career coaching and real environmental work. The future site can turn that into a clear, respectful journey. citeturn280998view0</p>
+      <p>Landforce says its work includes recruiting, training, educating, employing and supporting adults while providing career coaching and real environmental work. The future site can turn that into a clear, respectful journey. </p>
       <div class="journey-steps">
         <div class="step"><div class="n">01</div><div><b>Understand the opportunity</b><p>Paid training, certifications, expectations, timing and support.</p></div></div>
         <div class="step"><div class="n">02</div><div><b>Check fit + eligibility</b><p>Simple language, accessible content and a clear route to ask questions.</p></div></div>
@@ -378,6 +378,7 @@ addEventListener('scroll',()=>{header.classList.toggle('scrolled',scrollY>8);con
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+let currentPath='crew';
 const paths={
  crew:{label:'Workforce Development',title:'A clearer path into meaningful work.',text:'Explain paid training, certifications, career coaching, transitional employment, eligibility and the application process without friction.',bullets:['Paid training and real project experience','Industry-recognized certifications','Career coaching and support'],img:'https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1',btn:'Preview journey ↗'},
  hire:{label:'Land Stewardship',title:'Turn capabilities into qualified project inquiries.',text:'Help municipalities, nonprofits, public agencies and private clients quickly understand capabilities, experience, project fit and how to request work.',bullets:['Service-led information architecture','Project proof + case-study system','Fast project inquiry and routing'],img:'https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6469-1-scaled.jpg?ssl=1',btn:'Explore services ↗'},
@@ -385,10 +386,18 @@ const paths={
  support:{label:'Organization-wide',title:'Make support feel connected to outcomes.',text:'Give donors, funders, volunteers, employers and corporate partners direct pathways to understand impact and act.',bullets:['Donation and partnership journeys','Impact proof + reports + stories','Volunteer and corporate engagement'],img:'https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.33.52-1-scaled.jpg?ssl=1',btn:'Support the mission ↗'}
 };
 function setPath(btn,key){
+ currentPath=key;
  document.querySelectorAll('.path-tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
  const p=paths[key];document.getElementById('pathLabel').textContent=p.label;document.getElementById('pathTitle').textContent=p.title;document.getElementById('pathText').textContent=p.text;
  document.getElementById('pathBullets').innerHTML=p.bullets.map(x=>'<div><i>✓</i>'+x+'</div>').join('');
  document.getElementById('pathImage').style.backgroundImage='url("'+p.img+'")';document.getElementById('pathButton').textContent=p.btn;
+}
+
+function handlePathAction(){
+ if(currentPath==='crew') return openModal('Join the Crew','Preview the application journey and how staff-managed recruitment cycles could work.','crew');
+ if(currentPath==='hire') return document.getElementById('services').scrollIntoView({behavior:'smooth'});
+ if(currentPath==='wood') return document.getElementById('wood').scrollIntoView({behavior:'smooth'});
+ return openModal('Support the Mission','Choose a way to connect with Landforce.','nav');
 }
 
 function showPin(pin,title,sub){
@@ -397,18 +406,22 @@ function showPin(pin,title,sub){
  pop.style.left=Math.min(pin.offsetLeft+30,map.clientWidth-220)+'px';pop.style.top=Math.max(16,pin.offsetTop-16)+'px';pop.classList.add('on');
 }
 function filterShop(btn,cat){document.querySelectorAll('.shopbar button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.product').forEach(p=>p.style.display=(cat==='all'||p.dataset.cat===cat)?'block':'none')}
-let cart=0;function addCart(){cart++;document.getElementById('cartCount').textContent=cart;const t=document.getElementById('toast');t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1500)}
+function showToast(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('on');clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>t.classList.remove('on'),1700)}
+let cart=0;function addCart(){cart++;document.getElementById('cartCount').textContent=cart;document.querySelector('.cart').classList.add('visible');showToast('Added to demo cart ✓')}
+function demoSubmit(message){showToast(message);closeModal()}
 
 function openModal(title,text,type){
  document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=text;
  let body='';
- if(type==='crew') body='<div class="formgrid"><div class="field">First name</div><div class="field">Last name</div><div class="field">Email</div><div class="field">Phone</div><div class="field">Program interest</div><div class="field">Availability</div></div><button class="btn dark">Continue application →</button>';
- if(type==='quote') body='<div class="formgrid"><div class="field">Project type</div><div class="field">Wood species</div><div class="field">Dimensions / quantity</div><div class="field">Target timeline</div><div class="field">Pickup or delivery</div><div class="field">Contact details</div></div><button class="btn dark">Submit request →</button>';
+ if(type==='crew') body='<div class="formgrid"><div class="field">First name</div><div class="field">Last name</div><div class="field">Email</div><div class="field">Phone</div><div class="field">Program interest</div><div class="field">Availability</div></div><button class="btn dark" onclick="demoSubmit('Application preview complete — no data was sent.')">Continue application →</button>';
+ if(type==='quote') body='<div class="formgrid"><div class="field">Project type</div><div class="field">Wood species</div><div class="field">Dimensions / quantity</div><div class="field">Target timeline</div><div class="field">Pickup or delivery</div><div class="field">Contact details</div></div><button class="btn dark" onclick="demoSubmit('Quote preview complete — no data was sent.')">Submit request →</button>';
  if(type==='cart') body='<div class="project-list"><div class="project-row"><div class="icon">01</div><div><b>Selected material</b><span>'+cart+' demo item(s)</span></div><em>↗</em></div><div class="project-row"><div class="icon">02</div><div><b>Fulfillment</b><span>Pickup / delivery concept</span></div><em>↗</em></div><div class="project-row"><div class="icon">03</div><div><b>Payment / quote</b><span>Production flow determined in discovery</span></div><em>↗</em></div></div>';
  if(type==='nav') body='<div class="project-list"><a class="project-row" href="#journey" onclick="closeModal()"><div class="icon">01</div><div><b>Join the Crew</b><span>Training + employment</span></div><em>↗</em></a><a class="project-row" href="#services" onclick="closeModal()"><div class="icon">02</div><div><b>Hire Landforce</b><span>Environmental services</span></div><em>↗</em></a><a class="project-row" href="#wood" onclick="closeModal()"><div class="icon">03</div><div><b>Responsible Wood</b><span>Products + services</span></div><em>↗</em></a><a class="project-row" href="#projects" onclick="closeModal()"><div class="icon">04</div><div><b>Explore Impact</b><span>Projects + outcomes</span></div><em>↗</em></a></div>';
  document.getElementById('modalBody').innerHTML=body;document.getElementById('modal').classList.add('on');document.body.style.overflow='hidden'
 }
 function closeModal(){document.getElementById('modal').classList.remove('on');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.addEventListener('click',e=>{const pop=document.getElementById('mapPop');if(pop&&!e.target.classList.contains('pin')&&!pop.contains(e.target))pop.classList.remove('on')});
 </script>
 </body>
 </html>
