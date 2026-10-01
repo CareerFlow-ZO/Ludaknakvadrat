@@ -49,6 +49,8 @@ header.scrolled{border-color:var(--line);box-shadow:0 12px 38px rgba(4,20,13,.06
 
 /* CINEMATIC HERO */
 .hero{position:relative;min-height:790px;background:var(--deep);color:white;overflow:hidden;isolation:isolate}
+.hero-video{position:absolute;inset:0;z-index:-4;overflow:hidden;background:#061711}
+.hero-video iframe{position:absolute;top:50%;left:50%;width:177.78vh;height:56.25vw;min-width:100%;min-height:100%;transform:translate(-50%,-50%);border:0;pointer-events:none;filter:saturate(.82) contrast(1.05);opacity:.42}
 .hero-photo{position:absolute;inset:0 0 0 46%;z-index:-3;background:
  linear-gradient(90deg,var(--deep) 0,rgba(5,20,14,.78) 18%,rgba(5,20,14,.12) 52%,rgba(5,20,14,.05) 100%),
  linear-gradient(180deg,rgba(5,20,14,.05),rgba(5,20,14,.52)),
@@ -60,7 +62,7 @@ header.scrolled{border-color:var(--line);box-shadow:0 12px 38px rgba(4,20,13,.06
 .hero h1{font:800 clamp(64px,7.5vw,112px)/.86 "Manrope";letter-spacing:-.08em;margin:18px 0 26px;max-width:900px}
 .hero h1 em{display:block;font-family:"Newsreader",serif;font-weight:500;color:var(--lime)}
 .hero p{max-width:660px;color:#d0ddd5;font-size:18px;line-height:1.64}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}.video-btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.45);color:white;backdrop-filter:blur(10px)}
 .hero-panel{align-self:end;display:grid;gap:12px;margin-bottom:8px}
 .hero-glass{padding:23px;border-radius:25px;border:1px solid rgba(255,255,255,.16);background:rgba(5,25,16,.58);backdrop-filter:blur(18px);box-shadow:0 24px 60px rgba(0,0,0,.18)}
 .hero-glass small{font:800 9px "Manrope";letter-spacing:.15em;text-transform:uppercase;color:var(--lime)}
@@ -209,6 +211,57 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
 .cart{position:fixed;right:17px;bottom:17px;z-index:170;background:var(--deep);color:white;padding:11px 14px;border-radius:999px;font-size:10px;font-weight:800;box-shadow:var(--shadow);cursor:pointer;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(15px);transition:.22s}
 .cart.visible{opacity:1;visibility:visible;pointer-events:auto;transform:none}.cart b{color:var(--lime)}
 
+
+/* BEFORE / AFTER */
+.compare-section{padding:100px 0;background:var(--deep);color:#fff}
+.compare-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:52px;align-items:center}
+.compare-copy h2{font:800 clamp(43px,5.2vw,74px)/.95 "Manrope";letter-spacing:-.066em;margin:10px 0 16px}
+.compare-copy p{color:#b9c9c0;line-height:1.7}
+.compare-note{margin-top:18px;padding:13px 15px;border:1px solid rgba(255,255,255,.13);border-radius:15px;font-size:10px;line-height:1.45;color:#c5d2ca;background:rgba(255,255,255,.04)}
+.compare{position:relative;min-height:560px;border-radius:34px;overflow:hidden;box-shadow:0 28px 80px rgba(0,0,0,.22);background:#13271e}
+.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.compare-after{position:absolute;inset:0 auto 0 0;width:52%;overflow:hidden;border-right:2px solid rgba(255,255,255,.9)}
+.compare-after img{width:100vw;max-width:none}
+.compare-label{position:absolute;z-index:5;top:18px;padding:9px 12px;border-radius:999px;background:rgba(5,20,13,.86);color:#fff;font:800 9px "Manrope";letter-spacing:.12em;text-transform:uppercase}
+.compare-label.before{right:18px}.compare-label.after{left:18px}
+.compare-line{position:absolute;z-index:6;left:52%;top:0;bottom:0;width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
+.compare-line:after{content:"↔";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--deep);font-weight:900;box-shadow:0 8px 22px rgba(0,0,0,.22)}
+.compare input{position:absolute;z-index:10;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize}
+
+/* CREW STORIES */
+.stories{padding:104px 0;background:var(--sand)}
+.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.person-card{background:#fff;border-radius:28px;overflow:hidden;box-shadow:var(--soft);border:1px solid var(--line)}
+.person-photo{height:360px;overflow:hidden;position:relative;background:#dfe8e1}
+.person-photo img{width:100%;height:100%;object-fit:cover;transition:.45s transform}
+.person-card:hover .person-photo img{transform:scale(1.035)}
+.person-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(5,20,13,.56))}
+.person-role{position:absolute;z-index:3;left:18px;bottom:16px;color:white}.person-role small{font:800 8px "Manrope";letter-spacing:.13em;text-transform:uppercase;color:var(--lime)}.person-role b{display:block;font:800 22px/1.02 "Manrope";margin-top:6px}
+.person-copy{padding:20px}.person-copy p{font-size:12px;line-height:1.55;color:var(--muted);margin:0}.person-copy .arc{display:flex;gap:8px;align-items:center;margin-top:15px;font-size:10px;font-weight:800;color:var(--green)}.person-copy .arc i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 5px rgba(217,242,99,.22)}
+
+/* RWP INVENTORY DASHBOARD */
+.inventory{margin:22px 0 16px;border:1px solid rgba(255,255,255,.14);border-radius:22px;background:rgba(255,255,255,.055);overflow:hidden}
+.inventory-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 16px;border-bottom:1px solid rgba(255,255,255,.12)}
+.inventory-head div small{display:block;font:800 8px "Manrope";letter-spacing:.13em;text-transform:uppercase;color:var(--lime)}
+.inventory-head div b{display:block;font-size:13px;margin-top:3px}
+.live-dot{font-size:9px;color:#d0ded6}.live-dot:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#65df99;margin-right:6px;box-shadow:0 0 0 5px rgba(101,223,153,.12)}
+.inventory-table{display:grid}
+.inv-row{display:grid;grid-template-columns:1.15fr .8fr .7fr .55fr;gap:10px;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.09);font-size:10px}.inv-row:last-child{border:0}
+.inv-row.header{font:800 8px "Manrope";letter-spacing:.1em;text-transform:uppercase;color:#93a69b;background:rgba(0,0,0,.08)}
+.inv-row b{font-size:10px}.stock{display:inline-flex;align-items:center;gap:5px}.stock:before{content:"";width:6px;height:6px;border-radius:50%;background:#72df9f}.stock.low:before{background:#f0c468}
+
+/* VIDEO MODAL */
+.video-frame{position:relative;padding-top:56.25%;border-radius:20px;overflow:hidden;background:#071b12;margin-top:18px}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+@media(max-width:1080px){.compare-grid{grid-template-columns:1fr}.story-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){
+ .hero-video{display:none}
+ .compare-section{padding:68px 0}.compare-grid{gap:24px}.compare{min-height:430px}.compare-after img{width:calc(100vw - 24px)}
+ .story-grid{grid-template-columns:1fr}.person-photo{height:390px}
+ .inv-row{grid-template-columns:1.05fr .72fr .6fr}.inv-row span:nth-child(3),.inv-row.header span:nth-child(3){display:none}
+}
+
 /* RESPONSIVE */
 @media(max-width:1080px){
  .navlinks{display:none}.menu{display:block}.hero-grid,.gateway-head,.section-head,.impact-grid,.explorer,.rwp-grid,.journey{grid-template-columns:1fr}
@@ -247,6 +300,7 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
 
 <main id="top">
 <section class="hero">
+ <div class="hero-video" aria-hidden="true"><iframe src="https://www.youtube-nocookie.com/embed/UA93_wukTqo?autoplay=1&mute=1&controls=0&loop=1&playlist=UA93_wukTqo&playsinline=1&rel=0&modestbranding=1" title="" tabindex="-1" allow="autoplay; encrypted-media"></iframe></div>
  <div class="hero-photo"></div>
  <div class="wrap hero-grid">
   <div class="hero-copy reveal">
@@ -257,6 +311,7 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
     <button class="btn lime" onclick="openModal('Join the Crew','Preview a mobile-first workforce-development journey.','crew')">Join Our Crew ↗</button>
     <button class="btn light" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Hire Landforce</button>
     <button class="btn light" onclick="document.getElementById('wood').scrollIntoView({behavior:'smooth'})">Explore Responsible Wood</button>
+    <button class="btn video-btn" onclick="openModal('Hear From Crew Members','Landforce shares this crew video on its Join Our Crew page.','video')">▶ Watch Crew Story</button>
    </div>
   </div>
   <div class="hero-panel reveal">
@@ -326,6 +381,25 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
  </div>
 </section>
 
+
+<section class="compare-section" id="transformation">
+ <div class="wrap compare-grid">
+  <div class="compare-copy reveal">
+   <div class="kicker" style="color:var(--lime)">Transformation storytelling</div>
+   <h2>Let people feel the change — not just read about it.</h2>
+   <p>A before/after interaction can turn restoration work into an immediate visual story for clients, funders, neighbors and partners.</p>
+   <div class="compare-note"><b>Concept interaction:</b> this prototype uses two public Landforce field images to demonstrate the component. Production would use verified before/after photography from the same project and the approved project data.</div>
+  </div>
+  <div class="compare reveal" id="compare">
+   <img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.32.58-1-scaled.jpg?ssl=1" alt="Landforce project image used as concept before state">
+   <div class="compare-after" id="compareAfter"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1" alt="Landforce project image used as concept after state"></div>
+   <div class="compare-label before">Before / concept</div><div class="compare-label after">After / concept</div>
+   <div class="compare-line" id="compareLine"></div>
+   <input aria-label="Move the before and after comparison slider" type="range" min="5" max="95" value="52" oninput="updateCompare(this.value)">
+  </div>
+ </div>
+</section>
+
 <section class="section sand" id="impact">
  <div class="wrap">
   <div class="section-head reveal">
@@ -388,6 +462,17 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
   <div class="story reveal">
    <div class="kicker">Responsible Wood Production</div><h2>Turn a growing social enterprise into a premium digital storefront.</h2>
    <p>Responsible Wood recovers urban logs and extends their useful life through lumber and services. The digital experience can support discovery, inventory updates, quotes, reservations and future commerce while keeping workforce training and environmental value visible.</p>
+   
+<div class="inventory">
+ <div class="inventory-head"><div><small>Demo inventory layer</small><b>Staff-editable Responsible Wood availability</b></div><span class="live-dot">Illustrative data</span></div>
+ <div class="inventory-table">
+  <div class="inv-row header"><span>Species / item</span><span>Format</span><span>Moisture</span><span>Status</span></div>
+  <div class="inv-row"><b>Black Walnut</b><span>Live-edge slab</span><span>Kiln-dried</span><span class="stock">Available</span></div>
+  <div class="inv-row"><b>White Oak</b><span>Dimensional</span><span>Kiln-dried</span><span class="stock">Available</span></div>
+  <div class="inv-row"><b>Maple / custom</b><span>Special stock</span><span>Varies</span><span class="stock low">Limited</span></div>
+ </div>
+</div>
+
    <div class="shopbar"><button class="active" onclick="filterShop(this,'all')">All</button><button onclick="filterShop(this,'slab')">Slabs</button><button onclick="filterShop(this,'dimensional')">Dimensional</button><button onclick="filterShop(this,'limited')">Limited</button></div>
    <div class="products">
     <div class="product" data-cat="slab"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1" alt=""><b>Black Walnut</b><span>Concept product presentation · live-edge slabs</span><a onclick="addCart()">Add to demo cart ↗</a></div>
@@ -410,6 +495,30 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
     <div class="step"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1" alt=""><div><small>04</small><b>Connect work to a future career</b><p>Show the relationship between crew experience and long-term employment.</p></div></div>
    </div>
    <button class="btn dark" onclick="openModal('Crew Application Preview','A mobile-first preview of how a future application journey could work.','crew')">Open application preview ↗</button>
+  </div>
+ </div>
+</section>
+
+
+<section class="stories" id="stories">
+ <div class="wrap">
+  <div class="section-head reveal">
+   <div><div class="kicker">Crew → career → leadership</div><h2>Make the workforce story visible through real people.</h2></div>
+   <p>Landforce's current team includes people who first entered the organization as Crew Members and later returned or advanced into staff leadership roles. That progression can become one of the strongest proof points on the future site.</p>
+  </div>
+  <div class="story-grid">
+   <article class="person-card reveal">
+    <div class="person-photo"><img loading="lazy" src="https://www.landforcepgh.org/wp-content/uploads/2024/09/hakim-reed-F5594-r-ad-683x1024.jpg" alt="Hakim Reed"><div class="person-role"><small>Crew Member → Site Supervisor</small><b>Hakim Reed</b></div></div>
+    <div class="person-copy"><p>Joined Landforce as a Crew Member in 2023 and returned in 2024 as a Site Supervisor, bringing added certifications and field experience back into the organization.</p><div class="arc"><i></i>Career progression made visible</div></div>
+   </article>
+   <article class="person-card reveal">
+    <div class="person-photo"><img loading="lazy" src="https://www.landforcepgh.org/wp-content/uploads/2024/09/nicole-holmes-F5537-r-ad-683x1024.jpg" alt="Nicole Holmes"><div class="person-role"><small>Crew Member → Administrative Coordinator</small><b>Nicole Holmes</b></div></div>
+    <div class="person-copy"><p>Joined as a Crew Member in 2023 and now serves as Administrative Coordinator, carrying field experience, certifications and conservation work into an organizational role.</p><div class="arc"><i></i>Skills that travel beyond the crew</div></div>
+   </article>
+   <article class="person-card reveal">
+    <div class="person-photo"><img loading="lazy" src="https://www.landforcepgh.org/wp-content/uploads/2024/09/rickey-hebron-F5551-r-ad-683x1024.jpg" alt="Rickey Hebron Jr."><div class="person-role"><small>Crew Member → Site Supervisor</small><b>Rickey Hebron Jr.</b></div></div>
+    <div class="person-copy"><p>Joined as a Crew Member in 2020, advanced in a local landscaping company, and returned to Landforce as a Site Supervisor in 2022.</p><div class="arc"><i></i>A pathway from training to leadership</div></div>
+   </article>
   </div>
  </div>
 </section>
@@ -474,6 +583,11 @@ addEventListener('scroll',()=>{header.classList.toggle('scrolled',scrollY>8);con
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+function updateCompare(value){
+ const pct=Math.max(5,Math.min(95,Number(value)||52));
+ document.getElementById('compareAfter').style.width=pct+'%';
+ document.getElementById('compareLine').style.left=pct+'%';
+}
 function filterShop(btn,cat){
  document.querySelectorAll('.shopbar button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
  document.querySelectorAll('.product').forEach(p=>p.style.display=(cat==='all'||p.dataset.cat===cat)?'block':'none');
@@ -484,6 +598,7 @@ function addCart(){cart++;document.getElementById('cartCount').textContent=cart;
 function demoSubmit(message){closeModal();showToast(message)}
 function openModal(title,text,type){
  document.getElementById('modalTitle').textContent=title;document.getElementById('modalText').textContent=text;let body='';
+ if(type==='video')body='<div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/UA93_wukTqo?rel=0&playsinline=1" title="Landforce crew member video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>';
  if(type==='crew')body='<div class="formgrid"><div class="field">First name</div><div class="field">Last name</div><div class="field">Email</div><div class="field">Phone</div><div class="field">Program interest</div><div class="field">Availability</div></div><button class="btn dark" onclick="demoSubmit(&quot;Application preview complete — no data was sent.&quot;)">Continue application →</button>';
  if(type==='quote')body='<div class="formgrid"><div class="field">Project type</div><div class="field">Wood species</div><div class="field">Dimensions / quantity</div><div class="field">Target timeline</div><div class="field">Pickup or delivery</div><div class="field">Contact details</div></div><button class="btn dark" onclick="demoSubmit(&quot;Quote preview complete — no data was sent.&quot;)">Submit request →</button>';
  if(type==='cart')body='<div class="project-list"><div class="project-card"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1" alt=""><div><b>Selected material</b><span>'+cart+' demo item(s)</span></div><em>↗</em></div><div class="project-card"><img src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1" alt=""><div><b>Fulfillment</b><span>Pickup / delivery concept</span></div><em>↗</em></div></div>';
