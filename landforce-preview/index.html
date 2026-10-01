@@ -221,12 +221,12 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
 .compare{position:relative;min-height:560px;border-radius:34px;overflow:hidden;box-shadow:0 28px 80px rgba(0,0,0,.22);background:#13271e}
 .compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .compare-after{position:absolute;inset:0 auto 0 0;width:52%;overflow:hidden;border-right:2px solid rgba(255,255,255,.9)}
-.compare-after img{width:100vw;max-width:none}
+.compare-after img{position:absolute;inset:0;width:100%;max-width:none}
 .compare-label{position:absolute;z-index:5;top:18px;padding:9px 12px;border-radius:999px;background:rgba(5,20,13,.86);color:#fff;font:800 9px "Manrope";letter-spacing:.12em;text-transform:uppercase}
 .compare-label.before{right:18px}.compare-label.after{left:18px}
 .compare-line{position:absolute;z-index:6;left:52%;top:0;bottom:0;width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
 .compare-line:after{content:"↔";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--deep);font-weight:900;box-shadow:0 8px 22px rgba(0,0,0,.22)}
-.compare input{position:absolute;z-index:10;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize}
+.compare input{position:absolute;z-index:10;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;touch-action:none}
 
 /* CREW STORIES */
 .stories{padding:104px 0;background:var(--sand)}
@@ -257,7 +257,7 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
 @media(max-width:1080px){.compare-grid{grid-template-columns:1fr}.story-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:680px){
  .hero-video{display:none}
- .compare-section{padding:68px 0}.compare-grid{gap:24px}.compare{min-height:430px}.compare-after img{width:calc(100vw - 24px)}
+ .compare-section{padding:68px 0}.compare-grid{gap:24px}.compare{min-height:430px}
  .story-grid{grid-template-columns:1fr}.person-photo{height:390px}
  .inv-row{grid-template-columns:1.05fr .72fr .6fr}.inv-row span:nth-child(3),.inv-row.header span:nth-child(3){display:none}
 }
@@ -300,7 +300,7 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
 
 <main id="top">
 <section class="hero">
- <div class="hero-video" aria-hidden="true"><iframe src="https://www.youtube-nocookie.com/embed/UA93_wukTqo?autoplay=1&mute=1&controls=0&loop=1&playlist=UA93_wukTqo&playsinline=1&rel=0&modestbranding=1" title="" tabindex="-1" allow="autoplay; encrypted-media"></iframe></div>
+ <div class="hero-video" id="heroVideo" aria-hidden="true" data-src="https://www.youtube-nocookie.com/embed/UA93_wukTqo?autoplay=1&mute=1&controls=0&loop=1&playlist=UA93_wukTqo&playsinline=1&rel=0&modestbranding=1"></div>
  <div class="hero-photo"></div>
  <div class="wrap hero-grid">
   <div class="hero-copy reveal">
@@ -455,9 +455,9 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
 <section class="section rwp dark" id="wood">
  <div class="wrap rwp-grid">
   <div class="rwp-visual reveal">
-   <div class="rwp-photo"><img loading="lazy" src="https://rs.wescover.com/c_limit%2Cf_auto%2Cq_auto%3Aeco%2Cw_900/v1/wescover-user-uploaded/tealodazayukxxq7k8td" alt="Black walnut live-edge slabs"><b>Black Walnut · live-edge slabs</b></div>
-   <div class="rwp-photo"><img loading="lazy" src="https://jeffmacksupply.com/cdn/shop/files/IMG_7871_700x700.jpg?v=1749142804" alt="White oak dimensional lumber"><b>White Oak · dimensional lumber</b></div>
-   <div class="rwp-photo"><img loading="lazy" src="https://northcastlehw.com/cdn/shop/products/dimensioned-maple-large.jpg?v=1639703453&width=1500" alt="Maple lumber boards"><b>Maple · special stock</b></div>
+   <div class="rwp-photo"><img loading="lazy" src="https://rs.wescover.com/c_limit%2Cf_auto%2Cq_auto%3Aeco%2Cw_900/v1/wescover-user-uploaded/tealodazayukxxq7k8td" alt="Black walnut live-edge slabs" onerror="woodFallback(this,'walnut')"><b>Black Walnut · live-edge slabs</b></div>
+   <div class="rwp-photo"><img loading="lazy" src="https://jeffmacksupply.com/cdn/shop/files/IMG_7871_700x700.jpg?v=1749142804" alt="White oak dimensional lumber" onerror="woodFallback(this,'oak')"><b>White Oak · dimensional lumber</b></div>
+   <div class="rwp-photo"><img loading="lazy" src="https://northcastlehw.com/cdn/shop/products/dimensioned-maple-large.jpg?v=1639703453&width=1500" alt="Maple lumber boards" onerror="woodFallback(this,'maple')"><b>Maple · special stock</b></div>
   </div>
   <div class="story reveal">
    <div class="kicker">Responsible Wood Production</div><h2>Turn a growing social enterprise into a premium digital storefront.</h2>
@@ -475,9 +475,9 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
 
    <div class="shopbar"><button class="active" onclick="filterShop(this,'all')">All</button><button onclick="filterShop(this,'slab')">Slabs</button><button onclick="filterShop(this,'dimensional')">Dimensional</button><button onclick="filterShop(this,'limited')">Limited</button></div>
    <div class="products">
-    <div class="product" data-cat="slab"><img loading="lazy" src="https://rs.wescover.com/c_limit%2Cf_auto%2Cq_auto%3Aeco%2Cw_900/v1/wescover-user-uploaded/tealodazayukxxq7k8td" alt="Black walnut live-edge slab lumber"><b>Black Walnut</b><span>Live-edge slab reference · actual Landforce inventory photography would be used in production</span><a onclick="addCart()">Add to demo cart ↗</a></div>
-    <div class="product" data-cat="dimensional"><img loading="lazy" src="https://jeffmacksupply.com/cdn/shop/files/IMG_7871_700x700.jpg?v=1749142804" alt="White oak dimensional lumber boards"><b>White Oak</b><span>Dimensional lumber reference · actual Landforce inventory photography would be used in production</span><a onclick="addCart()">Add to demo cart ↗</a></div>
-    <div class="product" data-cat="limited"><img loading="lazy" src="https://northcastlehw.com/cdn/shop/products/dimensioned-maple-large.jpg?v=1639703453&width=1500" alt="Maple lumber boards"><b>Maple</b><span>Limited / special-stock reference · actual Landforce inventory photography would be used in production</span><a onclick="openModal('Request a Custom Quote','A structured inquiry can capture species, dimensions, quantity, timeline and pickup/delivery needs.','quote')">Request quote ↗</a></div>
+    <div class="product" data-cat="slab"><img loading="lazy" src="https://rs.wescover.com/c_limit%2Cf_auto%2Cq_auto%3Aeco%2Cw_900/v1/wescover-user-uploaded/tealodazayukxxq7k8td" alt="Black walnut live-edge slab lumber" onerror="woodFallback(this,'walnut')"><b>Black Walnut</b><span>Live-edge slab reference · actual Landforce inventory photography would be used in production</span><a onclick="addCart()">Add to demo cart ↗</a></div>
+    <div class="product" data-cat="dimensional"><img loading="lazy" src="https://jeffmacksupply.com/cdn/shop/files/IMG_7871_700x700.jpg?v=1749142804" alt="White oak dimensional lumber boards" onerror="woodFallback(this,'oak')"><b>White Oak</b><span>Dimensional lumber reference · actual Landforce inventory photography would be used in production</span><a onclick="addCart()">Add to demo cart ↗</a></div>
+    <div class="product" data-cat="limited"><img loading="lazy" src="https://northcastlehw.com/cdn/shop/products/dimensioned-maple-large.jpg?v=1639703453&width=1500" alt="Maple lumber boards" onerror="woodFallback(this,'maple')"><b>Maple</b><span>Limited / special-stock reference · actual Landforce inventory photography would be used in production</span><a onclick="openModal('Request a Custom Quote','A structured inquiry can capture species, dimensions, quantity, timeline and pickup/delivery needs.','quote')">Request quote ↗</a></div>
    </div>
   </div>
  </div>
@@ -508,15 +508,15 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
   </div>
   <div class="story-grid">
    <article class="person-card reveal">
-    <div class="person-photo"><img loading="lazy" src="https://www.landforcepgh.org/wp-content/uploads/2024/09/hakim-reed-F5594-r-ad-683x1024.jpg" alt="Hakim Reed"><div class="person-role"><small>Crew Member → Site Supervisor</small><b>Hakim Reed</b></div></div>
+    <div class="person-photo"><img loading="lazy" src="https://www.landforcepgh.org/wp-content/uploads/2024/09/hakim-reed-F5594-r-ad-683x1024.jpg" alt="Hakim Reed" onerror="this.onerror=null;this.src='https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1'"><div class="person-role"><small>Crew Member → Site Supervisor</small><b>Hakim Reed</b></div></div>
     <div class="person-copy"><p>Joined Landforce as a Crew Member in 2023 and returned in 2024 as a Site Supervisor, bringing added certifications and field experience back into the organization.</p><div class="arc"><i></i>Career progression made visible</div></div>
    </article>
    <article class="person-card reveal">
-    <div class="person-photo"><img loading="lazy" src="https://www.landforcepgh.org/wp-content/uploads/2024/09/nicole-holmes-F5537-r-ad-683x1024.jpg" alt="Nicole Holmes"><div class="person-role"><small>Crew Member → Administrative Coordinator</small><b>Nicole Holmes</b></div></div>
+    <div class="person-photo"><img loading="lazy" src="https://www.landforcepgh.org/wp-content/uploads/2024/09/nicole-holmes-F5537-r-ad-683x1024.jpg" alt="Nicole Holmes" onerror="this.onerror=null;this.src='https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1'"><div class="person-role"><small>Crew Member → Administrative Coordinator</small><b>Nicole Holmes</b></div></div>
     <div class="person-copy"><p>Joined as a Crew Member in 2023 and now serves as Administrative Coordinator, carrying field experience, certifications and conservation work into an organizational role.</p><div class="arc"><i></i>Skills that travel beyond the crew</div></div>
    </article>
    <article class="person-card reveal">
-    <div class="person-photo"><img loading="lazy" src="https://www.landforcepgh.org/wp-content/uploads/2024/09/rickey-hebron-F5551-r-ad-683x1024.jpg" alt="Rickey Hebron Jr."><div class="person-role"><small>Crew Member → Site Supervisor</small><b>Rickey Hebron Jr.</b></div></div>
+    <div class="person-photo"><img loading="lazy" src="https://www.landforcepgh.org/wp-content/uploads/2024/09/rickey-hebron-F5551-r-ad-683x1024.jpg" alt="Rickey Hebron Jr." onerror="this.onerror=null;this.src='https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1'"><div class="person-role"><small>Crew Member → Site Supervisor</small><b>Rickey Hebron Jr.</b></div></div>
     <div class="person-copy"><p>Joined as a Crew Member in 2020, advanced in a local landscaping company, and returned to Landforce as a Site Supervisor in 2022.</p><div class="arc"><i></i>A pathway from training to leadership</div></div>
    </article>
   </div>
@@ -549,34 +549,59 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-const satelliteTiles=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{
-  attribution:'Tiles © Esri'
-});
-const streetTiles=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-  attribution:'© OpenStreetMap contributors'
-});
-const projectMap=L.map('satelliteMap',{zoomControl:true,scrollWheelZoom:false,layers:[satelliteTiles]}).setView([40.4406,-79.9959],12);
-const conceptProjects=[
-  {lat:40.4315,lng:-79.9244,title:'Trail + habitat project',sub:'Illustrative concept location'},
-  {lat:40.4580,lng:-79.9365,title:'Green infrastructure project',sub:'Illustrative concept location'},
-  {lat:40.4128,lng:-79.9837,title:'Vacant land stabilization',sub:'Illustrative concept location'},
-  {lat:40.4745,lng:-80.0158,title:'Community stewardship',sub:'Illustrative concept location'},
-  {lat:40.4418,lng:-80.0312,title:'Tree-care project',sub:'Illustrative concept location'}
-];
-const markerIcon=L.divIcon({
-  className:'',
-  html:'<div style="width:27px;height:27px;border-radius:50% 50% 50% 0;background:#0f3d29;border:4px solid white;box-shadow:0 8px 18px rgba(0,0,0,.28);transform:rotate(-45deg);position:relative"><i style="position:absolute;width:7px;height:7px;border-radius:50%;background:#d9f263;left:6px;top:6px"></i></div>',
-  iconSize:[27,27],iconAnchor:[13,27],popupAnchor:[0,-24]
-});
-conceptProjects.forEach(p=>L.marker([p.lat,p.lng],{icon:markerIcon}).addTo(projectMap).bindPopup('<div class="sat-popup"><b>'+p.title+'</b><span>'+p.sub+'</span><strong>Concept pin · verify in production</strong></div>'));
-let currentBase=satelliteTiles;
+let projectMap=null,satelliteTiles=null,streetTiles=null,currentBase=null;
+function initProjectMap(){
+  const mount=document.getElementById('satelliteMap');
+  if(!mount)return;
+  if(!window.L){
+    mount.innerHTML='<div style="height:100%;display:grid;place-items:center;padding:30px;text-align:center;color:white;background:linear-gradient(135deg,#0a2419,#173d2b)"><div><b style="font:800 22px Manrope">Pittsburgh Project Explorer</b><p style="max-width:420px;color:#c8d7cf;font-size:12px;line-height:1.55">Satellite map tiles could not load on this connection. The rest of the preview remains fully available.</p></div></div>';
+    return;
+  }
+  satelliteTiles=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{attribution:'Tiles © Esri'});
+  streetTiles=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'});
+  projectMap=L.map('satelliteMap',{zoomControl:true,scrollWheelZoom:false,layers:[satelliteTiles]}).setView([40.4406,-79.9959],12);
+  const conceptProjects=[
+    {lat:40.4315,lng:-79.9244,title:'Trail + habitat project',sub:'Illustrative concept location'},
+    {lat:40.4580,lng:-79.9365,title:'Green infrastructure project',sub:'Illustrative concept location'},
+    {lat:40.4128,lng:-79.9837,title:'Vacant land stabilization',sub:'Illustrative concept location'},
+    {lat:40.4745,lng:-80.0158,title:'Community stewardship',sub:'Illustrative concept location'},
+    {lat:40.4418,lng:-80.0312,title:'Tree-care project',sub:'Illustrative concept location'}
+  ];
+  const markerIcon=L.divIcon({className:'',html:'<div style="width:27px;height:27px;border-radius:50% 50% 50% 0;background:#0f3d29;border:4px solid white;box-shadow:0 8px 18px rgba(0,0,0,.28);transform:rotate(-45deg);position:relative"><i style="position:absolute;width:7px;height:7px;border-radius:50%;background:#d9f263;left:6px;top:6px"></i></div>',iconSize:[27,27],iconAnchor:[13,27],popupAnchor:[0,-24]});
+  conceptProjects.forEach(p=>L.marker([p.lat,p.lng],{icon:markerIcon}).addTo(projectMap).bindPopup('<div class="sat-popup"><b>'+p.title+'</b><span>'+p.sub+'</span><strong>Concept pin · verify in production</strong></div>'));
+  currentBase=satelliteTiles;
+  setTimeout(()=>projectMap.invalidateSize(),250);
+}
 function setMapLayer(type){
+  if(!projectMap||!satelliteTiles||!streetTiles)return;
   const next=type==='satellite'?satelliteTiles:streetTiles;
   if(currentBase!==next){projectMap.removeLayer(currentBase);next.addTo(projectMap);currentBase=next;}
   document.getElementById('satBtn').classList.toggle('active',type==='satellite');
   document.getElementById('streetBtn').classList.toggle('active',type==='street');
 }
-setTimeout(()=>projectMap.invalidateSize(),250);
+initProjectMap();
+
+function loadHeroVideo(){
+ const host=document.getElementById('heroVideo');
+ if(!host||host.dataset.loaded==='1'||matchMedia('(max-width:680px)').matches||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const iframe=document.createElement('iframe');iframe.src=host.dataset.src;iframe.title='';iframe.tabIndex=-1;iframe.setAttribute('allow','autoplay; encrypted-media');iframe.setAttribute('loading','lazy');host.appendChild(iframe);host.dataset.loaded='1';
+}
+if('requestIdleCallback'in window)requestIdleCallback(loadHeroVideo,{timeout:1800});else setTimeout(loadHeroVideo,1200);
+
+function woodFallback(img,type){
+ img.onerror=null;
+ const tones={walnut:['#3b2418','#7b4c2f'],oak:['#b8915e','#ead4a7'],maple:['#d9b77b','#f0d9ad']};
+ const c=tones[type]||tones.oak;
+ const label=type==='walnut'?'BLACK WALNUT':type==='maple'?'MAPLE':'WHITE OAK';
+ const svg='<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700"><defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="'+c[0]+'"/><stop offset="1" stop-color="'+c[1]+'"/></linearGradient><pattern id="p" width="110" height="70" patternUnits="userSpaceOnUse"><path d="M-20 38 C20 5 70 5 130 38 M-25 48 C25 15 75 15 135 48 M-30 58 C30 25 80 25 140 58" fill="none" stroke="rgba(255,255,255,.24)" stroke-width="2"/></pattern></defs><rect width="100%" height="100%" fill="url(#g)"/><rect width="100%" height="100%" fill="url(#p)"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="46" font-weight="700" fill="rgba(255,255,255,.78)">'+label+' · CONCEPT REFERENCE</text></svg>';
+ img.src='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+}
+
+function syncCompare(){
+ const box=document.getElementById('compare'),after=document.getElementById('compareAfter');
+ if(!box||!after)return;const im=after.querySelector('img');if(im)im.style.width=box.clientWidth+'px';
+}
+addEventListener('resize',syncCompare,{passive:true});setTimeout(syncCompare,50);
 
 const header=document.getElementById('header'),progress=document.getElementById('progress');
 addEventListener('scroll',()=>{header.classList.toggle('scrolled',scrollY>8);const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(h?scrollY/h*100:0)+'%'},{passive:true});
@@ -585,6 +610,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 function updateCompare(value){
  const pct=Math.max(5,Math.min(95,Number(value)||52));
+ syncCompare();
  document.getElementById('compareAfter').style.width=pct+'%';
  document.getElementById('compareLine').style.left=pct+'%';
 }
