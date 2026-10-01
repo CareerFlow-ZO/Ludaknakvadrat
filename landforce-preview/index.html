@@ -19,7 +19,7 @@
  --shadow:0 34px 100px rgba(4,20,13,.17);--soft:0 18px 50px rgba(5,23,15,.10);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:112px}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
@@ -140,7 +140,7 @@ header.scrolled{border-color:var(--line);box-shadow:0 12px 38px rgba(4,20,13,.06
 /* PROJECT EXPLORER */
 .explorer{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
 .map-shell{min-height:620px;border-radius:32px;position:relative;overflow:hidden;background:#10251a;box-shadow:var(--soft)}
-#satelliteMap{position:absolute;inset:0;z-index:1}
+#satelliteMap{position:absolute;inset:0;z-index:1;width:100%;height:100%;min-height:620px}.leaflet-container{width:100%!important;height:100%!important;background:#10251a}
 .map-overlay{position:absolute;z-index:500;left:18px;right:18px;top:18px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;pointer-events:none}
 .map-chip{pointer-events:auto;background:rgba(5,20,13,.88);color:#fff;border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px);border-radius:18px;padding:13px 15px;box-shadow:0 12px 30px rgba(0,0,0,.18)}
 .map-chip small{display:block;font:800 8px "Manrope";letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:4px}
@@ -271,11 +271,11 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
 }
 @media(max-width:680px){
  .wrap{width:min(100% - 24px,1280px)}.conceptbar{font-size:8px;line-height:1.35}.nav{height:72px}.brand img{width:176px;height:54px}.menu{padding:12px 16px}
- .hero,.hero-grid{min-height:745px}.hero-grid{padding:58px 0 68px}.hero-copy{padding-bottom:0}.hero h1{font-size:51px;line-height:.89}.hero p{font-size:15px;line-height:1.58}.hero-actions .btn{min-height:50px;padding:13px 18px}
- .hero-photo{background-position:66% center}.gateway{padding:34px 0 68px}.gateway-head{gap:18px}.gateway-grid{grid-template-columns:1fr}.gate{min-height:360px}
- .track span{padding:14px 20px}.manifesto{min-height:610px}.manifesto-inner{padding:70px 0 54px}.manifesto h2{font-size:50px}
+ .hero,.hero-grid{min-height:745px}.hero-grid{padding:58px 0 calc(96px + env(safe-area-inset-bottom,0px))}.hero-copy{padding-bottom:0}.hero h1{font-size:49px;line-height:.89}.hero p{font-size:14.5px;line-height:1.56}.hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.hero-actions .btn{min-height:48px;padding:12px 12px;font-size:12px;width:100%}
+ .hero-photo{background-position:66% center}.gateway{padding:34px 0 68px}.gateway-head{gap:18px}.gateway-head h2{font-size:46px;line-height:.96}.gateway-grid{grid-template-columns:1fr}.gate{min-height:360px}
+ .track span{padding:14px 20px}.manifesto{min-height:610px}.manifesto-inner{padding:70px 0 54px}.manifesto h2{font-size:47px;line-height:.92}
  .section{padding:68px 0}.section-head{gap:18px}.services{display:block}.service,.service.large{min-height:350px;margin-bottom:10px}.impact-numbers{grid-template-columns:1fr 1fr}.impact-stat{padding:18px}.impact-stat b{font-size:46px}
- .impact-reel{display:block}.reel-card,.reel-card:first-child{min-height:260px;margin-bottom:10px}.map-shell{min-height:470px}.project-side{padding:22px}.project-card{grid-template-columns:64px 1fr auto}.project-card img{width:64px;height:55px}
+ .impact-reel{display:block}.reel-card,.reel-card:first-child{min-height:260px;margin-bottom:10px}.map-shell{min-height:470px}#satelliteMap{min-height:470px}.project-side{padding:22px}.project-card{grid-template-columns:64px 1fr auto}.project-card img{width:64px;height:55px}
  .rwp-visual{grid-template-columns:1fr 1fr;grid-template-rows:240px 190px}.products{grid-template-columns:1fr}.product{padding:13px}.product img{height:150px}.journey-hero{min-height:470px}.step{grid-template-columns:78px 1fr}.step img{width:78px;height:62px}
  .final{padding-bottom:70px}.final-card{min-height:500px}.final-copy{padding:28px 22px}.footer-grid{grid-template-columns:1fr}.legal{display:block}
  .formgrid{grid-template-columns:1fr}.cart{right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px)}.toast{right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);max-width:calc(100% - 24px)}
@@ -559,7 +559,7 @@ function initProjectMap(){
   }
   satelliteTiles=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{attribution:'Tiles © Esri'});
   streetTiles=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'});
-  projectMap=L.map('satelliteMap',{zoomControl:true,scrollWheelZoom:false,layers:[satelliteTiles]}).setView([40.4406,-79.9959],12);
+  projectMap=L.map('satelliteMap',{zoomControl:true,scrollWheelZoom:false,layers:[satelliteTiles]}).setView([40.4406,-79.9959],12);window.projectMap=projectMap;
   const conceptProjects=[
     {lat:40.4315,lng:-79.9244,title:'Trail + habitat project',sub:'Illustrative concept location'},
     {lat:40.4580,lng:-79.9365,title:'Green infrastructure project',sub:'Illustrative concept location'},
@@ -570,7 +570,17 @@ function initProjectMap(){
   const markerIcon=L.divIcon({className:'',html:'<div style="width:27px;height:27px;border-radius:50% 50% 50% 0;background:#0f3d29;border:4px solid white;box-shadow:0 8px 18px rgba(0,0,0,.28);transform:rotate(-45deg);position:relative"><i style="position:absolute;width:7px;height:7px;border-radius:50%;background:#d9f263;left:6px;top:6px"></i></div>',iconSize:[27,27],iconAnchor:[13,27],popupAnchor:[0,-24]});
   conceptProjects.forEach(p=>L.marker([p.lat,p.lng],{icon:markerIcon}).addTo(projectMap).bindPopup('<div class="sat-popup"><b>'+p.title+'</b><span>'+p.sub+'</span><strong>Concept pin · verify in production</strong></div>'));
   currentBase=satelliteTiles;
-  setTimeout(()=>projectMap.invalidateSize(),250);
+  const fixMapSize=()=>{if(projectMap){projectMap.invalidateSize({pan:false});projectMap.setView(projectMap.getCenter(),projectMap.getZoom(),{animate:false});}};
+  requestAnimationFrame(()=>requestAnimationFrame(fixMapSize));
+  [120,350,800,1600].forEach(ms=>setTimeout(fixMapSize,ms));
+  if('ResizeObserver'in window){
+    const ro=new ResizeObserver(()=>fixMapSize());
+    ro.observe(mount);
+  }
+  addEventListener('resize',fixMapSize,{passive:true});
+  addEventListener('orientationchange',()=>setTimeout(fixMapSize,250),{passive:true});
+  addEventListener('pageshow',()=>setTimeout(fixMapSize,150),{passive:true});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(fixMapSize,150)});
 }
 function setMapLayer(type){
   if(!projectMap||!satelliteTiles||!streetTiles)return;
@@ -605,7 +615,7 @@ addEventListener('resize',syncCompare,{passive:true});setTimeout(syncCompare,50)
 
 const header=document.getElementById('header'),progress=document.getElementById('progress');
 addEventListener('scroll',()=>{header.classList.toggle('scrolled',scrollY>8);const h=document.documentElement.scrollHeight-innerHeight;progress.style.width=(h?scrollY/h*100:0)+'%'},{passive:true});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');if(e.target.classList.contains('map-shell')&&window.projectMap)setTimeout(()=>window.projectMap.invalidateSize({pan:false}),80);io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 function updateCompare(value){
