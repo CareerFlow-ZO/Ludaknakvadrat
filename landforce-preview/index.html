@@ -177,7 +177,7 @@ header.scrolled{border-color:var(--line);box-shadow:0 12px 38px rgba(4,20,13,.06
 .shopbar button.active{background:var(--lime);border-color:var(--lime);color:var(--deep)}
 .products{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
 .product{background:#fff;color:var(--ink);border-radius:17px;padding:10px}
-.product img{width:100%;height:110px;object-fit:cover;border-radius:11px}
+.product img{width:100%;height:150px;object-fit:cover;object-position:center;border-radius:11px;background:#e9e0d2}
 .product b{display:block;font-size:11px;margin-top:9px}.product span{display:block;font-size:9px;color:var(--muted);margin-top:3px;line-height:1.35}
 .product a{display:inline-flex;margin-top:8px;font-size:9px;font-weight:800;color:var(--green);cursor:pointer}
 
@@ -455,9 +455,9 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
 <section class="section rwp dark" id="wood">
  <div class="wrap rwp-grid">
   <div class="rwp-visual reveal">
-   <div class="rwp-photo"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1" alt=""><b>Recovered material</b></div>
-   <div class="rwp-photo"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.42.59-1-scaled.jpg?ssl=1" alt=""><b>Skills + production</b></div>
-   <div class="rwp-photo"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6133-scaled.jpg?ssl=1" alt=""><b>Local circular impact</b></div>
+   <div class="rwp-photo"><img loading="lazy" src="https://rs.wescover.com/c_limit%2Cf_auto%2Cq_auto%3Aeco%2Cw_900/v1/wescover-user-uploaded/tealodazayukxxq7k8td" alt="Black walnut live-edge slabs"><b>Black Walnut · live-edge slabs</b></div>
+   <div class="rwp-photo"><img loading="lazy" src="https://jeffmacksupply.com/cdn/shop/files/IMG_7871_700x700.jpg?v=1749142804" alt="White oak dimensional lumber"><b>White Oak · dimensional lumber</b></div>
+   <div class="rwp-photo"><img loading="lazy" src="https://northcastlehw.com/cdn/shop/products/dimensioned-maple-large.jpg?v=1639703453&width=1500" alt="Maple lumber boards"><b>Maple · special stock</b></div>
   </div>
   <div class="story reveal">
    <div class="kicker">Responsible Wood Production</div><h2>Turn a growing social enterprise into a premium digital storefront.</h2>
@@ -475,9 +475,9 @@ footer{background:#04140d;color:#d6e1da;padding:52px 0}
 
    <div class="shopbar"><button class="active" onclick="filterShop(this,'all')">All</button><button onclick="filterShop(this,'slab')">Slabs</button><button onclick="filterShop(this,'dimensional')">Dimensional</button><button onclick="filterShop(this,'limited')">Limited</button></div>
    <div class="products">
-    <div class="product" data-cat="slab"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-F6798-scaled.jpg?ssl=1" alt=""><b>Black Walnut</b><span>Concept product presentation · live-edge slabs</span><a onclick="addCart()">Add to demo cart ↗</a></div>
-    <div class="product" data-cat="dimensional"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-hartwood-acres-2019-09-18-11.32.58-1-scaled.jpg?ssl=1" alt=""><b>White Oak</b><span>Concept product presentation · dimensional lumber</span><a onclick="addCart()">Add to demo cart ↗</a></div>
-    <div class="product" data-cat="limited"><img loading="lazy" src="https://i0.wp.com/www.landforcepgh.org/wp-content/uploads/2020/10/landforce-F6145-scaled.jpg?ssl=1" alt=""><b>Custom Material</b><span>Concept inquiry path · limited / special stock</span><a onclick="openModal('Request a Custom Quote','A structured inquiry can capture species, dimensions, quantity, timeline and pickup/delivery needs.','quote')">Request quote ↗</a></div>
+    <div class="product" data-cat="slab"><img loading="lazy" src="https://rs.wescover.com/c_limit%2Cf_auto%2Cq_auto%3Aeco%2Cw_900/v1/wescover-user-uploaded/tealodazayukxxq7k8td" alt="Black walnut live-edge slab lumber"><b>Black Walnut</b><span>Live-edge slab reference · actual Landforce inventory photography would be used in production</span><a onclick="addCart()">Add to demo cart ↗</a></div>
+    <div class="product" data-cat="dimensional"><img loading="lazy" src="https://jeffmacksupply.com/cdn/shop/files/IMG_7871_700x700.jpg?v=1749142804" alt="White oak dimensional lumber boards"><b>White Oak</b><span>Dimensional lumber reference · actual Landforce inventory photography would be used in production</span><a onclick="addCart()">Add to demo cart ↗</a></div>
+    <div class="product" data-cat="limited"><img loading="lazy" src="https://northcastlehw.com/cdn/shop/products/dimensioned-maple-large.jpg?v=1639703453&width=1500" alt="Maple lumber boards"><b>Maple</b><span>Limited / special-stock reference · actual Landforce inventory photography would be used in production</span><a onclick="openModal('Request a Custom Quote','A structured inquiry can capture species, dimensions, quantity, timeline and pickup/delivery needs.','quote')">Request quote ↗</a></div>
    </div>
   </div>
  </div>
