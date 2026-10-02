@@ -14,5 +14,17 @@
 <section class="wrap convert"><div class="ey" style="color:var(--wine)">HITRO IN PREPROSTO</div><h2>Od ogleda do<br><em style="color:var(--wine)">rezervacije.</em></h2><div class="convertGrid"><a href="tel:+38615291550"><small>01</small><b>Pokličite</b><span>01 529 15 50 ↗</span></a><a href="mailto:eurogurman@gmail.com?subject=Rezervacija%20-%20Gostilna%20Euro%20Gurman"><small>02</small><b>Pošljite povpraševanje</b><span>E-pošta ↗</span></a><a href="https://maps.google.com/?q=Zadobrov%C5%A1ka+cesta+18,+1260+Ljubljana" target="_blank"><small>03</small><b>Pridite na obisk</b><span>Odpri navigacijo ↗</span></a></div></section></main>
 <footer class="foot"><div class="brand"><span class="mark">EG</span><span><b>EURO GURMAN</b><small>GOSTILNA · LJUBLJANA</small></span></div><span>Dobrodošli za našo mizo.</span><small>VIP koncept · LNK DIGITAL</small></footer><div class="mobileBook"><a href="tel:+38615291550">✆ Rezervacija · 01 529 15 50</a></div>
 <script>
-(function(){try{const m=JSON.parse(localStorage.getItem('euroGurmanMeals')||'null');if(m&&Array.isArray(m)){const cards=document.querySelectorAll('.meal');const box=document.querySelector('.meals');box.innerHTML='';m.slice(0,20).filter(x=>x&&(x.name||x.desc||x.price)).forEach((x,n)=>{const a=document.createElement('article');a.className='meal';a.innerHTML='<small>MALICA '+String(n+1).padStart(2,'0')+'</small><h3></h3><p></p><strong></strong>';a.querySelector('h3').textContent=x.name||'Dnevna jed';a.querySelector('p').textContent=x.desc||'';a.querySelector('strong').textContent=x.price||'Cena po ponudbi';box.appendChild(a)});if(!box.children.length)box.innerHTML='<article class="meal"><small>DNEVNA PONUDBA</small><h3>Malice bodo objavljene kmalu</h3><p>Za današnjo ponudbo nas pokličite.</p></article>'}}catch(e){}})();
-document.querySelectorAll('.nav a').forEach(a=>a.onclick=()=>document.querySelector('.nav').classList.remove('open'))</script></body></html>
+const SB_URL='https://mwgnwbmssiyugwlsnotz.supabase.co',SB_KEY='sb_publishable_HMb1ucc2gUu96nRPJVjb0Q_PqclMV3P';
+async function loadMeals(){
+ const box=document.querySelector('.meals');
+ try{
+  const r=await fetch(SB_URL+'/rest/v1/euro_gurman_meals?select=name,description,price,position&active=eq.true&order=position.asc',{headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY}});
+  if(!r.ok)throw new Error(await r.text());
+  const m=await r.json(); box.innerHTML='';
+  m.slice(0,20).filter(x=>x&&(x.name||x.description||x.price)).forEach((x,n)=>{const a=document.createElement('article');a.className='meal';a.innerHTML='<small>MALICA '+String(n+1).padStart(2,'0')+'</small><h3></h3><p></p><strong></strong>';a.querySelector('h3').textContent=x.name||'Dnevna jed';a.querySelector('p').textContent=x.description||'';a.querySelector('strong').textContent=x.price||'Cena po ponudbi';box.appendChild(a)});
+  if(!box.children.length)box.innerHTML='<article class="meal"><small>DNEVNA PONUDBA</small><h3>Malice bodo objavljene kmalu</h3><p>Za današnjo ponudbo nas pokličite.</p></article>';
+ }catch(e){console.error(e)}
+}
+loadMeals();
+document.querySelectorAll('.nav a').forEach(a=>a.onclick=()=>document.querySelector('.nav').classList.remove('open'))
+</script></body></html>
