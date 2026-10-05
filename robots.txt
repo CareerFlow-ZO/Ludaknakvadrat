@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
+Disallow: /api/
+Disallow: /previews/
+Disallow: /*-preview/
 
 Sitemap: https://www.ludaknakvadrat.com/sitemap.xml
