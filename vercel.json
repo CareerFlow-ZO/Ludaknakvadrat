@@ -2,9 +2,27 @@
   "version": 2,
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/previews/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
+      ]
+    },
+    {
+      "source": "/euro-gurman-preview/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
+      ]
+    },
+    {
+      "source": "/drone-records-sarajevo-preview/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
+      ]
+    },
+    {
+      "source": "/admin.html",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
       ]
     }
   ]
