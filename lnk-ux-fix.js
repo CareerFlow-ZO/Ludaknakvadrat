@@ -21,7 +21,7 @@
 
   function apply(){
     const t=copy();
-    document.title='LNK DIGITAL — Web, branding, marketing, AI i digitalne usluge';
+    document.title='LNK DIGITAL — Web stranice i digitalne usluge | Ludak Na Kvadrat';
     const meta=document.querySelector('meta[name="description"]');
     if(meta) meta.content='LNK DIGITAL — web stranice, branding, marketing, SEO, AI automatizacija, video, društvene mreže, e-commerce i kreativne digitalne usluge.';
 

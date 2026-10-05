@@ -87,7 +87,7 @@ function applyCatalog(lang){
   const empty=sec.querySelector('.dc-empty'); if(empty)empty.textContent=c[12];
 }
 function polish(){
- document.title='LNK DIGITAL — Web, Branding, AI & Digital Services';
+ document.title='LNK DIGITAL — Web stranice i digitalne usluge | Ludak Na Kvadrat';
  const desc=document.querySelector('meta[name="description"]'); if(desc) desc.content='LNK DIGITAL — profesionalne web stranice, branding, social media, SEO, AI automatizacija, e-commerce i personalizovane pesme.';
  document.querySelectorAll('a[href="mailto:contactludak@gmail.com"]').forEach(a=>a.href='mailto:contact@ludaknakvadrat.com');
  setLogo();

@@ -310,7 +310,7 @@
   }
 
   function apply(){
-    document.title='LNK DIGITAL';
+    document.title='LNK DIGITAL — Web stranice i digitalne usluge | Ludak Na Kvadrat';
     document.querySelectorAll('.brand img,.footer-brand img').forEach(img=>{img.src='/lnk-digital-logo.svg?v=4';img.alt='LNK DIGITAL'});
     const brand=document.querySelector('.brand span'); if(brand)brand.textContent='LNK DIGITAL';
     hero(); stats(); services(); portfolio(); packages(); desktopNav(); mobileDock();
