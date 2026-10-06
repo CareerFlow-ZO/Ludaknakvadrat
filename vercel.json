@@ -266,6 +266,86 @@
       "has": [
         {
           "type": "host",
+          "value": "eurogurman.si"
+        }
+      ],
+      "dest": "/euro-gurman-preview/index.html"
+    },
+    {
+      "src": "^/index\\.html$",
+      "has": [
+        {
+          "type": "host",
+          "value": "eurogurman.si"
+        }
+      ],
+      "dest": "/euro-gurman-preview/index.html"
+    },
+    {
+      "src": "^/admin\\.html$",
+      "has": [
+        {
+          "type": "host",
+          "value": "eurogurman.si"
+        }
+      ],
+      "dest": "/euro-gurman-preview/admin.html"
+    },
+    {
+      "src": "^/euro-gurman-logo\\.svg$",
+      "has": [
+        {
+          "type": "host",
+          "value": "eurogurman.si"
+        }
+      ],
+      "dest": "/euro-gurman-preview/euro-gurman-logo.svg"
+    },
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.eurogurman.si"
+        }
+      ],
+      "dest": "/euro-gurman-preview/index.html"
+    },
+    {
+      "src": "^/index\\.html$",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.eurogurman.si"
+        }
+      ],
+      "dest": "/euro-gurman-preview/index.html"
+    },
+    {
+      "src": "^/admin\\.html$",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.eurogurman.si"
+        }
+      ],
+      "dest": "/euro-gurman-preview/admin.html"
+    },
+    {
+      "src": "^/euro-gurman-logo\\.svg$",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.eurogurman.si"
+        }
+      ],
+      "dest": "/euro-gurman-preview/euro-gurman-logo.svg"
+    },
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "host",
           "value": "^lnkdigital\\\\.com$"
         }
       ],
@@ -290,88 +370,6 @@
         }
       ],
       "dest": "/lnk-robots.txt"
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "eurogurman.si"
-        }
-      ],
-      "destination": "/euro-gurman-preview/index.html"
-    },
-    {
-      "source": "/index.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "eurogurman.si"
-        }
-      ],
-      "destination": "/euro-gurman-preview/index.html"
-    },
-    {
-      "source": "/admin.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "eurogurman.si"
-        }
-      ],
-      "destination": "/euro-gurman-preview/admin.html"
-    },
-    {
-      "source": "/euro-gurman-logo.svg",
-      "has": [
-        {
-          "type": "host",
-          "value": "eurogurman.si"
-        }
-      ],
-      "destination": "/euro-gurman-preview/euro-gurman-logo.svg"
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.eurogurman.si"
-        }
-      ],
-      "destination": "/euro-gurman-preview/index.html"
-    },
-    {
-      "source": "/index.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.eurogurman.si"
-        }
-      ],
-      "destination": "/euro-gurman-preview/index.html"
-    },
-    {
-      "source": "/admin.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.eurogurman.si"
-        }
-      ],
-      "destination": "/euro-gurman-preview/admin.html"
-    },
-    {
-      "source": "/euro-gurman-logo.svg",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.eurogurman.si"
-        }
-      ],
-      "destination": "/euro-gurman-preview/euro-gurman-logo.svg"
     }
   ]
 }
