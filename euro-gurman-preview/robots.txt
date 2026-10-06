@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /previews/
+Disallow: /*-preview/
+
+Sitemap: https://eurogurman.si/sitemap.xml
