@@ -469,86 +469,86 @@
       "permanent": true
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "eurogurman.si"
         }
       ],
-      "destination": "/euro-gurman-preview/index.html"
+      "dest": "/euro-gurman-preview/index.html"
     },
     {
-      "source": "/index.html",
+      "src": "^/index\\.html$",
       "has": [
         {
           "type": "host",
           "value": "eurogurman.si"
         }
       ],
-      "destination": "/euro-gurman-preview/index.html"
+      "dest": "/euro-gurman-preview/index.html"
     },
     {
-      "source": "/admin.html",
+      "src": "^/admin\\.html$",
       "has": [
         {
           "type": "host",
           "value": "eurogurman.si"
         }
       ],
-      "destination": "/euro-gurman-preview/admin.html"
+      "dest": "/euro-gurman-preview/admin.html"
     },
     {
-      "source": "/euro-gurman-logo.svg",
+      "src": "^/euro-gurman-logo\\.svg$",
       "has": [
         {
           "type": "host",
           "value": "eurogurman.si"
         }
       ],
-      "destination": "/euro-gurman-preview/euro-gurman-logo.svg"
+      "dest": "/euro-gurman-preview/euro-gurman-logo.svg"
     },
     {
-      "source": "/",
+      "src": "^/$",
       "has": [
         {
           "type": "host",
           "value": "www.eurogurman.si"
         }
       ],
-      "destination": "/euro-gurman-preview/index.html"
+      "dest": "/euro-gurman-preview/index.html"
     },
     {
-      "source": "/index.html",
+      "src": "^/index\\.html$",
       "has": [
         {
           "type": "host",
           "value": "www.eurogurman.si"
         }
       ],
-      "destination": "/euro-gurman-preview/index.html"
+      "dest": "/euro-gurman-preview/index.html"
     },
     {
-      "source": "/admin.html",
+      "src": "^/admin\\.html$",
       "has": [
         {
           "type": "host",
           "value": "www.eurogurman.si"
         }
       ],
-      "destination": "/euro-gurman-preview/admin.html"
+      "dest": "/euro-gurman-preview/admin.html"
     },
     {
-      "source": "/euro-gurman-logo.svg",
+      "src": "^/euro-gurman-logo\\.svg$",
       "has": [
         {
           "type": "host",
           "value": "www.eurogurman.si"
         }
       ],
-      "destination": "/euro-gurman-preview/euro-gurman-logo.svg"
+      "dest": "/euro-gurman-preview/euro-gurman-logo.svg"
     }
   ]
 }
