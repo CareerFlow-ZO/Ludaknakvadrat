@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.ludaknakvadrat.com/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://lnkdigital.com/</loc></url>
+  <url><loc>https://lnkdigital.com/web-design.html</loc><xhtml:link rel="alternate" hreflang="en" href="https://lnkdigital.com/web-design.html"/><xhtml:link rel="alternate" hreflang="sl" href="https://lnkdigital.com/izdelava-spletnih-strani.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://lnkdigital.com/web-design.html"/></url>
+  <url><loc>https://lnkdigital.com/izdelava-spletnih-strani.html</loc><xhtml:link rel="alternate" hreflang="sl" href="https://lnkdigital.com/izdelava-spletnih-strani.html"/><xhtml:link rel="alternate" hreflang="en" href="https://lnkdigital.com/web-design.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://lnkdigital.com/web-design.html"/></url>
+  <url><loc>https://lnkdigital.com/barbershop-website-design.html</loc></url>
+  <url><loc>https://lnkdigital.com/auto-repair-website-design.html</loc></url>
+  <url><loc>https://lnkdigital.com/prenova-spletne-strani.html</loc></url>
+  <url><loc>https://lnkdigital.com/izdelava-spletnih-trgovin.html</loc></url>
+  <url><loc>https://lnkdigital.com/izdelava-spletne-strani-cena.html</loc></url>
+  <url><loc>https://lnkdigital.com/web-design-austria.html</loc></url>
+  <url><loc>https://lnkdigital.com/web-design-germany.html</loc></url>
+  <url><loc>https://lnkdigital.com/web-design-switzerland.html</loc></url>
+  <url><loc>https://lnkdigital.com/web-design-croatia.html</loc></url>
+  <url><loc>https://lnkdigital.com/web-design-italy.html</loc></url>
+  <url><loc>https://lnkdigital.com/web-design-usa.html</loc></url>
+  <url><loc>https://lnkdigital.com/restaurant-website-design.html</loc></url>
+  <url><loc>https://lnkdigital.com/hotel-website-design.html</loc></url>
+  <url><loc>https://lnkdigital.com/construction-company-website-design.html</loc></url>
+  <url><loc>https://lnkdigital.com/small-business-website-design.html</loc></url>
+  <url><loc>https://lnkdigital.com/website-redesign-services.html</loc></url>
+  <url><loc>https://lnkdigital.com/web-design-portfolio.html</loc></url>
 </urlset>
