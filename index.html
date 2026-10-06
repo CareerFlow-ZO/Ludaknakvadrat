@@ -8,8 +8,8 @@
 <meta name="description" content="LNK DIGITAL creates premium, mobile-first websites, redesigns and SEO-ready digital experiences for businesses across Europe and the USA. Request a free website preview.">
 <link rel="canonical" href="https://lnkdigital.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="LNK DIGITAL | Premium Web Design, Development & SEO">
-<meta property="og:description" content="Premium websites, redesigns and SEO-ready experiences built to help businesses look stronger and convert more visitors.">
+<meta property="og:title" content="LNK DIGITAL | Premium Websites That Build Authority">
+<meta property="og:description" content="High-end websites, redesigns and SEO-ready digital experiences built for stronger authority, positioning and enquiries.">
 <meta property="og:url" content="https://lnkdigital.com/">
 <meta property="og:image" content="https://lnkdigital.com/lnk-digital-logo.svg">
 <meta name="twitter:card" content="summary_large_image">
@@ -243,6 +243,113 @@ main>section:not(.hero){margin-top:112px}
   .browser{inset:20px 0 0}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.card{transition:none}}
+
+/* Ultra-premium homepage layer */
+.brand-monogram{
+  position:relative;display:grid;place-items:center;overflow:hidden;
+  background:
+    radial-gradient(circle at 28% 22%,rgba(125,233,255,.26),transparent 35%),
+    linear-gradient(145deg,#0e1828 0%,#0a0f1a 56%,#121629 100%);
+  border:1px solid rgba(124,216,255,.35);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1px rgba(113,91,255,.08),0 10px 28px rgba(0,0,0,.35),0 0 30px rgba(67,181,255,.15);
+}
+.brand-monogram:before{
+  content:"";position:absolute;inset:-45%;
+  background:conic-gradient(from 180deg,transparent 0 35%,rgba(90,220,255,.22) 42%,rgba(132,87,255,.3) 52%,transparent 62% 100%);
+  animation:lnkSpin 8s linear infinite;
+}
+.brand-monogram:after{
+  content:"";position:absolute;inset:1px;border-radius:13px;
+  background:linear-gradient(145deg,rgba(14,23,39,.97),rgba(6,10,17,.97));
+}
+.brand-monogram span{
+  position:relative;z-index:2;
+  font-size:10px;font-weight:950;letter-spacing:.03em;
+  background:linear-gradient(110deg,#fff,#8fe9ff 46%,#aa8cff);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 24px rgba(113,217,255,.22);
+}
+@keyframes lnkSpin{to{transform:rotate(360deg)}}
+
+.hero-copy{position:relative}
+.hero-copy:after{
+  content:"";position:absolute;left:-38px;top:-28px;width:190px;height:190px;border-radius:50%;
+  background:radial-gradient(circle,rgba(82,205,255,.08),transparent 68%);
+  pointer-events:none;filter:blur(2px);z-index:-1
+}
+.hero-status{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:8px 11px;margin-bottom:18px;border-radius:999px;
+  border:1px solid rgba(121,209,255,.16);
+  background:rgba(12,20,34,.58);
+  color:#8f9db3;font-size:10px;font-weight:800;letter-spacing:.14em;
+}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#79f1bd;box-shadow:0 0 0 4px rgba(121,241,189,.07),0 0 18px rgba(121,241,189,.62)}
+
+.signature-rail{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  margin-top:22px;color:#75849b;font-size:10px;font-weight:900;letter-spacing:.18em;
+}
+.signature-rail i{width:24px;height:1px;background:linear-gradient(90deg,rgba(104,222,255,.55),rgba(143,104,255,.2))}
+
+.hero h1{
+  position:relative;
+  text-wrap:balance;
+}
+.gradient-text{
+  background:linear-gradient(110deg,#dff9ff 0%,#7edcff 26%,#8294ff 60%,#ae70ff 100%);
+  background-size:180% 180%;
+  animation:gradientDrift 7s ease-in-out infinite;
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+@keyframes gradientDrift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+.hero:before{
+  content:"";position:absolute;left:50%;top:118px;transform:translateX(-50%);
+  width:min(900px,86vw);height:1px;
+  background:linear-gradient(90deg,transparent,rgba(104,221,255,.23),rgba(142,104,255,.20),transparent);
+  pointer-events:none
+}
+.hero{position:relative}
+
+.browser{
+  isolation:isolate;
+}
+.browser:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 0 42%,rgba(255,255,255,.035) 48%,transparent 54% 100%);
+  transform:translateX(-110%);
+  animation:browserSheen 8s ease-in-out infinite;
+}
+@keyframes browserSheen{0%,65%{transform:translateX(-110%)}82%,100%{transform:translateX(110%)}}
+
+.button.primary{
+  position:relative;overflow:hidden;
+}
+.button.primary:after{
+  content:"";position:absolute;top:-50%;bottom:-50%;width:28%;left:-35%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
+  transform:skewX(-18deg);
+  animation:ctaSheen 5.8s ease-in-out infinite;
+}
+@keyframes ctaSheen{0%,70%{left:-35%}88%,100%{left:125%}}
+
+@media(max-width:760px){
+  .hero{gap:18px}
+  .hero-status{margin-bottom:14px}
+  .hero h1{font-size:clamp(46px,13.7vw,66px);line-height:.96}
+  .signature-rail{margin-top:18px;gap:8px}
+  .signature-rail i{width:14px}
+  .brand-monogram span{font-size:9px}
+}
+@media(max-width:430px){
+  .hero h1{font-size:46px;letter-spacing:-.066em}
+  .hero-status{font-size:9px;letter-spacing:.11em}
+}
+@media(prefers-reduced-motion:reduce){
+  .brand-monogram:before,.gradient-text,.browser:after,.button.primary:after{animation:none}
+}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://lnkdigital.com/#organization","name":"LNK DIGITAL","url":"https://lnkdigital.com/","logo":"https://lnkdigital.com/lnk-digital-logo.svg","email":"contact@ludaknakvadrat.com","telephone":"+38631244612"},{"@type":"WebSite","@id":"https://lnkdigital.com/#website","url":"https://lnkdigital.com/","name":"LNK DIGITAL","publisher":{"@id":"https://lnkdigital.com/#organization"}},{"@type":"ProfessionalService","@id":"https://lnkdigital.com/#service","name":"LNK DIGITAL","url":"https://lnkdigital.com/","provider":{"@id":"https://lnkdigital.com/#organization"},"areaServed":["Slovenia","Austria","Germany","Switzerland","Croatia","Italy","United States","Europe"],"serviceType":["Premium web design","Website development","Website redesign","SEO foundations","Landing pages"]}]}</script>
 </head>
@@ -250,7 +357,7 @@ main>section:not(.hero){margin-top:112px}
 <a class="skip-link" href="#content">Skip to content</a>
 <header class="site-header">
   <a class="brand" href="/" aria-label="LNK DIGITAL home">
-    <span class="brand-mark"><img src="/lnk-digital-logo.svg" alt=""></span>
+    <span class="brand-mark brand-monogram" aria-hidden="true"><span>LNK</span></span>
     <span class="brand-copy"><span class="brand-name">LNK DIGITAL</span><span class="brand-tag">Web · Growth · Design</span></span>
   </a>
   <nav class="desktop-nav" aria-label="Main navigation">
@@ -266,11 +373,12 @@ main>section:not(.hero){margin-top:112px}
 <main id="content">
   <section class="hero">
     <div class="hero-copy">
+      <div class="hero-status"><span class="status-dot"></span><span>EUROPE · USA · REMOTE DELIVERY</span></div>
       <span class="eyebrow">Premium digital studio</span>
-      <h1>Websites that make your business <span class="gradient-text">look worth choosing.</span></h1>
-      <p class="lead">LNK DIGITAL designs premium, mobile-first websites for businesses that want stronger credibility, clearer offers and a better path from visitor to enquiry.</p>
+      <h1>Your website should make you look like <span class="gradient-text">the best company in the room.</span></h1>
+      <p class="lead">LNK DIGITAL creates high-end digital experiences for businesses that want stronger authority, premium positioning and a clear path from attention to enquiry.</p>
       <div class="actions">
-        <a class="button primary" href="https://wa.me/38631244612?text=Hello%20LNK%20DIGITAL%2C%20I%27d%20like%20a%20free%20website%20preview." rel="noopener">Get a FREE website preview →</a>
+        <a class="button primary" href="https://wa.me/38631244612?text=Hello%20LNK%20DIGITAL%2C%20I%27d%20like%20a%20free%20website%20preview." rel="noopener">See your FREE website concept →</a>
         <a class="button secondary" href="/web-design-portfolio.html">View design work</a>
       </div>
       <div class="trust-strip" aria-label="Service highlights">
@@ -279,6 +387,7 @@ main>section:not(.hero){margin-top:112px}
         <span class="trust-pill"><i></i> Multilingual ready</span>
         <span class="trust-pill"><i></i> SEO foundations</span>
       </div>
+      <div class="signature-rail" aria-label="LNK DIGITAL capabilities"><span>STRATEGY</span><i></i><span>DESIGN</span><i></i><span>BUILD</span><i></i><span>SEO</span></div>
     </div>
 
     <div class="hero-visual" aria-label="LNK DIGITAL website showcase">
@@ -296,7 +405,7 @@ main>section:not(.hero){margin-top:112px}
           </div>
         </div>
       </div>
-      <div class="floating-badge"><strong>FREE preview</strong>See a direction before committing</div>
+      <div class="floating-badge"><strong>Designed to impress.</strong>Built to convert attention into action.</div>
     </div>
   </section>
 
