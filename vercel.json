@@ -475,46 +475,6 @@
       "has": [
         {
           "type": "host",
-          "value": "lnkdigital.com"
-        }
-      ],
-      "destination": "/lnk-digital-home.html"
-    },
-    {
-      "source": "/index.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "lnkdigital.com"
-        }
-      ],
-      "destination": "/lnk-digital-home.html"
-    },
-    {
-      "source": "/sitemap.xml",
-      "has": [
-        {
-          "type": "host",
-          "value": "lnkdigital.com"
-        }
-      ],
-      "destination": "/lnk-sitemap.xml"
-    },
-    {
-      "source": "/robots.txt",
-      "has": [
-        {
-          "type": "host",
-          "value": "lnkdigital.com"
-        }
-      ],
-      "destination": "/lnk-robots.txt"
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
           "value": "eurogurman.si"
         }
       ],
