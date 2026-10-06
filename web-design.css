@@ -181,6 +181,14 @@ footer{
 footer a{color:#a7dfff;text-decoration:none}
 .footer-links{display:flex;gap:16px;flex-wrap:wrap}
 
+
+main>section:not(.hero){margin-top:112px}
+.fine{font-size:13px;color:var(--muted2)}
+.pricing .card{display:flex;flex-direction:column}
+.pricing .card h3{margin-top:10px}
+.pricing .price{display:block;color:#8ee5ff;font-size:30px;font-weight:900;line-height:1.1;margin:8px 0 12px}
+.pricing .card>a{margin-top:auto}
+@media(max-width:760px){main>section:not(.hero){margin-top:82px}}
 @media(max-width:980px){
   .hero{grid-template-columns:1fr;gap:28px;min-height:unset}
   .hero-visual{min-height:500px}
