@@ -40,17 +40,6 @@
   ],
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.lnkdigital.com"
-        }
-      ],
-      "destination": "https://lnkdigital.com/:path*",
-      "permanent": true
-    },
-    {
       "source": "/web-design.html",
       "has": [
         {
