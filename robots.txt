@@ -5,4 +5,4 @@ Disallow: /api/
 Disallow: /previews/
 Disallow: /*-preview/
 
-Sitemap: https://www.ludaknakvadrat.com/sitemap.xml
+Sitemap: https://lnkdigital.com/sitemap.xml
