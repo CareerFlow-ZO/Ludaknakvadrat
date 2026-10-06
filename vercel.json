@@ -44,123 +44,332 @@
       "has": [
         {
           "type": "host",
-          "value": "^www\\\\.lnkdigital\\\\.com$"
+          "value": "www\\.lnkdigital\\.com"
         }
       ],
       "destination": "https://lnkdigital.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/web-design.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/web-design.html",
+      "permanent": true
+    },
+    {
+      "source": "/izdelava-spletnih-strani.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/izdelava-spletnih-strani.html",
+      "permanent": true
+    },
+    {
+      "source": "/barbershop-website-design.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/barbershop-website-design.html",
+      "permanent": true
+    },
+    {
+      "source": "/auto-repair-website-design.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/auto-repair-website-design.html",
+      "permanent": true
+    },
+    {
+      "source": "/prenova-spletne-strani.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/prenova-spletne-strani.html",
+      "permanent": true
+    },
+    {
+      "source": "/izdelava-spletnih-trgovin.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/izdelava-spletnih-trgovin.html",
+      "permanent": true
+    },
+    {
+      "source": "/izdelava-spletne-strani-cena.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/izdelava-spletne-strani-cena.html",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-austria.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/web-design-austria.html",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-germany.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/web-design-germany.html",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-switzerland.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/web-design-switzerland.html",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-croatia.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/web-design-croatia.html",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-italy.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/web-design-italy.html",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-usa.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/web-design-usa.html",
+      "permanent": true
+    },
+    {
+      "source": "/restaurant-website-design.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/restaurant-website-design.html",
+      "permanent": true
+    },
+    {
+      "source": "/hotel-website-design.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/hotel-website-design.html",
+      "permanent": true
+    },
+    {
+      "source": "/construction-company-website-design.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/construction-company-website-design.html",
+      "permanent": true
+    },
+    {
+      "source": "/small-business-website-design.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/small-business-website-design.html",
+      "permanent": true
+    },
+    {
+      "source": "/website-redesign-services.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/website-redesign-services.html",
+      "permanent": true
+    },
+    {
+      "source": "/web-design-portfolio.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?ludaknakvadrat\\.com"
+        }
+      ],
+      "destination": "https://lnkdigital.com/web-design-portfolio.html",
+      "permanent": true
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "^/$",
+      "source": "/",
       "has": [
         {
           "type": "host",
-          "value": "eurogurman.si"
+          "value": "lnkdigital\\.com"
         }
       ],
-      "dest": "/euro-gurman-preview/index.html"
+      "destination": "/lnk-digital-home.html"
     },
     {
-      "src": "^/index\\.html$",
+      "source": "/sitemap.xml",
       "has": [
         {
           "type": "host",
-          "value": "eurogurman.si"
+          "value": "lnkdigital\\.com"
         }
       ],
-      "dest": "/euro-gurman-preview/index.html"
+      "destination": "/lnk-sitemap.xml"
     },
     {
-      "src": "^/admin\\.html$",
+      "source": "/robots.txt",
       "has": [
         {
           "type": "host",
-          "value": "eurogurman.si"
+          "value": "lnkdigital\\.com"
         }
       ],
-      "dest": "/euro-gurman-preview/admin.html"
+      "destination": "/lnk-robots.txt"
     },
     {
-      "src": "^/euro-gurman-logo\\.svg$",
+      "source": "/",
       "has": [
         {
           "type": "host",
-          "value": "eurogurman.si"
+          "value": "eurogurman\\.si"
         }
       ],
-      "dest": "/euro-gurman-preview/euro-gurman-logo.svg"
+      "destination": "/euro-gurman-preview/index.html"
     },
     {
-      "src": "^/$",
+      "source": "/index.html",
       "has": [
         {
           "type": "host",
-          "value": "www.eurogurman.si"
+          "value": "eurogurman\\.si"
         }
       ],
-      "dest": "/euro-gurman-preview/index.html"
+      "destination": "/euro-gurman-preview/index.html"
     },
     {
-      "src": "^/index\\.html$",
+      "source": "/admin.html",
       "has": [
         {
           "type": "host",
-          "value": "www.eurogurman.si"
+          "value": "eurogurman\\.si"
         }
       ],
-      "dest": "/euro-gurman-preview/index.html"
+      "destination": "/euro-gurman-preview/admin.html"
     },
     {
-      "src": "^/admin\\.html$",
+      "source": "/euro-gurman-logo.svg",
       "has": [
         {
           "type": "host",
-          "value": "www.eurogurman.si"
+          "value": "eurogurman\\.si"
         }
       ],
-      "dest": "/euro-gurman-preview/admin.html"
+      "destination": "/euro-gurman-preview/euro-gurman-logo.svg"
     },
     {
-      "src": "^/euro-gurman-logo\\.svg$",
+      "source": "/",
       "has": [
         {
           "type": "host",
-          "value": "www.eurogurman.si"
+          "value": "www\\.eurogurman\\.si"
         }
       ],
-      "dest": "/euro-gurman-preview/euro-gurman-logo.svg"
+      "destination": "/euro-gurman-preview/index.html"
     },
     {
-      "src": "^/$",
+      "source": "/index.html",
       "has": [
         {
           "type": "host",
-          "value": "^lnkdigital\\\\.com$"
+          "value": "www\\.eurogurman\\.si"
         }
       ],
-      "dest": "/lnk-digital-home.html"
+      "destination": "/euro-gurman-preview/index.html"
     },
     {
-      "src": "^/sitemap\\\\.xml$",
+      "source": "/admin.html",
       "has": [
         {
           "type": "host",
-          "value": "^lnkdigital\\\\.com$"
+          "value": "www\\.eurogurman\\.si"
         }
       ],
-      "dest": "/lnk-sitemap.xml"
+      "destination": "/euro-gurman-preview/admin.html"
     },
     {
-      "src": "^/robots\\\\.txt$",
+      "source": "/euro-gurman-logo.svg",
       "has": [
         {
           "type": "host",
-          "value": "^lnkdigital\\\\.com$"
+          "value": "www\\.eurogurman\\.si"
         }
       ],
-      "dest": "/lnk-robots.txt"
+      "destination": "/euro-gurman-preview/euro-gurman-logo.svg"
     }
   ]
 }
