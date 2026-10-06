@@ -471,6 +471,52 @@
   ],
   "routes": [
     {
+      "src": "^/(.*)$",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.eurogurman.si"
+        }
+      ],
+      "status": 308,
+      "headers": {
+        "Location": "https://eurogurman.si/$1"
+      }
+    },
+    {
+      "src": "^/index\\.html$",
+      "has": [
+        {
+          "type": "host",
+          "value": "eurogurman.si"
+        }
+      ],
+      "status": 308,
+      "headers": {
+        "Location": "https://eurogurman.si/"
+      }
+    },
+    {
+      "src": "^/robots\\.txt$",
+      "has": [
+        {
+          "type": "host",
+          "value": "eurogurman.si"
+        }
+      ],
+      "dest": "/euro-gurman-preview/robots.txt"
+    },
+    {
+      "src": "^/sitemap\\.xml$",
+      "has": [
+        {
+          "type": "host",
+          "value": "eurogurman.si"
+        }
+      ],
+      "dest": "/euro-gurman-preview/sitemap.xml"
+    },
+    {
       "src": "^/$",
       "has": [
         {
@@ -498,7 +544,10 @@
           "value": "eurogurman.si"
         }
       ],
-      "dest": "/euro-gurman-preview/admin.html"
+      "dest": "/euro-gurman-preview/admin.html",
+      "headers": {
+        "X-Robots-Tag": "noindex, nofollow, noarchive"
+      }
     },
     {
       "src": "^/euro-gurman-logo\\.svg$",
