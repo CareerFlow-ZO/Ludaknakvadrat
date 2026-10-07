@@ -78,7 +78,7 @@
   addStyle('/lnk-vip-upgrade.css?v=4', 'vip-upgrade');
   addStyle('/lnk-signature-2026.css?v=4', 'signature-2026');
   addStyle('/lnk-shop.css?v=5', 'shop');
-  addStyle('/lnk-mobile-nav-fix.css?v=5', 'mobile-nav-fix');
+  addStyle('/lnk-mobile-nav-fix.css?v=6', 'mobile-nav-fix');
 
   document.querySelectorAll('.brand img,.hero-logo,.footer-brand img').forEach(img => {
     img.src = '/lnk-digital-logo.svg?v=1';
