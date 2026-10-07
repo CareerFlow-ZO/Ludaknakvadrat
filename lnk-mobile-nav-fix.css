@@ -374,3 +374,85 @@
   #digital-catalog .dc-note{font-size:14px!important;line-height:1.5!important}
   #digital-catalog .dc-filter{font-size:14px!important;min-height:42px!important}
 }
+
+
+/* ===== HOMEPAGE MOBILE HERO REPAIR V5 =====
+   Fixes the oversized showcase seen on iPhone, prevents broken-image icons,
+   and restores a clean handoff from hero to the first section. */
+@media(max-width:760px){
+  main{padding-top:34px!important}
+  main>.hero{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:22px!important;
+    min-height:0!important;
+    padding:12px 0 10px!important;
+    overflow:visible!important;
+  }
+  main>.hero .hero-copy{width:100%!important}
+  main>.hero .hero-visual{
+    width:100%!important;
+    min-height:0!important;
+    height:auto!important;
+    margin:0!important;
+    padding:0!important;
+  }
+  main>.hero .glow-orb{display:none!important}
+  main>.hero .browser{
+    position:relative!important;
+    inset:auto!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    transform:none!important;
+    border-radius:20px!important;
+    overflow:hidden!important;
+  }
+  main>.hero .browser-top{height:42px!important;padding:0 13px!important}
+  main>.hero .browser-screen{
+    height:auto!important;
+    min-height:0!important;
+    padding:12px!important;
+    display:block!important;
+  }
+  main>.hero .showcase-main{
+    min-height:0!important;
+    height:auto!important;
+    aspect-ratio:16/10!important;
+    border-radius:16px!important;
+  }
+  main>.hero .showcase-ui{
+    min-height:0!important;
+    height:100%!important;
+    padding:18px!important;
+  }
+  main>.hero .mock-topline{left:18px!important;right:18px!important;top:17px!important}
+  main>.hero .mock-title{font-size:clamp(22px,7.5vw,32px)!important;max-width:88%!important}
+  main>.hero .mock-copy{font-size:11px!important;line-height:1.45!important;max-width:90%!important}
+  main>.hero .mock-actions{margin-top:12px!important}
+  main>.hero .mock-metrics{margin-top:14px!important}
+  main>.hero .mini-grid{display:none!important}
+  main>.hero .floating-badge{
+    position:relative!important;
+    right:auto!important;top:auto!important;
+    margin:-8px 12px 0 auto!important;
+    width:max-content!important;
+    max-width:calc(100% - 24px)!important;
+    padding:10px 12px!important;
+    border-radius:14px!important;
+    font-size:11px!important;
+  }
+  main>.hero + section{margin-top:64px!important}
+  main>.hero img{
+    max-width:100%!important;
+    height:auto!important;
+  }
+  main>.hero img[src=""],main>.hero img:not([src]){display:none!important}
+}
+@media(max-width:430px){
+  main>.hero .showcase-main{aspect-ratio:1.18/1!important}
+  main>.hero .showcase-ui{padding:16px!important}
+  main>.hero .mock-actions span{padding:7px 9px!important;font-size:9px!important}
+  main>.hero .mock-metrics div{padding:8px!important}
+  main>.hero .floating-badge{margin-top:10px!important}
+}
