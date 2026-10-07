@@ -399,6 +399,36 @@ linear-gradient(145deg,#0b1425,#070b13 70%)}
 }
 @media(max-width:760px){.hero-visual{min-height:0}.browser{inset:auto}.showcase-ui{padding:62px 20px 22px}.hero h1{font-size:clamp(36px,10.8vw,60px);line-height:1.06}.floating-badge{max-width:90%;top:0}.work-copy{inset:auto;padding:26px}.work-card:first-child{min-height:330px}}
 @media(max-width:430px){.site-header{gap:10px}.hero h1{font-size:clamp(34px,10.8vw,46px);letter-spacing:-.045em}.mock-title{font-size:26px}.mock-metrics{grid-template-columns:1fr}.mock-metrics div{padding:8px}.mock-metrics span{font-size:10px}.hero-status{max-width:100%;letter-spacing:.05em}.brand-copy{display:flex}.brand-name{font-size:12px}.brand-tag{display:none}.brand{min-width:0;gap:7px}.brand-mark{width:34px;height:34px;flex-shrink:0}.language-wrap{flex-shrink:0;margin-left:auto}.menu-btn{width:38px;height:38px}}
+
+/* Keep portfolio art and copy in normal flow, including narrow Safari layouts. */
+.portfolio-grid{align-items:stretch}
+.work-card,.work-card:first-child{min-width:0;min-height:0;display:flex;flex-direction:column;justify-content:flex-start;text-decoration:none;isolation:isolate}
+.work-card:focus-visible{outline:2px solid var(--cyan);outline-offset:5px}
+.work-card:hover{border-color:rgba(111,202,255,.45)}
+.work-visual{position:relative;inset:auto;flex:none;padding:22px 22px 0;display:flex;flex-direction:column;gap:5px;border-radius:25px 25px 0 0}
+.work-visual:before,.work-visual:after{pointer-events:none;z-index:-1}
+.work-preview{display:block;order:3;width:100%;height:auto;aspect-ratio:48/23;margin-top:16px}
+.work-visual em{margin:0}
+.work-shade{display:none}
+.work-copy{display:block;position:relative;inset:auto;padding:22px;margin-top:0}
+.work-copy h3{overflow-wrap:anywhere}
+.mock-topline{position:static;inset:auto;margin-bottom:24px}
+.showcase-ui{padding:24px;min-height:0}
+@media(max-width:760px){
+ .showcase-ui{padding:20px}
+ .mock-topline{margin-bottom:20px;font-size:8px;letter-spacing:.1em}
+ .mock-title{font-size:clamp(22px,5.7vw,30px);line-height:1.12}
+ .mock-copy{font-size:12px;margin-top:12px}
+ .mock-actions{margin-top:16px}
+ .mock-metrics{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:18px}
+ .mock-metrics div{padding:8px 4px}
+ .mock-metrics span{display:block;font-size:8px;letter-spacing:.015em;line-height:1.4;margin-top:3px}
+ .work-card:first-child{min-height:0}
+ .work-visual{padding:20px 20px 0}
+ .work-copy{padding:20px}
+ .work-copy h3{font-size:22px;line-height:1.2}
+ .showcase-main{min-height:0}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://lnkdigital.com/#organization","name":"LNK DIGITAL","url":"https://lnkdigital.com/","logo":"https://lnkdigital.com/lnk-digital-logo.svg","email":"contact@ludaknakvadrat.com","telephone":"+38631244612"},{"@type":"WebSite","@id":"https://lnkdigital.com/#website","url":"https://lnkdigital.com/","name":"LNK DIGITAL","publisher":{"@id":"https://lnkdigital.com/#organization"}},{"@type":"ProfessionalService","@id":"https://lnkdigital.com/#service","name":"LNK DIGITAL","url":"https://lnkdigital.com/","provider":{"@id":"https://lnkdigital.com/#organization"},"areaServed":["Slovenia","Austria","Germany","Switzerland","Croatia","Italy","United States","Europe"],"serviceType":["Premium web design","Website development","Website redesign","SEO foundations","Landing pages"]}]}</script>
 </head>
@@ -484,15 +514,30 @@ linear-gradient(145deg,#0b1425,#070b13 70%)}
     <div class="section-head"><div><span class="eyebrow" data-i18n="workLabel">Selected directions</span><h2 data-i18n="workTitle">Your website should look custom before anyone reads a word.</h2></div><p data-i18n="x41">Concepts below demonstrate visual direction for different industries. Each client build is adapted to the actual brand, offer and audience.</p></div>
     <div class="portfolio-grid">
       <a class="work-card" href="/web-design-portfolio.html">
-        <span class="work-visual work-visual-a" aria-hidden="true"><i></i><b data-i18n="x42">PREMIUM</b><em data-i18n="x43">DIGITAL EXPERIENCE</em></span>
+        <span class="work-visual work-visual-a" aria-hidden="true"><svg class="work-preview" viewBox="0 0 480 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+<rect x="1" y="1" width="478" height="228" rx="14" fill="#0c1524" stroke="#7ddcff" stroke-opacity=".3"/>
+<path d="M1 29H479" stroke="#28354a"/><circle cx="16" cy="15" r="3" fill="#7ddcff"/><circle cx="28" cy="15" r="3" fill="#46556b"/><circle cx="40" cy="15" r="3" fill="#46556b"/>
+<rect x="24" y="47" width="32" height="6" rx="3" fill="#7ddcff"/><path d="M340 50H364M382 50H406M424 50H456" stroke="#627087" stroke-width="4" stroke-linecap="round"/>
+<rect x="24" y="80" width="200" height="12" rx="4" fill="#e6efff"/><rect x="24" y="101" width="153" height="12" rx="4" fill="#e6efff"/><path d="M24 137H210M24 149H168" stroke="#63748e" stroke-width="5" stroke-linecap="round"/><rect x="24" y="174" width="93" height="26" rx="6" fill="#7ddcff"/><rect x="277" y="73" width="177" height="127" rx="9" fill="#16273c"/><circle cx="365" cy="136" r="47" stroke="#7ddcff" stroke-width="15" stroke-opacity=".7"/><path d="M322 173L406 92" stroke="#a78bfa" stroke-width="13"/>
+</svg><b data-i18n="x42">PREMIUM</b><em data-i18n="x43">DIGITAL EXPERIENCE</em></span>
         <span class="work-shade"></span><span class="work-copy"><span data-i18n="x44">Premium services</span><h3 data-i18n="x45">Luxury, calm and conversion-focused</h3><p data-i18n="x46">Visual hierarchy that feels premium without becoming difficult to use.</p></span>
       </a>
       <a class="work-card" href="/barbershop-website-design.html">
-        <span class="work-visual work-visual-b" aria-hidden="true"><i></i><b data-i18n="x47">BOLD</b><em data-i18n="x48">LOCAL IDENTITY</em></span>
+        <span class="work-visual work-visual-b" aria-hidden="true"><svg class="work-preview" viewBox="0 0 480 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+<rect x="1" y="1" width="478" height="228" rx="14" fill="#0c1524" stroke="#f6a37f" stroke-opacity=".3"/>
+<path d="M1 29H479" stroke="#28354a"/><circle cx="16" cy="15" r="3" fill="#f6a37f"/><circle cx="28" cy="15" r="3" fill="#46556b"/><circle cx="40" cy="15" r="3" fill="#46556b"/>
+<rect x="24" y="47" width="32" height="6" rx="3" fill="#f6a37f"/><path d="M340 50H364M382 50H406M424 50H456" stroke="#627087" stroke-width="4" stroke-linecap="round"/>
+<rect x="24" y="73" width="180" height="130" rx="9" fill="#2b2021"/><path d="M62 185L147 89M95 191L178 96" stroke="#f6a37f" stroke-width="19" stroke-opacity=".7"/><rect x="233" y="85" width="210" height="12" rx="4" fill="#fff1e8"/><rect x="233" y="106" width="146" height="12" rx="4" fill="#fff1e8"/><path d="M233 142H439M233 154H390" stroke="#8a7570" stroke-width="5" stroke-linecap="round"/><rect x="233" y="178" width="106" height="25" rx="6" fill="#f6a37f"/>
+</svg><b data-i18n="x47">BOLD</b><em data-i18n="x48">LOCAL IDENTITY</em></span>
         <span class="work-shade"></span><span class="work-copy"><span data-i18n="x49">Local business</span><h3 data-i18n="x50">Bold identity</h3><p data-i18n="x51">Services, trust and booking made obvious.</p></span>
       </a>
       <a class="work-card" href="/auto-repair-website-design.html">
-        <span class="work-visual work-visual-c" aria-hidden="true"><i></i><b data-i18n="x52">TRUST</b><em data-i18n="x53">SERVICE & CONVERSION</em></span>
+        <span class="work-visual work-visual-c" aria-hidden="true"><svg class="work-preview" viewBox="0 0 480 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+<rect x="1" y="1" width="478" height="228" rx="14" fill="#0c1524" stroke="#78dfb7" stroke-opacity=".3"/>
+<path d="M1 29H479" stroke="#28354a"/><circle cx="16" cy="15" r="3" fill="#78dfb7"/><circle cx="28" cy="15" r="3" fill="#46556b"/><circle cx="40" cy="15" r="3" fill="#46556b"/>
+<rect x="24" y="47" width="32" height="6" rx="3" fill="#78dfb7"/><path d="M340 50H364M382 50H406M424 50H456" stroke="#627087" stroke-width="4" stroke-linecap="round"/>
+<rect x="116" y="76" width="248" height="12" rx="4" fill="#e5fff4"/><path d="M148 106H332" stroke="#668a83" stroke-width="5" stroke-linecap="round"/><rect x="185" y="124" width="110" height="22" rx="6" fill="#78dfb7"/><rect x="24" y="166" width="136" height="42" rx="7" fill="#142a2b"/><circle cx="44" cy="187" r="7" fill="#78dfb7"/><path d="M62 182H139M62 193H119" stroke="#72958e" stroke-width="4" stroke-linecap="round"/><rect x="172" y="166" width="136" height="42" rx="7" fill="#142a2b"/><circle cx="192" cy="187" r="7" fill="#78dfb7"/><path d="M210 182H287M210 193H267" stroke="#72958e" stroke-width="4" stroke-linecap="round"/><rect x="320" y="166" width="136" height="42" rx="7" fill="#142a2b"/><circle cx="340" cy="187" r="7" fill="#78dfb7"/><path d="M358 182H435M358 193H415" stroke="#72958e" stroke-width="4" stroke-linecap="round"/>
+</svg><b data-i18n="x52">TRUST</b><em data-i18n="x53">SERVICE & CONVERSION</em></span>
         <span class="work-shade"></span><span class="work-copy"><span data-i18n="x54">Service business</span><h3 data-i18n="x55">Clear and credible</h3><p data-i18n="x56">Built around fast decisions and direct enquiries.</p></span>
       </a>
     </div>
