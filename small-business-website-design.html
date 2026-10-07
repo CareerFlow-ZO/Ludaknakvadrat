@@ -236,6 +236,42 @@ main>section:not(.hero){margin-top:112px}
   .browser{inset:20px 0 0}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.card{transition:none}}
+
+/* LNK visual QA: consistent spacing, navigation and image presentation. */
+html{scroll-padding-top:100px}
+main{min-width:0}
+main>section,[id]{scroll-margin-top:100px}
+h1,h2,h3,.button{overflow-wrap:anywhere}
+.button{height:auto;padding:14px 22px;line-height:1.4;text-align:center}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #67dcff;outline-offset:4px}
+.card,.step,.work-card{min-width:0}
+.work-card{border-radius:26px;clip-path:inset(0 round 26px)}
+.card img{height:auto;object-position:top}
+.visual-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:36px 0 0}
+.visual-gallery figure{margin:0;padding:10px;border:1px solid var(--line);border-radius:20px;background:#0c1423;overflow:hidden}
+.visual-gallery img{display:block;width:100%;height:auto;border-radius:12px}
+.visual-gallery figcaption{padding:10px 4px 3px;color:#aebbd0;font-size:12px}
+@media(max-width:1100px){
+ .desktop-nav{display:none}.menu-btn{display:grid;place-items:center;flex-shrink:0}
+ .mobile-nav{display:none;position:absolute;left:10px;right:10px;top:calc(100% + 8px);padding:12px;border:1px solid var(--line);border-radius:18px;background:#060a12;max-height:70vh;overflow:auto}
+ .mobile-nav.open{display:grid}
+ .mobile-nav a{padding:13px 12px;text-decoration:none;border-bottom:1px solid var(--line)}
+}
+@media(max-width:760px){
+ html{scroll-padding-top:90px}
+ main>section,[id]{scroll-margin-top:90px}
+ main>section:not(.hero){margin-top:56px}
+ .section{margin-top:56px}
+ .step{padding:20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#0d1727,#080e19)}
+ .step-num{margin-bottom:16px}
+ .step h3{margin-bottom:10px;font-size:20px}
+ .step p{margin:0;line-height:1.6}
+ .process-grid{gap:12px}
+ .brand-copy{display:flex}.brand-tag{display:none}.brand-name{font-size:12px}.brand{min-width:0}
+ .menu-btn{width:44px;height:44px}.language-wrap{min-height:44px}
+ h1{font-size:clamp(34px,9vw,56px);line-height:1.08;letter-spacing:-.045em}
+ .visual-gallery{grid-template-columns:1fr;gap:16px;margin-top:28px}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Small business website design","provider":{"@type":"Organization","name":"LNK DIGITAL","url":"https://lnkdigital.com/"},"areaServed":"Worldwide","serviceType":"Small business website design","url":"https://lnkdigital.com/small-business-website-design.html"}</script>
 </head>
@@ -245,10 +281,15 @@ main>section:not(.hero){margin-top:112px}
 <main id="content">
 <span class="eyebrow">LNK DIGITAL · Small business</span><h1>Small business websites that explain your value clearly and make contacting you simple.</h1><p class="lead">You do not need a huge website to look credible. You need the right pages, the right proof and a frictionless way for customers to take the next step.</p>
 <div class="actions"><a class="button" href="https://wa.me/38631244612?text=Hello%20LNK%20DIGITAL%2C%20I'd%20like%20a%20free%20preview%20for%20my%20small%20business%20website." rel="noopener">Request a free preview</a><a class="button secondary" href="mailto:contact@ludaknakvadrat.com?subject=Small%20business%20website%20design">Email us</a></div>
-<section><h2>Built around what customers need to decide</h2><div class="grid"><article class="card"><h3>Lean business websites</h3><p>A focused site with home, services, about, proof and contact where that is enough to support the sales process.</p></article><article class="card"><h3>Growth-ready structure</h3><p>Start with the pages you need now and leave room for new services, locations, case studies or languages later.</p></article><article class="card"><h3>Practical integrations</h3><p>Maps, forms, calls, WhatsApp, social links, booking tools and other integrations can be scoped where useful.</p></article></div></section>
+<div class="visual-gallery" aria-label="Design concept"><figure><img src="/assets/previews/barbershop.png" alt="Design concept 1" loading="lazy" decoding="async"><figcaption>LNK DIGITAL · Design concept 01</figcaption></figure><figure><img src="/assets/previews/beauty.png" alt="Design concept 2" loading="lazy" decoding="async"><figcaption>LNK DIGITAL · Design concept 02</figcaption></figure><figure><img src="/assets/previews/auto.png" alt="Design concept 3" loading="lazy" decoding="async"><figcaption>LNK DIGITAL · Design concept 03</figcaption></figure></div><section><h2>Built around what customers need to decide</h2><div class="grid"><article class="card"><h3>Lean business websites</h3><p>A focused site with home, services, about, proof and contact where that is enough to support the sales process.</p></article><article class="card"><h3>Growth-ready structure</h3><p>Start with the pages you need now and leave room for new services, locations, case studies or languages later.</p></article><article class="card"><h3>Practical integrations</h3><p>Maps, forms, calls, WhatsApp, social links, booking tools and other integrations can be scoped where useful.</p></article></div></section>
 <section><h2>A website should do more than look good</h2><div class="grid"><article class="card"><h3>Clear positioning</h3><p>Visitors should understand who you help, what you offer and what makes the business credible within seconds.</p></article><article class="card"><h3>Professional mobile experience</h3><p>Most local-service prospects will judge the business from a phone before they ever call.</p></article><article class="card"><h3>Search foundations</h3><p>Titles, descriptions, internal links, structured content and crawlable pages give search engines cleaner signals.</p></article></div></section>
 <section id="contact"><div class="contact"><h2>See a direction before committing to the full build</h2><p>Send your current website, business name and the main action you want customers to take. For suitable projects, LNK DIGITAL can prepare a free visual preview or redesign direction. Scope, timeline and final price are agreed before development starts.</p><div class="actions"><a class="button" href="https://wa.me/38631244612?text=Hello%20LNK%20DIGITAL%2C%20I'd%20like%20a%20free%20preview%20for%20my%20small%20business%20website." rel="noopener">Request a free preview</a><a class="button secondary" href="mailto:contact@ludaknakvadrat.com?subject=Free%20preview%20-%20Small%20business%20website%20design">contact@ludaknakvadrat.com</a></div></div></section>
 <section><h2>Frequently asked questions</h2><details><summary>What does a small business website typically include?</summary><p>The exact scope varies, but many projects need a home page, core services, trust or portfolio content and a strong contact path.</p></details><details><summary>Can you redesign my current site?</summary><p>Yes. If the existing content is useful, we can often modernize the structure without starting from zero.</p></details><details><summary>Can the website grow later?</summary><p>Yes. We prefer structures that can add services, markets, case studies or language versions without a complete rebuild.</p></details></section>
 <section><h2>More website services</h2><nav class="service-links" aria-label="Related services"><a href="/website-redesign-services.html">Website redesign</a><a href="/restaurant-website-design.html">Restaurant websites</a><a href="/construction-company-website-design.html">Construction websites</a><a href="/web-design-usa.html">Web design USA</a></nav></section>
 </main><footer><div>© 2026 LNK DIGITAL · Web Design · Development · SEO</div><div class="footer-links"><a href="/">Home</a><a href="/web-design-portfolio.html">Portfolio</a><a href="/website-redesign-services.html">Redesign</a><a href="mailto:contact@ludaknakvadrat.com">Contact</a></div></footer>
-<script>const btn=document.getElementById('menuBtn'),nav=document.getElementById('mobileNav');btn?.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'×':'☰';});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='☰';}));</script></body></html>
+<script>const btn=document.getElementById('menuBtn'),nav=document.getElementById('mobileNav');btn?.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'×':'☰';});nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='☰';}));</script><script>
+document.getElementById('menuBtn')?.setAttribute('aria-controls','mobileNav');
+function closeLnkMenu(){const b=document.getElementById('menuBtn'),n=document.getElementById('mobileNav');if(!b||!n)return;n.classList.remove('open');b.setAttribute('aria-expanded','false');b.textContent='☰';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLnkMenu();document.getElementById('menuBtn')?.focus();}});
+document.addEventListener('click',e=>{if(!e.target.closest('.site-header'))closeLnkMenu();});
+</script></body></html>

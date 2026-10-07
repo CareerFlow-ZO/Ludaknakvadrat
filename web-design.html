@@ -243,6 +243,42 @@ main>section:not(.hero){margin-top:112px}
   .browser{inset:20px 0 0}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.card{transition:none}}
+
+/* LNK visual QA: consistent spacing, navigation and image presentation. */
+html{scroll-padding-top:100px}
+main{min-width:0}
+main>section,[id]{scroll-margin-top:100px}
+h1,h2,h3,.button{overflow-wrap:anywhere}
+.button{height:auto;padding:14px 22px;line-height:1.4;text-align:center}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #67dcff;outline-offset:4px}
+.card,.step,.work-card{min-width:0}
+.work-card{border-radius:26px;clip-path:inset(0 round 26px)}
+.card img{height:auto;object-position:top}
+.visual-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:36px 0 0}
+.visual-gallery figure{margin:0;padding:10px;border:1px solid var(--line);border-radius:20px;background:#0c1423;overflow:hidden}
+.visual-gallery img{display:block;width:100%;height:auto;border-radius:12px}
+.visual-gallery figcaption{padding:10px 4px 3px;color:#aebbd0;font-size:12px}
+@media(max-width:1100px){
+ .desktop-nav{display:none}.menu-btn{display:grid;place-items:center;flex-shrink:0}
+ .mobile-nav{display:none;position:absolute;left:10px;right:10px;top:calc(100% + 8px);padding:12px;border:1px solid var(--line);border-radius:18px;background:#060a12;max-height:70vh;overflow:auto}
+ .mobile-nav.open{display:grid}
+ .mobile-nav a{padding:13px 12px;text-decoration:none;border-bottom:1px solid var(--line)}
+}
+@media(max-width:760px){
+ html{scroll-padding-top:90px}
+ main>section,[id]{scroll-margin-top:90px}
+ main>section:not(.hero){margin-top:56px}
+ .section{margin-top:56px}
+ .step{padding:20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#0d1727,#080e19)}
+ .step-num{margin-bottom:16px}
+ .step h3{margin-bottom:10px;font-size:20px}
+ .step p{margin:0;line-height:1.6}
+ .process-grid{gap:12px}
+ .brand-copy{display:flex}.brand-tag{display:none}.brand-name{font-size:12px}.brand{min-width:0}
+ .menu-btn{width:44px;height:44px}.language-wrap{min-height:44px}
+ h1{font-size:clamp(34px,9vw,56px);line-height:1.08;letter-spacing:-.045em}
+ .visual-gallery{grid-template-columns:1fr;gap:16px;margin-top:28px}
+}
 </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://lnkdigital.com/#lnk-digital","name":"LNK DIGITAL","url":"https://lnkdigital.com/web-design.html","logo":"https://lnkdigital.com/lnk-digital-logo.svg","email":"contact@ludaknakvadrat.com","telephone":"+38631244612"},{"@type":"Service","@id":"https://lnkdigital.com/web-design.html#service","name":"Website design, development and redesign","provider":{"@id":"https://lnkdigital.com/#lnk-digital"},"areaServed":["Slovenia","Austria","Germany","Switzerland","Croatia","Italy","United States","Europe"],"url":"https://lnkdigital.com/web-design.html"}]}</script>
 </head>
@@ -339,5 +375,10 @@ main>section:not(.hero){margin-top:112px}
 const btn=document.getElementById('menuBtn'),nav=document.getElementById('mobileNav');
 btn?.addEventListener('click',()=>{const open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');btn.textContent=open?'×':'☰';});
 nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='☰';}));
+</script><script>
+document.getElementById('menuBtn')?.setAttribute('aria-controls','mobileNav');
+function closeLnkMenu(){const b=document.getElementById('menuBtn'),n=document.getElementById('mobileNav');if(!b||!n)return;n.classList.remove('open');b.setAttribute('aria-expanded','false');b.textContent='☰';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLnkMenu();document.getElementById('menuBtn')?.focus();}});
+document.addEventListener('click',e=>{if(!e.target.closest('.site-header'))closeLnkMenu();});
 </script></body>
 </html>

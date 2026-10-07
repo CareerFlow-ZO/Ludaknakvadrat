@@ -363,7 +363,7 @@ linear-gradient(145deg,#0b1425,#070b13 70%)}
 .mock-topline span:last-child{color:#75e9c1}
 .mock-title{max-width:470px;font-size:clamp(25px,3vw,42px);line-height:1.02;font-weight:900;letter-spacing:-.045em;color:#f8fbff}
 .mock-copy{max-width:480px;margin-top:13px;color:#9faec3;font-size:13px}
-.mock-actions{display:flex;gap:9px;margin-top:20px}.mock-actions span{padding:9px 12px;border-radius:10px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);font-size:10px;font-weight:800;color:#dce7f6}.mock-actions span:first-child{background:linear-gradient(135deg,#58cfff,#7d6cff);color:#fff}
+.mock-actions{display:flex;gap:9px;margin-top:20px}.mock-actions a{padding:9px 12px;border-radius:10px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08);font-size:10px;font-weight:800;color:#dce7f6}.mock-actions a:first-child{background:linear-gradient(135deg,#58cfff,#7d6cff);color:#fff}
 .mock-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:22px}.mock-metrics div{padding:12px;border-top:1px solid rgba(123,214,255,.22);background:rgba(255,255,255,.018)}.mock-metrics b{display:block;color:#90e5ff;font-size:12px}.mock-metrics span{color:#79889f;font-size:9px;text-transform:uppercase;letter-spacing:.1em}
 .work-visual{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;background:#08101d;overflow:hidden}
 .work-visual:before,.work-visual:after{content:"";position:absolute;border-radius:50%;filter:blur(1px)}
@@ -429,6 +429,46 @@ linear-gradient(145deg,#0b1425,#070b13 70%)}
  .work-copy h3{font-size:22px;line-height:1.2}
  .showcase-main{min-height:0}
 }
+
+/* LNK visual QA: consistent spacing, navigation and image presentation. */
+html{scroll-padding-top:100px}
+main{min-width:0}
+main>section,[id]{scroll-margin-top:100px}
+h1,h2,h3,.button{overflow-wrap:anywhere}
+.button{height:auto;padding:14px 22px;line-height:1.4;text-align:center}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #67dcff;outline-offset:4px}
+.card,.step,.work-card{min-width:0}
+.work-card{border-radius:26px;clip-path:inset(0 round 26px)}
+.card img{height:auto;object-position:top}
+.visual-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:36px 0 0}
+.visual-gallery figure{margin:0;padding:10px;border:1px solid var(--line);border-radius:20px;background:#0c1423;overflow:hidden}
+.visual-gallery img{display:block;width:100%;height:auto;border-radius:12px}
+.visual-gallery figcaption{padding:10px 4px 3px;color:#aebbd0;font-size:12px}
+@media(max-width:1100px){
+ .desktop-nav{display:none}.menu-btn{display:grid;place-items:center;flex-shrink:0}
+ .mobile-nav{display:none;position:absolute;left:10px;right:10px;top:calc(100% + 8px);padding:12px;border:1px solid var(--line);border-radius:18px;background:#060a12;max-height:70vh;overflow:auto}
+ .mobile-nav.open{display:grid}
+ .mobile-nav a{padding:13px 12px;text-decoration:none;border-bottom:1px solid var(--line)}
+}
+@media(max-width:760px){
+ html{scroll-padding-top:90px}
+ main>section,[id]{scroll-margin-top:90px}
+ main>section:not(.hero){margin-top:56px}
+ .section{margin-top:56px}
+ .step{padding:20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#0d1727,#080e19)}
+ .step-num{margin-bottom:16px}
+ .step h3{margin-bottom:10px;font-size:20px}
+ .step p{margin:0;line-height:1.6}
+ .process-grid{gap:12px}
+ .brand-copy{display:flex}.brand-tag{display:none}.brand-name{font-size:12px}.brand{min-width:0}
+ .menu-btn{width:44px;height:44px}.language-wrap{min-height:44px}
+ h1{font-size:clamp(34px,9vw,56px);line-height:1.08;letter-spacing:-.045em}
+ .visual-gallery{grid-template-columns:1fr;gap:16px;margin-top:28px}
+}
+
+.mock-actions a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.work-card .work-preview{height:auto;aspect-ratio:auto;object-fit:contain;filter:none;border-radius:12px}
+.work-visual{overflow:hidden;border-radius:25px 25px 0 0}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://lnkdigital.com/#organization","name":"LNK DIGITAL","url":"https://lnkdigital.com/","logo":"https://lnkdigital.com/lnk-digital-logo.svg","email":"contact@ludaknakvadrat.com","telephone":"+38631244612"},{"@type":"WebSite","@id":"https://lnkdigital.com/#website","url":"https://lnkdigital.com/","name":"LNK DIGITAL","publisher":{"@id":"https://lnkdigital.com/#organization"}},{"@type":"ProfessionalService","@id":"https://lnkdigital.com/#service","name":"LNK DIGITAL","url":"https://lnkdigital.com/","provider":{"@id":"https://lnkdigital.com/#organization"},"areaServed":["Slovenia","Austria","Germany","Switzerland","Croatia","Italy","United States","Europe"],"serviceType":["Premium web design","Website development","Website redesign","SEO foundations","Landing pages"]}]}</script>
 </head>
@@ -487,7 +527,7 @@ linear-gradient(145deg,#0b1425,#070b13 70%)}
       <div class="mock-topline"><span data-i18n="x16">LNK / CONCEPT 01</span><span data-i18n="x17">LIVE PREVIEW</span></div>
       <div class="mock-title" data-i18n="x18">A digital presence that feels premium before the first click.</div>
       <div class="mock-copy" data-i18n="x19">Strategy-led design · polished mobile UX · conversion-focused structure.</div>
-      <div class="mock-actions"><span data-i18n="x20">Explore project</span><span data-i18n="x21">Request preview</span></div>
+      <div class="mock-actions"><a href="#work" data-i18n="x20">Explore project</a><a href="#contact" data-i18n="x21">Request preview</a></div>
       <div class="mock-metrics"><div><b>01</b><span data-i18n="x22">Positioning</span></div><div><b>02</b><span data-i18n="x23">Experience</span></div><div><b>03</b><span data-i18n="x24">Conversion</span></div></div>
     </div>
   </div>
@@ -514,30 +554,15 @@ linear-gradient(145deg,#0b1425,#070b13 70%)}
     <div class="section-head"><div><span class="eyebrow" data-i18n="workLabel">Selected directions</span><h2 data-i18n="workTitle">Your website should look custom before anyone reads a word.</h2></div><p data-i18n="x41">Concepts below demonstrate visual direction for different industries. Each client build is adapted to the actual brand, offer and audience.</p></div>
     <div class="portfolio-grid">
       <a class="work-card" href="/web-design-portfolio.html">
-        <span class="work-visual work-visual-a" aria-hidden="true"><svg class="work-preview" viewBox="0 0 480 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-<rect x="1" y="1" width="478" height="228" rx="14" fill="#0c1524" stroke="#7ddcff" stroke-opacity=".3"/>
-<path d="M1 29H479" stroke="#28354a"/><circle cx="16" cy="15" r="3" fill="#7ddcff"/><circle cx="28" cy="15" r="3" fill="#46556b"/><circle cx="40" cy="15" r="3" fill="#46556b"/>
-<rect x="24" y="47" width="32" height="6" rx="3" fill="#7ddcff"/><path d="M340 50H364M382 50H406M424 50H456" stroke="#627087" stroke-width="4" stroke-linecap="round"/>
-<rect x="24" y="80" width="200" height="12" rx="4" fill="#e6efff"/><rect x="24" y="101" width="153" height="12" rx="4" fill="#e6efff"/><path d="M24 137H210M24 149H168" stroke="#63748e" stroke-width="5" stroke-linecap="round"/><rect x="24" y="174" width="93" height="26" rx="6" fill="#7ddcff"/><rect x="277" y="73" width="177" height="127" rx="9" fill="#16273c"/><circle cx="365" cy="136" r="47" stroke="#7ddcff" stroke-width="15" stroke-opacity=".7"/><path d="M322 173L406 92" stroke="#a78bfa" stroke-width="13"/>
-</svg><b data-i18n="x42">PREMIUM</b><em data-i18n="x43">DIGITAL EXPERIENCE</em></span>
+        <span class="work-visual work-visual-a" aria-hidden="true"><img class="work-preview" src="/assets/previews/beauty.png" alt="" loading="lazy" decoding="async"><b data-i18n="x42">PREMIUM</b><em data-i18n="x43">DIGITAL EXPERIENCE</em></span>
         <span class="work-shade"></span><span class="work-copy"><span data-i18n="x44">Premium services</span><h3 data-i18n="x45">Luxury, calm and conversion-focused</h3><p data-i18n="x46">Visual hierarchy that feels premium without becoming difficult to use.</p></span>
       </a>
       <a class="work-card" href="/barbershop-website-design.html">
-        <span class="work-visual work-visual-b" aria-hidden="true"><svg class="work-preview" viewBox="0 0 480 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-<rect x="1" y="1" width="478" height="228" rx="14" fill="#0c1524" stroke="#f6a37f" stroke-opacity=".3"/>
-<path d="M1 29H479" stroke="#28354a"/><circle cx="16" cy="15" r="3" fill="#f6a37f"/><circle cx="28" cy="15" r="3" fill="#46556b"/><circle cx="40" cy="15" r="3" fill="#46556b"/>
-<rect x="24" y="47" width="32" height="6" rx="3" fill="#f6a37f"/><path d="M340 50H364M382 50H406M424 50H456" stroke="#627087" stroke-width="4" stroke-linecap="round"/>
-<rect x="24" y="73" width="180" height="130" rx="9" fill="#2b2021"/><path d="M62 185L147 89M95 191L178 96" stroke="#f6a37f" stroke-width="19" stroke-opacity=".7"/><rect x="233" y="85" width="210" height="12" rx="4" fill="#fff1e8"/><rect x="233" y="106" width="146" height="12" rx="4" fill="#fff1e8"/><path d="M233 142H439M233 154H390" stroke="#8a7570" stroke-width="5" stroke-linecap="round"/><rect x="233" y="178" width="106" height="25" rx="6" fill="#f6a37f"/>
-</svg><b data-i18n="x47">BOLD</b><em data-i18n="x48">LOCAL IDENTITY</em></span>
+        <span class="work-visual work-visual-b" aria-hidden="true"><img class="work-preview" src="/assets/previews/barbershop.png" alt="" loading="lazy" decoding="async"><b data-i18n="x47">BOLD</b><em data-i18n="x48">LOCAL IDENTITY</em></span>
         <span class="work-shade"></span><span class="work-copy"><span data-i18n="x49">Local business</span><h3 data-i18n="x50">Bold identity</h3><p data-i18n="x51">Services, trust and booking made obvious.</p></span>
       </a>
       <a class="work-card" href="/auto-repair-website-design.html">
-        <span class="work-visual work-visual-c" aria-hidden="true"><svg class="work-preview" viewBox="0 0 480 230" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-<rect x="1" y="1" width="478" height="228" rx="14" fill="#0c1524" stroke="#78dfb7" stroke-opacity=".3"/>
-<path d="M1 29H479" stroke="#28354a"/><circle cx="16" cy="15" r="3" fill="#78dfb7"/><circle cx="28" cy="15" r="3" fill="#46556b"/><circle cx="40" cy="15" r="3" fill="#46556b"/>
-<rect x="24" y="47" width="32" height="6" rx="3" fill="#78dfb7"/><path d="M340 50H364M382 50H406M424 50H456" stroke="#627087" stroke-width="4" stroke-linecap="round"/>
-<rect x="116" y="76" width="248" height="12" rx="4" fill="#e5fff4"/><path d="M148 106H332" stroke="#668a83" stroke-width="5" stroke-linecap="round"/><rect x="185" y="124" width="110" height="22" rx="6" fill="#78dfb7"/><rect x="24" y="166" width="136" height="42" rx="7" fill="#142a2b"/><circle cx="44" cy="187" r="7" fill="#78dfb7"/><path d="M62 182H139M62 193H119" stroke="#72958e" stroke-width="4" stroke-linecap="round"/><rect x="172" y="166" width="136" height="42" rx="7" fill="#142a2b"/><circle cx="192" cy="187" r="7" fill="#78dfb7"/><path d="M210 182H287M210 193H267" stroke="#72958e" stroke-width="4" stroke-linecap="round"/><rect x="320" y="166" width="136" height="42" rx="7" fill="#142a2b"/><circle cx="340" cy="187" r="7" fill="#78dfb7"/><path d="M358 182H435M358 193H415" stroke="#72958e" stroke-width="4" stroke-linecap="round"/>
-</svg><b data-i18n="x52">TRUST</b><em data-i18n="x53">SERVICE & CONVERSION</em></span>
+        <span class="work-visual work-visual-c" aria-hidden="true"><img class="work-preview" src="/assets/previews/auto.png" alt="" loading="lazy" decoding="async"><b data-i18n="x52">TRUST</b><em data-i18n="x53">SERVICE & CONVERSION</em></span>
         <span class="work-shade"></span><span class="work-copy"><span data-i18n="x54">Service business</span><h3 data-i18n="x55">Clear and credible</h3><p data-i18n="x56">Built around fast decisions and direct enquiries.</p></span>
       </a>
     </div>
@@ -641,6 +666,7 @@ function setMenu(open){
  btn.textContent=open?'×':'☰';
 }
 btn.addEventListener('click',()=>setMenu(btn.getAttribute('aria-expanded')!=='true'));
+document.addEventListener('click',e=>{if(!e.target.closest('.site-header'))setMenu(false);});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&btn.getAttribute('aria-expanded')==='true'){setMenu(false);btn.focus();}});
 </script>
