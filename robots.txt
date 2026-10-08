@@ -5,4 +5,4 @@ Disallow: /api/
 Disallow: /previews/
 Disallow: /*-preview/
 
-Sitemap: https://lnkdigital.com/sitemap.xml
+Sitemap: https://www.lnkdigital.com/sitemap.xml

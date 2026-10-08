@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#05070d">
 <title>LNK DIGITAL | Premium Web Design, Development & SEO</title>
 <meta name="description" content="LNK DIGITAL creates premium, mobile-first websites, redesigns and SEO-ready digital experiences for businesses across Europe and the USA. Request a free website preview.">
-<link rel="canonical" href="https://lnkdigital.com/">
+<link rel="canonical" href="https://www.lnkdigital.com/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="LNK DIGITAL | Premium Websites That Build Authority">
 <meta property="og:description" content="High-end websites, redesigns and SEO-ready digital experiences built for stronger authority, positioning and enquiries.">
-<meta property="og:url" content="https://lnkdigital.com/">
-<meta property="og:image" content="https://lnkdigital.com/lnk-digital-logo.svg">
+<meta property="og:url" content="https://www.lnkdigital.com/">
+<meta property="og:image" content="https://www.lnkdigital.com/lnk-digital-logo.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <style id="lnk-inline-design">
 :root{
@@ -476,8 +477,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #67
 .showcase-main .hero-concept-image{position:static;display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;border-radius:14px;margin-bottom:24px}
 .mini-card .mini-visual{width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;border-radius:9px;margin-bottom:12px}
 @media(max-width:760px){.card .item-visual,.step .item-visual{margin-bottom:20px}.hero-visual .mini-grid{grid-template-columns:1fr 1fr}.hero-visual .mini-card:nth-child(2){display:block}.mini-card{padding:12px}.mini-card b{font-size:12px}}
+
+/* Allow narrow layouts and long translated labels to shrink without hiding content. */
+main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
+.card,.step,.mini-card,.work-copy,.contact,.actions{min-width:0;overflow-wrap:anywhere}
+.service-links,.footer-links,.markets{flex-wrap:wrap}
+@media(max-width:430px){
+ .hero-visual .mini-grid{grid-template-columns:1fr}
+ .hero-visual .mini-card:nth-child(2){display:block}
+ .mock-metrics{grid-template-columns:1fr}
+ .site-header{gap:6px}.brand{flex-shrink:1;min-width:0}
+ .language-wrap{flex-shrink:0}.menu-btn{flex-shrink:0}
+}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://lnkdigital.com/#organization","name":"LNK DIGITAL","url":"https://lnkdigital.com/","logo":"https://lnkdigital.com/lnk-digital-logo.svg","email":"contact@ludaknakvadrat.com","telephone":"+38631244612"},{"@type":"WebSite","@id":"https://lnkdigital.com/#website","url":"https://lnkdigital.com/","name":"LNK DIGITAL","publisher":{"@id":"https://lnkdigital.com/#organization"}},{"@type":"ProfessionalService","@id":"https://lnkdigital.com/#service","name":"LNK DIGITAL","url":"https://lnkdigital.com/","provider":{"@id":"https://lnkdigital.com/#organization"},"areaServed":["Slovenia","Austria","Germany","Switzerland","Croatia","Italy","United States","Europe"],"serviceType":["Premium web design","Website development","Website redesign","SEO foundations","Landing pages"]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.lnkdigital.com/#organization","name":"LNK DIGITAL","url":"https://www.lnkdigital.com/","logo":"https://www.lnkdigital.com/lnk-digital-logo.svg","email":"contact@ludaknakvadrat.com","telephone":"+38631244612"},{"@type":"WebSite","@id":"https://www.lnkdigital.com/#website","url":"https://www.lnkdigital.com/","name":"LNK DIGITAL","publisher":{"@id":"https://www.lnkdigital.com/#organization"}},{"@type":"ProfessionalService","@id":"https://www.lnkdigital.com/#service","name":"LNK DIGITAL","url":"https://www.lnkdigital.com/","provider":{"@id":"https://www.lnkdigital.com/#organization"},"areaServed":["Slovenia","Austria","Germany","Switzerland","Croatia","Italy","United States","Europe"],"serviceType":["Premium web design","Website development","Website redesign","SEO foundations","Landing pages"]}]}</script>
 </head>
 <body>
 <a class="skip-link" href="#content" data-i18n="x0">Skip to content</a>
@@ -531,7 +544,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #67
         <div class="browser-screen">
           <div class="showcase-main">
     <div class="showcase-ui" aria-label="Premium website concept" data-i18n-aria="x16">
-      <img class="hero-concept-image" src="/assets/photos/hero.webp" alt="" width="600" height="450" decoding="async"><div class="mock-topline"><span data-i18n="x16">LNK / CONCEPT 01</span><span data-i18n="x17">LIVE PREVIEW</span></div>
+      <img class="hero-concept-image" src="/assets/photos/hero.webp" alt="" width="600" height="450" fetchpriority="high" decoding="async"><div class="mock-topline"><span data-i18n="x16">LNK / CONCEPT 01</span><span data-i18n="x17">LIVE PREVIEW</span></div>
       <div class="mock-title" data-i18n="x18">A digital presence that feels premium before the first click.</div>
       <div class="mock-copy" data-i18n="x19">Strategy-led design · polished mobile UX · conversion-focused structure.</div>
       <div class="mock-actions"><a href="#work" data-i18n="x20">Explore project</a><a href="#contact" data-i18n="x21">Request preview</a></div>
@@ -646,7 +659,7 @@ function applyLanguage(lang){
  document.getElementById('languageSelect').value=lang;
  const menu=document.getElementById('menuBtn');
  menu.setAttribute('aria-label',t[menu.getAttribute('aria-expanded')==='true'?'menuClose':'menuOpen']);
- const title='LNK DIGITAL | '+t.x32;
+ const title=lang==='en'?'LNK DIGITAL | Premium Web Design, Development & SEO':'LNK DIGITAL | '+t.x32;
  document.title=title;
  document.querySelector('meta[name="description"]').content=t.heroLead;
  document.querySelector('meta[property="og:title"]').content=title;
