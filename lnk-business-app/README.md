@@ -22,3 +22,12 @@ Business user features: Supabase Auth (email/password), individual company recor
 
 ## Deploy process
 Current Vercel project was deployed by standalone file-upload API, not linked to GitHub. After source updates, upload index.html, menu.html, brezplacna-ponudba.html, vercel.json, robots.txt, sitemap.xml to **this specific project**, not to LNK DIGITAL, Euro Gurman or other sites.
+
+## Reservation-request module — 2026-10-09
+- `lb_booking_requests` created with RLS and anonymous *column-only INSERT*. Anonymous SELECT, UPDATE, DELETE and table-wide INSERT were **explicitly revoked** and verified.
+- Customers can submit an inquiry at `/rezervacija.html?slug=...` ONLY if restaurant explicitly publishes its menu, enables bookings, and supplies an HTTPS URL to its own privacy notice.
+- `/menu.html?slug=...` shows a reservation CTA only when enabled. Admin: `Rezervacije` inbox lists submitted requests; owner can mark confirmed/rejected or remove a request.
+- Requests are **not** automatically confirmed; admin status update does NOT send a customer message. External notification service and hard bot defense still missing.
+- One request per shop/phone/day index provides limited repeat-submission protection; it is NOT sufficient against determined spam. Keep public booking disabled for commercial launch pending captcha/rate limiting, GDPR notices, and real end-to-end user testing.
+- Any personal data submitted belongs to the restaurant controller. A valid specific privacy statement, retention process, and processing contract need to be established before live bookings.
+- Existing data and pre-existing site projects were not altered.
