@@ -62,3 +62,11 @@ Current Vercel project was deployed by standalone file-upload API, not linked to
 - Vercel latest READY deployment still predates the menu-photo, allergen, hours, sales, A4 QR poster changes. A deployment attempt was rejected with `402 api-deployments-free-per-day`, reported retryAfter 86400. **Do not claim live until a fresh deployment is verified READY with production alias**.
 - Never point the project deployment at the existing LNK DIGITAL main project or merge this branch into main without verifying it will not trigger unrelated production builds. Standalone LNK BUSINESS Vercel project id: `prj_ECYJ9nhJsVht9tvoQ6NYr9k0BUVX`.
 - Photo URLs are user-supplied; production photo upload, external image privacy checks, legal docs and allergen responsibility remain pre-sale review items.
+
+## Internationalization (10 languages) — source ready
+- Independent `i18n.js` dictionary for `sl,en,de,hr,bs,sr,it,fr,es,sq`. 160 fixed UI / allergen phrase mappings currently prepared, with user-selectable language picker on all seven HTML pages. Slovenian is default; selected language persists in local browser storage.
+- Public QR menu also localizes the 14 EU-defined allergen category labels and standard menu category names. User-owned custom item names/descriptions remain unchanged. EUR price format is intentional for Slovenia.
+- Static code and JS syntax checks passed for all eleven production source files. Complete content, legal notices, alerts and every message are **not fully translated** yet; review each language with a native speaker before marketing outside Slovenia.
+- The source branch is separate from production and is not linked for auto-deployment. It contains `gastro-demo.html`, `paketi.html`, `pomoc.html`, `i18n.js`, `menu.html`, `rezervacija.html`, `brezplacna-ponudba.html`, `index.html`, `robots.txt`, `sitemap.xml` and `vercel.json`.
+- Legal readiness drafts are `PRAVNO_ZA_PREGLED_2026-10-10.md` and `RELEASE_GATE_2026-10-10.md`. Do not publish as final terms.
+- Vercel API deployment on 2026-10-09 returned `402 api-deployments-free-per-day` (free-plan quota). **New language code is not live until a fresh production deployment is READY.** Keep existing production untouched until then.
