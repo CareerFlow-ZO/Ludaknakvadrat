@@ -26,6 +26,10 @@ jobs:
         run: node scripts/share-accessibility-audit.mjs
       - name: Validate visitor-to-client brief, language translations and safe contact handoff
         run: node scripts/lnk-conversion-audit.mjs
+      - name: Check no-cookie aggregate metrics privacy and path restrictions
+        run: node scripts/lnk-metrics-audit.mjs
+      - name: Simulate page loads and WhatsApp/email metric events
+        run: node scripts/lnk-metrics-browser-audit.mjs
       - name: Test 10 languages, cards, links and mobile menu
         run: node scripts/i18n-audit.mjs
 
@@ -58,6 +62,8 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
+      - name: Verify JWT-protected metrics endpoint and browser CORS without adding visits
+        run: node scripts/lnk-metrics-health.mjs
       - name: Crawl all public LNK pages for SEO and indexability
         run: node scripts/live-seo-crawl.mjs
       - name: Test production images, language runtime, domains and Euro Gurman
