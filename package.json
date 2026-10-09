@@ -8,5 +8,8 @@
   },
   "engines": {
     "node": "22.x"
+  },
+  "scripts": {
+    "test:seo": "node scripts/seo-audit.mjs"
   }
 }
