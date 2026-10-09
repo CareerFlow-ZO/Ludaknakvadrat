@@ -8,9 +8,9 @@
   <url><loc>https://www.lnkdigital.com/prenova-spletne-strani.html</loc></url>
   <url><loc>https://www.lnkdigital.com/izdelava-spletnih-trgovin.html</loc></url>
   <url><loc>https://www.lnkdigital.com/izdelava-spletne-strani-cena.html</loc></url>
-  <url><loc>https://www.lnkdigital.com/web-design-austria.html</loc></url>
-  <url><loc>https://www.lnkdigital.com/web-design-germany.html</loc></url>
-  <url><loc>https://www.lnkdigital.com/web-design-switzerland.html</loc></url>
+  <url><loc>https://www.lnkdigital.com/web-design-austria.html</loc><xhtml:link rel="alternate" hreflang="de-AT" href="https://www.lnkdigital.com/web-design-austria.html"/><xhtml:link rel="alternate" hreflang="de-DE" href="https://www.lnkdigital.com/web-design-germany.html"/><xhtml:link rel="alternate" hreflang="de-CH" href="https://www.lnkdigital.com/web-design-switzerland.html"/></url>
+  <url><loc>https://www.lnkdigital.com/web-design-germany.html</loc><xhtml:link rel="alternate" hreflang="de-AT" href="https://www.lnkdigital.com/web-design-austria.html"/><xhtml:link rel="alternate" hreflang="de-DE" href="https://www.lnkdigital.com/web-design-germany.html"/><xhtml:link rel="alternate" hreflang="de-CH" href="https://www.lnkdigital.com/web-design-switzerland.html"/></url>
+  <url><loc>https://www.lnkdigital.com/web-design-switzerland.html</loc><xhtml:link rel="alternate" hreflang="de-AT" href="https://www.lnkdigital.com/web-design-austria.html"/><xhtml:link rel="alternate" hreflang="de-DE" href="https://www.lnkdigital.com/web-design-germany.html"/><xhtml:link rel="alternate" hreflang="de-CH" href="https://www.lnkdigital.com/web-design-switzerland.html"/></url>
   <url><loc>https://www.lnkdigital.com/web-design-croatia.html</loc></url>
   <url><loc>https://www.lnkdigital.com/web-design-italy.html</loc></url>
   <url><loc>https://www.lnkdigital.com/web-design-usa.html</loc></url>

@@ -53,6 +53,40 @@ for (const [, href] of sitemap.matchAll(/<xhtml:link\b[^>]*href=["']([^"']+)["']
   if (!urls.includes(href)) fail('sitemap.xml', `hreflang target not listed as canonical URL: ${href}`);
 }
 
+// Validate reciprocal German regional alternatives, with country-specific canonical URLs.
+const germanRegionAlternates = [
+  ['de-AT', 'web-design-austria.html'],
+  ['de-DE', 'web-design-germany.html'],
+  ['de-CH', 'web-design-switzerland.html']
+];
+const expectedRegionLinks = germanRegionAlternates.map(([code, path]) =>
+  '<xhtml:link rel="alternate" hreflang="' + code + '" href="' + host + '/' + path + '"/>');
+for (const [, path] of germanRegionAlternates) {
+  const url = host + '/' + path;
+  const start = sitemap.indexOf('<url><loc>' + url + '</loc>');
+  const end = sitemap.indexOf('</url>', start);
+  if (start === -1 || end === -1) {
+    fail('sitemap.xml', 'Missing German regional sitemap block: ' + path);
+    continue;
+  }
+  const block = sitemap.slice(start, end);
+  for (const link of expectedRegionLinks) {
+    if (!block.includes(link)) fail('sitemap.xml', 'Missing reciprocal regional alternate for ' + path + ': ' + link);
+  }
+  const total = (block.match(/<xhtml:link\b/g) || []).length;
+  if (total !== germanRegionAlternates.length) {
+    fail('sitemap.xml', 'Unexpected regional alternate count (' + total + ') for ' + path);
+  }
+  const html = text(path);
+  if (!html.includes('<link rel="canonical" href="' + url + '">')) {
+    fail(path, 'Regional page canonical does not match its sitemap URL');
+  }
+  const code = germanRegionAlternates.find(([, p]) => p === path)[0];
+  if (!html.includes('<html lang="' + code + '">')) {
+    fail(path, 'Region-specific HTML language does not match the sitemap annotation');
+  }
+}
+
 const vercel = JSON.parse(text('vercel.json'));
 const previewDirs = readdirSync(root, { withFileTypes: true })
   .filter(d => d.isDirectory() && (d.name === 'previews' || d.name.endsWith('-preview')))
