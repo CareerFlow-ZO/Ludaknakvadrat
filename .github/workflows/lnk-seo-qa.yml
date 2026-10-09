@@ -23,3 +23,27 @@ jobs:
 
       - name: Verify language links on all 19 SEO pages
         run: node scripts/secondary-page-language-audit.mjs
+
+  live_sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify production sitemap and robots through public HTTPS
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://www.lnkdigital.com"
+          for path in sitemap.xml robots.txt; do
+            echo "Testing ${base}/${path}"
+            code=$(curl --max-time 25 --retry 2 --retry-all-errors -sSL -o "/tmp/lnk-${path}" -w "%{http_code}" "${base}/${path}")
+            echo "HTTP: ${code}"
+            test "${code}" = "200" || { echo "Unexpected status for ${path}"; exit 1; }
+            wc -c "/tmp/lnk-${path}"
+            head -c 190 "/tmp/lnk-${path}"; echo
+          done
+          grep -q '<urlset' /tmp/lnk-sitemap.xml
+          grep -q 'https://www.lnkdigital.com/' /tmp/lnk-sitemap.xml
+          count=$(grep -o '<loc>' /tmp/lnk-sitemap.xml | wc -l | tr -d ' ')
+          echo "Sitemap URLs: ${count}"
+          test "${count}" -eq 20
+          grep -q 'Sitemap: https://www.lnkdigital.com/sitemap.xml' /tmp/lnk-robots.txt
+          echo "LIVE SITEMAP & ROBOTS PASS"
