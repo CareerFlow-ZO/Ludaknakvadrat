@@ -69,6 +69,24 @@ if (!successRule?.headers?.some(h => h.key.toLowerCase() === 'x-robots-tag' && /
   fail('vercel.json', 'Payment success page should be noindex');
 }
 
+// Legacy LNK canonical consistency: prevent conflicting host hints.
+const legacyRobots = text('lnk-robots.txt');
+const legacySitemap = text('lnk-sitemap.xml');
+if (legacyRobots !== robots) fail('lnk-robots.txt', 'Legacy robots file differs from canonical robots file');
+if (legacySitemap !== sitemap) fail('lnk-sitemap.xml', 'Legacy sitemap differs from canonical sitemap');
+const legacyLanding = text('lnk-digital-home.html');
+if (legacyLanding.includes('https://lnkdigital.com/')) fail('lnk-digital-home.html', 'Outdated non-www absolute SEO URL');
+for (const redirect of vercel.redirects || []) {
+  if (typeof redirect.destination === 'string' && redirect.destination.startsWith('https://lnkdigital.com/')) {
+    fail('vercel.json', 'Legacy redirect introduces a second redirect hop: ' + redirect.source);
+  }
+}
+const euroRoot = (vercel.routes || []).some(r => r.src === '^/$' && r.dest === '/euro-gurman-preview/index.html' &&
+  r.has?.some(h => h.type === 'host' && h.value === 'eurogurman.si'));
+const euroWww = (vercel.routes || []).some(r => r.src === '^/(.*)$' && r.status === 308 &&
+  r.headers?.Location === 'https://eurogurman.si/$1' && r.has?.some(h => h.type === 'host' && h.value === 'www.eurogurman.si'));
+if (!euroRoot || !euroWww) fail('vercel.json', 'Euro Gurman production routing must remain intact');
+
 if (failures.length) {
   console.error(`SEO QA FAILED (${failures.length} issues)\n` + failures.map(e => ` - ${e}`).join('\n'));
   process.exitCode = 1;
