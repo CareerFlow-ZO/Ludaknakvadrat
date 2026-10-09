@@ -32,3 +32,14 @@ New modules: `racuni.html` (invoice *drafts only*), `racunovodstvo.html` (accoun
 - For 2028 domestic B2B, structured e-invoice exchange such as e-SLOG/Peppol or appropriate approved service integration; PDF alone does not satisfy mandatory structured exchange.
 - Access logs, customer data erasure/retention, consent/invitation audit history and billing entitlements.
 - End-to-end user testing, privacy/penetration test, anti-abuse checks, backups and incident handling.
+
+
+## Payment status, QR, mail and PDF add-on (2026-10-09)
+- /racun-podrobnosti.html?id=... shows only owned draft records under authenticated RLS.
+- Manual payment_status (paid/unpaid) and paid_at are NOT bank verified and do not prove official invoice/payment.
+- QR is generated locally and shows only seller IBAN, draft reference and EUR total when IBAN check passes. This is informative text, NOT Slovenian UPN QR or a payment initiation code.
+- PDF download uses browser html2pdf.js; print uses native browser print. Both retain prominent OSNUTEK - NI IZDAN RACUN warning.
+- Email button opens a draft via mailto to the customer's saved email; no automatic sending and no automatic PDF attachment.
+- Accountant has read-only access to manually entered payment status only when owner has granted access.
+- QA: try valid/invalid IBAN, marked/unmarked paid status, persistence after refresh, QR fallback, A4 PDF download, iPhone printing, customer mailto, wrong-user access and revoked accountant access.
+- Full commercial launch still requires official invoicing legality, validated UPN QR and bank reconciliation.
