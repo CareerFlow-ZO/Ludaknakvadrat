@@ -128,7 +128,7 @@ for (const url of urls) {
 }
 const homeImages = [...homeHtml.matchAll(/<img\b[^>]*>/gi)].map(match => match[0]);
 for (const image of ['beauty', 'barbershop', 'auto']) {
-  const tag = homeImages.find(tag => tag.includes('/assets/previews/' + image + '.png')) || '';
+  const tag = homeImages.find(tag => tag.includes('/assets/previews/' + image + '.webp')) || '';
   if (!tag.includes('loading="lazy"') || !tag.includes('fetchpriority="low"')) {
     fail('index.html', 'Portfolio image should load lazily at low priority: ' + image);
   }
