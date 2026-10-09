@@ -93,7 +93,9 @@ const homeJsPath = 'assets/js/lnk-home.js';
 if (!homeHtml.includes('<script defer src="/assets/js/lnk-home.js"></script>')) {
   fail('index.html', 'Missing deferred homepage script');
 }
-if (!homeHtml.includes('<link rel="preload" as="image" href="/assets/photos/hero.webp" fetchpriority="high">')) {
+if (!homeHtml.includes('<link rel="preload" as="image" href="/assets/photos/hero-600.webp"') ||
+    !homeHtml.includes('imagesrcset="/assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w"') ||
+    !homeHtml.includes('fetchpriority="high">')) {
   fail('index.html', 'Missing high-priority hero preload');
 }
 if (/const LNK_TRANSLATIONS\s*=/.test(homeHtml)) fail('index.html', 'Homepage translation bundle should not block inline HTML parsing');
