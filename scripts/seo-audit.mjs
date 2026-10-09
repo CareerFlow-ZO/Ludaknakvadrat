@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Static SEO quality gate for LNK DIGITAL. No API keys or external network required.
-import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
 const root = process.cwd();
@@ -130,6 +130,26 @@ for (const image of ['beauty', 'barbershop', 'auto']) {
   if (!tag.includes('loading="lazy"') || !tag.includes('fetchpriority="low"')) {
     fail('index.html', 'Portfolio image should load lazily at low priority: ' + image);
   }
+}
+
+// LNK DIGITAL responsive images: maintain original photo files for retina displays.
+const photoNames = ['hero', 'strategy', 'artdirection', 'business', 'redesign', 'seo',
+  'discover', 'design', 'build', 'launch', 'positioning', 'mobile', 'growth'];
+for (const name of photoNames) {
+  const original = `assets/photos/${name}.webp`;
+  const small = `assets/photos/${name}-600.webp`;
+  if (!existsSync(join(root, original)) || !existsSync(join(root, small))) {
+    fail('index.html', `Missing responsive image: ${original} or ${small}`);
+    continue;
+  }
+  if (statSync(join(root, small)).size >= statSync(join(root, original)).size) {
+    fail(small, 'Responsive variant must be smaller than original');
+  }
+  const expectedSrcset = `srcset="/assets/photos/${name}-600.webp 600w, /assets/photos/${name}.webp 960w"`;
+  if (!homeHtml.includes(expectedSrcset)) fail('index.html', `Missing responsive srcset: ${name}`);
+}
+if (!homeHtml.includes('imagesrcset="/assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w"')) {
+  fail('index.html', 'Hero image preload must match responsive source candidates');
 }
 
 if (failures.length) {
