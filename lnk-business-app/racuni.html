@@ -24,7 +24,7 @@ async function load(){
  [company,clients,drafts]=[results[0].data,results[1].data||[],results[2].data||[]];
  $('buyer').innerHTML='<option value="">Izberite kupca</option>'+clients.map(c=>'<option value="'+c.id+'">'+escape(c.name)+'</option>').join('');
  if(!$('draft-ref').value)$('draft-ref').value=defaultRef();
- $('list').innerHTML=drafts.length?drafts.map(x=>'<div class="entry"><div><b>'+escape(x.draft_reference)+'</b><div class="small">'+escape(x.buyer_name)+' · '+money(sums(x.items,Number(x.vat_rate)).total)+'</div></div><div class="actions"><button class="btn alt" data-print="'+x.id+'">PDF</button><button class="btn red" data-delete="'+x.id+'">Izbriši</button></div></div>').join(''):'<p class="small">Še ni osnutkov.</p>';
+ $('list').innerHTML=drafts.length?drafts.map(x=>'<div class="entry"><div><b>'+escape(x.draft_reference)+'</b><div class="small">'+escape(x.buyer_name)+' · '+money(sums(x.items,Number(x.vat_rate)).total)+' · '+(x.payment_status==='paid'?'Ročno: plačano':'Ni plačano')+'</div></div><div class="actions"><a class="btn alt" href="/racun-podrobnosti.html?id='+encodeURIComponent(x.id)+'">QR · PDF · E-pošta · Status</a><button class="btn alt" data-print="'+x.id+'">Natisni</button><button class="btn red" data-delete="'+x.id+'">Izbriši</button></div></div>').join(''):'<p class="small">Še ni osnutkov.</p>';
 }
 function printDraft(x){
  const w=window.open('','_blank');if(!w)return alert('Dovolite novo okno');
