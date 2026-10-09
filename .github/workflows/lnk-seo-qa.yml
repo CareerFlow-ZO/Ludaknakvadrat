@@ -47,3 +47,8 @@ jobs:
           test "${count}" -eq 20
           grep -q 'Sitemap: https://www.lnkdigital.com/sitemap.xml' /tmp/lnk-robots.txt
           echo "LIVE SITEMAP & ROBOTS PASS"
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Crawl all public LNK pages for SEO and indexability
+        run: node scripts/live-seo-crawl.mjs
