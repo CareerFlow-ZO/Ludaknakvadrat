@@ -18,3 +18,5 @@ jobs:
           persist-credentials: false
       - name: Validate metadata, sitemap, images and preview indexing
         run: node scripts/seo-audit.mjs
+      - name: Test 10 languages, cards, links and mobile menu
+        run: node scripts/i18n-audit.mjs
