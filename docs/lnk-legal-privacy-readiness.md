@@ -3,6 +3,22 @@
 > INTERNAL WORKING CHECKLIST — NOT A PUBLISHED PRIVACY POLICY OR LEGAL OPINION.
 > No registered company identifiers or actual client achievements are assumed. This file is not linked from the website and must not be presented as a final legal notice.
 
+## AJPES transition: owner update, 9 October 2026
+
+**Publication hold:** The owner states that the legal name and tax registration are changing, and a related registration involving the owner's father's company is also in progress. **Do not assign the same tax number to two entities, infer a final ownership relationship, or publish an imprint/privacy notice until a fresh AJPES/FURS record confirms the final legal entity.**
+
+Owner-provided provisional details (not yet registry-verified):
+
+- Business brand: **LNK DIGITAL**
+- Earlier reported working form/name: **LNK DIGITAL, Zemir Osmic s.p.** — **not verified as the final registration**
+- Address reported: **Cesta Franceta Prešerna 3D, 4270 Jesenice, Slovenia**
+- Company registration number reported: **9834117000**, final match pending AJPES
+- **Corrected tax number communicated: 23838060** (without assuming VAT ID or attaching an SI prefix)
+- A previously communicated tax value was corrected and **must not be reused** in public documents.
+- Verify which tax number belongs to **which legal entity**, the exact registered name, and VAT status after AJPES/FURS updates.
+
+**Only after confirmation:** create public `legal-notice.html`, link it visibly, and review GDPR notice attribution and actual data-processing practices. Do not publish a draft with potentially incorrect identifiers.
+
 ## 1. Confirm the company identity before publishing legal pages
 
 Ask the owner to confirm and, where applicable, verify against Slovenia's business register:
