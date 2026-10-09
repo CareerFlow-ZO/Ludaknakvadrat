@@ -1,0 +1,59 @@
+<!doctype html><html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Demo digitalnega jedilnika za restavracije | LNK BUSINESS</title>
+<meta name="description" content="Oglejte si demo profesionalnega QR jedilnika za gostince z jedmi, cenami, alergeni in delovnim časom. Primer je izmišljen. LNK BUSINESS.">
+<link rel="canonical" href="https://lnk-business-saas.vercel.app/gastro-demo.html">
+<meta property="og:type" content="website"><meta property="og:title" content="LNK BUSINESS — Gastro QR meni demo">
+<meta property="og:description" content="Poglejte, kako lahko izgleda digitalni QR jedilnik vaše restavracije.">
+<meta property="og:url" content="https://lnk-business-saas.vercel.app/gastro-demo.html">
+<style>
+:root{color-scheme:dark;--bg:#080e18;--panel:#152236;--line:#30435c;--text:#f8fafc;--muted:#b7c5d6;--aqua:#80e3ed;--cream:#f9e6bd}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(700px 470px at 0 0,#1f3d57,transparent),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,sans-serif}
+.wrap{max-width:1130px;padding:20px 22px 65px;margin:auto}a{color:var(--aqua)}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{font-weight:900;font-size:18px;letter-spacing:.09em}.brand span{color:var(--aqua)}.demo{background:#344155;border:1px solid #61728c;color:#e5eefc;padding:5px 10px;font-weight:700;border-radius:18px;font-size:11px;letter-spacing:.05em}.top a{text-decoration:none;font-weight:700}
+.hero{margin-top:25px;padding:50px 42px;border-radius:26px;border:1px solid #596b7d;background:linear-gradient(135deg,#1d334d,#343051);position:relative;overflow:hidden;box-shadow:0 22px 70px #0004}
+.hero:after{content:"✦";position:absolute;right:12%;top:9%;font-size:170px;line-height:1;color:#ead9b31a;pointer-events:none}
+.hint{font-size:12px;letter-spacing:.17em;color:#a6e5ed;font-weight:800}.hero h1{font-size:clamp(39px,5vw,65px);letter-spacing:-.055em;line-height:1.02;margin:12px 0}.hero p{max-width:550px;color:#dbe6f1;font-size:17px}.meta{display:flex;gap:11px;flex-wrap:wrap;margin-top:25px}.meta div{background:#ffffff12;border:1px solid #ffffff24;border-radius:12px;padding:12px 17px;font-size:13px;white-space:pre-line}.meta b{color:var(--cream);display:block;margin-bottom:4px}
+.filter{display:flex;gap:9px;flex-wrap:wrap;margin:30px 0}.filter button{background:#18273a;color:#d2deed;padding:10px 15px;border:1px solid #3e546e;border-radius:50px;font:inherit;cursor:pointer;font-weight:700}.filter button[aria-pressed=true]{color:#081926;background:var(--aqua);border-color:var(--aqua)}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:35px 0 13px}.head h2{font-size:28px;letter-spacing:-.04em;margin:0}.head span{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.food{border:1px solid var(--line);background:linear-gradient(165deg,#18263b,#101a2c);border-radius:20px;overflow:hidden;min-width:0}.visual{height:172px;display:flex;align-items:center;justify-content:center;font-size:77px;background:linear-gradient(130deg,var(--v1),var(--v2));position:relative}.visual:after{content:"ILUSTRACIJA";position:absolute;bottom:8px;right:11px;font-size:10px;font-weight:900;letter-spacing:.13em;color:#ffffffb1}.content{padding:19px}.price-title{display:flex;align-items:start;justify-content:space-between;gap:11px}.content h3{font-size:19px;letter-spacing:-.025em;margin:0}.price{font-size:18px;font-weight:850;color:#b6f1d7;white-space:nowrap}.content p{color:#c7d2e0;font-size:14px;min-height:43px}.allergens{font-size:12px;color:#b9cae1;border-top:1px solid #334960;padding-top:10px}.allergens strong{color:#ecf6ff}
+.cta{background:linear-gradient(120deg,#1b3547,#1b2a41);padding:30px;border:1px solid #416680;border-radius:22px;margin-top:38px}.cta h2{font-size:clamp(23px,3vw,34px);margin:0 0 10px}.cta p{color:#d5e1ee;max-width:690px}.row{display:flex;gap:10px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;justify-content:center;padding:11px 17px;border-radius:11px;font:inherit;font-weight:850;background:linear-gradient(95deg,#7ee6ed,#869eff);color:#0c1b2d;text-decoration:none;border:0;min-height:44px}.button.alt{background:#223a4d;color:#f5fbff;border:1px solid #57718c}footer{padding-top:25px;margin-top:44px;border-top:1px solid #33465c;font-size:12px;color:#a4b5ca}.disclaimer{margin:18px 0;padding:13px;border:1px solid #466279;border-radius:12px;color:#d7e5f3;background:#192e42;font-size:13px}
+@media(max-width:930px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.wrap{padding:15px 14px 40px}.hero{padding:30px 23px;border-radius:19px}.hero:after{font-size:95px}.grid{grid-template-columns:1fr}.visual{height:200px}.content p{min-height:0}.meta div{flex:1}.filter button{padding:9px 12px;font-size:13px}.cta{padding:23px}}
+</style></head>
+<body><div class="wrap">
+<header class="top"><div class="brand">LNK <span>BUSINESS</span></div><span class="demo">IZMIŠLJEN DEMO RESTAVRACIJE</span><a href="/">← Poslovna aplikacija</a></header>
+<section class="hero"><div class="hint">PREDSTAVITVENI JEDILNIK</div><h1>Bistro Aurora</h1><p>Dobrodošli! Poglejte, kako lahko na telefonu gostje pregledujejo jedi, cene in alergene. Prikaz ni povezan s pravo restavracijo.</p>
+<div class="meta"><div><b>Odpiralni čas – demo</b>Pon–Sob: 10:00–22:00
+Ned: zaprto</div><div><b>Lokacija – demo</b>Slovenija · izmišljeni primer</div><div><b>Rezervacije</b>V tem demu niso omogočene</div></div></section>
+<div class="disclaimer"><b>Demo podatki:</b> vsa imena, jedi, cene, alergeni, delovni čas in ilustracije so izmišljeni in niso namenjeni dejanskemu naročanju ali preverjanju sestavin.</div>
+<div class="filter" id="filters" role="group" aria-label="Filtriraj kategorije jedi"><button type="button" data-filter="vse" aria-pressed="true">Vse jedi</button><button type="button" data-filter="zajtrk" aria-pressed="false">Zajtrk</button><button type="button" data-filter="glavne" aria-pressed="false">Glavne jedi</button><button type="button" data-filter="pijace" aria-pressed="false">Pijače</button><button type="button" data-filter="sladice" aria-pressed="false">Sladice</button></div>
+<main id="menu" aria-live="polite"></main>
+<section class="cta"><h2>Takšen meni lahko ima tudi vaš lokal.</h2><p>LNK BUSINESS omogoča ločene fotografije jedi, QR povezavo, kategorije, prikaz cen, označevanje alergenov in delovnega časa. Pred uvedbo v vaš lokal preverimo pravilnost vsebine, pogoje in zasebnost.</p><div class="row"><a class="button" href="mailto:sales@lnkdigital.com?subject=LNK%20BUSINESS%20Gastro%20pilot&body=Pozdravljeni%2C%20zanima%20me%20digitalni%20QR%20jedilnik%20za%20nas%20lokal.">Povpraševanje za pilot →</a><a class="button alt" href="/">Preverite LNK BUSINESS</a><a class="button alt" href="/brezplacna-ponudba.html">Brezplačna ponudba PDF</a></div></section>
+<footer>LNK BUSINESS · demonstracijski prikaz. Vsa vsebina je izmišljena. <a href="https://www.lnkdigital.com/">LNK DIGITAL</a> · <a href="mailto:sales@lnkdigital.com">sales@lnkdigital.com</a></footer></div>
+<script>
+(()=>{'use strict';
+const entries=[
+ {id:'1',cat:'zajtrk',name:'Jutranji toast',emoji:'🥪',price:6.5,description:'Topel toast s svežimi sestavinami.',allergens:['gluten','milk'],gradient:['#584a37','#c88d4a']},
+ {id:'2',cat:'zajtrk',name:'Kmečki zajtrk',emoji:'🍳',price:8.8,description:'Jajca, kruh in sezonska priloga.',allergens:['eggs','gluten'],gradient:['#3e5a3b','#b88f4a']},
+ {id:'3',cat:'zajtrk',name:'Granola z jogurtom',emoji:'🥣',price:5.9,description:'Zajtrk z jogurtom in sadjem.',allergens:['milk','nuts'],gradient:['#4a5266','#b89f76']},
+ {id:'4',cat:'glavne',name:'Domači burger',emoji:'🍔',price:12.5,description:'Burger z omako in svežo zelenjavo.',allergens:['gluten','eggs'],gradient:['#574339','#b67842']},
+ {id:'5',cat:'glavne',name:'Kremna pasta',emoji:'🍝',price:11.9,description:'Testenine v kremni omaki s parmezanom.',allergens:['gluten','milk'],gradient:['#4d4542','#bb8154']},
+ {id:'6',cat:'glavne',name:'Ribja specialiteta',emoji:'🐟',price:16.5,description:'Pečena riba z zelenjavno prilogo.',allergens:['fish'],gradient:['#254b66','#78a0a5']},
+ {id:'7',cat:'glavne',name:'Sezonska solata',emoji:'🥗',price:9.5,description:'Sveža solata z izbranimi dodatki.',allergens:['mustard'],gradient:['#315a47','#89b97b']},
+ {id:'8',cat:'pijace',name:'Kava z mlekom',emoji:'☕',price:2.7,description:'Topel kavni napitek.',allergens:['milk'],gradient:['#3c3536','#a07758']},
+ {id:'9',cat:'pijace',name:'Svež sok',emoji:'🍊',price:4.1,description:'Osvežilen sadni napitek.',allergens:[],gradient:['#705034','#d6a33c']},
+ {id:'10',cat:'pijace',name:'Domača limonada',emoji:'🍋',price:3.9,description:'Z limono, meto in ledom.',allergens:[],gradient:['#4b5e42','#a6bd65']},
+ {id:'11',cat:'sladice',name:'Čokoladna torta',emoji:'🍰',price:5.4,description:'Sočna čokoladna rezina.',allergens:['gluten','eggs','milk'],gradient:['#533444','#a67a78']},
+ {id:'12',cat:'sladice',name:'Sadni sorbet',emoji:'🍨',price:4.7,description:'Lahka sadna sladica.',allergens:[],gradient:['#53536c','#b394a6']}
+];
+const dictionary={gluten:'Gluten',milk:'Mleko',nuts:'Oreški',eggs:'Jajca',fish:'Ribe',mustard:'Gorčica'};
+const eur=n=>new Intl.NumberFormat('sl-SI',{style:'currency',currency:'EUR'}).format(n);
+const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const categoryName={zajtrk:'Zajtrk',glavne:'Glavne jedi',pijace:'Pijače',sladice:'Sladice'};
+function card(x){const tags=x.allergens.length?'Alergeni (demo): '+x.allergens.map(a=>dictionary[a]||a).join(', '):'Brez označenih alergenov v tem demu; ni dokaz odsotnosti alergenov.';
+return '<article class="food"><div class="visual" role="img" aria-label="Ilustracija '+escape(x.name)+'" style="--v1:'+escape(x.gradient[0])+';--v2:'+escape(x.gradient[1])+'">'+escape(x.emoji)+'</div><div class="content"><div class="price-title"><h3>'+escape(x.name)+'</h3><span class="price">'+eur(x.price)+'</span></div><p>'+escape(x.description)+'</p><div class="allergens"><strong>'+escape(tags)+'</strong></div></div></article>'}
+function draw(category){const selected=category==='vse'?entries:entries.filter(x=>x.cat===category);const groups=Object.entries(categoryName).filter(([key])=>category==='vse'||key===category);document.getElementById('menu').innerHTML=groups.map(([key,label])=>{const list=selected.filter(x=>x.cat===key);return '<section><div class="head"><h2>'+escape(label)+'</h2><span>'+list.length+' jedi</span></div><div class="grid">'+list.map(card).join('')+'</div></section>'}).join('');
+for(const btn of document.querySelectorAll('[data-filter]'))btn.setAttribute('aria-pressed',String(btn.dataset.filter===category))}
+document.getElementById('filters').addEventListener('click',event=>{const btn=event.target.closest('[data-filter]');if(btn)draw(btn.dataset.filter)});
+draw('vse');
+})();
+</script></body></html>
