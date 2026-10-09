@@ -16,6 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="image" href="/assets/photos/hero-600.webp" imagesrcset="/assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w" imagesizes="(max-width: 760px) calc(100vw - 32px), (max-width: 980px) 80vw, 580px" fetchpriority="high">
 <script defer src="/assets/js/lnk-home.js"></script>
+<script defer src="/assets/js/lnk-brief.js"></script>
 <style id="lnk-inline-design">
 :root{
   color-scheme:dark;
@@ -175,6 +176,27 @@ p{color:var(--muted)}
 .service-links{display:flex;flex-wrap:wrap;gap:11px}
 .service-links a{padding:11px 15px;border-radius:999px;border:1px solid var(--line);background:rgba(11,18,30,.7);text-decoration:none;color:#b8c7da;font-size:14px}
 .service-links a:hover{border-color:rgba(100,211,255,.4);color:#fff}
+
+
+/* Short project brief: zero submission endpoint, no tracking or stored selections. */
+.brief-section{scroll-margin-top:110px}
+.brief-panel{position:relative;isolation:isolate;overflow:hidden;padding:clamp(22px,4vw,40px);border:1px solid rgba(112,205,255,.3);border-radius:28px;background:linear-gradient(135deg,rgba(15,30,51,.98),rgba(17,19,48,.97) 58%,rgba(31,19,56,.92));box-shadow:0 24px 65px rgba(0,0,0,.22)}
+.brief-panel:before{content:"";position:absolute;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,rgba(116,135,255,.13),transparent 70%);right:-130px;top:-145px;pointer-events:none;z-index:-1}
+.brief-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:0 0 24px}
+.brief-field{display:flex;flex-direction:column;gap:9px}
+.brief-field label{color:#e8f2ff;font-size:14px;font-weight:750}
+.brief-field select{width:100%;min-width:0;min-height:50px;border:1px solid rgba(146,185,228,.31);border-radius:13px;padding:11px 36px 11px 14px;background-color:#0c1729;color:#f7faff;font:inherit;font-size:15px;cursor:pointer}
+.brief-field select:focus-visible,.brief-actions a:focus-visible,.brief-teaser a:focus-visible,.brief-contact-link a:focus-visible{outline:3px solid #80dfff;outline-offset:3px}
+.brief-review{border-top:1px solid rgba(143,178,230,.19);padding-top:22px}
+.brief-review-title{margin:0 0 9px;color:#c8d8ec;font-size:13px;font-weight:750;letter-spacing:.03em}
+.brief-review output{display:block;white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;border:1px solid rgba(139,179,235,.17);background:rgba(5,10,19,.47);color:#d9eaff;padding:18px;border-radius:15px}
+.brief-actions{display:flex;gap:13px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.brief-actions .button{min-height:48px;display:inline-flex;align-items:center;justify-content:center}
+.brief-note{font-size:13px;color:#bbc8df;max-width:850px;margin:15px 0 0}
+.brief-teaser{margin:13px 0 0;font-size:14px;font-weight:700}
+.brief-teaser a,.brief-contact-link a{color:#93e0ff;text-decoration:underline;text-decoration-color:rgba(147,224,255,.5);text-underline-offset:4px}
+.brief-contact-link{margin:16px 0 0;font-size:14px;font-weight:700}
+@media(max-width:680px){.brief-grid{grid-template-columns:1fr;gap:17px}.brief-panel{border-radius:20px}.brief-actions{display:grid;grid-template-columns:1fr}.brief-actions .button{width:100%}}
 
 .contact{
   position:relative;overflow:hidden;
@@ -542,6 +564,7 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
         <a class="button primary" href="https://wa.me/38631244612?text=Hello%20LNK%20DIGITAL%2C%20I%27d%20like%20a%20free%20website%20preview." rel="noopener"><span data-i18n="primaryCta">See your FREE website concept →</span></a>
         <a class="button secondary" href="/web-design-portfolio.html"><span data-i18n="secondaryCta">Explore design concepts</span></a>
       </div>
+      <p class="brief-teaser"><a href="#project-brief" data-brief-i18n="heroLink">Not sure where to start? Prepare a 30-second project brief →</a></p>
       <div class="trust-strip" aria-label="Service highlights" data-i18n-aria="whatLabel">
         <span class="trust-pill"><i></i> <span data-i18n="trustPreview">Preview before full build</span></span>
         <span class="trust-pill"><i></i> <span data-i18n="trustMobile">Mobile-first</span></span>
@@ -640,10 +663,76 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
     <a href="/izdelava-spletnih-trgovin.html" hreflang="sl" data-i18n="seoExploreShops">Online stores (Slovenian)</a>
   </nav>
 </section>
+
+<section id="project-brief" class="section brief-section" aria-labelledby="brief-heading">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow" data-brief-i18n="eyebrow">Make an enquiry in 30 seconds</span>
+      <h2 id="brief-heading" data-brief-i18n="title">Tell us what your new website needs.</h2>
+    </div>
+    <p data-brief-i18n="intro">Choose four quick answers. We prepare a message you can review before opening WhatsApp or email.</p>
+  </div>
+  <div class="brief-panel">
+    <div class="brief-grid">
+      <div class="brief-field">
+        <label for="briefType" data-brief-i18n="typeLabel">What do you need?</label>
+        <select id="briefType" data-brief-field="type">
+          <option value="new" data-brief-i18n="new">A new business website</option>
+          <option value="redesign" data-brief-i18n="redesign">Redesign an existing website</option>
+          <option value="shop" data-brief-i18n="shop">Online shop / e-commerce</option>
+          <option value="booking" data-brief-i18n="booking">Booking or reservation website</option>
+          <option value="landing" data-brief-i18n="landing">Landing page or campaign</option>
+        </select>
+      </div>
+      <div class="brief-field">
+        <label for="briefGoal" data-brief-i18n="goalLabel">Your main business goal</label>
+        <select id="briefGoal" data-brief-field="goal">
+          <option value="leads" data-brief-i18n="leads">More qualified enquiries</option>
+          <option value="reservations" data-brief-i18n="reservations">More bookings or reservations</option>
+          <option value="sales" data-brief-i18n="sales">Sell products online</option>
+          <option value="trust" data-brief-i18n="trust">Look more professional</option>
+        </select>
+      </div>
+      <div class="brief-field">
+        <label for="briefMarket" data-brief-i18n="marketLabel">Who are your customers?</label>
+        <select id="briefMarket" data-brief-field="market">
+          <option value="slovenia" data-brief-i18n="slovenia">Slovenia</option>
+          <option value="dach" data-brief-i18n="dach">Germany / Austria / Switzerland</option>
+          <option value="europe" data-brief-i18n="europe">Europe / multiple countries</option>
+          <option value="global" data-brief-i18n="global">Worldwide / United States</option>
+        </select>
+      </div>
+      <div class="brief-field">
+        <label for="briefTimeline" data-brief-i18n="timelineLabel">When would you like to start?</label>
+        <select id="briefTimeline" data-brief-field="timeline">
+          <option value="flexible" data-brief-i18n="flexible">Flexible — let's plan it</option>
+          <option value="month" data-brief-i18n="month">Within 1–2 months</option>
+          <option value="soon" data-brief-i18n="soon">As soon as possible — let's discuss</option>
+        </select>
+      </div>
+    </div>
+    <div class="brief-review">
+      <p class="brief-review-title" data-brief-i18n="previewLabel">Your message preview</p>
+      <output id="briefPreview" aria-live="polite">LNK DIGITAL — website project enquiry
+Project: A new business website
+Goal: More qualified enquiries
+Market: Slovenia
+Timing: Flexible — let's plan it
+Please let me know the next steps and what information you need for a tailored proposal.</output>
+      <div class="brief-actions">
+        <a class="button primary" id="briefWhatsApp" href="https://wa.me/38631244612" target="_blank" rel="noopener noreferrer" data-brief-i18n="whatsappButton">Continue in WhatsApp →</a>
+        <a class="button secondary" id="briefEmail" href="mailto:contact@ludaknakvadrat.com" data-brief-i18n="emailButton">Continue by email →</a>
+      </div>
+      <p class="brief-note" data-brief-i18n="privacyNote">Nothing is submitted automatically or stored on this page. Review your message in WhatsApp or your email app before sending; those services have their own privacy terms.</p>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="section contact">
     <span class="eyebrow" data-i18n="contactLabel">Start with a preview</span>
     <h2 id="contactTitle">Send us your current website.<br>We’ll show you a stronger direction.</h2>
     <p data-i18n="x84">If you already have a site, send the URL. If you do not, send your business name, services and target market. For suitable projects, we can prepare a visual preview before the full build is agreed.</p>
+    <p class="brief-contact-link"><a href="#project-brief" data-brief-i18n="contactLink">Prefer a guided project enquiry? Start here →</a></p>
     <div class="actions">
       <a class="button primary" href="https://wa.me/38631244612?text=Hello%20LNK%20DIGITAL%2C%20my%20business%2Fwebsite%20is%3A%20" rel="noopener" data-i18n="x85">Request a free preview →</a>
       <a class="button secondary" href="mailto:contact@ludaknakvadrat.com?subject=LNK%20DIGITAL%20project" data-i18n="x86">Email LNK DIGITAL</a>

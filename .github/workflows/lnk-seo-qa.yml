@@ -24,6 +24,8 @@ jobs:
         run: node scripts/trust-security-audit.mjs
       - name: Check honest social cards and keyboard skip links on every page
         run: node scripts/share-accessibility-audit.mjs
+      - name: Validate visitor-to-client brief, language translations and safe contact handoff
+        run: node scripts/lnk-conversion-audit.mjs
       - name: Test 10 languages, cards, links and mobile menu
         run: node scripts/i18n-audit.mjs
 
