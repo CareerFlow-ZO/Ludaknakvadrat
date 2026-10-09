@@ -42,7 +42,7 @@ async function init(){
  const {data,error}=await db.from('lb_public_pages').select('owner_id,business_name,bookings_enabled,booking_privacy_url').eq('slug',slug).eq('published',true).limit(1);
  if(error||!data?.length||!data[0].bookings_enabled)throw Error('Ta lokal ne sprejema spletnih povpraševanj.');
  page=data[0];
- if(!/^https:\/\/[^\\s]+$/.test(page.booking_privacy_url||''))throw Error('Manjka obvestilo o zasebnosti lokala.');
+ try{const u=new URL(page.booking_privacy_url);if(u.protocol!=='https:'||!u.hostname)throw Error('Invalid protocol')}catch{throw Error('Manjka veljavno HTTPS obvestilo o zasebnosti lokala.');}
  $('restaurant').textContent=page.business_name;
  $('policy').href=page.booking_privacy_url;
  document.title='Rezervacije – '+page.business_name;
