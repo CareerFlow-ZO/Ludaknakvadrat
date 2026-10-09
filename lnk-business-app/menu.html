@@ -6,11 +6,11 @@ const eur=n=>new Intl.NumberFormat('sl-SI',{style:'currency',currency:'EUR'}).fo
 const slug=new URLSearchParams(location.search).get('slug');
 const root=document.getElementById('root');
 async function run(){if(!slug||!/^[a-z0-9][a-z0-9-]{4,45}$/.test(slug)){root.textContent='Jedilnik ni najden.';return}
-const{data:pages,error:e1}=await db.from('lb_public_pages').select('owner_id,business_name,description').eq('slug',slug).eq('published',true).limit(1);
+const{data:pages,error:e1}=await db.from('lb_public_pages').select('owner_id,business_name,description,bookings_enabled').eq('slug',slug).eq('published',true).limit(1);
 if(e1||!pages?.length){root.textContent='Jedilnik ni najden ali ni javno objavljen.';return}
 const p=pages[0];document.title=p.business_name+' | Jedilnik';const{data:items,error:e2}=await db.from('lb_menu_items').select('title,category,description,price,position').eq('owner_id',p.owner_id).eq('published',true).order('position');
 if(e2){root.textContent='Jedilnika trenutno ni mogoče naložiti.';return}
 const groups={};for(const x of items||[]){const category=x.category||'Ostalo';(groups[category]??=[]).push(x)}
-root.innerHTML='<div class="head"><h1>'+esc(p.business_name)+'</h1><p>'+esc(p.description)+'</p></div>'+ (items?.length?Object.entries(groups).map(([c,entries])=>'<h2 class="category">'+esc(c)+'</h2>'+entries.map(x=>'<div class="item"><div><h3>'+esc(x.title)+'</h3><div class="muted">'+esc(x.description)+'</div></div><div class="price">'+eur(x.price)+'</div></div>').join('')).join(''):'<p class="muted">Ta restavracija še ni dodala jedi.</p>')}
+root.innerHTML='<div class="head"><h1>'+esc(p.business_name)+'</h1><p>'+esc(p.description)+'</p>'+(p.bookings_enabled?'<p style="margin-top:20px"><a style="display:inline-block;background:#7ee4fa;color:#091727;border-radius:10px;padding:10px 15px;font-weight:800;text-decoration:none" href="/rezervacija.html?slug='+encodeURIComponent(slug)+'">Povprašaj za rezervacijo →</a></p>':'')+'</div>'+ (items?.length?Object.entries(groups).map(([c,entries])=>'<h2 class="category">'+esc(c)+'</h2>'+entries.map(x=>'<div class="item"><div><h3>'+esc(x.title)+'</h3><div class="muted">'+esc(x.description)+'</div></div><div class="price">'+eur(x.price)+'</div></div>').join('')).join(''):'<p class="muted">Ta restavracija še ni dodala jedi.</p>')}
 run().catch(()=>{root.textContent='Napaka pri nalaganju.'});
 </script></body></html>
