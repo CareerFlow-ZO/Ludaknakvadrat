@@ -107,6 +107,31 @@ if (!existsSync(join(root, homeJsPath))) {
   try { new Function(homeJs); } catch (error) { fail(homeJsPath, 'Invalid JavaScript syntax: ' + error.message); }
 }
 
+// Verify that all local resources linked from indexable pages exist.
+const localAssetPattern = /\.(?:html|css|js|png|jpe?g|webp|svg|ico|woff2?|pdf)$/i;
+const validatedAssets = new Set();
+for (const url of urls) {
+  const pathname = new URL(url).pathname;
+  const pageFile = pathname === '/' ? 'index.html' : pathname.slice(1);
+  if (!existsSync(join(root, pageFile))) continue;
+  const markup = text(pageFile);
+  for (const [, href] of markup.matchAll(/\b(?:src|href)=["'](\/[^"']+)["']/gi)) {
+    const path = href.split(/[?#]/)[0].slice(1);
+    if (!localAssetPattern.test(path) || validatedAssets.has(path)) continue;
+    validatedAssets.add(path);
+    if (path.includes('..') || !existsSync(join(root, path))) {
+      fail(pageFile, 'Missing local asset or link target: /' + path);
+    }
+  }
+}
+const homeImages = [...homeHtml.matchAll(/<img\b[^>]*>/gi)].map(match => match[0]);
+for (const image of ['beauty', 'barbershop', 'auto']) {
+  const tag = homeImages.find(tag => tag.includes('/assets/previews/' + image + '.png')) || '';
+  if (!tag.includes('loading="lazy"') || !tag.includes('fetchpriority="low"')) {
+    fail('index.html', 'Portfolio image should load lazily at low priority: ' + image);
+  }
+}
+
 if (failures.length) {
   console.error(`SEO QA FAILED (${failures.length} issues)\n` + failures.map(e => ` - ${e}`).join('\n'));
   process.exitCode = 1;
