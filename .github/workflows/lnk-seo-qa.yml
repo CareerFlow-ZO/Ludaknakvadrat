@@ -20,3 +20,6 @@ jobs:
         run: node scripts/seo-audit.mjs
       - name: Test 10 languages, cards, links and mobile menu
         run: node scripts/i18n-audit.mjs
+
+      - name: Verify language links on all 19 SEO pages
+        run: node scripts/secondary-page-language-audit.mjs
