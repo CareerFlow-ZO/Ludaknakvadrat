@@ -1,0 +1,16 @@
+<!doctype html><html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><title>Digitalni jedilnik | LNK BUSINESS</title><style>body{margin:0;background:#091322;color:#f4f7ff;font:16px/1.6 system-ui,-apple-system,sans-serif}.wrap{max-width:750px;padding:30px 18px;margin:auto}.brand{color:#70e0ff;letter-spacing:.15em;font-weight:900;font-size:14px}.head{padding:30px;border-radius:20px;background:linear-gradient(120deg,#183455,#1b1e43);border:1px solid #35516d;margin:20px 0}.item{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #29374e;padding:16px 0}.item h3{margin:0}.muted{color:#aab7cf}.price{color:#91edc4;font-weight:900;white-space:nowrap}.category{color:#8ee0f9;margin-top:36px}a{color:#82dfff}</style></head><body><div class="wrap"><div class="brand">LNK BUSINESS · DIGITALNI JEDILNIK</div><div id="root"><p class="muted">Nalaganje ...</p></div><footer class="muted" style="padding:30px 0;font-size:12px">Digitalni jedilnik poganja <a href="/">LNK BUSINESS</a>. Informacije in cene zagotavlja restavracija.</footer></div><script type="module">
+import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/+esm';
+const db=createClient('https://mwgnwbmssiyugwlsnotz.supabase.co','sb_publishable_HMb1ucc2gUu96nRPJVjb0Q_PqclMV3P');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const eur=n=>new Intl.NumberFormat('sl-SI',{style:'currency',currency:'EUR'}).format(n);
+const slug=new URLSearchParams(location.search).get('slug');
+const root=document.getElementById('root');
+async function run(){if(!slug||!/^[a-z0-9][a-z0-9-]{4,45}$/.test(slug)){root.textContent='Jedilnik ni najden.';return}
+const{data:pages,error:e1}=await db.from('lb_public_pages').select('owner_id,business_name,description').eq('slug',slug).eq('published',true).limit(1);
+if(e1||!pages?.length){root.textContent='Jedilnik ni najden ali ni javno objavljen.';return}
+const p=pages[0];document.title=p.business_name+' | Jedilnik';const{data:items,error:e2}=await db.from('lb_menu_items').select('title,category,description,price,position').eq('owner_id',p.owner_id).eq('published',true).order('position');
+if(e2){root.textContent='Jedilnika trenutno ni mogoče naložiti.';return}
+const groups={};for(const x of items||[]){const category=x.category||'Ostalo';(groups[category]??=[]).push(x)}
+root.innerHTML='<div class="head"><h1>'+esc(p.business_name)+'</h1><p>'+esc(p.description)+'</p></div>'+ (items?.length?Object.entries(groups).map(([c,entries])=>'<h2 class="category">'+esc(c)+'</h2>'+entries.map(x=>'<div class="item"><div><h3>'+esc(x.title)+'</h3><div class="muted">'+esc(x.description)+'</div></div><div class="price">'+eur(x.price)+'</div></div>').join('')).join(''):'<p class="muted">Ta restavracija še ni dodala jedi.</p>')}
+run().catch(()=>{root.textContent='Napaka pri nalaganju.'});
+</script></body></html>
