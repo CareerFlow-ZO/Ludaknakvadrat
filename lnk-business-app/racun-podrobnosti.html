@@ -1,0 +1,77 @@
+<!doctype html><html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Podrobnosti osnutka računa | LNK BUSINESS</title><script defer src="/i18n.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+<style>:root{color-scheme:dark;--bg:#0b1423;--panel:#17283d;--line:#38546e;--ink:#f4f9ff;--muted:#b5c4d6;--aqua:#80e2fa}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,sans-serif}.wrap{max-width:1140px;margin:auto;padding:22px 18px}.head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.logo{font-weight:900;font-size:22px}.logo span{color:var(--aqua)}.actions{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}.btn{border:0;border-radius:10px;padding:10px 15px;background:#87dff8;color:#081a2b;font:inherit;font-weight:800;cursor:pointer;text-decoration:none}.btn.secondary{background:#2b3f56;color:#f6fcff;border:1px solid #526f8a}.btn:disabled{opacity:.55;cursor:not-allowed}.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:19px;margin:17px 0}.notice{border:1px solid #6a7f99;border-radius:12px;padding:13px;background:#203a50;color:#e1eeff}.notice strong{color:#fff}a{color:var(--aqua)}.status{font-weight:900;padding:5px 12px;border:1px solid #69819a;border-radius:20px;font-size:12px}.status.paid{border-color:#5da789;color:#b4f6d9}.status.unpaid{color:#f4d6ba}#qr-image{max-width:205px;min-width:170px;background:#fff;border:9px solid #fff;border-radius:7px}.row{display:flex;flex-wrap:wrap;gap:15px;align-items:center}.small{font-size:12px;color:var(--muted)}.paper{background:#fff;color:#243043;padding:40px;max-width:100%;border-radius:6px;box-shadow:0 12px 30px #0002}.paper h1{color:#a02738;font-size:28px;border:4px solid #a02738;padding:14px;text-align:center;line-height:1.25;margin:0 0 24px}.paper h2{color:#1c3148}.paper .columns{display:grid;grid-template-columns:1fr 1fr;gap:22px}.paper .pre{white-space:pre-line;overflow-wrap:anywhere}.paper table{border-collapse:collapse;width:100%;font-size:13px;margin:22px 0}.paper th,.paper td{padding:10px;border-bottom:1px solid #d8e2ea;text-align:left}.paper .amount{text-align:right}.paper .warning{color:#a02738;font-weight:800;margin-top:50px}.paper .qr-section{margin:25px 0;display:flex;gap:14px;align-items:center;flex-wrap:wrap}.paper .qr-note{font-size:11px;color:#39516b;max-width:400px}#qr-live{min-height:215px}.hidden{display:none!important}.error{color:#ffb4bf}textarea{background:#102034;color:#fff;border:1px solid #43617c;padding:10px;border-radius:10px;width:100%}@media(max-width:620px){.paper{padding:17px}.paper .columns{grid-template-columns:1fr}.paper h1{font-size:22px}.paper td,.paper th{padding:7px 3px;font-size:11px}.card{padding:14px}}@media print{body{background:#fff}.head,.actions,.card,.footer{display:none!important}.wrap{max-width:none;padding:0}.paper{padding:0;box-shadow:none;border:0}@page{size:A4;margin:15mm}}
+</style></head><body><div class="wrap"><header class="head"><div class="logo">LNK <span>BUSINESS</span> · PODROBNOSTI</div><div class="actions"><a href="/racuni.html" class="btn secondary">← Osnutki računov</a><a href="/" class="btn secondary">Poslovni panel</a></div></header>
+<h2>Podrobnosti osnutka</h2><div id="gate" class="card">Preverjanje prijave ...</div>
+<div id="area" class="hidden"><div class="notice"><strong>NI IZDAN RAČUN.</strong> Ta dokument je samo osnutek. QR koda je informativna in <strong>ni bančna UPN QR koda</strong>; ne sproži plačila. Status »plačano« je ročna evidenca in ni potrdilo banke.</div>
+<div class="card"><div class="row"><div><b>Ročni status osnutka:</b> <span id="badge" class="status unpaid">Ni plačano</span></div><button id="mark-paid" class="btn" type="button">Označi plačano</button><button id="mark-unpaid" class="btn secondary" type="button">Označi neplačano</button></div><p id="status-note" class="small"></p></div>
+<div class="card"><div class="actions"><button type="button" id="download" class="btn">Prenesi PDF</button><button type="button" id="print" class="btn secondary">Natisni</button><button type="button" id="email" class="btn secondary">Pripravi e-pošto kupcu</button><button type="button" id="copy-qr" class="btn secondary">Kopiraj podatke za QR</button></div><p class="small">E-pošta odpre vašo e-poštno aplikacijo z osnutkom sporočila. **PDF morate priložiti sami in poslati ročno.** Samodejno pošiljanje še ni vklopljeno.</p><p id="action-result" role="status" class="small"></p></div>
+<article id="paper" class="paper" aria-label="Osnutek za tiskanje">
+<h1>OSNUTEK – NI IZDAN RAČUN</h1><div class="columns"><div><b>IZDAJATELJ</b><div class="pre" id="seller"></div></div><div><b>KUPEC</b><div class="pre" id="buyer"></div></div></div>
+<p id="dates"></p><table><thead><tr><th>Opis</th><th>Kol.</th><th>Cena</th><th>Skupaj</th></tr></thead><tbody id="items"></tbody></table><div class="amount" id="totals"></div><p class="pre" id="notes"></p>
+<div class="qr-section"><div id="qr-live"><img id="qr-image" alt="Informativna QR koda s podatki osnutka" class="hidden"></div><div class="qr-note"><b>QR INFORMACIJE · NI UPN QR</b><p id="qr-explain">Za QR je potreben veljaven IBAN izdajatelja.</p><p id="bank"></p></div></div>
+<div id="pay-on-document"></div><p class="warning">NI IZDAN RAČUN. NI PRIMEREN ZA DAVČNO EVIDENCO, FISKALIZACIJO ALI URADNO IZDAJO.</p>
+</article>
+</div><footer class="footer small" style="margin:35px 0">LNK BUSINESS · Osnutek, ne izdani račun · <a href="/racunovodstvo.html">Računovodstvo</a></footer></div>
+<script type="module">
+import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/+esm';
+const db=createClient('https://mwgnwbmssiyugwlsnotz.supabase.co','sb_publishable_HMb1ucc2gUu96nRPJVjb0Q_PqclMV3P');const $=id=>document.getElementById(id);
+const euro=n=>new Intl.NumberFormat('sl-SI',{style:'currency',currency:'EUR'}).format(Number(n)||0);
+let owner,invoice,buyerEmail='',qrText='';
+const format=s=>String(s??'');
+const date=s=>s?new Date(s+'T12:00:00').toLocaleDateString('sl-SI'):'—';
+function ibanValid(value){const code=format(value).replace(/\s+/g,'').toUpperCase();if(!/^[A-Z]{2}\d{2}[A-Z0-9]{11,30}$/.test(code)||code.length>34)return false;const moved=code.slice(4)+code.slice(0,4);let rem=0;for(const c of moved){const n=c>='A'&&c<='Z'?String(c.charCodeAt(0)-55):c;for(const digit of n)rem=(rem*10+Number(digit))%97}return rem===1}
+function totals(x){const net=Math.round((x.items||[]).reduce((sum,item)=>sum+Number(item.qty)*Number(item.price),0)*100)/100;const tax=Math.round(net*Number(x.vat_rate))/100;return {net,tax,total:Math.round((net+tax)*100)/100}}
+function sanitizeRef(x){return format(x).replace(/[^a-zA-Z0-9-]/g,'-').slice(0,50)}
+function setBadge(){const paid=invoice.payment_status==='paid';$('badge').textContent=paid?'Ročno označeno: plačano':'Ročno označeno: ni plačano';$('badge').className='status '+(paid?'paid':'unpaid');$('mark-paid').disabled=paid;$('mark-unpaid').disabled=!paid;$('status-note').textContent=paid?'Ročna oznaka: '+(invoice.paid_at?new Date(invoice.paid_at).toLocaleString('sl-SI'):'datum ni znan')+'. Brez povezave z banko.':'Bančna transakcija ni samodejno preverjena.';$('pay-on-document').textContent='ROČNO STANJE: '+(paid?'PLAČANO (NEPREVERJENO)':'NI PLAČANO / NEPREVERJENO')}
+async function updateStatus(value){if(!confirm(value==='paid'?'Ročno označim osnutek kot plačan? To ne preveri banke.':'Ročno označim osnutek kot neplačan?'))return;const next={payment_status:value,paid_at:value==='paid'?new Date().toISOString():null};const r=await db.from('lb_invoice_drafts').update(next).eq('id',invoice.id).eq('owner_id',owner.id).select('payment_status,paid_at').single();if(r.error){$('action-result').textContent='Napaka: '+r.error.message;return}Object.assign(invoice,r.data);setBadge();$('action-result').textContent='Ročni status shranjen.'}
+$('mark-paid').onclick=()=>updateStatus('paid');$('mark-unpaid').onclick=()=>updateStatus('unpaid');
+function paymentText(x){
+ const iban=format(x.seller_iban).replace(/\s/g,'').toUpperCase();const t=totals(x);
+ return 'LNK BUSINESS - INFORMACIJE O OSNUTKU (NI UPN QR IN NI IZDAN RACUN)\nPrejemnik: '+x.seller_name+'\nIBAN: '+iban+'\nZnesek: EUR '+t.total.toFixed(2)+'\nReferenca osnutka: '+x.draft_reference+'\nPlačilo opravite šele na podlagi veljavnega izdanega računa.';
+}
+async function drawQR(){
+ $('bank').textContent='IBAN: '+format(invoice.seller_iban||'Ni naveden')+' · Sklic osnutka: '+invoice.draft_reference+' · Znesek: '+euro(totals(invoice).total);
+ if(!ibanValid(invoice.seller_iban)){$('qr-explain').textContent='QR ni prikazan: v podatkih podjetja manjka veljaven IBAN. Uredite ga v Nastavitve.';qrText='';return}
+ qrText=paymentText(invoice);if(!window.QRCode?.toDataURL){$('qr-explain').textContent='Knjižnica za QR trenutno ni dosegljiva. Podatki so na voljo v besedilu.';return}
+ try{const image=await window.QRCode.toDataURL(qrText,{errorCorrectionLevel:'M',width:250,margin:3,color:{dark:'#000000',light:'#FFFFFF'}});$('qr-image').src=image;$('qr-image').classList.remove('hidden');$('qr-explain').textContent='Informativni QR za pregled podatkov osnutka. Ne deluje kot slovenska UPN QR položnica.'}catch(e){$('qr-explain').textContent='QR trenutno ni mogoče ustvariti: '+e.message}
+}
+function render(){
+ const x=invoice;
+ $('seller').textContent=[x.seller_name,x.seller_address,x.seller_tax_id,x.seller_iban].filter(Boolean).join('\n');
+ $('buyer').textContent=[x.buyer_name,x.buyer_address,x.buyer_tax_id].filter(Boolean).join('\n');
+ $('dates').textContent='Referenca: '+x.draft_reference+' · Datum osnutka: '+date(x.draft_date)+' · Datum storitve: '+date(x.service_date)+' · Rok: '+date(x.due_date);
+ const body=$('items');body.replaceChildren();for(const item of x.items||[]){const tr=document.createElement('tr');for(const val of [item.name,item.qty,euro(item.price),euro(item.qty*item.price)]){const cell=document.createElement('td');cell.textContent=format(val);tr.append(cell)}body.append(tr)}
+ const t=totals(x);$('totals').textContent='Osnova: '+euro(t.net)+'  |  DDV ('+x.vat_rate+'%): '+euro(t.tax)+'  |  SKUPAJ: '+euro(t.total);
+ $('notes').textContent=format(x.note);setBadge();drawQR();
+}
+$('print').onclick=()=>window.print();
+$('download').onclick=async()=>{
+ const btn=$('download');btn.disabled=true;$('action-result').textContent='';
+ try{if(!window.html2pdf)throw Error('PDF knjižnica ni naložena. Uporabite »Natisni« → »Shrani kot PDF«.');
+ await window.html2pdf().set({margin:9,filename:'LNK-OSNUTEK-'+sanitizeRef(invoice.draft_reference)+'.pdf',image:{type:'jpeg',quality:0.97},html2canvas:{scale:2,backgroundColor:'#ffffff',useCORS:false},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['css','legacy']}}).from($('paper')).save();
+ $('action-result').textContent='Prenos PDF osnutka je pripravljen.'}
+ catch(err){$('action-result').textContent=err.message+' Če prenos ne deluje, izberite »Natisni« → PDF.'}
+ finally{btn.disabled=false}
+};
+$('email').onclick=()=>{
+ if(!buyerEmail)return $('action-result').textContent='Kupec nima vnesenega e-maila. Najprej ga dodajte med Stranke.';
+ const subject='LNK BUSINESS – osnutek dokumenta '+invoice.draft_reference+' (NI RAČUN)';
+ const body='Pozdravljeni,\n\nV pripravi je osnutek dokumenta '+invoice.draft_reference+' v vrednosti '+euro(totals(invoice).total)+'.\nTo še ni izdan račun in ne predstavlja zahteve za plačilo.\n\nPDF osnutka bom po pregledu priložil ročno.\n\nLep pozdrav,\n'+invoice.seller_name;
+ location.href='mailto:'+encodeURIComponent(buyerEmail)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+ $('action-result').textContent='Odprta je e-poštna aplikacija. Če želite, PDF dodajte ročno in sporočilo sami pošljite. Ni bilo samodejno poslano.'
+};
+$('copy-qr').onclick=async()=>{if(!qrText)return $('action-result').textContent='Za QR potrebujete veljaven IBAN.';try{await navigator.clipboard.writeText(qrText);$('action-result').textContent='Besedilo QR je kopirano.'}catch{$('action-result').textContent=qrText}};
+(async()=>{try{
+ const params=new URLSearchParams(location.search),id=params.get('id');if(!/^[0-9a-f-]{36}$/i.test(id||''))throw Error('Neveljavna povezava osnutka.');
+ const {data:{session}}=await db.auth.getSession();if(!session?.user)throw Error('Prijava je potrebna; odprite LNK BUSINESS.');
+ owner=session.user;
+ const r=await db.from('lb_invoice_drafts').select('*').eq('id',id).eq('owner_id',owner.id).maybeSingle();if(r.error)throw r.error;if(!r.data)throw Error('Osnutek ni najden oziroma nimate dostopa.');
+ invoice=r.data;
+ if(invoice.customer_id){const c=await db.from('lb_clients').select('email').eq('owner_id',owner.id).eq('id',invoice.customer_id).maybeSingle();if(!c.error)buyerEmail=c.data?.email||''}
+ $('gate').classList.add('hidden');$('area').classList.remove('hidden');render()
+ }catch(e){$('gate').textContent='Napaka: '+e.message}})();
+</script></body></html>
