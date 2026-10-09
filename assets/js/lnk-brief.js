@@ -14,8 +14,11 @@ const email=document.getElementById('briefEmail');
 if(Object.values(selects).some(el=>!el)||!preview||!whatsapp||!email)return;
 const allowed={type:['new','redesign','shop','booking','landing'],goal:['leads','reservations','sales','trust'],market:['slovenia','dach','europe','global'],timeline:['flexible','month','soon']};
 // A deep link can preselect only an allowed project category; it cannot inject arbitrary text into messages.
-const preselected=new URLSearchParams(location.search).get('service');
+const params=new URLSearchParams(location.search);
+const preselected=params.get('service');
 if(allowed.type.includes(preselected))selects.type.value=preselected;
+const preselectedGoal=params.get('goal');
+if(allowed.goal.includes(preselectedGoal))selects.goal.value=preselectedGoal;
 function currentLanguage(){return Object.prototype.hasOwnProperty.call(TEXT,languages.value)?languages.value:'en';}
 function messageFor(t){
  const pick=name=>t[allowed[name].includes(selects[name].value)?selects[name].value:allowed[name][0]];
