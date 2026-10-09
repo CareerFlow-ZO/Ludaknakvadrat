@@ -21,6 +21,9 @@ function applyLanguage(lang){
  document.documentElement.lang=lang;
  document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(t[key])el.textContent=t[key];});
  document.querySelectorAll('[data-i18n-aria]').forEach(el=>{const key=el.dataset.i18nAria;if(t[key])el.setAttribute('aria-label',t[key]);});
+ // Keep the full business name in the home link's accessible label in every language.
+ const brandLink=document.querySelector('.brand');
+ if(brandLink)brandLink.setAttribute('aria-label','LNK DIGITAL · '+t.homeLabel);
  document.getElementById('heroTitle').innerHTML=t.heroTitle;
  document.getElementById('contactTitle').innerHTML=t.contactTitle;
  document.getElementById('languageSelect').value=lang;
