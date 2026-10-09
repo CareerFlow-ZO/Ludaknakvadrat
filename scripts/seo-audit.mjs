@@ -160,6 +160,21 @@ if (!mobileStaticGradient.test(homeHtml)) {
   fail('index.html', 'Mobile heading gradient must not animate background-position');
 }
 
+// Accessible image regression guard for all 20 indexable LNK pages.
+for (const url of urls) {
+  const pageFile = new URL(url).pathname.slice(1) || 'index.html';
+  if (!existsSync(join(root, pageFile))) continue;
+  const pageMarkup = text(pageFile);
+  for (const match of pageMarkup.matchAll(/<img\b[^>]*>/gi)) {
+    if (!/\balt=["'][^"']*["']/i.test(match[0])) {
+      fail(pageFile, 'Image without alt attribute: ' + match[0].slice(0, 90));
+    }
+  }
+}
+if (!homeHtml.includes('data-i18n-alt="heroImageAlt"')) {
+  fail('index.html', 'Featured visual must have language-aware image description');
+}
+
 if (failures.length) {
   console.error(`SEO QA FAILED (${failures.length} issues)\n` + failures.map(e => ` - ${e}`).join('\n'));
   process.exitCode = 1;
