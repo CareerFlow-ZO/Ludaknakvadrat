@@ -17,7 +17,7 @@
 .booking{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;min-height:52px;border-radius:13px;background:linear-gradient(95deg,#8ce8ef,#90a9ff);color:#0c2130;text-decoration:none;font-weight:850;align-self:center}
 .section{margin:45px 0 16px}.section h2{font-size:27px;letter-spacing:-.03em;margin:0 0 4px}.section p{color:var(--muted);font-size:14px;margin:0}
 .menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.dish{background:linear-gradient(155deg,#17263a,#111b2c);border:1px solid #2d435a;border-radius:21px;overflow:hidden;display:flex;flex-direction:column;min-height:225px;box-shadow:0 6px 24px #02091527}
-.photo{width:100%;aspect-ratio:16/9;object-fit:cover;background:#243854;display:block}.photo-missing{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#243c59,#1c2742);font-size:46px}
+.photo-frame{position:relative;aspect-ratio:16/9;overflow:hidden}.photo-frame .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#243854;display:block}.photo-frame .photo-missing{height:100%}.photo-missing{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#243c59,#1c2742);font-size:46px}
 .content{padding:19px 20px 21px;display:flex;flex-direction:column;gap:11px;flex:1}.dish-head{display:flex;justify-content:space-between;align-items:baseline;gap:15px}.dish h3{font-size:21px;line-height:1.18;letter-spacing:-.025em;margin:0;overflow-wrap:anywhere}.price{font-weight:900;font-size:20px;white-space:nowrap;color:var(--green)}.desc{font-size:14px;color:#c2d0e1;margin:0;white-space:pre-line;overflow-wrap:anywhere}.allergens{font-size:12px;color:#9ec5e4;border-top:1px solid #2b4258;padding-top:11px;margin-top:auto}.allergens strong{color:#cee1f4}.empty{border:1px dashed #536783;padding:38px;border-radius:16px;color:#becbe1;margin:35px 0;text-align:center}
 .legal{border-top:1px solid #293c52;margin-top:50px;padding-top:22px;color:#a0b1c8;font-size:12px}.legal a{color:#98e5f7}.hint{margin-top:12px;color:#b7c8dc;font-size:13px}
 @media(max-width:680px){.shell{padding:16px 15px 42px}.hero{padding:26px 20px;border-radius:21px}.section{margin-top:30px}.menu-grid{grid-template-columns:1fr}.dish h3{font-size:20px}.price{font-size:19px}.content{padding:17px}.hours{min-width:0;width:100%}}
@@ -48,7 +48,8 @@ function safePhoto(raw){
 }
 function dishCard(x){
  const image=safePhoto(x.photo_url);
- const picture=image?'<img class="photo" src="'+esc(image)+'" alt="'+esc(x.title)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'" />':'<div class="photo-missing" aria-hidden="true">🍽️</div>';
+ const fallback='<div class="photo-missing" aria-hidden="true">🍽️</div>';
+ const picture=image?'<div class="photo-frame">'+fallback+'<img class="photo" src="'+esc(image)+'" alt="'+esc(x.title)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'" /></div>':fallback;
  const allergens=(Array.isArray(x.allergens)?x.allergens:[]).map(k=>label[k]).filter(Boolean);
  const allergenText=allergens.length?'Alergeni: '+allergens.join(', '):'Alergeni niso navedeni – vprašajte osebje.';
  return '<article class="dish">'+picture+'<div class="content"><div class="dish-head"><h3>'+esc(x.title)+'</h3><span class="price">'+eur(x.price)+'</span></div>'+(x.description?'<p class="desc">'+esc(x.description)+'</p>':'')+'<div class="allergens">'+esc(allergenText)+'</div></div></article>';
