@@ -70,3 +70,11 @@ Current Vercel project was deployed by standalone file-upload API, not linked to
 - The source branch is separate from production and is not linked for auto-deployment. It contains `gastro-demo.html`, `paketi.html`, `pomoc.html`, `i18n.js`, `menu.html`, `rezervacija.html`, `brezplacna-ponudba.html`, `index.html`, `robots.txt`, `sitemap.xml` and `vercel.json`.
 - Legal readiness drafts are `PRAVNO_ZA_PREGLED_2026-10-10.md` and `RELEASE_GATE_2026-10-10.md`. Do not publish as final terms.
 - Vercel API deployment on 2026-10-09 returned `402 api-deployments-free-per-day` (free-plan quota). **New language code is not live until a fresh production deployment is READY.** Keep existing production untouched until then.
+
+
+## Invoice drafts and accountant workflow
+- /racuni.html creates and saves clearly marked invoice drafts, not legally issued invoices.
+- /racun-podrobnosti.html?id=UUID adds local informational QR (not bank-ready UPN QR), PDF download, print, manual paid/unpaid status and email-client draft composition. No automatic email or bank confirmation.
+- /racunovodstvo.html enables accountant registration, owner email invitations and explicit revoke. Accountant read-only RLS access only to connected firms' invoice drafts.
+- Official issuance, accounting VAT validation, FURS fiscalization, 2028 e-SLOG/Peppol, bank-certified UPN QR and live payment processing remain unimplemented.
+- Verify production Vercel deployment and live-browser behavior separately from GitHub source.
