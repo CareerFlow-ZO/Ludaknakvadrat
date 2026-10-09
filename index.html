@@ -491,6 +491,14 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
  .site-header{gap:6px}.brand{flex-shrink:1;min-width:0}
  .language-wrap{flex-shrink:0}.menu-btn{flex-shrink:0}
 }
+/* Lighthouse: avoid paint-heavy background-position animation on small screens. */
+@media (max-width: 760px) {
+  .gradient-text {
+    animation: none;
+    background-size: 100% 100%;
+    background-position: 50% 50%;
+  }
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.lnkdigital.com/#organization","name":"LNK DIGITAL","url":"https://www.lnkdigital.com/","logo":"https://www.lnkdigital.com/lnk-digital-logo.svg","email":"contact@ludaknakvadrat.com","telephone":"+38631244612"},{"@type":"WebSite","@id":"https://www.lnkdigital.com/#website","url":"https://www.lnkdigital.com/","name":"LNK DIGITAL","publisher":{"@id":"https://www.lnkdigital.com/#organization"}},{"@type":"ProfessionalService","@id":"https://www.lnkdigital.com/#service","name":"LNK DIGITAL","url":"https://www.lnkdigital.com/","provider":{"@id":"https://www.lnkdigital.com/#organization"},"areaServed":["Slovenia","Austria","Germany","Switzerland","Croatia","Italy","United States","Europe"],"serviceType":["Premium web design","Website development","Website redesign","SEO foundations","Landing pages"]}]}</script>
 </head>

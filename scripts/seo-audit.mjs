@@ -154,6 +154,12 @@ if (!homeHtml.includes('imagesrcset="/assets/photos/hero-600.webp 600w, /assets/
   fail('index.html', 'Hero image preload must match responsive source candidates');
 }
 
+// Prevent the Lighthouse non-composited gradient animation from returning on phones.
+const mobileStaticGradient = /@media\s*\(max-width:\s*760px\)\s*\{\s*\.gradient-text\s*\{\s*animation:\s*none\s*;\s*background-size:\s*100%\s+100%\s*;\s*background-position:\s*50%\s+50%\s*;/;
+if (!mobileStaticGradient.test(homeHtml)) {
+  fail('index.html', 'Mobile heading gradient must not animate background-position');
+}
+
 if (failures.length) {
   console.error(`SEO QA FAILED (${failures.length} issues)\n` + failures.map(e => ` - ${e}`).join('\n'));
   process.exitCode = 1;
