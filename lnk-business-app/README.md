@@ -50,3 +50,15 @@ Current Vercel project was deployed by standalone file-upload API, not linked to
 - Changes also set menu price input step to 0.01 for normal €9.90 prices. Any file above 15 MB before conversion is rejected; images above 3 MiB after conversion are rejected by client and bucket.
 - After upload, if the user abandons saving, an orphan file may remain. Storage quota monitoring, lifecycle deletion and protection against excessive authenticated uploads still need implementation before commercial launch.
 - Status: migration verified and code syntax parsed, **but browser upload, HEIC compatibility and live deployment not yet tested**. Vercel API daily deployment quota (100) was still exhausted (402) on the last deployment attempt. Do not claim new features are on the live site yet.
+
+
+## Sales-ready materials prepared in source (not yet deployed)
+- `gastro-demo.html`: clearly fictional Gastro sales presentation with 12 illustrative food entries and working category filters; NO real restaurant reference and no real customer booking collection.
+- `paketi.html`: START €99 setup + €19/month, PRO €149 + €39/month, GASTRO €199 + €49/month, all expressly labeled proposed pilot prices. No online checkout, no automatic billing or claims that the package is already fully available.
+- `index.html` links both demo and packages from public homepage and signed-in panel. QR restaurant admin includes A4 table QR poster printing.
+- `robots.txt` and `sitemap.xml` committed, covering public demo, packages, free PDF generator and home.
+- JavaScript source syntax has been checked for all interactive pages. A mocked DOM test rendered 12/12 demo products and 4/4 products after main-course category filter; a mocked public QR menu test rendered two cards, photo, allergen labels, owner-specified hours, image fallback, and kept booking disabled.
+- These tests do **not** substitute for genuine browser, authenticated workflow, spam resistance or payment testing.
+- Vercel latest READY deployment still predates the menu-photo, allergen, hours, sales, A4 QR poster changes. A deployment attempt was rejected with `402 api-deployments-free-per-day`, reported retryAfter 86400. **Do not claim live until a fresh deployment is verified READY with production alias**.
+- Never point the project deployment at the existing LNK DIGITAL main project or merge this branch into main without verifying it will not trigger unrelated production builds. Standalone LNK BUSINESS Vercel project id: `prj_ECYJ9nhJsVht9tvoQ6NYr9k0BUVX`.
+- Photo URLs are user-supplied; production photo upload, external image privacy checks, legal docs and allergen responsibility remain pre-sale review items.
