@@ -87,6 +87,26 @@ const euroWww = (vercel.routes || []).some(r => r.src === '^/(.*)$' && r.status 
   r.headers?.Location === 'https://eurogurman.si/$1' && r.has?.some(h => h.type === 'host' && h.value === 'www.eurogurman.si'));
 if (!euroRoot || !euroWww) fail('vercel.json', 'Euro Gurman production routing must remain intact');
 
+// Homepage performance regression guard (LNK-only; client site routes unchanged).
+const homeHtml = text('index.html');
+const homeJsPath = 'assets/js/lnk-home.js';
+if (!homeHtml.includes('<script defer src="/assets/js/lnk-home.js"></script>')) {
+  fail('index.html', 'Missing deferred homepage script');
+}
+if (!homeHtml.includes('<link rel="preload" as="image" href="/assets/photos/hero.webp" fetchpriority="high">')) {
+  fail('index.html', 'Missing high-priority hero preload');
+}
+if (/const LNK_TRANSLATIONS\s*=/.test(homeHtml)) fail('index.html', 'Homepage translation bundle should not block inline HTML parsing');
+if (!existsSync(join(root, homeJsPath))) {
+  fail(homeJsPath, 'Deferred homepage script does not exist');
+} else {
+  const homeJs = text(homeJsPath);
+  if (!homeJs.includes('const LNK_TRANSLATIONS=') || !homeJs.includes('const btn=document.getElementById')) {
+    fail(homeJsPath, 'Translations or mobile navigation missing from optimized bundle');
+  }
+  try { new Function(homeJs); } catch (error) { fail(homeJsPath, 'Invalid JavaScript syntax: ' + error.message); }
+}
+
 if (failures.length) {
   console.error(`SEO QA FAILED (${failures.length} issues)\n` + failures.map(e => ` - ${e}`).join('\n'));
   process.exitCode = 1;
