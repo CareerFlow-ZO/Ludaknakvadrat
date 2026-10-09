@@ -24,7 +24,7 @@ async function refresh(){
  if(company){
   [invites,grants]=await Promise.all([select('lb_accountant_invites','owner_id',user.id),select('lb_accountant_access','owner_id',user.id)]);
   $('invite').classList.remove('hidden');$('sent').innerHTML=invites.map(i=>'<div class="entry"><div><b>'+esc(i.accountant_email)+'</b><div class="small">'+(i.redeemed_at?'Sprejeto':new Date(i.expires_at)<new Date()?'Poteklo':'Čaka')+'</div></div><button class="button danger small" data-revoke-invite="'+i.id+'">Prekliči</button></div>').join('')||'<p class="small">Brez povabil.</p>';
-  $('grants').innerHTML=grants.map(a=>'<div class="entry"><b>'+esc(a.company_label||company.business_name)+'</b><button class="button danger small" data-revoke="'+a.accountant_id+'">Prekliči dostop</button></div>').join('')||'<p class="small">Ni povezanih računovodij.</p>';
+  $('grants').innerHTML=grants.map(a=>'<div class="entry"><div><b>'+esc(a.accountant_email||'Računovodja')+'</b><div class="small">Vpogled: osnutki podjetja '+esc(a.company_label||company.business_name)+'</div></div><button class="button danger small" data-revoke="'+a.accountant_id+'">Prekliči dostop</button></div>').join('')||'<p class="small">Ni povezanih računovodij.</p>';
  }else{$('invite').classList.add('hidden');$('sent').textContent='Ta račun še nima podjetja.';$('grants').textContent='Ni dostopov'}
  links=profile?await select('lb_accountant_access','accountant_id',user.id):[];
  $('assigned').innerHTML=links.length?links.map(a=>'<div class="entry"><b>'+esc(a.company_label||'Povezano podjetje')+'</b><span class="small">Samo branje</span></div>').join(''):'<p class="small">Ni povezanih firm.</p>';
