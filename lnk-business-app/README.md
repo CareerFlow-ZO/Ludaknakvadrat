@@ -42,3 +42,11 @@ Current Vercel project was deployed by standalone file-upload API, not linked to
 - All client-side JS parsed successfully. SQL schema fields and RLS-backed anon public menu visibility were checked. Full real-device saving and remote image URL behavior still require an owner test.
 - Note about external image hosting: external hosts receive visitors' image requests. Use images you own/are licensed to use; review hosting, privacy and any processor agreements before sales.
 - Deployment is restricted by the Vercel API daily quota if it remains exhausted. Committing to this isolated branch does not automatically release to the Vercel project. Verify production READY and aliases before claiming public availability.
+
+## Mobile image upload beta (staged, not deployed)
+- Migration: `lnk_business_public_food_photo_bucket_20261009`. Public bucket `lb-food-photos` scoped to only LNK BUSINESS. File size is limited to 3 MiB and stored mime types are JPEG, PNG or WebP.
+- Storage RLS enabled. Only authenticated users with an `lb_companies` row may INSERT images into a folder matching their own `auth.uid()`; no anonymous upload policy or broad update/delete policy was created. Public image URLs are intentionally readable on published menus.
+- `index.html`: user picks a photo on iPhone, browser attempts JPEG conversion to max dimension 1600px and uploads it to a unique own-folder path via Supabase Storage. On success the public URL is populated; user must then click **Shrani jed**. A generated preview is shown. Existing HTTPS image URLs still work.
+- Changes also set menu price input step to 0.01 for normal €9.90 prices. Any file above 15 MB before conversion is rejected; images above 3 MiB after conversion are rejected by client and bucket.
+- After upload, if the user abandons saving, an orphan file may remain. Storage quota monitoring, lifecycle deletion and protection against excessive authenticated uploads still need implementation before commercial launch.
+- Status: migration verified and code syntax parsed, **but browser upload, HEIC compatibility and live deployment not yet tested**. Vercel API daily deployment quota (100) was still exhausted (402) on the last deployment attempt. Do not claim new features are on the live site yet.
