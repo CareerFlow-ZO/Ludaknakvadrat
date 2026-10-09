@@ -1,0 +1,13 @@
+/* LNK DIGITAL: language navigation to the translated homepage, not a claim of translated subpages. */
+.lnk-global-languages{position:relative;z-index:130;flex:0 0 auto;margin-left:auto}
+.lnk-global-languages>summary{display:flex;align-items:center;justify-content:center;gap:5px;min-width:62px;min-height:42px;padding:7px 9px;border:1px solid rgba(148,174,214,.32);border-radius:12px;background:#0c1728;color:#f7f9ff;font-size:12px;font-weight:750;letter-spacing:.03em;cursor:pointer;list-style:none;user-select:none}
+.lnk-global-languages>summary::-webkit-details-marker{display:none}
+.lnk-global-languages>summary:focus-visible,.lnk-global-languages a:focus-visible{outline:3px solid #67dcff;outline-offset:2px}
+.lnk-global-languages[open]>summary{border-color:#67dcff}
+.lnk-global-languages>nav{position:absolute;top:calc(100% + 10px);right:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;width:min(290px,calc(100vw - 30px));padding:13px;background:#0c1423;color:#f7f9ff;border:1px solid rgba(148,174,214,.32);border-radius:15px;box-shadow:0 14px 40px rgba(0,0,0,.48);max-height:min(420px,65vh);overflow-y:auto;overscroll-behavior:contain}
+.lnk-global-languages .lnk-locale-note{grid-column:1/-1;color:#bcc9de;font-size:12px;line-height:1.45;margin:0 0 5px}
+.lnk-global-languages a{display:block;padding:10px 8px;border:1px solid rgba(148,174,214,.14);border-radius:9px;background:rgba(255,255,255,.025);font-size:12px;line-height:1.35;text-decoration:none;color:#e9f4ff}
+.lnk-global-languages a:hover{background:rgba(103,220,255,.12);border-color:rgba(103,220,255,.38)}
+@media (min-width:761px) and (max-width:1100px){.site-header:has(.lnk-global-languages){gap:7px}.site-header:has(.lnk-global-languages) .desktop-nav{gap:0}.site-header:has(.lnk-global-languages) .desktop-nav a{font-size:12px;padding:8px 6px}}
+@media (max-width:760px){.lnk-global-languages{margin-left:auto}.lnk-global-languages>summary{min-width:53px;min-height:42px;padding:6px}.lnk-global-languages>nav{right:-48px}}
+@media (max-width:460px){.site-header:has(.lnk-global-languages){gap:5px;padding:8px}.site-header:has(.lnk-global-languages) .brand{min-width:0;flex:1 1 auto}.site-header:has(.lnk-global-languages) .brand-name{font-size:13px}.site-header:has(.lnk-global-languages) .brand-tag{display:none}.site-header:has(.lnk-global-languages) .menu-btn{flex:0 0 44px}.lnk-global-languages>summary{min-width:44px;padding:6px}}

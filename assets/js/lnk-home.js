@@ -44,6 +44,8 @@ const languageSelect=document.getElementById('languageSelect');
 languageSelect.addEventListener('change',e=>applyLanguage(e.target.value));
 let saved=(navigator.language||'en').slice(0,2).toLowerCase();
 try{saved=localStorage.getItem('lnk-language')||saved}catch(e){}
+const requestedLocale=new URLSearchParams(location.search).get('lang');
+if(requestedLocale&&Object.prototype.hasOwnProperty.call(LNK_TRANSLATIONS,requestedLocale))saved=requestedLocale;
 applyLanguage(saved);
 
 

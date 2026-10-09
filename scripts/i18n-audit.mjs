@@ -99,11 +99,12 @@ const document = {
   addEventListener() {}
 };
 const context = vm.createContext({
-  document, navigator: { language: 'en-US' },
+  document, navigator: { language: 'en-US' }, location: {search:'?lang=fr'}, URLSearchParams,
   localStorage: { setItem: (key, value) => storage.set(key, value),
     getItem: key => storage.get(key) ?? null }
 });
 vm.runInContext(script, context, { filename: 'assets/js/lnk-home.js', timeout: 2000 });
+assert.equal(document.documentElement.lang, 'fr', 'Locale URL must select French homepage initially');
 for (const lang of expectedLanguages) {
   vm.runInContext('applyLanguage(' + JSON.stringify(lang) + ')', context, { timeout: 2000 });
   assert.equal(document.documentElement.lang, lang);
