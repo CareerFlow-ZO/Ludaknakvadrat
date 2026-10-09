@@ -128,7 +128,7 @@ for (const url of urls) {
 }
 const homeImages = [...homeHtml.matchAll(/<img\b[^>]*>/gi)].map(match => match[0]);
 for (const image of ['beauty', 'barbershop', 'auto']) {
-  const tag = homeImages.find(tag => tag.includes('/assets/previews/' + image + '.png')) || '';
+  const tag = homeImages.find(tag => tag.includes('/assets/previews/' + image + '.webp')) || '';
   if (!tag.includes('loading="lazy"') || !tag.includes('fetchpriority="low"')) {
     fail('index.html', 'Portfolio image should load lazily at low priority: ' + image);
   }
@@ -174,6 +174,42 @@ for (const url of urls) {
 if (!homeHtml.includes('data-i18n-alt="heroImageAlt"')) {
   fail('index.html', 'Featured visual must have language-aware image description');
 }
+
+// Portfolio preview performance guard across the 20 LNK pages.
+const previews = ['beauty', 'barbershop', 'auto'];
+for (const name of previews) {
+  const original = join(root, 'assets/previews/' + name + '.png');
+  for (const suffix of ['.webp', '-720.webp']) {
+    const optimized = join(root, 'assets/previews/' + name + suffix);
+    if (!existsSync(original) || !existsSync(optimized)) {
+      fail('assets/previews', 'Missing original or WebP preview asset: ' + name + suffix);
+      continue;
+    }
+    if (statSync(optimized).size >= statSync(original).size) {
+      fail('assets/previews', 'Preview WebP must be smaller than original PNG: ' + name + suffix);
+    }
+  }
+}
+let optimizedImageCount = 0;
+for (const url of urls) {
+  const pageFile = new URL(url).pathname.slice(1) || 'index.html';
+  const markup = text(pageFile);
+  for (const match of markup.matchAll(/<img\b[^>]*>/gi)) {
+    const tag = match[0];
+    const item = tag.match(/src="\/assets\/previews\/(beauty|barbershop|auto)\.(png|webp)"/);
+    if (!item) continue;
+    const name = item[1];
+    optimizedImageCount++;
+    const expected = 'srcset="/assets/previews/' + name + '-720.webp 720w, /assets/previews/' + name + '.webp 1448w"';
+    if (item[2] !== 'webp' || !tag.includes(expected) || !tag.includes(' sizes="')) {
+      fail(pageFile, 'Portfolio preview missing responsive WebP: ' + name);
+    }
+    if (!tag.includes('loading="lazy"') || !tag.includes('decoding="async"') || !tag.includes('fetchpriority="low"')) {
+      fail(pageFile, 'Portfolio preview loading hints regressed: ' + name);
+    }
+  }
+}
+if (optimizedImageCount !== 56) fail('index.html', 'Portfolio preview image count unexpectedly changed: ' + optimizedImageCount);
 
 if (failures.length) {
   console.error(`SEO QA FAILED (${failures.length} issues)\n` + failures.map(e => ` - ${e}`).join('\n'));
