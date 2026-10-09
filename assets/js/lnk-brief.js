@@ -19,7 +19,7 @@ if(allowed.type.includes(preselected))selects.type.value=preselected;
 function currentLanguage(){return Object.prototype.hasOwnProperty.call(TEXT,languages.value)?languages.value:'en';}
 function messageFor(t){
  const pick=name=>t[allowed[name].includes(selects[name].value)?selects[name].value:allowed[name][0]];
- return [t.messageTitle,'',t.messageType+': '+pick('type'),t.messageGoal+': '+pick('goal'),t.messageMarket+': '+pick('market'),t.messageTimeline+': '+pick('timeline'),'',t.messageEnd].join('\\n');
+ return [t.messageTitle,'',t.messageType+': '+pick('type'),t.messageGoal+': '+pick('goal'),t.messageMarket+': '+pick('market'),t.messageTimeline+': '+pick('timeline'),'',t.messageEnd].join('\n');
 }
 function update(){
  const t=TEXT[currentLanguage()];
