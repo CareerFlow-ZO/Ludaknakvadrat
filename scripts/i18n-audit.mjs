@@ -22,7 +22,13 @@ assert.deepEqual(optionLocales, expectedLanguages, 'Language dropdown does not m
 
 const textKeys = [...html.matchAll(/\bdata-i18n="([^"]+)"/g)].map(m => m[1]);
 const ariaKeys = [...html.matchAll(/\bdata-i18n-aria="([^"]+)"/g)].map(m => m[1]);
-const usedKeys = [...new Set([...textKeys, ...ariaKeys, 'heroTitle', 'contactTitle', 'menuOpen', 'menuClose', 'whatsappHello', 'whatsappBusiness'])];
+const imageAltKeys = [...html.matchAll(/\bdata-i18n-alt="([^"]+)"/g)].map(m => m[1]);
+assert.deepEqual(imageAltKeys, ['heroImageAlt'], 'Featured design must have translated alt text');
+const allImages = [...html.matchAll(/<img\b[^>]*>/gi)].map(m => m[0]);
+assert.equal(allImages.length, 16, 'Homepage image count changed; review alt test coverage');
+assert(allImages.every(tag => /\balt="/.test(tag)), 'Every homepage image must declare an alt attribute');
+assert.equal(allImages.filter(tag => /alt=""/.test(tag)).length, 15, 'Decorative image conventions changed; review accessibility');
+const usedKeys = [...new Set([...textKeys, ...ariaKeys, ...imageAltKeys, 'heroTitle', 'contactTitle', 'menuOpen', 'menuClose', 'whatsappHello', 'whatsappBusiness'])];
 for (const lang of expectedLanguages) {
   for (const key of usedKeys) {
     assert(typeof translations[lang][key] === 'string' && translations[lang][key].trim(),
@@ -65,6 +71,7 @@ class Element {
 }
 const textNodes = textKeys.map(i18n => new Element({ i18n }));
 const ariaNodes = ariaKeys.map(i18nAria => new Element({ i18nAria }));
+const imageAltNodes = imageAltKeys.map(i18nAlt => new Element({ i18nAlt }));
 const brand = ariaNodes.find(n => n.dataset.i18nAria === 'homeLabel');
 assert(brand, 'Missing localized brand home link');
 const select = new Element();
@@ -80,6 +87,7 @@ const document = {
   querySelectorAll(selector) {
     if (selector === '[data-i18n]') return textNodes;
     if (selector === '[data-i18n-aria]') return ariaNodes;
+    if (selector === '[data-i18n-alt]') return imageAltNodes;
     if (selector === 'a[href^="https://wa.me/"]') return whatsappButtons;
     throw Error('Unexpected querySelectorAll: ' + selector);
   },
@@ -116,6 +124,10 @@ for (const lang of expectedLanguages) {
       translations[lang][node.dataset.i18nAria];
     assert.equal(node.getAttribute('aria-label'), expected,
       'Accessibility label did not switch: ' + lang + ' / ' + node.dataset.i18nAria);
+  }
+  for (const img of imageAltNodes) {
+    assert.equal(img.getAttribute('alt'), translations[lang][img.dataset.i18nAlt],
+      'Featured design image did not translate: ' + lang);
   }
   assert.equal(hero.innerHTML, translations[lang].heroTitle, 'Hero heading: ' + lang);
   assert.equal(contact.innerHTML, translations[lang].contactTitle, 'Contact heading: ' + lang);
