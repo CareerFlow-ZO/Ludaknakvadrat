@@ -1,16 +1,72 @@
-<!doctype html><html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><title>Digitalni jedilnik | LNK BUSINESS</title><style>body{margin:0;background:#091322;color:#f4f7ff;font:16px/1.6 system-ui,-apple-system,sans-serif}.wrap{max-width:750px;padding:30px 18px;margin:auto}.brand{color:#70e0ff;letter-spacing:.15em;font-weight:900;font-size:14px}.head{padding:30px;border-radius:20px;background:linear-gradient(120deg,#183455,#1b1e43);border:1px solid #35516d;margin:20px 0}.item{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #29374e;padding:16px 0}.item h3{margin:0}.muted{color:#aab7cf}.price{color:#91edc4;font-weight:900;white-space:nowrap}.category{color:#8ee0f9;margin-top:36px}a{color:#82dfff}</style></head><body><div class="wrap"><div class="brand">LNK BUSINESS · DIGITALNI JEDILNIK</div><div id="root"><p class="muted">Nalaganje ...</p></div><footer class="muted" style="padding:30px 0;font-size:12px">Digitalni jedilnik poganja <a href="/">LNK BUSINESS</a>. Informacije in cene zagotavlja restavracija.</footer></div><script type="module">
-import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/+esm';
-const db=createClient('https://mwgnwbmssiyugwlsnotz.supabase.co','sb_publishable_HMb1ucc2gUu96nRPJVjb0Q_PqclMV3P');
+<!doctype html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0b1220">
+<title>Digitalni jedilnik | LNK BUSINESS</title>
+<meta name="description" content="Digitalni QR jedilnik: fotografije jedi, opis, cene, alergeni in delovni čas restavracije.">
+<style>
+:root{--bg:#0b1220;--panel:#121e31;--surface:#1a2a41;--edge:#30445f;--white:#f7f9fe;--muted:#b2c1d5;--accent:#7de3ee;--green:#a7ebc9}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(740px 420px at 90% -25%,#223b60,transparent 70%),var(--bg);color:var(--white);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.shell{max-width:1080px;margin:auto;padding:25px 22px 60px}.brand{font-weight:900;font-size:14px;letter-spacing:.15em;color:#8ee3f4}.brand a{color:inherit;text-decoration:none}
+.hero{margin-top:25px;background:linear-gradient(125deg,#1a3250,#19223e);border:1px solid #3a526f;border-radius:26px;padding:38px;overflow-wrap:anywhere;box-shadow:0 24px 60px #0002}
+.eyebrow{font-size:12px;letter-spacing:.17em;color:#96daee;text-transform:uppercase;font-weight:850}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.08;letter-spacing:-.05em;margin:18px 0 10px}.hero p{color:#d1e0f1;max-width:710px;margin:0}.hero-bottom{display:flex;gap:18px;flex-wrap:wrap;margin-top:25px;align-items:stretch}
+.hours{border:1px solid #496680;border-radius:15px;padding:14px 16px;background:#142942;white-space:pre-line;line-height:1.5;min-width:220px;flex:1;font-size:14px}.hours b{display:block;font-size:13px;letter-spacing:.04em;margin-bottom:7px}.hours span{color:#d6e0f0}
+.booking{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;min-height:52px;border-radius:13px;background:linear-gradient(95deg,#8ce8ef,#90a9ff);color:#0c2130;text-decoration:none;font-weight:850;align-self:center}
+.section{margin:45px 0 16px}.section h2{font-size:27px;letter-spacing:-.03em;margin:0 0 4px}.section p{color:var(--muted);font-size:14px;margin:0}
+.menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.dish{background:linear-gradient(155deg,#17263a,#111b2c);border:1px solid #2d435a;border-radius:21px;overflow:hidden;display:flex;flex-direction:column;min-height:225px;box-shadow:0 6px 24px #02091527}
+.photo{width:100%;aspect-ratio:16/9;object-fit:cover;background:#243854;display:block}.photo-missing{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#243c59,#1c2742);font-size:46px}
+.content{padding:19px 20px 21px;display:flex;flex-direction:column;gap:11px;flex:1}.dish-head{display:flex;justify-content:space-between;align-items:baseline;gap:15px}.dish h3{font-size:21px;line-height:1.18;letter-spacing:-.025em;margin:0;overflow-wrap:anywhere}.price{font-weight:900;font-size:20px;white-space:nowrap;color:var(--green)}.desc{font-size:14px;color:#c2d0e1;margin:0;white-space:pre-line;overflow-wrap:anywhere}.allergens{font-size:12px;color:#9ec5e4;border-top:1px solid #2b4258;padding-top:11px;margin-top:auto}.allergens strong{color:#cee1f4}.empty{border:1px dashed #536783;padding:38px;border-radius:16px;color:#becbe1;margin:35px 0;text-align:center}
+.legal{border-top:1px solid #293c52;margin-top:50px;padding-top:22px;color:#a0b1c8;font-size:12px}.legal a{color:#98e5f7}.hint{margin-top:12px;color:#b7c8dc;font-size:13px}
+@media(max-width:680px){.shell{padding:16px 15px 42px}.hero{padding:26px 20px;border-radius:21px}.section{margin-top:30px}.menu-grid{grid-template-columns:1fr}.dish h3{font-size:20px}.price{font-size:19px}.content{padding:17px}.hours{min-width:0;width:100%}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="brand"><a href="/">LNK BUSINESS</a> · DIGITALNI JEDILNIK</div>
+<main id="root" aria-live="polite"><p class="hint">Nalaganje jedilnika ...</p></main>
+<footer class="legal">Jelovnik omogoča LNK BUSINESS. Cene, sestavine, alergene in odpiralni čas posreduje gostinec. Podatke pred naročilom preverite pri osebju. <a href="/">LNK BUSINESS</a></footer>
+</div>
+<script type="module">
+import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/+esm';
+const db=createClient('https://mwgnwbmssiyugwlsnotz.supabase.co','sb_publishable_HMb1ucc2gUu96nRPJVjb0Q_PqclMV3P',{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
+const root=document.getElementById('root');
+const slug=new URLSearchParams(location.search).get('slug')||'';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const eur=n=>new Intl.NumberFormat('sl-SI',{style:'currency',currency:'EUR'}).format(n);
-const slug=new URLSearchParams(location.search).get('slug');
-const root=document.getElementById('root');
-async function run(){if(!slug||!/^[a-z0-9][a-z0-9-]{4,45}$/.test(slug)){root.textContent='Jedilnik ni najden.';return}
-const{data:pages,error:e1}=await db.from('lb_public_pages').select('owner_id,business_name,description,bookings_enabled').eq('slug',slug).eq('published',true).limit(1);
-if(e1||!pages?.length){root.textContent='Jedilnik ni najden ali ni javno objavljen.';return}
-const p=pages[0];document.title=p.business_name+' | Jedilnik';const{data:items,error:e2}=await db.from('lb_menu_items').select('title,category,description,price,position').eq('owner_id',p.owner_id).eq('published',true).order('position');
-if(e2){root.textContent='Jedilnika trenutno ni mogoče naložiti.';return}
-const groups={};for(const x of items||[]){const category=x.category||'Ostalo';(groups[category]??=[]).push(x)}
-root.innerHTML='<div class="head"><h1>'+esc(p.business_name)+'</h1><p>'+esc(p.description)+'</p>'+(p.bookings_enabled?'<p style="margin-top:20px"><a style="display:inline-block;background:#7ee4fa;color:#091727;border-radius:10px;padding:10px 15px;font-weight:800;text-decoration:none" href="/rezervacija.html?slug='+encodeURIComponent(slug)+'">Povprašaj za rezervacijo →</a></p>':'')+'</div>'+ (items?.length?Object.entries(groups).map(([c,entries])=>'<h2 class="category">'+esc(c)+'</h2>'+entries.map(x=>'<div class="item"><div><h3>'+esc(x.title)+'</h3><div class="muted">'+esc(x.description)+'</div></div><div class="price">'+eur(x.price)+'</div></div>').join('')).join(''):'<p class="muted">Ta restavracija še ni dodala jedi.</p>')}
-run().catch(()=>{root.textContent='Napaka pri nalaganju.'});
-</script></body></html>
+const label={
+ gluten:'Žita z glutenom',crustaceans:'Raki',eggs:'Jajca',fish:'Ribe',peanuts:'Arašidi',
+ soy:'Soja',milk:'Mleko',nuts:'Oreški',celery:'Zelena',mustard:'Gorčica',
+ sesame:'Sezam',sulphites:'Sulfiti',lupin:'Volčji bob',molluscs:'Mehkužci'
+};
+function safePhoto(raw){
+ if(typeof raw!=='string'||!raw||raw.length>900)return '';
+ try{const u=new URL(raw);return u.protocol==='https:'&&u.hostname&&!u.username&&!u.password&&!/[\s<>"']/.test(raw)?raw:''}catch{return ''}
+}
+function dishCard(x){
+ const image=safePhoto(x.photo_url);
+ const picture=image?'<img class="photo" src="'+esc(image)+'" alt="'+esc(x.title)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'" />':'<div class="photo-missing" aria-hidden="true">🍽️</div>';
+ const allergens=(Array.isArray(x.allergens)?x.allergens:[]).map(k=>label[k]).filter(Boolean);
+ const allergenText=allergens.length?'Alergeni: '+allergens.join(', '):'Alergeni niso navedeni – vprašajte osebje.';
+ return '<article class="dish">'+picture+'<div class="content"><div class="dish-head"><h3>'+esc(x.title)+'</h3><span class="price">'+eur(x.price)+'</span></div>'+(x.description?'<p class="desc">'+esc(x.description)+'</p>':'')+'<div class="allergens">'+esc(allergenText)+'</div></div></article>';
+}
+async function load(){
+ if(!/^[a-z0-9][a-z0-9-]{4,45}$/.test(slug)){root.textContent='Jedilnik ni najden.';return}
+ const {data:pages,error}=await db.from('lb_public_pages').select('owner_id,business_name,description,opening_hours,bookings_enabled').eq('slug',slug).eq('published',true).limit(1);
+ if(error||!pages?.length){root.textContent='Jedilnik ni najden ali ni javno objavljen.';return}
+ const page=pages[0];document.title=page.business_name+' | Digitalni jedilnik';
+ const {data:items,error:itemError}=await db.from('lb_menu_items').select('title,category,description,price,position,photo_url,allergens').eq('owner_id',page.owner_id).eq('published',true).order('position');
+ if(itemError){root.textContent='Trenutno ni mogoče prikazati jedilnika.';return}
+ const bookingLink=page.bookings_enabled?'<a class="booking" href="/rezervacija.html?slug='+encodeURIComponent(slug)+'">Povpraševanje za rezervacijo →</a>':'';
+ const hours=page.opening_hours?'<div class="hours"><b>DELOVNI ČAS</b><span>'+esc(page.opening_hours)+'</span></div>':'';
+ const heading='<header class="hero"><div class="eyebrow">Dobrodošli · Digitalni meni</div><h1>'+esc(page.business_name)+'</h1>'+(page.description?'<p>'+esc(page.description)+'</p>':'')+(hours||bookingLink?'<div class="hero-bottom">'+hours+bookingLink+'</div>':'')+'</header>';
+ const groups=new Map();for(const item of items||[]){const name=item.category||'Ostalo';if(!groups.has(name))groups.set(name,[]);groups.get(name).push(item)}
+ const list=groups.size?[...groups.entries()].map(([category,products])=>'<section aria-label="'+esc(category)+'"><div class="section"><h2>'+esc(category)+'</h2><p>'+products.length+' '+(products.length===1?'postavka':'postavk')+'</p></div><div class="menu-grid">'+products.map(dishCard).join('')+'</div></section>').join(''):'<div class="empty">Jelovnik še nima objavljenih jedi.</div>';
+ root.innerHTML=heading+list+'<p class="hint">Informacije o alergenih preverite pri osebju. Objavljene cene se lahko spremenijo.</p>';
+}
+load().catch(()=>{root.textContent='Pri nalaganju jedilnika je prišlo do napake.'});
+</script>
+</body></html>
