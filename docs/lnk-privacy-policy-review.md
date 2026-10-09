@@ -5,10 +5,10 @@
 
 ## 1. Upravljavec podatkov — podatki, ki jih je posredoval lastnik
 
-- Ime dejavnosti: **LNK DIGITAL, Zemir Osmic s.p.** — natančen naziv v registru **ŠE NI NEODVISNO PREVERJEN**.
+- Ime/pravna oblika: trenutno po izjavi lastnika **LNK DIGITAL, Zemir Osmic s.p.**; **uradni naziv je v postopku spremembe in čaka na posodobitev AJPES**. Končno ime pravnega subjekta je treba preveriti v aktualnem izpisu, preden se objavi.
 - Sedež, kot ga je navedel lastnik: **Cesta Franceta Prešerna 3D, 4270 Jesenice, Slovenija**.
 - Matična številka, kot jo je navedel lastnik: **9834117000**.
-- Davčna oznaka, kot jo je navedel lastnik: **SI12155314**. Status identifikacije za DDV **ni potrjen**.
+- Popravljena davčna številka, posredovana 9. 10. 2026: **23838060** (brez samodejnega dodajanja predpone SI). **Davčna številka ter pripadnost pravnemu subjektu se po izjavi lastnika še urejata; končno povezavo z LNK DIGITAL potrditi v AJPES/FURS.** Status DDV **ni potrjen**. Prejšnja oznaka ne velja kot potrjen podatek.
 - Kontakt na obstoječi spletni strani: **contact@ludaknakvadrat.com**; telefon **+386 31 244 612**. Lastnik je zahteval, naj se obstoječi kontakt ne spreminja.
 - Imenovanje pooblaščene osebe za varstvo podatkov (DPO): **ugotoviti, ali je potrebno**; brez predpostavk.
 
@@ -61,8 +61,8 @@ V končni objavi opisati dostop, popravek, izbris, omejitev, ugovor, prenosljivo
 
 ## 8. Lastnik mora pred objavo potrditi
 
-1. Polno registrirano ime iz AJPES, ali je `Osmic` ali `Osmić`, morebitno daljše ime dejavnosti, naslov in številke.
-2. Ali je `SI12155314` veljaven **ID za DDV**, oziroma je davčna številka `12155314` brez DDV registracije.
+1. Končno registrirano ime v AJPES po spremembi, pravni subjekt, ki bo upravljavec podatkov LNK DIGITAL, morebitni zapis `Osmic` / `Osmić`, naslov in matična številka.
+2. Ali je posredovana davčna številka `23838060` po spremembi uradno dodeljena **pravnemu subjektu LNK DIGITAL** in ali je subjekt identificiran za DDV. Ne povezovati podatkov druge družbe (vključno z očetovo) z LNK DIGITAL brez uradnega izpisa.
 3. Katero storitev uporablja za poslovno e-pošto, za koliko časa hrani kontaktna sporočila in WhatsApp pogovore.
 4. Ali spletna stran ali sistemi aktivno uporabljajo piškotke, analitiko, obrazce ali marketing.
 5. Ali za nove stranke obstajajo računi/pogodbe, katere plačilne storitve se uporabljajo in ali so podatki obdelani v tujini.
