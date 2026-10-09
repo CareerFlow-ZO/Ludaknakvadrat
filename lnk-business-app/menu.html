@@ -38,6 +38,7 @@ const root=document.getElementById('root');
 const slug=new URLSearchParams(location.search).get('slug')||'';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const eur=n=>new Intl.NumberFormat('sl-SI',{style:'currency',currency:'EUR'}).format(n);
+const tr=s=>window.LNK_I18N?.text?.(s)||s;
 const label={
  gluten:'Žita z glutenom',crustaceans:'Raki',eggs:'Jajca',fish:'Ribe',peanuts:'Arašidi',
  soy:'Soja',milk:'Mleko',nuts:'Oreški',celery:'Zelena',mustard:'Gorčica',
@@ -51,8 +52,8 @@ function dishCard(x){
  const image=safePhoto(x.photo_url);
  const fallback='<div class="photo-missing" aria-hidden="true">🍽️</div>';
  const picture=image?'<div class="photo-frame">'+fallback+'<img class="photo" src="'+esc(image)+'" alt="'+esc(x.title)+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display=\'none\'" /></div>':fallback;
- const allergens=(Array.isArray(x.allergens)?x.allergens:[]).map(k=>label[k]).filter(Boolean);
- const allergenText=allergens.length?'Alergeni: '+allergens.join(', '):'Alergeni niso navedeni – vprašajte osebje.';
+ const allergens=(Array.isArray(x.allergens)?x.allergens:[]).map(k=>label[k]).filter(Boolean).map(tr);
+ const allergenText=allergens.length?tr('Alergeni:')+' '+allergens.join(', '):tr('Alergeni niso navedeni – vprašajte osebje.');
  return '<article class="dish">'+picture+'<div class="content"><div class="dish-head"><h3>'+esc(x.title)+'</h3><span class="price">'+eur(x.price)+'</span></div>'+(x.description?'<p class="desc">'+esc(x.description)+'</p>':'')+'<div class="allergens">'+esc(allergenText)+'</div></div></article>';
 }
 async function load(){
@@ -66,7 +67,7 @@ async function load(){
  const hours=page.opening_hours?'<div class="hours"><b>DELOVNI ČAS</b><span>'+esc(page.opening_hours)+'</span></div>':'';
  const heading='<header class="hero"><div class="eyebrow">Dobrodošli · Digitalni meni</div><h1>'+esc(page.business_name)+'</h1>'+(page.description?'<p>'+esc(page.description)+'</p>':'')+(hours||bookingLink?'<div class="hero-bottom">'+hours+bookingLink+'</div>':'')+'</header>';
  const groups=new Map();for(const item of items||[]){const name=item.category||'Ostalo';if(!groups.has(name))groups.set(name,[]);groups.get(name).push(item)}
- const list=groups.size?[...groups.entries()].map(([category,products])=>'<section aria-label="'+esc(category)+'"><div class="section"><h2>'+esc(category)+'</h2><p>'+products.length+' '+(products.length===1?'postavka':'postavk')+'</p></div><div class="menu-grid">'+products.map(dishCard).join('')+'</div></section>').join(''):'<div class="empty">Jelovnik še nima objavljenih jedi.</div>';
+ const list=groups.size?[...groups.entries()].map(([category,products])=>'<section aria-label="'+esc(category)+'"><div class="section"><h2>'+esc(tr(category))+'</h2><p>'+products.length+' '+(products.length===1?'postavka':'postavk')+'</p></div><div class="menu-grid">'+products.map(dishCard).join('')+'</div></section>').join(''):'<div class="empty">Jelovnik še nima objavljenih jedi.</div>';
  root.innerHTML=heading+list+'<p class="hint">Informacije o alergenih preverite pri osebju. Objavljene cene se lahko spremenijo.</p>';
 }
 load().catch(()=>{root.textContent='Pri nalaganju jedilnika je prišlo do napake.'});
