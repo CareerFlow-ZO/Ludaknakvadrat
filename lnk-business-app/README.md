@@ -31,3 +31,14 @@ Current Vercel project was deployed by standalone file-upload API, not linked to
 - One request per shop/phone/day index provides limited repeat-submission protection; it is NOT sufficient against determined spam. Keep public booking disabled for commercial launch pending captcha/rate limiting, GDPR notices, and real end-to-end user testing.
 - Any personal data submitted belongs to the restaurant controller. A valid specific privacy statement, retention process, and processing contract need to be established before live bookings.
 - Existing data and pre-existing site projects were not altered.
+
+
+## QR menu upgrade — photos, allergen markers, hours (2026-10-09)
+- Additive migration: `lnk_business_qr_menu_photos_allergens_hours_20261009`. Touches only `lb_menu_items` and `lb_public_pages`, preserving existing records and original shared-project applications.
+- `lb_menu_items.photo_url`: optional HTTPS food-photo link (not a file upload), max 900 characters. Client sanitizes URL; invalid or broken image uses a neutral fallback. Each product controls its own photo.
+- `lb_menu_items.allergens`: array of stable identifiers matching the 14 groups in EU Annex II. Labels are in Slovenian. A blank array means **not provided**, never "contains no allergens". The restaurant remains responsible for verifying ingredients, cross-contact and correct disclosure before commercial use.
+- `lb_public_pages.opening_hours`: optional max 500 characters of owner-written hours. The menu does not assert "open now" or live availability.
+- `index.html`: new item fields, edit restoration, validations and menu dashboard image thumbnails. `menu.html`: responsive dish cards with independent photos, prices, allergen information, hours and an explicit fallback when image links fail.
+- All client-side JS parsed successfully. SQL schema fields and RLS-backed anon public menu visibility were checked. Full real-device saving and remote image URL behavior still require an owner test.
+- Note about external image hosting: external hosts receive visitors' image requests. Use images you own/are licensed to use; review hosting, privacy and any processor agreements before sales.
+- Deployment is restricted by the Vercel API daily quota if it remains exhausted. Committing to this isolated branch does not automatically release to the Vercel project. Verify production READY and aliases before claiming public availability.
