@@ -29,10 +29,10 @@ async function refresh(){
  links=profile?await select('lb_accountant_access','accountant_id',user.id):[];
  $('assigned').innerHTML=links.length?links.map(a=>'<div class="entry"><b>'+esc(a.company_label||'Povezano podjetje')+'</b><span class="small">Samo branje</span></div>').join(''):'<p class="small">Ni povezanih firm.</p>';
  if(links.length){
- const ids=links.map(l=>l.owner_id),r=await db.from('lb_invoice_drafts').select('id,owner_id,draft_reference,seller_name,buyer_name,items,vat_rate,draft_date,status').in('owner_id',ids).order('draft_date',{ascending:false});
+ const ids=links.map(l=>l.owner_id),r=await db.from('lb_invoice_drafts').select('id,owner_id,draft_reference,seller_name,buyer_name,items,vat_rate,draft_date,status,payment_status').in('owner_id',ids).order('draft_date',{ascending:false});
  if(r.error)throw r.error;drafts=r.data||[];
  }else drafts=[];
- $('shared').innerHTML=drafts.length?drafts.map(x=>{let sum=Math.round((x.items||[]).reduce((n,i)=>n+Number(i.qty)*Number(i.price),0)*100)/100;let total=Math.round(sum*(1+Number(x.vat_rate)/100)*100)/100;return '<div class="entry"><div><b>'+esc(x.draft_reference)+'</b><div class="small">'+esc(x.seller_name)+' → '+esc(x.buyer_name)+' · '+eur(total)+' · OSNUTEK</div></div><button class="button alt small" data-export="'+x.id+'">JSON</button></div>'}).join(''):'<p class="small">Ni dostopnih osnutkov.</p>';
+ $('shared').innerHTML=drafts.length?drafts.map(x=>{let sum=Math.round((x.items||[]).reduce((n,i)=>n+Number(i.qty)*Number(i.price),0)*100)/100;let total=Math.round(sum*(1+Number(x.vat_rate)/100)*100)/100;return '<div class="entry"><div><b>'+esc(x.draft_reference)+'</b><div class="small">'+esc(x.seller_name)+' → '+esc(x.buyer_name)+' · '+eur(total)+' · OSNUTEK · '+(x.payment_status==='paid'?'Ročno: plačano':'Ni plačano')+'</div></div><button class="button alt small" data-export="'+x.id+'">JSON</button></div>'}).join(''):'<p class="small">Ni dostopnih osnutkov.</p>';
 }
 function status(id,msg,error=false){const el=$(id);el.className=error?'error':'small';el.textContent=msg}
 $('auth-form').onsubmit=async e=>{e.preventDefault();const f=e.currentTarget;const r=await db.auth.signInWithPassword({email:f.elements.email.value.trim(),password:f.elements.password.value});if(r.error)return status('auth-message',r.error.message,true);await start(r.data.user)};
