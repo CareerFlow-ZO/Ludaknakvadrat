@@ -75,7 +75,7 @@ const legacySitemap = text('lnk-sitemap.xml');
 if (legacyRobots !== robots) fail('lnk-robots.txt', 'Legacy robots file differs from the canonical robots file');
 if (legacySitemap !== sitemap) fail('lnk-sitemap.xml', 'Legacy sitemap differs from the canonical sitemap');
 const legacyLanding = text('lnk-digital-home.html');
-if (/https:\/\/lnkdigital\\.com\//.test(legacyLanding)) fail('lnk-digital-home.html', 'Outdated non-www absolute SEO URL');
+if (/https:\/\/lnkdigital\.com\//.test(legacyLanding)) fail('lnk-digital-home.html', 'Outdated non-www absolute SEO URL');
 for (const redirect of vercel.redirects || []) {
   if (typeof redirect.destination === 'string' && redirect.destination.startsWith('https://lnkdigital.com/')) {
     fail('vercel.json', 'Legacy redirect introduces a second canonical redirect hop: ' + redirect.source);
