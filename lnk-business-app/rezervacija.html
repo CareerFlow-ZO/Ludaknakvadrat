@@ -1,0 +1,69 @@
+<!doctype html><html lang="sl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>Povpraševanje za rezervacijo | LNK BUSINESS</title>
+<meta name="description" content="Pošljite povpraševanje za rezervacijo mize. Rezervacija je potrjena šele, ko vam to sporoči gostinski lokal.">
+<style>
+:root{--bg:#090f1c;--panel:#131f31;--line:#2e4760;--text:#f3f8ff;--muted:#aabbd1;--aqua:#75ddf6}
+*{box-sizing:border-box}body{background:radial-gradient(700px 430px at 0 0,#15304d,transparent 65%),var(--bg);color:var(--text);font:16px/1.55 system-ui,Arial,sans-serif;margin:0}a{color:var(--aqua)}.wrap{max-width:640px;margin:auto;padding:20px 18px 54px}.brand{font-size:12px;letter-spacing:.2em;font-weight:900;color:var(--aqua);margin-bottom:24px}.card{background:var(--panel);padding:25px;border-radius:21px;border:1px solid var(--line)}h1{font-size:clamp(27px,5vw,38px);line-height:1.2;margin:0 0 10px}h2{font-size:21px}.muted{color:var(--muted)}label{font-size:13px;font-weight:700;display:block;margin:16px 0 6px}input,textarea{font:inherit;background:#0c1725;color:#fff;border-radius:10px;border:1px solid #456077;width:100%;padding:11px}textarea{min-height:78px}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:12px}.submit{background:linear-gradient(90deg,#65d9f7,#8994ff);border:0;border-radius:12px;padding:12px 18px;color:#061222;font-weight:900;font-size:15px;cursor:pointer;width:100%;margin-top:20px}.submit:disabled{opacity:.55;cursor:not-allowed}.notice{padding:12px 15px;border:1px solid #436582;background:#1b3245;border-radius:12px;margin:17px 0}.error{background:#422430;border-color:#8e5158;color:#ffe0e4}.success{background:#16412e;border-color:#3b8067;color:#ddfff3}.check{display:flex;gap:10px;align-items:flex-start;margin-top:16px}.check input{width:20px;height:20px;flex:none;margin-top:3px}.check label{margin:0;font-size:14px}.hidden{display:none!important}.honeypot{position:absolute;left:-9999px;top:-9999px}.foot{color:#8d9fb7;font-size:12px;margin-top:24px}
+@media(max-width:510px){.twocol{grid-template-columns:1fr}.card{padding:18px}}
+</style></head><body><div class="wrap"><div class="brand">LNK BUSINESS · REZERVACIJE</div>
+<section id="loading" class="card"><h1>Nalaganje ...</h1></section>
+<section id="page" class="card hidden">
+ <a id="back" href="/menu.html">← Nazaj na jedilnik</a>
+ <h1 id="restaurant" style="margin-top:22px"></h1><p class="muted">Pošljite povpraševanje za rezervacijo. Lokal vas mora posebej obvestiti, ali je rezervacija potrjena.</p>
+ <div class="notice"><b>Pomembno:</b> oddaja obrazca ne pomeni potrjene rezervacije. Ne pošiljajte občutljivih osebnih podatkov.</div>
+ <form id="reservation">
+   <label for="guest">Ime in priimek *</label><input id="guest" name="full_name" required minlength="2" maxlength="120" autocomplete="name">
+   <div class="twocol"><div><label for="phone">Telefon *</label><input id="phone" name="phone" required minlength="6" maxlength="40" autocomplete="tel" inputmode="tel"></div>
+   <div><label for="email">E-pošta (neobvezno)</label><input id="email" name="email" type="email" maxlength="180" autocomplete="email"></div></div>
+   <div class="twocol"><div><label for="requested">Datum in ura *</label><input id="requested" name="requested_at" type="datetime-local" required></div>
+   <div><label for="guests">Število oseb *</label><input id="guests" name="party_size" type="number" min="1" max="20" value="2" required></div></div>
+   <label for="note">Opomba (neobvezno)</label><textarea id="note" name="note" maxlength="500" placeholder="Npr. otroški stolček"></textarea>
+   <div class="honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+   <div class="check"><input id="privacy" type="checkbox" required><label for="privacy">Prebral/-a sem <a id="policy" target="_blank" rel="noopener noreferrer">obvestilo lokala o zasebnosti</a> in razumem obdelavo podatkov za odgovor na povpraševanje. *</label></div>
+   <button class="submit" id="send" type="submit">Pošlji povpraševanje</button>
+   <p id="result" role="status" aria-live="polite"></p>
+ </form>
+</section>
+<section id="success" class="card hidden"><h1>Hvala za povpraševanje!</h1><p>Vaš zahtevek je bil poslan. <b>Rezervacija še ni potrjena.</b> Lokal vas mora kontaktirati glede potrditve.</p><a id="success-back" href="/">Nazaj na jedilnik</a></section>
+<section id="fail" class="card hidden"><h1>Rezervacije niso na voljo</h1><p class="muted" id="fail-reason">Javni obrazec za rezervacije trenutno ni na voljo.</p><a id="fail-back" href="/">Nazaj na jedilnik</a></section>
+<p class="foot">Storitev poganja LNK BUSINESS. Za vsebino in odzive je odgovoren gostinski lokal. Podatki se posredujejo ponudniku rezervacije, ne uporabljajte tega obrazca za nujne informacije.</p>
+</div><script type="module">
+import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/+esm';
+const db=createClient('https://mwgnwbmssiyugwlsnotz.supabase.co','sb_publishable_HMb1ucc2gUu96nRPJVjb0Q_PqclMV3P',{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
+const $=id=>document.getElementById(id);
+const slug=new URLSearchParams(location.search).get('slug')||'';
+const menu='/menu.html?slug='+encodeURIComponent(slug);
+for(const id of ['back','success-back','fail-back'])$(id).href=menu;
+let page=null;
+async function init(){
+ if(!/^[a-z0-9][a-z0-9-]{4,45}$/.test(slug))throw new Error('Neveljavna povezava.');
+ const {data,error}=await db.from('lb_public_pages').select('owner_id,business_name,bookings_enabled,booking_privacy_url').eq('slug',slug).eq('published',true).limit(1);
+ if(error||!data?.length||!data[0].bookings_enabled)throw Error('Ta lokal ne sprejema spletnih povpraševanj.');
+ page=data[0];
+ if(!/^https:\/\/[^\\s]+$/.test(page.booking_privacy_url||''))throw Error('Manjka obvestilo o zasebnosti lokala.');
+ $('restaurant').textContent=page.business_name;
+ $('policy').href=page.booking_privacy_url;
+ document.title='Rezervacije – '+page.business_name;
+ const now=new Date(Date.now()+45*60000);now.setMinutes(now.getMinutes()-now.getTimezoneOffset());
+ $('requested').min=now.toISOString().slice(0,16);
+ $('loading').classList.add('hidden');$('page').classList.remove('hidden');
+}
+$('reservation').addEventListener('submit',async event=>{
+ event.preventDefault();if(!page)return;
+ if($('website').value.trim()){ $('page').classList.add('hidden');$('success').classList.remove('hidden');return;}
+ const btn=$('send');btn.disabled=true;
+ const form=new FormData(event.target);const selected=new Date(String(form.get('requested_at')||''));
+ const party=Number(form.get('party_size'));
+ const message=$('result');message.className='muted';message.textContent='';
+ if(!Number.isFinite(selected.valueOf())||selected.getTime()<Date.now()+30*60000||selected.getTime()>Date.now()+90*86400000||!Number.isInteger(party)||party<1||party>20){
+   message.className='notice error';message.textContent='Preverite datum in število oseb (do 20).';btn.disabled=false;return;
+ }
+ const payload={owner_id:page.owner_id,full_name:String(form.get('full_name')||'').trim(),phone:String(form.get('phone')||'').trim(),email:String(form.get('email')||'').trim(),requested_at:selected.toISOString(),party_size:party,note:String(form.get('note')||'').trim(),privacy_acknowledged:$('privacy').checked};
+ const {error}=await db.from('lb_booking_requests').insert(payload);
+ if(error){message.className='notice error';message.textContent=error.code==='23505'?'Za to telefonsko številko je bilo danes že oddano povpraševanje. Pokličite lokal.':'Povpraševanja ni bilo mogoče oddati. Poskusite pozneje ali pokličite lokal.';btn.disabled=false;return}
+ $('page').classList.add('hidden');$('success').classList.remove('hidden');
+});
+init().catch(err=>{$('loading').classList.add('hidden');$('fail-reason').textContent=err.message||'Javni obrazec ni na voljo.';$('fail').classList.remove('hidden')});
+</script></body></html>
