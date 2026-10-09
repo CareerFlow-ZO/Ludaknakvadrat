@@ -17,7 +17,10 @@ for(const url of pages){
  assert.equal((html.match(/<details class="lnk-global-languages">/g)||[]).length,1,'Language menu missing or duplicated on '+file);
  for(const lang of langs)
    assert(html.includes('<a href="/?lang='+lang+'" lang="'+lang+'">'),'Missing localized homepage link for '+lang+' on '+file);
- assert.equal((html.match(/href="\/\?lang=/g)||[]).length,langs.length,'Unexpected locale links on '+file);
+ const localeMenu=html.match(/<details class="lnk-global-languages">[\s\S]*?<\/details>/);
+ assert(localeMenu,'Missing localization menu boundaries on '+file);
+ assert.equal((localeMenu[0].match(/href="\/\?lang=/g)||[]).length,langs.length,'Unexpected links inside language menu on '+file);
+ // Marketing links may carry a validated ?lang= parameter without being part of the language menu.
  assert(html.includes('class="lnk-locale-note"'),'Missing clear homepage-only note on '+file);
  assert(html.includes('class="site-header"')&&html.includes('id="menuBtn"'),'Original menu changed on '+file);
  assert(html.includes('<link rel="canonical" href="'+url+'">'),'Canonical changed on '+file);
