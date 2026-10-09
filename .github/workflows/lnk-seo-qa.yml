@@ -52,3 +52,5 @@ jobs:
           persist-credentials: false
       - name: Crawl all public LNK pages for SEO and indexability
         run: node scripts/live-seo-crawl.mjs
+      - name: Test production images, language runtime, domains and Euro Gurman
+        run: node scripts/live-production-smoke.mjs
