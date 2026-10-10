@@ -1,0 +1,79 @@
+<!doctype html><html lang="sl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive"><meta name="theme-color" content="#091525">
+<title>Statistika obiskov | LNK BUSINESS</title>
+<style>:root{color-scheme:dark;--bg:#091320;--panel:#15263d;--line:#36516b;--muted:#adc1d8;--bright:#77dcf3}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(800px 550px at 10% -9%,#1c4066,transparent),var(--bg);color:#f3f8ff;font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:1180px;margin:auto;padding:22px 18px 65px}a{color:var(--bright)}header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{font-weight:900;font-size:22px;letter-spacing:.03em}.brand b{color:var(--bright)}.tag{display:inline-block;border-radius:25px;padding:5px 12px;border:1px solid #51748e;color:#c1efff;font-size:12px}
+h1{font-size:clamp(32px,5vw,54px);letter-spacing:-.05em;line-height:1.15;margin:40px 0 8px}h2{font-size:21px;margin:0 0 14px}.muted,.hint{color:var(--muted)}.hint{font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:25px 0}
+.panel{background:linear-gradient(150deg,#1a304a,#101e30);border:1px solid var(--line);border-radius:18px;padding:20px;min-width:0}
+.number{font-size:clamp(28px,3.3vw,43px);font-weight:880;font-variant-numeric:tabular-nums;letter-spacing:-.03em;margin:8px 0;color:#f9fcff}
+.overline{font-size:13px;color:#c9daea}.controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:24px 0}.btn,select{font:inherit;border-radius:10px;padding:10px 14px;border:1px solid #6384a1;color:#f0faff;background:#1d3551}.btn{cursor:pointer}.btn:disabled{opacity:.6;cursor:wait}.btn.primary{background:linear-gradient(120deg,#78dff4,#8eaffb);color:#081928;border:0;font-weight:800}
+.two{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}.bars{display:flex;align-items:end;gap:5px;height:220px;overflow-x:auto;padding:14px 6px 12px;border-bottom:1px solid #57708a}
+.bar-holder{min-width:14px;flex:1;max-width:48px;display:flex;align-items:end;height:100%;position:relative}
+.bar{width:100%;background:linear-gradient(#81e9f7,#488ce1);min-height:2px;border-radius:5px 5px 1px 1px}
+.axis{display:flex;justify-content:space-between;color:#adc4d8;font-size:12px;padding-top:10px}.paths{display:grid;gap:10px}
+.path-row{display:flex;gap:14px;align-items:center;justify-content:space-between;border-bottom:1px solid #304b64;padding:7px 0}.path-title{overflow-wrap:anywhere;font-size:14px}.path-count{font-weight:800;font-variant-numeric:tabular-nums}
+#message{margin:18px 0;background:#23374e;border:1px solid #5f809d;border-radius:12px;padding:15px;overflow-wrap:anywhere}
+footer{border-top:1px solid #354d69;padding:18px 0;margin-top:28px;color:var(--muted);font-size:13px}
+@media(max-width:850px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}main{padding:18px 13px 45px}.panel{padding:16px}}@media(max-width:380px){.stats{grid-template-columns:1fr 1fr;gap:8px}.number{font-size:27px}}
+</style></head><body><main>
+<header><div class="brand">LNK <b>BUSINESS</b></div><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><span class="tag">PRIVATE · ZEMIR</span><a href="/">← Nazaj na aplikacijo</a></div></header>
+<h1>Statistika obiskov</h1><p class="muted">Zasebni pregled prometa na LNK BUSINESS. Podatki se beležijo od vklopa merjenja, ne za nazaj.</p>
+<div id="message" role="status" aria-live="polite">Preverjam dostop do statistike ...</div>
+<section id="dashboard" hidden>
+ <div class="controls"><label for="period">Obdobje:</label><select id="period"><option value="7">7 dni</option><option value="30" selected>30 dni</option><option value="90">90 dni</option></select><button class="btn primary" id="refresh" type="button">Osveži statistiko</button><span id="updated" class="hint"></span></div>
+ <div class="stats">
+  <section class="panel"><div class="overline">Današnje seje</div><div id="todaySessions" class="number">—</div><div class="hint">Različne seje danes</div></section>
+  <section class="panel"><div class="overline">Ogledi danes</div><div id="todayPageviews" class="number">—</div><div class="hint">Različne strani v seji</div></section>
+  <section class="panel"><div class="overline">Seje zadnjih 7 dni</div><div id="weekSessions" class="number">—</div><div class="hint">Edinstvene seje, ne osebe</div></section>
+  <section class="panel"><div id="periodTitle" class="overline">Seje zadnjih 30 dni</div><div id="periodSessions" class="number">—</div><div class="hint"><span id="periodPageviews">—</span> ogledov v obdobju</div></section>
+ </div>
+ <div class="two">
+  <section class="panel"><h2>Obiski po dnevih</h2><div id="chart" class="bars" role="img" aria-label="Graf sej po dnevih"></div><div class="axis"><span id="fromDay">—</span><span id="toDay">—</span></div><p class="hint">Višina stolpca prikazuje število ločenih sej tisti dan. Datumi in številke so v naslovu stolpca.</p></section>
+  <section class="panel"><h2>Najbolj obiskane strani</h2><div id="routes" class="paths"></div></section>
+ </div>
+ <p class="hint" style="margin-top:24px">Podatki so približni: šteje se ena zabeležena stran na sejo na UTC dan. Osvežitev iste strani ne poveča števca; novo okno/zavihek lahko šteje kot nova seja. Brskalniki z blokiranjem merjenja niso vključeni. Brez piškotkov in brez shranjevanja IP naslovov ali imen obiskovalcev. Upoštevane so samo produkcijske domene.</p>
+</section>
+<footer>LNK BUSINESS · Powered by <a href="https://www.lnkdigital.com/">LNK DIGITAL</a> · Zasebna statistika projekta Zemir Osmić</footer>
+</main>
+<script type="module">
+import {createClient} from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/+esm";
+const db=createClient("https://mwgnwbmssiyugwlsnotz.supabase.co","sb_publishable_HMb1ucc2gUu96nRPJVjb0Q_PqclMV3P",{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const ADMIN_ID="35766495-bd37-463b-baf1-e83a2775317e";
+const $=id=>document.getElementById(id), fmt=n=>Number(n||0).toLocaleString("sl-SI"), names={"/":"Domov","/paketi.html":"Paketi","/gastro-demo.html":"Gastro demo","/brezplacna-ponudba.html":"Brezplačna ponudba","/pomoc.html":"Pomoč","/status.html":"Status pilota","/rezervacija.html":"Rezervacije","/menu.html":"QR meni","/racuni.html":"Nacrti računov","/racunovodstvo.html":"Računovodstvo","/racun-podrobnosti.html":"Račun — podrobnosti","/placanje.html":"Stripe test"};
+let access=false;
+function setText(id,v){$(id).textContent=String(v)}
+function mark(text,show=true){$("message").textContent=text;$("message").hidden=!show}
+function paint(report){
+ setText("todaySessions",fmt(report.today_sessions));setText("todayPageviews",fmt(report.today_pageviews));setText("weekSessions",fmt(report.week_sessions));
+ setText("periodSessions",fmt(report.period_sessions));setText("periodPageviews",fmt(report.period_pageviews));setText("periodTitle","Seje zadnjih "+report.period_days+" dni");
+ const days=report.daily||[],max=Math.max(1,...days.map(d=>Number(d.sessions)||0));
+ const chart=$("chart");chart.replaceChildren();
+ for(const d of days){const holder=document.createElement("div");holder.className="bar-holder";const bar=document.createElement("div");bar.className="bar";bar.style.height=Math.max(1,100*(Number(d.sessions)||0)/max)+"%";holder.title=d.day+": "+fmt(d.sessions)+" sej, "+fmt(d.pageviews)+" ogledov";holder.append(bar);chart.append(holder)}
+ chart.setAttribute("aria-label","Dnevne seje: "+days.map(d=>d.day+" "+fmt(d.sessions)).join("; "));
+ setText("fromDay",days[0]?.day||"—");setText("toDay",days[days.length-1]?.day||"—");
+ const parent=$("routes");parent.replaceChildren();const routes=report.routes||[];
+ if(!routes.length){const none=document.createElement("p");none.className="hint";none.textContent="Še ni zabeleženih obiskov. Statistika se bo začela polniti po objavi merjenja.";parent.append(none)}
+ for(const d of routes){const row=document.createElement("div");row.className="path-row";const name=document.createElement("span");name.className="path-title";name.textContent=names[d.route]||d.route;const count=document.createElement("span");count.className="path-count";count.textContent=fmt(d.views);count.title="Ogledi strani";row.append(name,count);parent.append(row)}
+ setText("updated","Osveženo: "+new Date().toLocaleTimeString("sl-SI",{hour:"2-digit",minute:"2-digit"}));
+}
+async function refresh(){
+ if(!access)return;
+ $("refresh").disabled=true;mark("Nalagam podatke ...");
+ try{const days=Number($("period").value);const {data,error}=await db.rpc("lb_traffic_summary",{p_days:days});if(error)throw error;if(!data||typeof data!=="object")throw Error("Ni veljavnega odgovora");
+ paint(data);mark("",false)}catch(e){mark("Statistike ni mogoče naložiti: "+String(e.message||e))}
+ finally{$("refresh").disabled=false}
+}
+$("period").addEventListener("change",refresh);$("refresh").addEventListener("click",refresh);
+(async()=>{
+ try{
+ const {data:{user},error}=await db.auth.getUser();
+ if(error||!user){mark("Za statistiko se najprej prijavi v LNK BUSINESS. Nato ponovno odpri to stran.");return}
+ if(user.id!==ADMIN_ID){mark("Ta statistika je zasebna in je na voljo samo skrbniku projekta LNK BUSINESS.");return}
+ access=true;$("dashboard").hidden=false;await refresh();
+ }catch(e){mark("Prijave ni bilo mogoče preveriti. Poskusi znova v aplikaciji.")}
+})();
+</script></body></html>
