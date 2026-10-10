@@ -28,14 +28,20 @@ async function stripeRetrieve(id,key){
 }
 Deno.serve(async req=>{
  if(req.method!=="POST")return json(405,{error:"POST only"});
- const key=Deno.env.get("STRIPE_SECRET_KEY")||"",secret=Deno.env.get("STRIPE_WEBHOOK_SECRET")||"";
- if(Deno.env.get("LB_PAYMENT_MODE")!=="test"||!key.startsWith("sk_test_")||!secret.startsWith("whsec_"))return json(503,{error:"Webhook is disabled"});
+ const mode=Deno.env.get("LB_PAYMENT_MODE");
+ const live=mode==="live";
+ const approved=Deno.env.get("LB_LIVE_BILLING_APPROVED")==="yes"
+    &&Deno.env.get("LB_LIVE_TAX_READY")==="yes"
+    &&Deno.env.get("LB_LIVE_TERMS_READY")==="yes";
+ const key=Deno.env.get(live?"STRIPE_LIVE_SECRET_KEY":"STRIPE_SECRET_KEY")||"";
+ const secret=Deno.env.get(live?"STRIPE_LIVE_WEBHOOK_SECRET":"STRIPE_WEBHOOK_SECRET")||"";
+ if(!((mode==="test"&&key.startsWith("sk_test_"))||(live&&approved&&key.startsWith("sk_live_")))||!secret.startsWith("whsec_"))return json(503,{error:"Webhook is disabled"});
  const raw=await req.text();
  if(raw.length>2000000)return json(413,{error:"Payload too large"});
  if(!await signatureValid(req.headers.get("stripe-signature"),raw,secret))return json(400,{error:"Invalid Stripe signature"});
  let event;
  try{event=JSON.parse(raw)}catch{return json(400,{error:"Invalid JSON"})}
- if(event.livemode!==false||typeof event.id!=="string"||!event.id.startsWith("evt_"))return json(400,{error:"Only Stripe test events are accepted"});
+ if(event.livemode!==live||typeof event.id!=="string"||!event.id.startsWith("evt_"))return json(400,{error:"Stripe event mode does not match configured key"});
  const db=createClient(Deno.env.get("SUPABASE_URL")||"",Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")||"",{auth:{autoRefreshToken:false,persistSession:false}});
  try{
   const {data:already,error:lookupError}=await db.from("lb_stripe_webhook_events").select("stripe_event_id").eq("stripe_event_id",event.id).maybeSingle();
@@ -56,15 +62,15 @@ Deno.serve(async req=>{
    ownerId=String(sub.metadata?.owner_id||"");
    const plan=String(sub.metadata?.plan||"");
    if(!uuid.test(ownerId)||!plans.has(plan)||!sub.id?.startsWith("sub_")||!sub.customer)throw Error("Subscription lacks verified owner/plan metadata");
-   if(sub.livemode!==false)throw Error("Unexpected live subscription");
-   const current=await db.from("lb_billing_subscriptions").select("stripe_subscription_id,status").eq("owner_id",ownerId).maybeSingle();
+   if(sub.livemode!==live)throw Error("Stripe subscription mode does not match configured key");
+   const current=await db.from("lb_billing_subscriptions").select("stripe_subscription_id,status,livemode").eq("owner_id",ownerId).maybeSingle();
    if(current.error)throw current.error;
    if(current.data?.stripe_subscription_id && current.data.stripe_subscription_id!==sub.id && ["active","trialing","past_due","unpaid","incomplete"].includes(current.data.status)){
      throw Error("User has a different current subscription. Manual reconciliation required.");
    }
    const price=sub.items?.data?.[0]?.price?.id||null;
    const unix=Number(sub.current_period_end||sub.items?.data?.[0]?.current_period_end||0);
-   const patch={owner_id:ownerId,plan,stripe_customer_id:typeof sub.customer==="string"?sub.customer:sub.customer.id,
+   const patch={owner_id:ownerId,plan,livemode:live,stripe_customer_id:typeof sub.customer==="string"?sub.customer:sub.customer.id,
      stripe_subscription_id:sub.id,stripe_price_id:price,
      status:statuses.has(sub.status)?sub.status:"inactive",
      cancel_at_period_end:!!sub.cancel_at_period_end,
@@ -78,6 +84,6 @@ Deno.serve(async req=>{
   return json(200,{received:true});
  }catch(err){
   console.error("LNK billing webhook processing failed",String(err?.message||err).slice(0,300));
-  return json(500,{error:"Unable to process authenticated test billing event"});
+  return json(500,{error:"Unable to process authenticated Stripe billing event"});
  }
 });
