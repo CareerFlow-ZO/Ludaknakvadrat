@@ -260,20 +260,50 @@
     document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
+  function loadMetrics(parsed, source) {
+    rows = parsed;
+    byId("search").value = "";
+    message("Učitano " + rows.length + " upita iz " + source +
+      ". Zbir po upitima nije ukupan promet sajta; anonimne pretrage mogu nedostajati.");
+    setKpis(); renderKeywords(); renderIdeas(); switchTab("keywords");
+  }
+
+  async function syncGSC() {
+    const btn = byId("sync"); btn.disabled = true; btn.textContent = "Provjeravam…";
+    try {
+      const resp = await fetch("/api/seo-gsc", { method: "GET", credentials: "same-origin", cache: "no-store", headers: { Accept: "application/json" } });
+      const data = await resp.json();
+      if (!resp.ok) {
+        if (resp.status === 401) throw new Error("Prvo se prijavi u /admin.html (potrebna je admin sesija).");
+        if (resp.status === 503) throw new Error("Automatski GSC pristup još nije konfigurisan na serveru. Možeš koristiti CSV uvoz.");
+        throw new Error(data.error || "Google sinhronizacija nije uspjela.");
+      }
+      if (!Array.isArray(data.rows)) throw new Error("GSC odgovor nema očekivani format.");
+      const parsed = data.rows.filter(r => r && typeof r.query === "string" &&
+        r.query.length <= 300 && [r.clicks, r.impressions, r.ctr, r.position].every(Number.isFinite) &&
+        r.clicks >= 0 && r.impressions >= r.clicks && r.ctr >= 0 && r.ctr <= 1 && r.position > 0);
+      if (!parsed.length) {
+        rows = []; setKpis(); renderKeywords(); renderIdeas();
+        message("Google je dostupan, ali nije vratio upite za period " + data.startDate + " – " + data.endDate +
+          ". To nije dokaz da je promet nula.");
+        return;
+      }
+      loadMetrics(parsed, "Google Search Console API (" + data.startDate + " – " + data.endDate + ")");
+    } catch (err) { message(err instanceof Error ? err.message : "Greška Google povezivanja.", true); }
+    finally { btn.disabled = false; btn.textContent = "↻ Preuzmi iz Googlea"; }
+  }
+
   async function importFile(file) {
     if (!file) return;
     if (file.size > MAX_BYTES) { message("Fajl je prevelik (maksimalno 2 MB).", true); return; }
     if (!/\.csv$/i.test(file.name)) { message("Izaberi .csv fajl iz Google Search Console.", true); return; }
     try {
       const parsed = parseQueries(await file.text());
-      rows = parsed;
-      message("Učitano " + rows.length + " GSC upita iz " + file.name +
-        ". Ovo su zbirni podaci po upitima, ne svi podaci o prometu sajta.");
-      byId("search").value = "";
-      setKpis(); renderKeywords(); renderIdeas(); switchTab("keywords");
+      loadMetrics(parsed, file.name);
     } catch (err) { message(err instanceof Error ? err.message : "Greška u čitanju datoteke.", true); }
   }
 
+  byId("sync").addEventListener("click", syncGSC);
   byId("file").addEventListener("change", e => { importFile(e.target.files[0]); e.target.value = ""; });
   byId("reset").addEventListener("click", () => {
     rows = []; byId("search").value = ""; byId("brief").value = "";
