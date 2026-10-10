@@ -48,3 +48,7 @@ This document is a catalog map, **not approval for activation**.
 - Supabase `lb-billing` Edge Function version 3 is ACTIVE with authenticated `status` action, fail-closed Live config flags and server-only API keys.
 - Updated `/placanje.html` in source initially disables purchasing; it distinguishes TEST from LIVE only after an authenticated backend status response. **This frontend is NOT yet on Vercel** because new deployment is blocked by free-plan daily quota.
 - The operator must securely add/configure Stripe Live secret key and webhook signing secret, verify tax and public terms, and approve live release flags. Do not force them or fabricate their values.
+
+## Confirmed pricing excludes VAT — 10 October 2026
+
+User explicitly confirmed that START, PRO and GASTRO prices, including monthly and setup charges, are **EXCLUDING VAT**. Stripe LIVE API updated **all six** listed prices in place to `tax_behavior=exclusive` and then independently re-read the six live price objects; all six were confirmed `exclusive` with amounts unchanged. This makes tax *additional when legitimately due* rather than included in the quoted amount; it does NOT establish which countries/transactions require VAT. Updated source `paketi.html` and `placanje.html` to visibly state `brez DDV`. Live checkout remains disabled pending verified merchant tax configuration, legally appropriate invoicing, legal terms, secure webhook/secrets and successful production deployment.
