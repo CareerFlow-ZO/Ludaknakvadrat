@@ -78,3 +78,14 @@ Current Vercel project was deployed by standalone file-upload API, not linked to
 - /racunovodstvo.html enables accountant registration, owner email invitations and explicit revoke. Accountant read-only RLS access only to connected firms' invoice drafts.
 - Official issuance, accounting VAT validation, FURS fiscalization, 2028 e-SLOG/Peppol, bank-certified UPN QR and live payment processing remain unimplemented.
 - Verify production Vercel deployment and live-browser behavior separately from GitHub source.
+
+## Production release — 10 October 2026
+
+- Project: `lnk-business-saas` (Vercel project ID `prj_ECYJ9nhJsVht9tvoQ6NYr9k0BUVX`).
+- Deployment: `dpl_9K1J17W484mBx4RVmZdYaAjoDjzX`, Vercel state **READY** and target **production**, aliases `lnk-business-saas.vercel.app` and `lnk-business-saas-ludak-na-kvadrat.vercel.app`, no alias error.
+- Uploaded all 14 website assets from branch `lnk-business-beta-20261009`: index, menu, booking, Gastro demo, plans, help, free PDF quote, invoice draft editor, accountant portal, invoice details, internationalization and SEO/config files.
+- Files enumerated through Vercel's deployment file-listing API. Basic JavaScript syntax/source checks passed. Supabase permissions checked: anon cannot SELECT private invoices/accountant access/booking requests, cannot UPDATE public menu tables.
+- Limitation: runtime end-to-end browser checks could not be completed automatically; owner must test mobile login, invoice draft, QR, PDF, email composer, accountant invitations and translations before rollout to real users.
+- No official invoice issuance, FURS fiscalization, bank-certified UPN QR, automated email sending, subscription billing or verified bank payment status. Only drafts/manual indications, clearly labelled in-app.
+- The earlier Vercel daily API quota failure is now **resolved for this deployment**. Older sections of this README referring to a deployment block document prior historical conditions only.
+- Existing shared-project security advisories still require a dedicated review before commercial launch, including `public.rls_auto_enable()` executor grants and leaked-password protection. Do not change shared app functions without assessing effects on other projects.
