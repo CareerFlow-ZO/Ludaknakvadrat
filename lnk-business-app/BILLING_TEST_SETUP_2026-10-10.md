@@ -37,3 +37,24 @@
 - No production business invoices, bank-certified Slovenian UPN QR, FURS fiscal validation or automatic customer email delivery exist yet.
 - Payments cannot be activated simply by publishing the page; Stripe must be configured and tested end-to-end. Do **not** turn on live Stripe or sell subscriptions automatically.
 - The Supabase project is shared with unrelated apps; these changes are isolated to `lb_*` tables and the named `lb-*` functions.
+
+
+## Production-ready Stripe switch (prepared, NOT enabled)
+
+The Edge Functions were updated to **version 2**, supporting an explicitly gated `LB_PAYMENT_MODE=live` without mixing the old test price/customer resources. Only a merchant-verified Stripe account is accepted for real payment initiation; the authenticated Checkout function checks Stripe `charges_enabled`, `payouts_enabled` and `details_submitted`. The Checkout requests Stripe **automatic tax** and explicit terms-of-service consent in live mode. Webhook verifies a **different live-mode signature key** and rejects events where `event.livemode` does not match configured mode.
+
+Live secrets and flags required in **Supabase Edge Functions (never in the frontend, GitHub or chat)**:
+
+- `LB_PAYMENT_MODE=live`
+- `LB_LIVE_BILLING_APPROVED=yes`
+- `LB_LIVE_TAX_READY=yes`
+- `LB_LIVE_TERMS_READY=yes`
+- `STRIPE_LIVE_SECRET_KEY=sk_live_...` (only secure vault)
+- `STRIPE_LIVE_WEBHOOK_SECRET=whsec_...` from separately configured *live* Stripe webhook endpoint
+- Six Stripe **live** `price_...` IDs: `STRIPE_LIVE_PRICE_START_MONTHLY`, `STRIPE_LIVE_PRICE_START_SETUP`, `STRIPE_LIVE_PRICE_PRO_MONTHLY`, `STRIPE_LIVE_PRICE_PRO_SETUP`, `STRIPE_LIVE_PRICE_GASTRO_MONTHLY`, `STRIPE_LIVE_PRICE_GASTRO_SETUP`.
+
+**Important:** `LB_LIVE_TAX_READY` and `LB_LIVE_TERMS_READY` must only be set after genuine configuration and legal review, not merely to bypass safeguards. FURS statutory obligations and official invoice issuance are not solved by Stripe Tax alone. Merchant onboarding should accurately reflect the present legally responsible seller and settlement bank account; registration updates at AJPES are still being processed. Confirm `12155314` as the tax number and independently confirm whether `SI12155314` is a VAT ID.
+
+The domain-facing `/placanje.html` was developed but Vercel rejected the latest upload with `402 api-deployments-free-per-day`, so visitors cannot access it on the canonical domain yet. On the Vercel quota reset, deploy all 16 static files and **verify READY**. Do not claim live checkout before Stripe is connected, prices exist, webhook is verified, and the user has tested first transactions/refunds.
+
+Stripe ChatGPT plugin currently installed, but no Stripe account-management actions were available in the present session. User must connect the actual account through the Stripe plugin or securely configure the required production Stripe environment on Supabase. Do not paste secret keys into chat.
