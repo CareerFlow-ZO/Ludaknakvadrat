@@ -68,4 +68,4 @@ $('portal').addEventListener('click',async()=>{const b=$('portal');b.disabled=tr
  if(result==='success')notice('Vrnili ste se s Stripe Checkout. To ni potrditev plačila. Status se posodobi šele po preverjenem webhook sporočilu.');
  else if(result==='cancel')notice('Stripe Checkout je bil preklican. Ni potrjenega plačila.');
  }catch(e){notice('Napaka pri preverjanju naročnine: '+(e.message||e))}})();
-</script></body></html>
+</script><script type="module" src="/analytics.js"></script></body></html>
