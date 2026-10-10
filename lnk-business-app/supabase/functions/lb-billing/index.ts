@@ -53,6 +53,17 @@ Deno.serve(async req => {
   const body=await req.json().catch(()=>null);
   if(!body || typeof body!=="object") return reply(400,{error:"Invalid request"});
   const action=body.action;
+  if(action==="status"){
+    // Only an authenticated verified user can see readiness; no secrets exposed.
+    const names=Object.values(priceVars).flat().map(n=>mode==="live"?n.replace(/^STRIPE_PRICE_/,"STRIPE_LIVE_PRICE_"):n);
+    const pricesPresent=names.every(n=>/^price_[A-Za-z0-9]+$/.test(Deno.env.get(n)||""));
+    let merchantReady=true;
+    if(mode==="live"){
+      const acct=await stripeGet("account",key);
+      merchantReady=!!(acct.charges_enabled&&acct.payouts_enabled&&acct.details_submitted);
+    }
+    return reply(200,{mode,ready:pricesPresent&&merchantReady});
+  }
   const {data:billing,error:dbError}=await db.from("lb_billing_subscriptions") .select("plan,status,stripe_customer_id,stripe_subscription_id,livemode").eq("owner_id",user.id).maybeSingle();
   if(dbError) throw dbError;
   if(action==="portal"){
@@ -74,7 +85,7 @@ Deno.serve(async req => {
    const account=await stripeGet("account",key);
    if(!account.charges_enabled||!account.payouts_enabled||!account.details_submitted) return reply(503,{error:"Stripe live merchant verification or payouts are not enabled yet."});
   }
-  if(!/^price_[A-Za-z0-9]+$/.test(monthly) || !/^price_[A-Za-z0-9]+$/.test(setup)) return reply(503,{error:"Stripe test prices are not configured for this plan."});
+  if(!/^price_[A-Za-z0-9]+$/.test(monthly) || !/^price_[A-Za-z0-9]+$/.test(setup)) return reply(503,{error:"Stripe prices are not configured for this plan."});
   const params={"mode":"subscription","success_url":SITE+"/placanje.html?result=success","cancel_url":SITE+"/placanje.html?result=cancel","client_reference_id":user.id,"metadata[owner_id]":user.id,"metadata[plan]":plan,
    "subscription_data[metadata][owner_id]":user.id,"subscription_data[metadata][plan]":plan,
    "line_items[0][price]":monthly,"line_items[0][quantity]":"1","line_items[1][price]":setup,"line_items[1][quantity]":"1",
