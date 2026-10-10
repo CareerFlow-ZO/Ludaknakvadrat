@@ -74,4 +74,4 @@ $('copy-qr').onclick=async()=>{if(!qrText)return $('action-result').textContent=
  if(invoice.customer_id){const c=await db.from('lb_clients').select('email').eq('owner_id',owner.id).eq('id',invoice.customer_id).maybeSingle();if(!c.error)buyerEmail=c.data?.email||''}
  $('gate').classList.add('hidden');$('area').classList.remove('hidden');render()
  }catch(e){$('gate').textContent='Napaka: '+e.message}})();
-</script></body></html>
+</script><script type="module" src="/analytics.js"></script></body></html>
