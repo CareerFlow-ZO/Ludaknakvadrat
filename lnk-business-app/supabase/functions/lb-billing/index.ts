@@ -5,6 +5,20 @@ const SITE = "https://lnk-business-saas.vercel.app";
 const ORIGIN = SITE;
 const cors = { "Access-Control-Allow-Origin": ORIGIN, "Access-Control-Allow-Headers": "authorization, apikey, content-type, x-client-info", "Access-Control-Allow-Methods": "POST, OPTIONS", "Vary": "Origin" };
 const priceVars = { start: ["STRIPE_PRICE_START_MONTHLY", "STRIPE_PRICE_START_SETUP"], pro: ["STRIPE_PRICE_PRO_MONTHLY", "STRIPE_PRICE_PRO_SETUP"], gastro: ["STRIPE_PRICE_GASTRO_MONTHLY", "STRIPE_PRICE_GASTRO_SETUP"] };
+// The account and net prices below are confirmed from Stripe LIVE catalog; never infer them from clients.
+const STRIPE_LIVE_ACCOUNT = "acct_1UFGZnKpQgXbrb0c";
+const confirmedLivePrices = {
+ start: [{id:"price_1UOqwcKpQgXbrb0ckbfANsZT",cents:1900,kind:"monthly"}, {id:"price_1UOqwfKpQgXbrb0cRydWEMsX",cents:9900,kind:"setup"}],
+ pro: [{id:"price_1UOqwjKpQgXbrb0cERGobgvf",cents:3900,kind:"monthly"}, {id:"price_1UOqwnKpQgXbrb0cX12BCs2a",cents:14900,kind:"setup"}],
+ gastro: [{id:"price_1UOqwrKpQgXbrb0cF98FCoWi",cents:4900,kind:"monthly"}, {id:"price_1UOqwuKpQgXbrb0cWlfaB5MR",cents:19900,kind:"setup"}]
+};
+function verifyLivePriceData(plan,kind,p){
+ const expected=confirmedLivePrices[plan]?.find(x=>x.kind===kind);
+ return !!(expected && p.id===expected.id && p.active===true && p.livemode===true &&
+   p.currency==="eur" && p.unit_amount===expected.cents && p.tax_behavior==="exclusive" &&
+   p.metadata?.app==="lnk_business" && p.metadata?.plan===plan &&
+   p.metadata?.kind===kind && (kind==="monthly" ? p.recurring?.interval==="month" && p.recurring?.interval_count===1 : !p.recurring));
+}
 function reply(status, body) { return new Response(JSON.stringify(body), {status, headers: {...cors, "Content-Type": "application/json", "Cache-Control": "no-store"}}); }
 function config(){
  const mode = Deno.env.get("LB_PAYMENT_MODE");
@@ -60,7 +74,7 @@ Deno.serve(async req => {
     let merchantReady=true;
     if(mode==="live"){
       const acct=await stripeGet("account",key);
-      merchantReady=!!(acct.charges_enabled&&acct.payouts_enabled&&acct.details_submitted);
+      merchantReady=!!(acct.id===STRIPE_LIVE_ACCOUNT&&acct.charges_enabled&&acct.payouts_enabled&&acct.details_submitted);
     }
     return reply(200,{mode,ready:pricesPresent&&merchantReady});
   }
@@ -83,7 +97,14 @@ Deno.serve(async req => {
   const setup=Deno.env.get(priceKey(setupVar))||"";
   if(mode==="live"){
    const account=await stripeGet("account",key);
-   if(!account.charges_enabled||!account.payouts_enabled||!account.details_submitted) return reply(503,{error:"Stripe live merchant verification or payouts are not enabled yet."});
+   if(account.id!==STRIPE_LIVE_ACCOUNT || !account.charges_enabled || !account.payouts_enabled || !account.details_submitted)
+     return reply(503,{error:"The verified LNK DIGITAL Stripe Live merchant is not connected or has missing capabilities."});
+   const expected=confirmedLivePrices[plan];
+   if(monthly!==expected[0].id||setup!==expected[1].id)
+     return reply(503,{error:"Configured price IDs do not match confirmed LNK BUSINESS Live prices."});
+   const prices=await Promise.all([stripeGet("prices/"+encodeURIComponent(monthly),key),stripeGet("prices/"+encodeURIComponent(setup),key)]);
+   if(!verifyLivePriceData(plan,"monthly",prices[0]) || !verifyLivePriceData(plan,"setup",prices[1]))
+     return reply(503,{error:"Stripe Live amount, VAT-exclusive behavior or monthly interval does not match confirmed prices."});
   }
   if(!/^price_[A-Za-z0-9]+$/.test(monthly) || !/^price_[A-Za-z0-9]+$/.test(setup)) return reply(503,{error:"Stripe prices are not configured for this plan."});
   const params={"mode":"subscription","success_url":SITE+"/placanje.html?result=success","cancel_url":SITE+"/placanje.html?result=cancel","client_reference_id":user.id,"metadata[owner_id]":user.id,"metadata[plan]":plan,
