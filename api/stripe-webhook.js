@@ -17,6 +17,9 @@ module.exports=async(req,res)=>{
     if(event.type==="checkout.session.completed"){
       const session=event.data.object;
       const orderId=session.metadata?.order_id;
+      // This Stripe account also serves LNK BUSINESS. Ignore checkouts for other products.
+      // A song order can only be fulfilled/emailed when it carries a music order_id.
+      if(!orderId) return res.status(200).json({received:true,ignored:"unrelated checkout"});
       if(orderId){
         await supabase(`orders?id=eq.${encodeURIComponent(orderId)}`,{
           method:"PATCH",headers:{"Prefer":"return=minimal"},
