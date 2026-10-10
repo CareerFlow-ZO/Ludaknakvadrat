@@ -54,4 +54,4 @@ $('invoice-form').onsubmit=async e=>{
  const today=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
  $('invoice-form').elements.draft_date.value=today;$('invoice-form').elements.service_date.value=today;addItem()
  }catch(err){$('gate').textContent='Napaka: '+(err.message||'Dostop ni mogoč')}})();
-</script></body></html>
+</script><script type="module" src="/analytics.js"></script></body></html>
