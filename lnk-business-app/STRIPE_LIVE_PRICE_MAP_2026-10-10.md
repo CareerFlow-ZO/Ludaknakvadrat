@@ -37,3 +37,14 @@ STRIPE_LIVE_PRICE_GASTRO_SETUP=price_1UOqwuKpQgXbrb0cWlfaB5MR
 7. Redeploy `lnk-business-app` to Vercel when the 402 free-deployment daily cap resets, and ensure production `/placanje.html` offers **live** mode only after the checks above. Previous production deployment `dpl_6i6jzSNWVbYxLbNhVa2fvpBmCzP6` does not contain `/placanje.html`.
 
 This document is a catalog map, **not approval for activation**.
+
+## Customer billing portal — verified LIVE
+
+- Stripe portal configuration created: `bpc_1UOqzbKpQgXbrb0ci8jpS8xC`.
+- Features: customers may update payment method/contact details, inspect invoice history and cancel a subscription **at the end of the current period**.
+- Default return URL: `https://lnk-business-saas.vercel.app/placanje.html`.
+- Created as the first/default portal configuration of the connected merchant. The prior configuration list was empty.
+- The Live Stripe products and prices are verified via Stripe API, but there are no **public LNK BUSINESS Checkout payment links or launched customer subscriptions** from this setup.
+- Supabase `lb-billing` Edge Function version 3 is ACTIVE with authenticated `status` action, fail-closed Live config flags and server-only API keys.
+- Updated `/placanje.html` in source initially disables purchasing; it distinguishes TEST from LIVE only after an authenticated backend status response. **This frontend is NOT yet on Vercel** because new deployment is blocked by free-plan daily quota.
+- The operator must securely add/configure Stripe Live secret key and webhook signing secret, verify tax and public terms, and approve live release flags. Do not force them or fabricate their values.
