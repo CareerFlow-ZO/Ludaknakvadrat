@@ -52,4 +52,4 @@ async function start(u){user=u;$('auth').classList.add('hidden');$('main').class
  const code=new URLSearchParams(location.search).get('invite');if(code&&/^[0-9a-f-]{36}$/i.test(code))$('invite-code').value=code;
 }
 (async()=>{const {data:{session}}=await db.auth.getSession();if(session?.user)await start(session.user)})();
-</script></body></html>
+</script><script type="module" src="/analytics.js"></script></body></html>
