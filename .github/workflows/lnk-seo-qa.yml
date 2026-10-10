@@ -16,6 +16,8 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
+      - name: Validate SEO Console syntax, local privacy and UI contracts
+        run: node scripts/seo-console-audit.mjs
       - name: Validate metadata, sitemap, images and preview indexing
         run: node scripts/seo-audit.mjs
       - name: Validate contextual links and market FAQs on all 20 pages
