@@ -89,3 +89,12 @@ Current Vercel project was deployed by standalone file-upload API, not linked to
 - No official invoice issuance, FURS fiscalization, bank-certified UPN QR, automated email sending, subscription billing or verified bank payment status. Only drafts/manual indications, clearly labelled in-app.
 - The earlier Vercel daily API quota failure is now **resolved for this deployment**. Older sections of this README referring to a deployment block document prior historical conditions only.
 - Existing shared-project security advisories still require a dedicated review before commercial launch, including `public.rls_auto_enable()` executor grants and leaked-password protection. Do not change shared app functions without assessing effects on other projects.
+
+## Pilot transparency and contact update — 10 October 2026
+
+- New production deployment: `dpl_6i6jzSNWVbYxLbNhVa2fvpBmCzP6` confirmed READY with `lnk-business-saas.vercel.app` alias and no alias errors.
+- Added `/status.html` as a *noindex* bilingual SL/EN public pilot status page. It does not claim to be binding privacy/terms and contains no unverified registry or tax data.
+- Updated all five landing/marketing/help/free-offer pages in this isolated app to contact `contact@ludaknakvadrat.com`. LNK DIGITAL remains linked at `www.lnkdigital.com`.
+- Basic syntax checks passed for all 15 deployed assets; production file listing confirms `status.html` included.
+- Operator legal registration is awaiting confirmation at AJPES. No tax ID or operator identity on this site is inferred from pending s.p. transfer.
+- Marketing status page is **not** a substitute for reviewed privacy policy, terms, DPA or compliant billing. Commercial sale and handling actual clients' personal data remain blocked pending legal review.
