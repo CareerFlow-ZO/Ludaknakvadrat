@@ -40,3 +40,15 @@
 - Vercel project: https://vercel.com/ludak-na-kvadrat/lnk-business-saas
 
 **This document is a readiness report, not confirmation that live payments are active.**
+
+## Ownership correction / STOP for LIVE charging — 10 October 2026
+
+User has now explicitly confirmed the legal operating firm **remains on Samir Osmić**, not a pending transfer to Zemir. This supersedes the earlier assumption in this document about a pending AJPES transfer.
+
+Independent public third-party registry listings (CompanyWall / e-Creditreform) presently show the full registration-style name **OSMIĆ, prevozništvo in gradbeništvo, Samir Osmić s.p.**, tax no. **23838060** (public sites print 'SI 23838060'), registration no. **9834117000** and address **Stegne 35, 1000 Ljubljana**. Obtain a current official AJPES extract before treating any of those fields as formally verified for invoices.
+
+**Critical merchant-of-record mismatch discovered using the connected Stripe Live API:** Stripe account `acct_1UFGZnKpQgXbrb0c` lists business type `individual`, legal individual **Zemir Osmić** (merchant business profile label LNK DIGITAL), whereas the user's intended contracting firm is **Samir Osmić s.p.** Its payout bank is an Addiko account associated with this Zemir Stripe merchant. Do not create/enable Samir-branded LIVE Checkout on the Zemir individual Stripe account without proper legally valid merchant-of-record arrangements and Stripe onboarding approval.
+
+**Inconsistent current private beta drafts:** `public.lb_companies` currently records business name `LNK`, tax number `12155314` and incomplete address; `public.lb_pending_company_identity` still holds a hypothetical `Osmic, Zemir Osmic s.p.` profile pending AJPES. Neither represents confirmed Samir issuer details. Avoid publishing/issuing official invoices, auto-substituting tax IDs or attaching Samir's tax number to the Zemir Stripe merchant. Request the current AJPES registration, Samir's authorization to operate LNK BUSINESS under his s.p., and appropriate Stripe merchant setup or other professionally reviewed contracting arrangement. Keep all LIVE release gates closed and the SaaS webhook disabled pending this resolution.
+
+This correction **does not change any existing client documents or Stripe money movement**. LNK BUSINESS remains a beta pending proper seller/payment alignment.
