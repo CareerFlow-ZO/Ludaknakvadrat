@@ -67,4 +67,4 @@ $('reservation').addEventListener('submit',async event=>{
  $('page').classList.add('hidden');$('success').classList.remove('hidden');
 });
 init().catch(err=>{$('loading').classList.add('hidden');$('fail-reason').textContent=err.message||'Javni obrazec ni na voljo.';$('fail').classList.remove('hidden')});
-</script></body></html>
+</script><script type="module" src="/analytics.js"></script></body></html>
