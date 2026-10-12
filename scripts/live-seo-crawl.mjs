@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Independent read-only live crawl of LNK DIGITAL's 20 public SEO pages.
+// Independent read-only live crawl of LNK DIGITAL's 21 public SEO pages.
 import assert from 'node:assert/strict';
 
 const ORIGIN = 'https://www.lnkdigital.com';
@@ -18,8 +18,8 @@ assert.equal(sitemap.status, 200, 'Sitemap must return 200');
 assert(!/text\/html/i.test(sitemap.headers.get('content-type') || ''), 'Sitemap delivered HTML');
 const urls = [...sitemap.body.matchAll(/<loc>\s*(https:\/\/www\.lnkdigital\.com\/[^<]*)\s*<\/loc>/g)]
   .map(match => match[1].trim().replaceAll('&amp;', '&'));
-assert.equal(urls.length, 20, 'Expected 20 URLs in sitemap');
-assert.equal(new Set(urls).size, 20, 'Duplicate sitemap URLs');
+assert.equal(urls.length, 21, 'Expected 21 URLs in sitemap');
+assert.equal(new Set(urls).size, 21, 'Duplicate sitemap URLs');
 const robots = await fetchPage(ORIGIN + '/robots.txt');
 assert.equal(robots.status, 200, 'robots.txt must return 200');
 assert(robots.body.includes('Sitemap: ' + ORIGIN + '/sitemap.xml'), 'Wrong robots sitemap declaration');
@@ -56,4 +56,4 @@ await Promise.all(Array.from({ length: 4 }, () => worker()));
 if (issues.length) {
   console.error('LIVE SEO CRAWL FAILED (' + issues.length + '):\n' + issues.join('\n'));
   process.exitCode = 1;
-} else console.log('LIVE SEO CRAWL PASS: 20/20 pages return HTML 200, self-canonical, title, language, and no index block.');
+} else console.log('LIVE SEO CRAWL PASS: 21/21 pages return HTML 200, self-canonical, title, language, and no index block.');

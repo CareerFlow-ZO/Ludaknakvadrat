@@ -6,7 +6,7 @@ import {readFileSync, existsSync} from 'node:fs';
 const origin='https://www.lnkdigital.com/';
 const sitemap=readFileSync('sitemap.xml','utf8');
 const targets=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-assert.equal(targets.length,20,'Expected 20 canonical LNK URLs');
+assert.equal(targets.length,21,'Expected 21 canonical LNK URLs');
 const canonical=new Set(targets);
 const filename=url=>url.replace(origin,'')||'index.html';
 const html=new Map(targets.map(url=>{
@@ -15,6 +15,7 @@ const html=new Map(targets.map(url=>{
  return[path,readFileSync(path,'utf8')];
 }));
 const expected={
+ 'website-design-questions.html':[['web-design.html','en'],['web-design-portfolio.html','en']],
  'index.html':[['restaurant-website-design.html','en'],['hotel-website-design.html','en'],['construction-company-website-design.html','en'],['izdelava-spletnih-trgovin.html','sl']],
  'web-design.html':[['auto-repair-website-design.html','en'],['izdelava-spletnih-trgovin.html','sl']],
  'izdelava-spletnih-strani.html':[['restaurant-website-design.html','en'],['web-design-germany.html','de-DE']],
@@ -36,7 +37,7 @@ const expected={
  'website-redesign-services.html':[['web-design-germany.html','de-DE'],['izdelava-spletnih-strani.html','sl']],
  'web-design-portfolio.html':[['web-design-usa.html','en-US'],['web-design-germany.html','de-DE'],['izdelava-spletnih-strani.html','sl']]
 };
-assert.deepEqual(new Set(Object.keys(expected)),new Set(html.keys()),'All 20 sitemap pages must be covered');
+assert.deepEqual(new Set(Object.keys(expected)),new Set(html.keys()),'All 21 sitemap pages must be covered');
 let checked=0,faqQuestions=0;
 for(const [source,links] of Object.entries(expected)){
  const markup=html.get(source);
@@ -71,5 +72,5 @@ for(const key of ['seoExploreLabel','seoExploreTitle','seoExploreIntro','seoExpl
  assert(home.includes('data-i18n="'+key+'"'),'Homepage translation hook absent: '+key);
 }
 assert(home.includes('class="section lnk-seo-explore"'),'Homepage industry links section missing');
-assert.equal(checked,43,'Wrong contextual link count');
-console.log('LNK CONTENT QA PASS: 20/20 pages, '+checked+' contextual links, four FAQ sections ('+faqQuestions+' Q&A entries), contact links preserved.');
+assert.equal(checked,45,'Wrong contextual link count');
+console.log('LNK CONTENT QA PASS: 21/21 pages, '+checked+' contextual links, four FAQ sections ('+faqQuestions+' Q&A entries), contact links preserved.');

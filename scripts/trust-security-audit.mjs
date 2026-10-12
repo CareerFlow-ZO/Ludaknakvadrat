@@ -6,7 +6,7 @@ const text=p=>readFileSync(p,'utf8');
 const site='https://www.lnkdigital.com';
 const sitemap=text('sitemap.xml');
 const urls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-assert.equal(urls.length,20,'Expected 20 public LNK pages');
+assert.equal(urls.length,21,'Expected 21 public LNK pages');
 const expectedEmail='contact@ludaknakvadrat.com';
 const expectedWhatsApp='wa.me/38631244612';
 let securityPages=0, externalNewTabLinks=0;
@@ -59,4 +59,4 @@ assert(vercel.headers.some(h=>h.source==='/admin.html' && h.headers.some(v=>v.ke
  'Admin must remain noindex');
 assert(vercel.headers.some(h=>h.source==='/euro-gurman-preview/(.*)' && h.headers.some(v=>v.key==='X-Robots-Tag' && /noindex/.test(v.value))),
  'Euro Gurman preview must remain noindex');
-console.log('TRUST & SECURITY QA PASS: '+securityPages+'/20 LNK pages; no unreviewed external scripts/forms/iframes; '+externalNewTabLinks+' external-tab links checked; 10 honest portfolio labels; legal publication blocked pending business facts; client routes retained.');
+console.log('TRUST & SECURITY QA PASS: '+securityPages+'/21 LNK pages; no unreviewed external scripts/forms/iframes; '+externalNewTabLinks+' external-tab links checked; 10 honest portfolio labels; legal publication blocked pending business facts; client routes retained.');

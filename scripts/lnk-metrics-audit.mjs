@@ -4,12 +4,15 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 const file=p=>readFileSync(p,'utf8');
 const pages=[...file('sitemap.xml').matchAll(/<loc>https:\/\/www\.lnkdigital\.com(\/[^<]*)<\/loc>/g)].map(m=>m[1]);
-assert.equal(pages.length,20);
+assert.equal(pages.length,21);
+// The new editorial FAQ has no analytics; preserve the existing 20-page consent scope.
+const untracked='/website-design-questions.html';
+assert(!file(untracked.slice(1)).includes('/assets/js/lnk-metrics.js'),'FAQ must remain untracked');
 const script=file('assets/js/lnk-metrics.js');
 assert(script.includes("location.hostname!=='www.lnkdigital.com'"));
 assert(!/document\.cookie|localStorage|sessionStorage|navigator\.userAgent/.test(script));
 assert(script.includes("referrerPolicy:'no-referrer'") && script.includes("credentials:'omit'"));
-for(const path of pages){
+for(const path of pages.filter(p=>p!==untracked)){
  const p=path==='/'?'index.html':path.slice(1),body=file(p);
  assert.equal((body.match(/src="\/assets\/js\/lnk-metrics\.js"/g)||[]).length,1,'Tracker missing '+p);
  assert(body.includes('lnk-metrics-disclosure') || body.includes('data-i18n="metricsNote"'),'Notice missing '+p);

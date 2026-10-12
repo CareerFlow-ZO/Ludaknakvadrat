@@ -7,7 +7,7 @@ import vm from 'node:vm';
 const read=path=>readFileSync(path,'utf8');
 const html=read('index.html'),js=read('assets/js/lnk-brief.js'),sitemap=read('sitemap.xml');
 const urls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-assert.equal(urls.length,20,'Preserve all 20 public pages');
+assert.equal(urls.length,21,'Preserve all 21 public pages');
 assert(html.includes('<script defer src="/assets/js/lnk-brief.js"></script>'),'Missing deferred brief script');
 assert(html.includes('<section id="project-brief"'),'Homepage brief section missing');
 assert(html.includes('data-brief-i18n="heroLink"'),'Hero visitor path missing');
@@ -70,7 +70,7 @@ for(const url of urls){
  assert(body.includes('wa.me/38631244612'),'Existing WhatsApp changed '+path);
  linked++;
 }
-assert.equal(linked,19,'Expected all 19 additional sitemap pages to link to brief');
+assert.equal(linked,20,'Expected all 20 additional sitemap pages to link to brief');
 
 // Emulate browser wiring and language/selector interactions without real network access.
 class Element {
@@ -127,4 +127,4 @@ assert(ids.briefWhatsApp.href.startsWith(safeWhatsApp),'Unsafe choice changed Wh
 ids.briefType.value=previous;ids.briefType.fire();
 assert.equal(ids.briefPreview.textContent,goodMessage,'User selection did not recover');
 
-console.log('CONVERSION QA PASS: 20 public LNK pages, 19 localized landing links, 10 languages, 4 independent choices, correct WhatsApp/email drafts, no automatic data collection.');
+console.log('CONVERSION QA PASS: 21 public LNK pages, 20 localized landing links, 10 languages, 4 independent choices, correct WhatsApp/email drafts, no automatic data collection.');
