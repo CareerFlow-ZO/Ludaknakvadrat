@@ -5,7 +5,6 @@ create extension if not exists pgcrypto;
 create table if not exists public.lb_projects (
  id uuid primary key default gen_random_uuid(),
  owner_id uuid not null default auth.uid() references auth.users(id) on delete cascade,
- client_id uuid references public.lb_clients(id) on delete set null,
  name text not null check (char_length(trim(name)) between 1 and 120),
  description text not null default '' check (char_length(description)<=4000),
  status text not null default 'planned' check(status in ('planned','active','blocked','done')),
@@ -28,7 +27,6 @@ create table if not exists public.lb_tasks (
 create table if not exists public.lb_leads (
  id uuid primary key default gen_random_uuid(),
  owner_id uuid not null default auth.uid() references auth.users(id) on delete cascade,
- client_id uuid references public.lb_clients(id) on delete set null,
  name text not null check(char_length(trim(name)) between 1 and 120),
  stage text not null default 'new' check(stage in ('new','contacted','proposal','won','lost')),
  estimated_value numeric(14,2) not null default 0 check(estimated_value between 0 and 999999999999.99),
@@ -73,4 +71,4 @@ create policy lb_lead_activities_owner_select on public.lb_lead_activities for s
 create policy lb_lead_activities_owner_insert on public.lb_lead_activities for insert to authenticated with check(owner_id=auth.uid());
 create policy lb_lead_activities_owner_update on public.lb_lead_activities for update to authenticated using(owner_id=auth.uid()) with check(owner_id=auth.uid());
 create policy lb_lead_activities_owner_delete on public.lb_lead_activities for delete to authenticated using(owner_id=auth.uid());
--- Required pre-release: enforce same-owner client_id relationship; test both-auth-user isolation.
+-- No unscoped client references in v1. Add them later using composite owner/client foreign keys and negative tenant tests.
