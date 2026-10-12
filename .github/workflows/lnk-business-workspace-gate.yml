@@ -19,5 +19,7 @@ jobs:
           node-version: '22'
       - name: Static release gate
         run: node lnk-business-app/scripts/workspace-security-gate.mjs
+      - name: Workspace browser syntax smoke
+        run: node lnk-business-app/scripts/workspace-ui-smoke.mjs
       - name: Existing account continuity gate
         run: node lnk-business-app/scripts/existing-account-gate.mjs
