@@ -8,16 +8,16 @@ const priceVars = { start: ["STRIPE_PRICE_START_MONTHLY", "STRIPE_PRICE_START_SE
 // The account and net prices below are confirmed from Stripe LIVE catalog; never infer them from clients.
 const STRIPE_LIVE_ACCOUNT = "acct_1UFGZnKpQgXbrb0c";
 const confirmedLivePrices = {
- start: [{id:"price_1UOqwcKpQgXbrb0ckbfANsZT",cents:1900,kind:"monthly"}, {id:"price_1UOqwfKpQgXbrb0cRydWEMsX",cents:9900,kind:"setup"}],
- pro: [{id:"price_1UOqwjKpQgXbrb0cERGobgvf",cents:3900,kind:"monthly"}, {id:"price_1UOqwnKpQgXbrb0cX12BCs2a",cents:14900,kind:"setup"}],
- gastro: [{id:"price_1UOqwrKpQgXbrb0cF98FCoWi",cents:4900,kind:"monthly"}, {id:"price_1UOqwuKpQgXbrb0cWlfaB5MR",cents:19900,kind:"setup"}]
+ start: [{id:"price_1UPg4YKpQgXbrb0ct7YmGsVQ",cents:2499,kind:"monthly"}, {id:"price_1UPg4kKpQgXbrb0cCDhfhYCS",cents:26999,kind:"yearly"}, {id:"price_1UOqwfKpQgXbrb0cRydWEMsX",cents:9900,kind:"setup"}],
+ pro: [{id:"price_1UPg4mKpQgXbrb0cfhSqb7yg",cents:4599,kind:"monthly"}, {id:"price_1UPg4oKpQgXbrb0cXBKG2rdD",cents:49999,kind:"yearly"}, {id:"price_1UOqwnKpQgXbrb0cX12BCs2a",cents:14900,kind:"setup"}],
+ gastro: [{id:"price_1UPg4qKpQgXbrb0cwDZQJCLt",cents:5999,kind:"monthly"}, {id:"price_1UPg4uKpQgXbrb0coOtTblyE",cents:64999,kind:"yearly"}, {id:"price_1UOqwuKpQgXbrb0cWlfaB5MR",cents:19900,kind:"setup"}]
 };
 function verifyLivePriceData(plan,kind,p){
  const expected=confirmedLivePrices[plan]?.find(x=>x.kind===kind);
  return !!(expected && p.id===expected.id && p.active===true && p.livemode===true &&
    p.currency==="eur" && p.unit_amount===expected.cents && p.tax_behavior==="exclusive" &&
    p.metadata?.app==="lnk_business" && p.metadata?.plan===plan &&
-   p.metadata?.kind===kind && (kind==="monthly" ? p.recurring?.interval==="month" && p.recurring?.interval_count===1 : !p.recurring));
+   p.metadata?.kind===kind && (kind==="monthly" ? p.recurring?.interval==="month" && p.recurring?.interval_count===1 : kind==="yearly" ? p.recurring?.interval==="year" && p.recurring?.interval_count===1 : !p.recurring));
 }
 function reply(status, body) { return new Response(JSON.stringify(body), {status, headers: {...cors, "Content-Type": "application/json", "Cache-Control": "no-store"}}); }
 function config(){
@@ -69,7 +69,7 @@ Deno.serve(async req => {
   const action=body.action;
   if(action==="status"){
     // Only an authenticated verified user can see readiness; no secrets exposed.
-    const names=Object.values(priceVars).flat().map(n=>mode==="live"?n.replace(/^STRIPE_PRICE_/,"STRIPE_LIVE_PRICE_"):n);
+    const names=mode==="live" ? [] : Object.values(priceVars).flat();
     const pricesPresent=names.every(n=>/^price_[A-Za-z0-9]+$/.test(Deno.env.get(n)||""));
     let merchantReady=true;
     if(mode==="live"){
@@ -88,27 +88,29 @@ Deno.serve(async req => {
   }
   if(action!=="checkout") return reply(400,{error:"Invalid billing action"});
   const plan=String(body.plan||"").toLowerCase();
+  const interval=body.interval==="yearly"?"yearly":body.interval==="monthly"||body.interval==null?"monthly":null;
+  if(!interval)return reply(400,{error:"Unknown billing interval"});
   if(!Object.prototype.hasOwnProperty.call(priceVars,plan)) return reply(400,{error:"Unknown plan"});
   if(billing && billing.livemode===(mode==="live") && ["active","trialing","past_due","incomplete","unpaid"].includes(billing.status)) return reply(409,{error:"Existing subscription. Use the Stripe billing portal instead."});
   if(billing && billing.livemode!==(mode==="live") && ["active","trialing","past_due","incomplete","unpaid"].includes(billing.status)) return reply(409,{error:"An active subscription exists in the other Stripe mode. Reconcile it before switching."});
   const [monthlyVar,setupVar]=priceVars[plan];
   const priceKey=name=>mode==="live"?name.replace(/^STRIPE_PRICE_/,"STRIPE_LIVE_PRICE_"):name;
-  const monthly=Deno.env.get(priceKey(monthlyVar))||"";
+  const monthly=mode==="live" ? confirmedLivePrices[plan].find(p=>p.kind===interval).id : Deno.env.get(priceKey(monthlyVar))||"";
   const setup=Deno.env.get(priceKey(setupVar))||"";
   if(mode==="live"){
    const account=await stripeGet("account",key);
    if(account.id!==STRIPE_LIVE_ACCOUNT || !account.charges_enabled || !account.payouts_enabled || !account.details_submitted)
      return reply(503,{error:"The verified LNK DIGITAL Stripe Live merchant is not connected or has missing capabilities."});
    const expected=confirmedLivePrices[plan];
-   if(monthly!==expected[0].id||setup!==expected[1].id)
+   if(monthly!==expected.find(p=>p.kind===interval).id||setup!==expected.find(p=>p.kind==="setup").id)
      return reply(503,{error:"Configured price IDs do not match confirmed LNK BUSINESS Live prices."});
    const prices=await Promise.all([stripeGet("prices/"+encodeURIComponent(monthly),key),stripeGet("prices/"+encodeURIComponent(setup),key)]);
-   if(!verifyLivePriceData(plan,"monthly",prices[0]) || !verifyLivePriceData(plan,"setup",prices[1]))
+   if(!verifyLivePriceData(plan,interval,prices[0]) || !verifyLivePriceData(plan,"setup",prices[1]))
      return reply(503,{error:"Stripe Live amount, VAT-exclusive behavior or monthly interval does not match confirmed prices."});
   }
   if(!/^price_[A-Za-z0-9]+$/.test(monthly) || !/^price_[A-Za-z0-9]+$/.test(setup)) return reply(503,{error:"Stripe prices are not configured for this plan."});
   const params={"mode":"subscription","success_url":SITE+"/placanje.html?result=success","cancel_url":SITE+"/placanje.html?result=cancel","client_reference_id":user.id,"metadata[owner_id]":user.id,"metadata[plan]":plan,
-   "subscription_data[metadata][owner_id]":user.id,"subscription_data[metadata][plan]":plan,
+   "subscription_data[metadata][owner_id]":user.id,"subscription_data[metadata][plan]":plan,"subscription_data[metadata][interval]":interval,
    "line_items[0][price]":monthly,"line_items[0][quantity]":"1","line_items[1][price]":setup,"line_items[1][quantity]":"1",
    "billing_address_collection":"required","tax_id_collection[enabled]":"true"};
   if(mode==="live"){
