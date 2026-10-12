@@ -19,3 +19,5 @@ jobs:
           node-version: '22'
       - name: Static release gate
         run: node lnk-business-app/scripts/workspace-security-gate.mjs
+      - name: Existing account continuity gate
+        run: node lnk-business-app/scripts/existing-account-gate.mjs
