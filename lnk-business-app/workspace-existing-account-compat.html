@@ -1,0 +1,26 @@
+<!doctype html><html lang="sl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>LNK BUSINESS — Moj obstoječi račun</title><style>body{font:16px system-ui;background:#0a1828;color:#edf5fc;margin:0}main{max-width:850px;margin:auto;padding:24px}section{border:1px solid #38536d;background:#172c43;border-radius:14px;padding:20px;margin:14px 0}a{color:#82defb}button{padding:12px 18px;border:0;border-radius:8px;background:#267ca2;color:white}li{margin:7px 0}input{padding:10px;margin:8px;max-width:90%;border-radius:7px}label{display:block}.muted{color:#b6ccdb}</style></head><body><main><h1>LNK BUSINESS — Moj obstoječi račun</h1><p>Enak račun, enaki obstoječi podatki. Ta stran je samo za varno preverjanje prehoda in <strong>ničesar ne spreminja</strong>.</p><section><h2>Prijava</h2><p id="auth" role="status">Preverjam obstoječo sejo …</p><form id="login"><label>E-pošta <input id="email" type="email" autocomplete="username" required></label><label>Geslo <input id="password" type="password" autocomplete="current-password" required></label><button type="submit">Prijava z obstoječim računom</button></form><p><a href="https://lnk-business-saas.vercel.app/">Obstoječi LNK BUSINESS</a></p></section><section id="summary" hidden><h2>Moji obstoječi zapisi</h2><p id="account"></p><ul id="counts"></ul><p class="muted">Samo branje. Projekti, CRM in novi moduli bodo povezani po testih migracije in RLS.</p><p><a href="/">Nazaj na obstoječo aplikacijo</a></p><button id="signout">Odjava</button></section><p id="error" role="alert"></p></main><script type="module">
+import {createClient} from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/+esm';
+// SAME SUPABASE PROJECT AND PUBLISHABLE KEY AS EXISTING LNK BUSINESS.
+// This compatibility view performs only owner-scoped SELECTs and never writes.
+const sb=createClient('https://mwgnwbmssiyugwlsnotz.supabase.co','sb_publishable_HMb1ucc2gUu96nRPJVjb0Q_PqclMV3P',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
+const $=id=>document.getElementById(id);
+$('login').addEventListener('submit',async(e)=>{e.preventDefault();const email=$('email').value.trim(),password=$('password').value;$('password').value='';$('auth').textContent='Prijava v teku …';const {error}=await sb.auth.signInWithPassword({email,password});if(error){$('auth').textContent='Prijava ni uspela: '+error.message;return}location.reload()});
+const {data:{session},error:sessionError}=await sb.auth.getSession();
+if(sessionError){$('auth').textContent='Napaka seje: '+sessionError.message}
+else if(!session?.user){$('auth').textContent='Ni prijave. Uporabite isti e-poštni naslov in geslo kot prej.'}
+else{
+ const {data:{user},error}=await sb.auth.getUser();
+ if(error||!user){$('auth').textContent='Prijava ni veljavna. Poskusite znova na osnovni strani.'}
+ else{
+   $('auth').textContent='Prijavljeni z obstoječim računom.';$('login').hidden=true;$('summary').hidden=false;
+   $('account').textContent=user.email||'Prijavljen uporabnik';
+   const pairs=[['Podjetje','lb_companies'],['Stranke','lb_clients'],['Ponudbe','lb_quotes'],['Termini','lb_appointments'],['Jedilnik','lb_menu_items'],['Javne strani','lb_public_pages'],['Rezervacije','lb_booking_requests']];
+   for(const [title,table] of pairs){
+    const li=document.createElement('li');li.textContent=title+': preverjam …';$('counts').append(li);
+    const {count,error:dbError}=await sb.from(table).select('id',{count:'exact',head:true}).eq('owner_id',user.id);
+    li.textContent=title+': '+(dbError?'ni mogoče preveriti ('+dbError.message+')':count);
+   }
+ }
+}
+$('signout').addEventListener('click',async()=>{await sb.auth.signOut();location.replace('https://lnk-business-saas.vercel.app/')});
+</script></body></html>

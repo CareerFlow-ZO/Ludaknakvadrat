@@ -1,0 +1,25 @@
+name: LNK BUSINESS Workspace Security Gate
+on:
+  push:
+    branches:
+      - feature/lnk-business-workspace-20261012
+    paths:
+      - 'lnk-business-app/**'
+      - '.github/workflows/lnk-business-workspace-gate.yml'
+  workflow_dispatch:
+jobs:
+  static-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Static release gate
+        run: node lnk-business-app/scripts/workspace-security-gate.mjs
+      - name: Workspace browser syntax smoke
+        run: node lnk-business-app/scripts/workspace-ui-smoke.mjs
+      - name: Existing account continuity gate
+        run: node lnk-business-app/scripts/existing-account-gate.mjs
