@@ -16,13 +16,14 @@ import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57
 const db=createClient('https://mwgnwbmssiyugwlsnotz.supabase.co','sb_publishable_HMb1ucc2gUu96nRPJVjb0Q_PqclMV3P');
 const $=id=>document.getElementById(id);
 let user=null,checkoutMode=null,checkoutReady=false;
+let selectedBillingInterval='monthly';
 const NEW_PRICING_CHECKOUT_ENABLED=false; // No subscription charging until matching new Stripe prices and legal readiness.
 function notice(text){const el=$('result');el.classList.remove('hidden');el.textContent=text}
 async function call(action,plan){
  const {data:{session},error}=await db.auth.getSession();
  if(error||!session?.access_token)throw Error('Najprej se prijavite v LNK BUSINESS.');
  if(action==='checkout' && !NEW_PRICING_CHECKOUT_ENABLED)throw Error('Novo obračunavanje še ni aktivno.');
- const res=await db.functions.invoke('lb-billing',{body:{action,plan}});
+ const res=await db.functions.invoke('lb-billing',{body:{action,plan,interval:selectedBillingInterval}});
  if(res.error){
   let details=null;try{details=await res.error.context?.json?.()}catch{}
   throw Error(details?.error||res.error.message||'Stripe Checkout ni aktiven');
@@ -62,4 +63,4 @@ $('portal').addEventListener('click',async()=>{const b=$('portal');b.disabled=tr
  if(result==='success')notice('Vrnili ste se s Stripe Checkout. To ni potrditev plačila. Status se posodobi šele po preverjenem webhook sporočilu.');
  else if(result==='cancel')notice('Stripe Checkout je bil preklican. Ni potrjenega plačila.');
  }catch(e){notice('Napaka pri preverjanju naročnine: '+(e.message||e))}})();
-</script><script>(function(){'use strict';const buttons=[...document.querySelectorAll('[data-billing]')],cards=[...document.querySelectorAll('[data-price-plan]')];function change(which){const yearly=which==='yearly';for(const b of buttons){const active=b.dataset.billing===which;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',String(active))}for(const card of cards){card.textContent=(yearly?card.dataset.yearly:card.dataset.monthly)+' €';const box=card.closest('.card');box.querySelector('[data-price-period]').textContent=yearly?'/ leto · brez DDV · 2 meseca gratis':'/ mesec · brez DDV';box.querySelector('[data-no-setup]').textContent=yearly?'Plačilo za 12 mesecev vnaprej · brez začetne postavitve':'Brez začetne postavitve'}}for(const b of buttons)b.addEventListener('click',()=>change(b.dataset.billing));change('monthly')})();</script><script type="module" src="/analytics.js"></script></body></html>
+</script><script>(function(){'use strict';const buttons=[...document.querySelectorAll('[data-billing]')],cards=[...document.querySelectorAll('[data-price-plan]')];function change(which){selectedBillingInterval=which;const yearly=which==='yearly';for(const b of buttons){const active=b.dataset.billing===which;b.classList.toggle('selected',active);b.setAttribute('aria-pressed',String(active))}for(const card of cards){card.textContent=(yearly?card.dataset.yearly:card.dataset.monthly)+' €';const box=card.closest('.card');box.querySelector('[data-price-period]').textContent=yearly?'/ leto · brez DDV · 2 meseca gratis':'/ mesec · brez DDV';box.querySelector('[data-no-setup]').textContent=yearly?'Plačilo za 12 mesecev vnaprej · brez začetne postavitve':'Brez začetne postavitve'}}for(const b of buttons)b.addEventListener('click',()=>change(b.dataset.billing));change('monthly')})();</script><script type="module" src="/analytics.js"></script></body></html>
