@@ -21,6 +21,7 @@ create table if not exists public.lb_team_messages (
  owner_id uuid not null references auth.users(id) on delete cascade,
  channel_id uuid not null,
  author_id uuid not null references auth.users(id),
+ constraint lb_messages_owner_author_only check(author_id=owner_id),
  body text not null check(length(trim(body)) between 1 and 2000),
  created_at timestamptz not null default now(),
  foreign key(owner_id,channel_id) references public.lb_team_channels(owner_id,id) on delete cascade
@@ -36,14 +37,16 @@ create table if not exists public.lb_portal_invites (
  created_at timestamptz not null default now(),
  foreign key(owner_id,project_id) references public.lb_projects(owner_id,id) on delete cascade
 );
+create unique index if not exists lb_invoice_drafts_owner_id_unique on public.lb_invoice_drafts(owner_id,id);
 create table if not exists public.lb_payment_events (
  id uuid primary key default gen_random_uuid(),
  owner_id uuid not null references auth.users(id) on delete cascade,
- invoice_draft_id uuid not null references public.lb_invoice_drafts(id) on delete cascade,
+ invoice_draft_id uuid not null,
  status text not null default 'pending' check(status in ('pending','paid_unverified','cancelled')),
  amount numeric(14,2) not null check(amount>=0),
  currency text not null default 'EUR' check(currency in ('EUR','USD','GBP')),
  note text not null default '' check(length(note)<=500),
+ foreign key (owner_id,invoice_draft_id) references public.lb_invoice_drafts(owner_id,id) on delete cascade,
  created_at timestamptz not null default now()
 );
 create table if not exists public.lb_ai_usage (
@@ -68,5 +71,5 @@ end $$;
 -- 2. Client portal invites currently do NOT grant invited users any access.
 -- 3. AI is not executing remotely. No prompt contents are stored in usage log.
 -- 4. Payment events are manual, UNVERIFIED records and must not count as collected payments.
--- 5. Validate invoice_draft_id ownership with composite FK or trigger BEFORE allowing inserts.
+-- 5. Payment draft ownership enforced by composite foreign key; do not treat manual status as verified payment.
 -- 6. No migrations to existing production database.
