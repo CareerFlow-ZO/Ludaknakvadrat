@@ -17,8 +17,7 @@
 <link rel="preload" as="image" href="https://costliving.net/images/locations/croatia.webp">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-<!-- Three.js powers the atmospheric Adriatic ocean animation. -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- Cinematic motion uses licensed stock footage with static image fallbacks. -->
 <style>
 :root{--ink:#101b1a;--ink2:#182a27;--cream:#f5f2ec;--paper:#ede7de;--muted:#9aaba3;--gold:#d3b784;--line:rgba(211,183,132,.25);--sans:'DM Sans',Arial,sans-serif;--serif:'Italiana',Georgia,serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--sans);-webkit-font-smoothing:antialiased}body.lock{overflow:hidden}button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}::selection{background:#c1a473;color:#111b19}
@@ -325,6 +324,97 @@ body{background:#0b1715}
  .preview-ribbon span{animation:none}
 }
 
+
+/* === LNK DIGITAL — 2026 REAL CINEMATIC FILM EXPERIENCE === */
+.hero{isolation:isolate;overflow:hidden;background:#071613}
+.hero-cinema{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#071613,#112c29)}
+.hero-cinema .cinema-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transform:scale(1.16);transition:opacity 1.6s ease;filter:saturate(.77) contrast(1.06) brightness(.77)}
+.hero-cinema.has-film .cinema-film{opacity:1;animation:film-orbit 21s ease-in-out infinite alternate}
+@keyframes film-orbit{0%{transform:scale(1.16) translate3d(-1.6%,0,0)}50%{transform:scale(1.22) translate3d(1.4%,-.7%,0)}100%{transform:scale(1.13) translate3d(-.9%,.4%,0)}}
+.hero-cinema .cinema-vignette{position:absolute;inset:0;background:linear-gradient(90deg,#061310f0 0%,#061310c5 23%,#06131075 53%,#06131020 100%),linear-gradient(0deg,#071813ac 0%,transparent 32%,#0714114a 100%);z-index:2}
+.hero-cinema .cinema-caustics{position:absolute;inset:-40%;background:radial-gradient(ellipse at 70% 45%,#d9c49d17,transparent 36%);mix-blend-mode:screen;z-index:3;animation:waterlight 12s linear infinite alternate}
+@keyframes waterlight{from{transform:translate3d(-2%,0,0) rotate(-7deg)}to{transform:translate3d(3%,2%,0) rotate(7deg)}}
+.cinema-hairline{position:absolute;z-index:4;top:18%;bottom:15%;right:8%;width:1px;background:linear-gradient(180deg,transparent,#e0cba94f,transparent);transform:translateY(0);animation:hairline-float 8s ease-in-out infinite}
+@keyframes hairline-float{50%{transform:translateY(12px)}}
+.hero:before,.hero:after{pointer-events:none}
+.hero-image-wrap{z-index:0}
+.hero-image-wrap .hero-image{background-image:linear-gradient(90deg,#0415107d,#091d1819),url('https://www.guletyacht.net/uploads/full/gulet-charter-love-story-3.jpg')!important;background-size:cover;background-position:center}
+.hero-cinema.has-film~.hero-image-wrap{opacity:0;transition:opacity 1.5s ease}
+.hero-left{z-index:7;position:relative}
+.hero .hero-actions button,.hero .hero-actions a{transition:transform .32s ease,color .32s}
+.hero .hero-actions button:hover,.hero .hero-actions a:hover{transform:translateY(-5px)}
+.hero-no,.hero-side-label{z-index:8}
+.motion-indicator{margin-left:23px;font-size:9px;color:#dfc39d;display:inline-flex;align-items:center;gap:8px}
+.motion-indicator i{height:5px;width:5px;background:#c0a06a;border-radius:100%;animation:pulse 1.7s infinite}
+.experience{isolation:isolate;overflow:hidden}
+.experience img{z-index:0}
+.experience .card-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0;transform:scale(1.06);filter:brightness(.75) saturate(.85);transition:opacity 1.2s ease}
+.experience.has-film .card-film{opacity:1;animation:card-film-drift 17s ease-in-out infinite alternate}
+.experience .card-film.yacht-film{object-position:center;animation-duration:15s}
+.experience .card-film.dining-film{filter:brightness(.67) saturate(.88)}
+@keyframes card-film-drift{0%{transform:scale(1.08) translate3d(-1.2%,0,0)}50%{transform:scale(1.15) translate3d(1.2%,-1%,0)}100%{transform:scale(1.1) translate3d(-.5%,.4%,0)}}
+.experience .film-grain{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 20%,transparent 28%,#08140e22 100%);mix-blend-mode:multiply}
+.experience::after{z-index:2}
+.experience .num,.experience .wording{z-index:4}
+.experience:hover .card-film{filter:brightness(.87) saturate(.92)}
+.atlas-visual{isolation:isolate}
+.atlas-visual #atlasImage{animation:atlas-still-drift 20s ease-in-out infinite alternate}
+@keyframes atlas-still-drift{0%{transform:scale(1.02) translate3d(-1%,0,0)}100%{transform:scale(1.12) translate3d(1.5%,-1.1%,0)}}
+.atlas-visual .atlas-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;filter:saturate(.73) brightness(.87);transform:scale(1.09);transition:opacity 1.1s ease;z-index:1}
+.atlas-visual.has-film .atlas-film{opacity:1;animation:atlas-move 18s ease-in-out infinite alternate}
+@keyframes atlas-move{from{transform:scale(1.08) translate3d(-1%,.5%,0)}to{transform:scale(1.14) translate3d(1%,-1%,0)}}
+.atlas-visual:after{z-index:2}
+.atlas-visual .atlas-light{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(120deg,transparent 35%,#fff5d405 50%,transparent 75%);background-size:200% 200%;animation:light-travel 13s ease-in-out infinite}
+@keyframes light-travel{from{background-position:0% 50%}to{background-position:100% 50%}}
+.atlas-overline,.atlas-imgline{z-index:3}
+.editorial-pic{isolation:isolate}
+.editorial-parallax{transform:scale(1.16);will-change:transform}
+.editorial-light{pointer-events:none;position:absolute;inset:-50%;background:radial-gradient(circle at 80% 40%,#d9b6841e,transparent 50%);animation:light-breathe 8s ease-in-out infinite alternate}
+@keyframes light-breathe{to{transform:translate(-3%,2%);opacity:.35}}
+.sample-journey{position:relative;isolation:isolate;overflow:hidden}
+.sample-cinema{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.3}
+.sample-cinema-img{position:absolute;inset:-18%;background:linear-gradient(#081a14b9,#081a14e0),url('https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=1600&q=78') center/cover no-repeat;animation:slow-journey 36s ease-in-out infinite alternate}
+@keyframes slow-journey{to{transform:scale(1.2) translate3d(2%,-2%,0)}}
+.sample-cinema-shade{position:absolute;inset:0;background:linear-gradient(180deg,#0d1c17f2,transparent 42%,#0d1c17da)}
+.sample-item{transition:background .6s ease,border-color .5s}
+.sample-item:hover{background:#c9af8510;border-color:#d9c19a65}
+.sample-symbol{animation:ornament-float 6s ease-in-out infinite alternate}
+@keyframes ornament-float{to{transform:translateY(-9px) rotate(8deg)}}
+.director-ornament{animation:ornament-float 8s ease-in-out infinite alternate}
+.cinematic-wizard{background:linear-gradient(135deg,#f2ece1,#e7dbc9)}
+.cinematic-wizard .wizard-progress{background:#c8baa5}
+.cinematic-wizard #wizardContent{animation:wizard-scene-in .42s cubic-bezier(.2,.8,.2,1) both}
+@keyframes wizard-scene-in{from{opacity:0;transform:translateY(14px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+.cinematic-wizard .wizard-aside{background:linear-gradient(145deg,#decfb9,#e7dece)}
+.motion-toggle{position:fixed;z-index:52;bottom:22px;left:22px;display:flex;align-items:center;gap:10px;border:1px solid #dbc39b6a;color:#ece0cc;background:#0b1916d9;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:11px 13px;letter-spacing:.13em;font-size:9px;cursor:pointer}
+.motion-toggle:hover,.motion-toggle:focus-visible{background:#203830}
+.motion-paused .cinema-film,.motion-paused .card-film,.motion-paused .atlas-film,.motion-paused .hero-cinema .cinema-caustics,.motion-paused .film-grain,.motion-paused .atlas-visual #atlasImage,.motion-paused .atlas-light,.motion-paused .sample-cinema-img,.motion-paused .editorial-light,.motion-paused .director-ornament{animation-play-state:paused!important}
+body[data-reduced-motion="1"] .cinema-film,body[data-reduced-motion="1"] .card-film,body[data-reduced-motion="1"] .atlas-film{display:none}
+@media (max-width:750px){
+ .hero{min-height:720px}
+ .hero-cinema .cinema-film{object-position:57% center}
+ .hero-cinema .cinema-vignette{background:linear-gradient(90deg,#071713da 0%,#08181391 70%,#07171379 100%),linear-gradient(0deg,#071914eb,transparent 46%)}
+ .hero-image-wrap .hero-image{opacity:.67}
+ .hero-cinema.has-film~.hero-image-wrap{opacity:0}
+ .hero .hero-left{z-index:8}
+ .hero-cinema .cinema-film{filter:brightness(.65) saturate(.8)}
+ .hero-cinema .cinema-hairline{right:4%}
+ .hero-no{font-size:8px}
+ .motion-indicator{margin-left:7px;font-size:8px}
+ .experience{min-height:510px}
+ .experience .card-film{object-position:center}
+ .atlas-visual .atlas-film{object-position:center}
+ .motion-toggle{bottom:13px;left:12px;padding:10px 12px;font-size:9px;z-index:52}
+ .motion-toggle span{display:none}
+ .editorial-parallax{will-change:auto}
+}
+@media (prefers-reduced-motion: reduce){
+ .hero-cinema .cinema-film,.card-film,.atlas-film{display:none!important}
+ .hero-cinema .cinema-caustics,.cinema-hairline,.atlas-light,.editorial-light,.sample-cinema-img,.sample-symbol,.director-ornament,.motion-indicator i{animation:none!important}
+ .atlas-visual #atlasImage{animation:none}
+ .editorial-parallax{transform:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -337,6 +427,10 @@ body{background:#0b1715}
   <section class="hero" aria-labelledby="heroTitle">
     <!-- Animated 3D Adriatic water. Safe static fallback when WebGL is unavailable. -->
     <div id="webgl-container" aria-hidden="true"></div>
+    <div class="hero-cinema" aria-hidden="true">
+      <video id="heroFilm" class="cinema-film" muted loop playsinline autoplay preload="metadata" poster="https://www.guletyacht.net/uploads/full/gulet-charter-love-story-3.jpg" data-film="hero" data-src="https://videos.pexels.com/video-files/31735552/13521459_3840_2160_30fps.mp4"></video>
+      <span class="cinema-vignette"></span><span class="cinema-caustics"></span><span class="cinema-hairline"></span>
+    </div>
     <div class="hero-left">
       <div class="overline">An invitation to experience more</div>
       <h1 id="heroTitle">Croatia,<br><em>entirely</em><br>yours<span class="hero-dot">.</span></h1>
@@ -344,9 +438,9 @@ body{background:#0b1715}
       <div class="hero-actions"><button class="btn-gold start-journey">Curate my journey <span class="cta-arrow" aria-hidden="true">↗</span></button><a class="text-btn" href="#experiences">Discover our world <span class="arr">↘</span></a></div>
       <p class="hero-subnote"><span class="subnote-rule"></span> PRIVATE TRAVEL &nbsp; / &nbsp; THE ADRIATIC</p>
     </div>
-    <div class="hero-image-wrap"><div class="hero-image" role="img" aria-label="Illustrative photograph of Dubrovnik and the Adriatic at sunset"></div></div>
-    <div class="hero-side-label"><span class="small">THE ADRIATIC · CROATIA</span><strong>A quieter kind of extraordinary.</strong><i></i></div>
-    <div class="hero-no"><b>01 / 05</b> A PRIVATE INVITATION</div>
+    <div class="hero-image-wrap"><div class="hero-image" role="img" aria-label="Illustrative luxury yacht on the Adriatic Sea"></div></div>
+    <div class="hero-side-label"><span class="small">THE ADRIATIC · BY SEA</span><strong>Every horizon, yours.</strong><i></i></div>
+    <div class="hero-no"><b>01 / 05</b> THE CINEMATIC COLLECTION <span class="motion-indicator" aria-hidden="true"><i></i> LIVE SCENES</span></div>
     <div class="scroll-cue">SCROLL TO DISCOVER</div>
   </section>
   <section id="philosophy" class="statement">
@@ -355,9 +449,9 @@ body{background:#0b1715}
   <section class="experiences" id="experiences">
     <div class="section-head reveal"><span class="eyebrow">THE COLLECTION · 01 — 03</span><h2>For the moments<br><em>worth remembering.</em></h2><p>Not merely where you go, but how it feels to be there. Three expressions of the Adriatic, each made entirely personal.</p></div>
     <div class="experience-grid">
-      <button class="experience reveal" data-open-exp="Private villa"><img loading="lazy" alt="Illustrative seafront luxury villa with private infinity pool" src="https://cdn.audleytravel.com/1050/749/79/15993892-villa-amelie-dubrovnik.jpg"><span class="num">01 / STAY</span><div class="wording"><span class="cat">A private sanctuary</span><h3>Belong to<br>the beautiful.</h3><span class="explore">Explore villas <span>↗</span></span></div></button>
-      <button class="experience reveal" data-open-exp="Private yacht"><img loading="lazy" alt="Illustrative luxury sailing yacht on turquoise Adriatic waters" src="https://www.guletyacht.net/uploads/full/gulet-charter-love-story-3.jpg"><span class="num">02 / SAIL</span><div class="wording"><span class="cat">The sea, entirely yours</span><h3>The sea,<br>on your terms.</h3><span class="explore">Explore yachts <span>↗</span></span></div></button>
-      <button class="experience reveal" data-open-exp="Private dining"><img loading="lazy" alt="Illustrative intimate luxury dining setting" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=82"><span class="num">03 / EXPERIENCE</span><div class="wording"><span class="cat">Beyond expectation</span><h3>Moments<br>to keep.</h3><span class="explore">Explore experiences <span>↗</span></span></div></button>
+      <button class="experience reveal" data-open-exp="Private villa"><img loading="lazy" alt="Illustrative seafront luxury villa with private infinity pool" src="https://cdn.audleytravel.com/1050/749/79/15993892-villa-amelie-dubrovnik.jpg"><video class="card-film" data-film="villa" data-src="https://videos.pexels.com/video-files/17692981/17692981-hd_1920_1080_30fps.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="film-grain" aria-hidden="true"></span><span class="num">01 / STAY</span><div class="wording"><span class="cat">A private sanctuary</span><h3>Belong to<br>the beautiful.</h3><span class="explore">Explore villas <span>↗</span></span></div></button>
+      <button class="experience reveal" data-open-exp="Private yacht"><img loading="lazy" alt="Illustrative luxury sailing yacht on turquoise Adriatic waters" src="https://www.guletyacht.net/uploads/full/gulet-charter-love-story-3.jpg"><video class="card-film yacht-film" data-film="yacht" data-src="https://videos.pexels.com/video-files/8357488/8357488-uhd_2560_1440_25fps.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="film-grain" aria-hidden="true"></span><span class="num">02 / SAIL</span><div class="wording"><span class="cat">The sea, entirely yours</span><h3>The sea,<br>on your terms.</h3><span class="explore">Explore yachts <span>↗</span></span></div></button>
+      <button class="experience reveal" data-open-exp="Private dining"><img loading="lazy" alt="Illustrative intimate luxury dining setting" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&q=82"><video class="card-film dining-film" data-film="dining" data-src="https://videos.pexels.com/video-files/7707321/7707321-hd_1920_1080_25fps.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="film-grain" aria-hidden="true"></span><span class="num">03 / EXPERIENCE</span><div class="wording"><span class="cat">Beyond expectation</span><h3>Moments<br>to keep.</h3><span class="explore">Explore experiences <span>↗</span></span></div></button>
     </div>
   </section>
 
@@ -365,7 +459,7 @@ body{background:#0b1715}
     <div class="atlas-heading reveal"><div class="eyebrow">THE PRIVATE ATELIER · FOUR PLACES, INFINITE POSSIBILITIES</div><h2 id="atlasTitle">An Adriatic<br><em>all your own.</em></h2><p>Begin with a destination. From there, the experience becomes yours to shape.</p></div>
     <div class="atlas-layout">
       <div class="atlas-visual">
-        <img id="atlasImage" src="https://costliving.net/images/locations/croatia.webp" alt="Illustrative view over historic Dubrovnik toward the sea" loading="lazy">
+        <img id="atlasImage" src="https://costliving.net/images/locations/croatia.webp" alt="Illustrative view over historic Dubrovnik toward the sea" loading="lazy"><video id="atlasVideo" class="atlas-film" data-film="destination" data-src="https://videos.pexels.com/video-files/12079872/12079872-uhd_3840_2160_30fps.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="atlas-light" aria-hidden="true"></span>
         <span class="atlas-overline">AN EDITORIAL ITINERARY</span><div class="atlas-imgline"><span id="atlasNumber">01 / 04</span><strong id="atlasLocation">Dubrovnik</strong></div>
       </div>
       <div class="atlas-detail">
@@ -383,13 +477,13 @@ body{background:#0b1715}
     </div>
   </section>
   <section class="editorial" id="our-story">
-    <div class="editorial-pic"><img loading="lazy" src="https://costliving.net/images/locations/croatia.webp" alt="Dubrovnik old town overlooking the Adriatic Sea at sunset"></div>
+    <div class="editorial-pic"><img class="editorial-parallax" loading="lazy" src="https://costliving.net/images/locations/croatia.webp" alt="Dubrovnik old town overlooking the Adriatic Sea at sunset"><span class="editorial-light" aria-hidden="true"></span></div>
     <div class="editorial-text reveal"><span class="eyebrow">THE CONCIERGE DIFFERENCE</span><h2>Every detail,<br><i style="font-style:italic;color:#8e7450">considered.</i><br>Every time.</h2><p>Beyond the itinerary is the feeling of being known. A dedicated local perspective, thoughtful access, and the ease of knowing the details are in trusted hands.</p><div class="feature-lines"><div class="feature-line"><span>01</span> Personally crafted escapes</div><div class="feature-line"><span>02</span> Thoughtful, private experiences</div><div class="feature-line"><span>03</span> Dedicated local concierge support</div></div><button class="btn-dark start-journey">Imagine your journey &nbsp; ↗</button></div>
   </section>
 
   <section class="sample-journey" id="the-journey" aria-labelledby="sampleTitle">
     <div class="sample-heading reveal"><div class="eyebrow">WHAT IF IT BEGAN LIKE THIS?</div><h2 id="sampleTitle">Three days.<br><em>One extraordinary feeling.</em></h2><p>A glimpse into how a personal escape might unfold. Every chapter is only a suggestion; the best details are yours.</p></div>
-    <div class="sample-timeline">
+    <div class="sample-cinema" aria-hidden="true"><span class="sample-cinema-img"></span><span class="sample-cinema-shade"></span></div><div class="sample-timeline">
       <div class="sample-item reveal"><div class="sample-number">I <span>THE ARRIVAL</span></div><div class="sample-line"></div><div class="sample-content"><span>DAY ONE / ARRIVE</span><h3>From the first moment,<br>everything slows.</h3><p>A seamless arrival. Your own coastal hideaway. An unhurried dinner, with nowhere else you need to be.</p></div><span class="sample-symbol" aria-hidden="true">✳</span></div>
       <div class="sample-item reveal"><div class="sample-number">II <span>THE DISCOVERY</span></div><div class="sample-line"></div><div class="sample-content"><span>DAY TWO / EXPLORE</span><h3>See the islands<br>from a different perspective.</h3><p>Take to the water with a private skipper. Find a quiet anchorage, a long lunch and a new favourite view.</p></div><span class="sample-symbol" aria-hidden="true">≈</span></div>
       <div class="sample-item reveal"><div class="sample-number">III <span>THE MEMORY</span></div><div class="sample-line"></div><div class="sample-content"><span>DAY THREE / SAVOUR</span><h3>Leave with a story<br>that is yours alone.</h3><p>Perhaps a wine estate. Perhaps an intimate celebration. The finest part is that nothing has to be ordinary.</p></div><span class="sample-symbol" aria-hidden="true">✧</span></div>
@@ -414,13 +508,13 @@ body{background:#0b1715}
 </footer>
 <div class="preview-ribbon"><span></span> PRIVATE DESIGN STUDY · LNK DIGITAL</div>
 <div class="overlay" id="overlay" hidden>
-  <div class="wizard" role="dialog" aria-modal="true" aria-labelledby="stepTitle">
+  <div class="wizard cinematic-wizard" role="dialog" aria-modal="true" aria-labelledby="stepTitle">
     <div class="wizard-top"><div class="brandline"><span>✧</span> YOUR PERSONAL CROATIA EXPERIENCE</div><button id="closeWizard" class="close" aria-label="Close travel planner">×</button></div>
     <div class="wizard-progress"><i id="progress"></i></div>
     <div class="wizard-body"><div class="wizard-main"><div id="wizardContent"></div><div class="wizard-actions" id="wizardActions"><button class="btn-prev" id="prevBtn">← Back</button><button class="btn-next" id="nextBtn">Continue →</button></div></div><aside class="wizard-aside" id="wizardAside" aria-label="Your itinerary summary"></aside></div>
   </div>
 </div>
-<div class="notify" id="notify" role="status" aria-live="polite"></div>
+<button id="motionToggle" class="motion-toggle" type="button" aria-label="Pause scene animations" aria-pressed="false">Ⅱ <span>PAUSE MOTION</span></button><div class="notify" id="notify" role="status" aria-live="polite"></div>
 <script>
 (function(){
 'use strict';
@@ -512,10 +606,10 @@ var lastFocus=null;
 
 // Accessible interactive destination atelier; uses same state as private brief wizard.
 var places=[
- {name:'Dubrovnik',dest:'Dubrovnik',num:'01 / 04',kicker:'THE SOUTHERN JEWEL',title:'A city to fall for.<br>And a sea to escape to.',desc:'Imagine a stone-walled city at golden hour, a table set away from the crowds, and the freedom of a private boat awaiting your next day.',photo:'https://costliving.net/images/locations/croatia.webp',alt:'Illustrative view of Dubrovnik on the Adriatic'},
- {name:'Hvar & islands',dest:'Hvar',num:'02 / 04',kicker:'THE ISLAND RHYTHM',title:'The art of<br>losing track of time.',desc:'A quiet swim in brilliant blue water. Your own skipper. A sheltered cove and an afternoon that belongs entirely to you.',photo:'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=1450&q=84',alt:'Illustrative turquoise Mediterranean water and island shore'},
- {name:'Istria',dest:'Istria',num:'03 / 04',kicker:'A SLOWER KIND OF BEAUTY',title:'The pleasure<br>of staying longer.',desc:'Stone villages, private tastings and dinners beneath the stars. An invitation to discover Croatia one beautiful detail at a time.',photo:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1450&q=84',alt:'Illustrative rural landscape and rolling countryside'},
- {name:'Dalmatian coast',dest:'Split & islands',num:'04 / 04',kicker:'THE COAST UNFOLDS',title:'Follow your<br>own horizon.',desc:'Between the islands, every anchorage tells a different story. Discover the beauty of a journey where the next stop is yours to choose.',photo:'https://www.guletyacht.net/uploads/full/gulet-charter-love-story-3.jpg',alt:'Illustrative private yacht on blue water'}
+ {name:'Dubrovnik',dest:'Dubrovnik',num:'01 / 04',kicker:'THE SOUTHERN JEWEL',title:'A city to fall for.<br>And a sea to escape to.',desc:'Imagine a stone-walled city at golden hour, a table set away from the crowds, and the freedom of a private boat awaiting your next day.',video:'https://videos.pexels.com/video-files/12079872/12079872-uhd_3840_2160_30fps.mp4',photo:'https://costliving.net/images/locations/croatia.webp',alt:'Illustrative view of Dubrovnik on the Adriatic'},
+ {name:'Hvar & islands',dest:'Hvar',num:'02 / 04',kicker:'THE ISLAND RHYTHM',title:'The art of<br>losing track of time.',desc:'A quiet swim in brilliant blue water. Your own skipper. A sheltered cove and an afternoon that belongs entirely to you.',video:'https://videos.pexels.com/video-files/4385164/4385164-hd_1920_1080_30fps.mp4',photo:'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?w=1450&q=84',alt:'Illustrative turquoise Mediterranean water and island shore'},
+ {name:'Istria',dest:'Istria',num:'03 / 04',kicker:'A SLOWER KIND OF BEAUTY',title:'The pleasure<br>of staying longer.',desc:'Stone villages, private tastings and dinners beneath the stars. An invitation to discover Croatia one beautiful detail at a time.',video:'https://videos.pexels.com/video-files/27437365/12144258_1920_1080_60fps.mp4',photo:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1450&q=84',alt:'Illustrative rural landscape and rolling countryside'},
+ {name:'Dalmatian coast',dest:'Split & islands',num:'04 / 04',kicker:'THE COAST UNFOLDS',title:'Follow your<br>own horizon.',desc:'Between the islands, every anchorage tells a different story. Discover the beauty of a journey where the next stop is yours to choose.',video:'https://videos.pexels.com/video-files/11480626/11480626-uhd_3840_2160_30fps.mp4',photo:'https://www.guletyacht.net/uploads/full/gulet-charter-love-story-3.jpg',alt:'Illustrative private yacht on blue water'}
 ];
 var atlasButtons=document.querySelectorAll('[data-atlas]');
 var atlasImage=document.getElementById('atlasImage');
@@ -528,6 +622,7 @@ function selectPlace(i){
   if(i<0||i>=places.length)return;
   activePlace=i;
   var item=places[i];
+  if(typeof swapAtlasFilm==="function")swapAtlasFilm(item.video);
   atlasButtons.forEach(function(btn,index){var selected=i===index;btn.classList.toggle('selected',selected);btn.setAttribute('aria-selected',String(selected))});
   if(atlasImage){atlasImage.src=item.photo;atlasImage.alt=item.alt}
   document.getElementById('atlasNumber').textContent=item.num;
@@ -600,6 +695,92 @@ content.addEventListener('click',function(e){
 function fallbackCopy(s){var a=document.createElement('textarea');a.value=s;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast('Your travel brief is copied.')}catch(e){toast('Copy is unavailable in this browser.')}a.remove()}
 function syncFields(){var a=document.getElementById('guestName'),b=document.getElementById('guestEmail'),c=document.getElementById('guestNotes');if(a)state.name=a.value;if(b)state.email=b.value;if(c)state.notes=c.value}
 content.addEventListener('input',function(e){if(e.target.id==='guestName')state.name=e.target.value;if(e.target.id==='guestEmail')state.email=e.target.value;if(e.target.id==='guestNotes')state.notes=e.target.value;if(e.target.id==='arrival')state.arrival=e.target.value;if(e.target.id==='departure')state.departure=e.target.value});
+
+// Progressive cinematic film controller — moving yacht, aerial villa, private dining and location films.
+// Videos intentionally lazy-load and pause outside the viewport; no artificial booking or visitor tracking.
+(function(){
+  var prefersReduced=window.matchMedia('(prefers-reduced-motion:reduce)');
+  var prefersSaveData=!!(navigator.connection&&navigator.connection.saveData);
+  var noFilm=prefersReduced.matches||prefersSaveData;
+  var allFilms=Array.prototype.slice.call(document.querySelectorAll('[data-film]'));
+  var atlasFilm=document.getElementById('atlasVideo');
+  var heroFilm=document.getElementById('heroFilm');
+  var toggle=document.getElementById('motionToggle');
+  var stopped=noFilm;
+  var inView=new WeakMap();
+  if(noFilm)document.body.setAttribute('data-reduced-motion','1');
+  function activateFilm(v,source){
+    if(!v||stopped||!source)return;
+    if(v.dataset.activeSource!==source){
+      v.pause();
+      v.classList.remove('ready');
+      v.parentElement.classList.remove('has-film');
+      v.dataset.activeSource=source;
+      v.src=source;
+      v.load();
+    }
+    if(!document.hidden&&inView.get(v)===true){
+      var promise=v.play();
+      if(promise&&typeof promise.then==='function')promise.then(function(){if(!stopped)v.parentElement.classList.add('has-film')}).catch(function(){ /* autoplay may be blocked; still image remains visible */});
+    }
+  }
+  function halt(v){if(v&&!v.paused)v.pause()}
+  function setVisible(v,isVisible){
+    inView.set(v,isVisible);
+    if(!isVisible){halt(v);return}
+    if(stopped)return;
+    activateFilm(v,v.dataset.src);
+  }
+  if('IntersectionObserver' in window){
+    var observer=new IntersectionObserver(function(items){
+      items.forEach(function(entry){setVisible(entry.target,entry.isIntersecting)});
+    },{rootMargin:'120px 0px',threshold:.08});
+    allFilms.forEach(function(v){observer.observe(v)});
+  }else{
+    allFilms.forEach(function(v){setVisible(v,true)});
+  }
+  allFilms.forEach(function(v){
+    v.addEventListener('playing',function(){if(!stopped)v.parentElement.classList.add('has-film')});
+    v.addEventListener('error',function(){v.parentElement.classList.remove('has-film');v.pause();v.removeAttribute('src');v.load()},{once:true});
+    v.addEventListener('stalled',function(){ /* poster image stays below film until playback resumes */});
+  });
+  function switchAtlasVideo(src){
+    if(!atlasFilm)return;
+    atlasFilm.dataset.src=src;
+    if(!stopped&&inView.get(atlasFilm))activateFilm(atlasFilm,src);
+    else{atlasFilm.pause();atlasFilm.parentElement.classList.remove('has-film')}
+  }
+  window.swapAtlasFilm=switchAtlasVideo;
+  if(toggle){
+    toggle.addEventListener('click',function(){
+      stopped=!stopped;
+      document.body.classList.toggle('motion-paused',stopped);
+      toggle.setAttribute('aria-pressed',String(stopped));
+      toggle.innerHTML=stopped?'▶ <span>RESUME MOTION</span>':'Ⅱ <span>PAUSE MOTION</span>';
+      if(stopped)allFilms.forEach(halt);
+      else allFilms.forEach(function(v){if(inView.get(v))activateFilm(v,v.dataset.src)});
+    });
+    toggle.hidden=prefersReduced.matches;
+  }
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden)allFilms.forEach(halt);
+    else if(!stopped)allFilms.forEach(function(v){if(inView.get(v))activateFilm(v,v.dataset.src)});
+  });
+  var parallax=document.querySelector('.editorial-parallax'),active=true,ticking=false;
+  function paint(){
+    ticking=false;
+    if(!parallax||!active||prefersReduced.matches||window.innerWidth<751)return;
+    var rect=parallax.parentElement.getBoundingClientRect(),height=window.innerHeight;
+    if(rect.top>height||rect.bottom<0)return;
+    var progress=(height-rect.top)/(height+rect.height);
+    var offset=(progress-.5)*26;
+    parallax.style.transform='scale(1.17) translate3d(0,'+offset.toFixed(2)+'px,0)';
+  }
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(paint)}},{passive:true});
+  window.addEventListener('resize',paint,{passive:true});
+  paint();
+})();
+
 var menu=document.getElementById('menuToggle'),links=document.getElementById('navlinks');
 menu.addEventListener('click',function(){links.classList.toggle('open');menu.setAttribute('aria-expanded',links.classList.contains('open'));menu.textContent=links.classList.contains('open')?'×':'☰'});
 links.querySelectorAll('a,button').forEach(function(n){n.addEventListener('click',function(){links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'})});
