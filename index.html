@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://www.lnkdigital.com/">
 <meta property="og:image" content="https://www.lnkdigital.com/lnk-digital-logo.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="image" href="/assets/photos/hero-600.webp" imagesrcset="/assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w" imagesizes="(max-width: 760px) calc(100vw - 32px), (max-width: 980px) 80vw, 580px" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/photos/hero-600.webp" imagesrcset="/assets/photos/hero-320.webp 320w, /assets/photos/hero-480.webp 480w, /assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w" imagesizes="(max-width: 760px) calc(100vw - 100px), (max-width: 980px) calc(100vw - 144px), (max-width: 1244px) calc(46vw - 114px), 458px" fetchpriority="high">
 <script defer src="/assets/js/lnk-home.js"></script>
 <script defer src="/assets/js/lnk-brief.js"></script>
 <style id="lnk-inline-design">
@@ -119,7 +119,7 @@ p{color:var(--muted)}
 .trust-pill i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px rgba(121,241,189,.7)}
 
 .hero-visual{position:relative;min-height:540px}
-.glow-orb{position:absolute;width:340px;height:340px;border-radius:50%;filter:blur(64px);opacity:.22;right:4%;top:13%;background:linear-gradient(135deg,#31cbff,#6a6cff,#b458ff)}
+.glow-orb{position:absolute;width:468px;height:468px;border-radius:50%;opacity:.22;right:-4%;top:8%;background:radial-gradient(ellipse,rgba(49,203,255,.65),rgba(106,108,255,.35) 35%,transparent 70%)}
 .browser{
   position:absolute;inset:42px 0 0 24px;
   border:1px solid rgba(145,184,231,.22);border-radius:28px;
@@ -296,7 +296,7 @@ main>section:not(.hero){margin-top:112px}
 }
 @keyframes lnkSpin{to{transform:rotate(360deg)}}
 
-.hero-copy{position:relative}
+.hero-copy{position:relative;align-self:start}
 .hero-copy:after{
   content:"";position:absolute;left:-38px;top:-28px;width:190px;height:190px;border-radius:50%;
   background:radial-gradient(circle,rgba(82,205,255,.08),transparent 68%);
@@ -324,7 +324,8 @@ main>section:not(.hero){margin-top:112px}
 .gradient-text{
   background:linear-gradient(110deg,#dff9ff 0%,#7edcff 26%,#8294ff 60%,#ae70ff 100%);
   background-size:180% 180%;
-  animation:gradientDrift 7s ease-in-out infinite;
+  /* Static gradient avoids repainting the headline on every frame. */
+  background-position:50% 50%;
   -webkit-background-clip:text;background-clip:text;color:transparent
 }
 @keyframes gradientDrift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
@@ -357,7 +358,7 @@ main>section:not(.hero){margin-top:112px}
   transform:skewX(-18deg);
   animation:ctaSheen 5.8s ease-in-out infinite;
 }
-@keyframes ctaSheen{0%,70%{left:-35%}88%,100%{left:125%}}
+@keyframes ctaSheen{0%,70%{transform:translateX(0) skewX(-18deg)}88%,100%{transform:translateX(575%) skewX(-18deg)}}
 
 @media(max-width:760px){
   .hero{gap:18px}
@@ -582,7 +583,7 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
         <div class="browser-screen">
           <div class="showcase-main">
     <div class="showcase-ui" aria-label="Premium website concept" data-i18n-aria="x16">
-      <img class="hero-concept-image" src="/assets/photos/hero.webp" srcset="/assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w" sizes="(max-width: 760px) calc(100vw - 32px), (max-width: 980px) 80vw, 580px" alt="Premium website design concept shown in a browser preview" data-i18n-alt="heroImageAlt" width="600" height="450" fetchpriority="high" decoding="async"><div class="mock-topline"><span data-i18n="x16">LNK / CONCEPT 01</span><span data-i18n="x17">LIVE PREVIEW</span></div>
+      <img class="hero-concept-image" src="/assets/photos/hero.webp" srcset="/assets/photos/hero-320.webp 320w, /assets/photos/hero-480.webp 480w, /assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w" sizes="(max-width: 760px) calc(100vw - 100px), (max-width: 980px) calc(100vw - 144px), (max-width: 1244px) calc(46vw - 114px), 458px" alt="Premium website design concept shown in a browser preview" data-i18n-alt="heroImageAlt" width="600" height="450" fetchpriority="high" decoding="async"><div class="mock-topline"><span data-i18n="x16">LNK / CONCEPT 01</span><span data-i18n="x17">LIVE PREVIEW</span></div>
       <div class="mock-title" data-i18n="x18">A digital presence that feels premium before the first click.</div>
       <div class="mock-copy" data-i18n="x19">Strategy-led design · polished mobile UX · conversion-focused structure.</div>
       <div class="mock-actions"><a href="#work" data-i18n="x20">Explore project</a><a href="#contact" data-i18n="x21">Request preview</a></div>
@@ -590,8 +591,8 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
     </div>
   </div>
   <div class="mini-grid">
-            <div class="mini-card"><img class="mini-visual" src="/assets/photos/strategy.webp" srcset="/assets/photos/strategy-600.webp 600w, /assets/photos/strategy.webp 960w" sizes="(max-width: 760px) 45vw, 240px" alt="" width="600" height="450" loading="lazy" decoding="async"><b data-i18n="x25">01 · Strategy</b><span data-i18n="x26">Offer, audience and action first.</span></div>
-            <div class="mini-card"><img class="mini-visual" src="/assets/photos/artdirection.webp" srcset="/assets/photos/artdirection-600.webp 600w, /assets/photos/artdirection.webp 960w" sizes="(max-width: 760px) 45vw, 240px" alt="" width="600" height="450" loading="lazy" decoding="async"><b data-i18n="x27">02 · Design</b><span data-i18n="x28">Premium visual direction, built to convert.</span></div>
+            <div class="mini-card"><img class="mini-visual" src="/assets/photos/strategy.webp" srcset="/assets/photos/strategy-320.webp 320w, /assets/photos/strategy-480.webp 480w, /assets/photos/strategy-600.webp 600w, /assets/photos/strategy.webp 960w" sizes="(max-width: 430px) calc(100vw - 84px), (max-width: 760px) calc(50vw - 60px), (max-width: 980px) calc(50vw - 80px), 220px" alt="" width="600" height="450" loading="lazy" decoding="async"><b data-i18n="x25">01 · Strategy</b><span data-i18n="x26">Offer, audience and action first.</span></div>
+            <div class="mini-card"><img class="mini-visual" src="/assets/photos/artdirection.webp" srcset="/assets/photos/artdirection-320.webp 320w, /assets/photos/artdirection-480.webp 480w, /assets/photos/artdirection-600.webp 600w, /assets/photos/artdirection.webp 960w" sizes="(max-width: 430px) calc(100vw - 84px), (max-width: 760px) calc(50vw - 60px), (max-width: 980px) calc(50vw - 80px), 220px" alt="" width="600" height="450" loading="lazy" decoding="async"><b data-i18n="x27">02 · Design</b><span data-i18n="x28">Premium visual direction, built to convert.</span></div>
           </div>
         </div>
       </div>
@@ -602,9 +603,9 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
   <section id="services" class="section">
     <div class="section-head"><div><span class="eyebrow" data-i18n="whatLabel">What we do</span><h2 data-i18n="whatTitle">High-end digital presence without the agency theatre.</h2></div><p data-i18n="x31">Every project is designed around the business: what you sell, who should trust you, and what the visitor should do next.</p></div>
     <div class="grid">
-      <article class="card"><img class="item-visual" src="/assets/photos/business.webp" srcset="/assets/photos/business-600.webp 600w, /assets/photos/business.webp 960w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 980px) 46vw, 360px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x32">Premium business websites</h3><p data-i18n="x33">Strong positioning, clean content architecture, polished responsive design and direct conversion paths.</p><a href="/small-business-website-design.html" data-i18n="x34">Explore business websites →</a></article>
-      <article class="card"><img class="item-visual" src="/assets/photos/redesign.webp" srcset="/assets/photos/redesign-600.webp 600w, /assets/photos/redesign.webp 960w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 980px) 46vw, 360px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x35">Website redesign</h3><p data-i18n="x36">Turn an outdated or unclear website into a modern, credible experience while protecting useful content and URLs.</p><a href="/website-redesign-services.html" data-i18n="x37">Explore redesign →</a></article>
-      <article class="card"><img class="item-visual" src="/assets/photos/seo.webp" srcset="/assets/photos/seo-600.webp 600w, /assets/photos/seo.webp 960w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 980px) 46vw, 360px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x38">SEO-ready growth foundation</h3><p data-i18n="x39">Metadata, canonical structure, sitemap, internal linking and scalable service/location architecture from day one.</p><a href="/web-design.html" data-i18n="x40">Explore SEO-ready web design →</a></article>
+      <article class="card"><img class="item-visual" src="/assets/photos/business.webp" srcset="/assets/photos/business-320.webp 320w, /assets/photos/business-480.webp 480w, /assets/photos/business-600.webp 600w, /assets/photos/business.webp 960w" sizes="(max-width: 760px) calc(100vw - 84px), (max-width: 1244px) calc(33.33vw - 88px), 340px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x32">Premium business websites</h3><p data-i18n="x33">Strong positioning, clean content architecture, polished responsive design and direct conversion paths.</p><a href="/small-business-website-design.html" data-i18n="x34">Explore business websites →</a></article>
+      <article class="card"><img class="item-visual" src="/assets/photos/redesign.webp" srcset="/assets/photos/redesign-320.webp 320w, /assets/photos/redesign-480.webp 480w, /assets/photos/redesign-600.webp 600w, /assets/photos/redesign.webp 960w" sizes="(max-width: 760px) calc(100vw - 84px), (max-width: 1244px) calc(33.33vw - 88px), 340px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x35">Website redesign</h3><p data-i18n="x36">Turn an outdated or unclear website into a modern, credible experience while protecting useful content and URLs.</p><a href="/website-redesign-services.html" data-i18n="x37">Explore redesign →</a></article>
+      <article class="card"><img class="item-visual" src="/assets/photos/seo.webp" srcset="/assets/photos/seo-320.webp 320w, /assets/photos/seo-480.webp 480w, /assets/photos/seo-600.webp 600w, /assets/photos/seo.webp 960w" sizes="(max-width: 760px) calc(100vw - 84px), (max-width: 1244px) calc(33.33vw - 88px), 340px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x38">SEO-ready growth foundation</h3><p data-i18n="x39">Metadata, canonical structure, sitemap, internal linking and scalable service/location architecture from day one.</p><a href="/web-design.html" data-i18n="x40">Explore SEO-ready web design →</a></article>
     </div>
   </section>
 
@@ -612,15 +613,15 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
     <div class="section-head"><div><span class="eyebrow" data-i18n="workLabel">Selected directions</span><h2 data-i18n="workTitle">Your website should look custom before anyone reads a word.</h2></div><p data-i18n="x41">Concepts below demonstrate visual direction for different industries. Each client build is adapted to the actual brand, offer and audience.</p></div>
     <div class="portfolio-grid">
       <a class="work-card" href="/web-design-portfolio.html">
-        <span class="work-visual work-visual-a" aria-hidden="true"><img class="work-preview" src="/assets/previews/beauty.webp" srcset="/assets/previews/beauty-720.webp 720w, /assets/previews/beauty.webp 1448w" sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1100px) 46vw, 380px" alt="" loading="lazy" decoding="async" fetchpriority="low" width="1448" height="1086"><b data-i18n="x42">PREMIUM</b><em data-i18n="x43">DIGITAL EXPERIENCE</em></span>
+        <span class="work-visual work-visual-a" aria-hidden="true"><img class="work-preview" src="/assets/previews/beauty.webp" srcset="/assets/previews/beauty-320.webp 320w, /assets/previews/beauty-480.webp 480w, /assets/previews/beauty-720.webp 720w, /assets/previews/beauty.webp 1448w" sizes="(max-width: 760px) calc(100vw - 78px), (max-width: 980px) calc(100vw - 114px), (max-width: 1244px) calc(42.86vw - 93px), 440px" alt="" loading="lazy" decoding="async" fetchpriority="low" width="1448" height="1086"><b data-i18n="x42">PREMIUM</b><em data-i18n="x43">DIGITAL EXPERIENCE</em></span>
         <span class="work-shade"></span><span class="work-copy"><span data-i18n="x44">Premium services</span><h3 data-i18n="x45">Luxury, calm and conversion-focused</h3><p data-i18n="x46">Visual hierarchy that feels premium without becoming difficult to use.</p></span>
       </a>
       <a class="work-card" href="/barbershop-website-design.html">
-        <span class="work-visual work-visual-b" aria-hidden="true"><img class="work-preview" src="/assets/previews/barbershop.webp" srcset="/assets/previews/barbershop-720.webp 720w, /assets/previews/barbershop.webp 1448w" sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1100px) 46vw, 380px" alt="" loading="lazy" decoding="async" fetchpriority="low" width="1448" height="1086"><b data-i18n="x47">BOLD</b><em data-i18n="x48">LOCAL IDENTITY</em></span>
+        <span class="work-visual work-visual-b" aria-hidden="true"><img class="work-preview" src="/assets/previews/barbershop.webp" srcset="/assets/previews/barbershop-320.webp 320w, /assets/previews/barbershop-480.webp 480w, /assets/previews/barbershop-720.webp 720w, /assets/previews/barbershop.webp 1448w" sizes="(max-width: 760px) calc(100vw - 78px), (max-width: 980px) calc(50vw - 91px), (max-width: 1244px) calc(28.57vw - 79px), 277px" alt="" loading="lazy" decoding="async" fetchpriority="low" width="1448" height="1086"><b data-i18n="x47">BOLD</b><em data-i18n="x48">LOCAL IDENTITY</em></span>
         <span class="work-shade"></span><span class="work-copy"><span data-i18n="x49">Local business</span><h3 data-i18n="x50">Bold identity</h3><p data-i18n="x51">Services, trust and booking made obvious.</p></span>
       </a>
       <a class="work-card" href="/auto-repair-website-design.html">
-        <span class="work-visual work-visual-c" aria-hidden="true"><img class="work-preview" src="/assets/previews/auto.webp" srcset="/assets/previews/auto-720.webp 720w, /assets/previews/auto.webp 1448w" sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1100px) 46vw, 380px" alt="" loading="lazy" decoding="async" fetchpriority="low" width="1448" height="1086"><b data-i18n="x52">TRUST</b><em data-i18n="x53">SERVICE & CONVERSION</em></span>
+        <span class="work-visual work-visual-c" aria-hidden="true"><img class="work-preview" src="/assets/previews/auto.webp" srcset="/assets/previews/auto-320.webp 320w, /assets/previews/auto-480.webp 480w, /assets/previews/auto-720.webp 720w, /assets/previews/auto.webp 1448w" sizes="(max-width: 760px) calc(100vw - 78px), (max-width: 980px) calc(50vw - 91px), (max-width: 1244px) calc(28.57vw - 79px), 277px" alt="" loading="lazy" decoding="async" fetchpriority="low" width="1448" height="1086"><b data-i18n="x52">TRUST</b><em data-i18n="x53">SERVICE & CONVERSION</em></span>
         <span class="work-shade"></span><span class="work-copy"><span data-i18n="x54">Service business</span><h3 data-i18n="x55">Clear and credible</h3><p data-i18n="x56">Built around fast decisions and direct enquiries.</p></span>
       </a>
     </div>
@@ -629,10 +630,10 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
   <section id="process" class="section">
     <div class="section-head"><div><span class="eyebrow" data-i18n="processLabel">Process</span><h2 data-i18n="processTitle">Premium output. Simple process.</h2></div><p data-i18n="x57">No mystery and no endless meetings. We move from business goal to visual direction, build, QA and launch.</p></div>
     <div class="process-grid">
-      <article class="step"><img class="item-visual" src="/assets/photos/discover.webp" srcset="/assets/photos/discover-600.webp 600w, /assets/photos/discover.webp 960w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 980px) 46vw, 360px" alt="" width="600" height="450" loading="lazy" decoding="async"><div class="step-num" data-i18n="x58">01 / DISCOVER</div><h3 data-i18n="x59">Understand the business</h3><p data-i18n="x60">Offer, audience, current website, competitors and the action that matters most.</p></article>
-      <article class="step"><img class="item-visual" src="/assets/photos/design.webp" srcset="/assets/photos/design-600.webp 600w, /assets/photos/design.webp 960w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 980px) 46vw, 360px" alt="" width="600" height="450" loading="lazy" decoding="async"><div class="step-num" data-i18n="x61">02 / DIRECTION</div><h3 data-i18n="x62">Build the visual system</h3><p data-i18n="x63">Layout, hierarchy, tone and a premium visual direction matched to your market.</p></article>
-      <article class="step"><img class="item-visual" src="/assets/photos/build.webp" srcset="/assets/photos/build-600.webp 600w, /assets/photos/build.webp 960w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 980px) 46vw, 360px" alt="" width="600" height="450" loading="lazy" decoding="async"><div class="step-num" data-i18n="x64">03 / BUILD</div><h3 data-i18n="x65">Develop & refine</h3><p data-i18n="x66">Responsive implementation, content structure, integrations and technical SEO foundations.</p></article>
-      <article class="step"><img class="item-visual" src="/assets/photos/launch.webp" srcset="/assets/photos/launch-600.webp 600w, /assets/photos/launch.webp 960w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 980px) 46vw, 360px" alt="" width="600" height="450" loading="lazy" decoding="async"><div class="step-num" data-i18n="x67">04 / LAUNCH</div><h3 data-i18n="x68">QA & publish</h3><p data-i18n="x69">Mobile checks, final polish, domain setup and a clean launch path.</p></article>
+      <article class="step"><img class="item-visual" src="/assets/photos/discover.webp" srcset="/assets/photos/discover-320.webp 320w, /assets/photos/discover-480.webp 480w, /assets/photos/discover-600.webp 600w, /assets/photos/discover.webp 960w" sizes="(max-width: 760px) calc(100vw - 76px), (max-width: 980px) calc(50vw - 70px), (max-width: 1244px) calc(25vw - 77px), 234px" alt="" width="600" height="450" loading="lazy" decoding="async"><div class="step-num" data-i18n="x58">01 / DISCOVER</div><h3 data-i18n="x59">Understand the business</h3><p data-i18n="x60">Offer, audience, current website, competitors and the action that matters most.</p></article>
+      <article class="step"><img class="item-visual" src="/assets/photos/design.webp" srcset="/assets/photos/design-320.webp 320w, /assets/photos/design-480.webp 480w, /assets/photos/design-600.webp 600w, /assets/photos/design.webp 960w" sizes="(max-width: 760px) calc(100vw - 76px), (max-width: 980px) calc(50vw - 70px), (max-width: 1244px) calc(25vw - 77px), 234px" alt="" width="600" height="450" loading="lazy" decoding="async"><div class="step-num" data-i18n="x61">02 / DIRECTION</div><h3 data-i18n="x62">Build the visual system</h3><p data-i18n="x63">Layout, hierarchy, tone and a premium visual direction matched to your market.</p></article>
+      <article class="step"><img class="item-visual" src="/assets/photos/build.webp" srcset="/assets/photos/build-320.webp 320w, /assets/photos/build-480.webp 480w, /assets/photos/build-600.webp 600w, /assets/photos/build.webp 960w" sizes="(max-width: 760px) calc(100vw - 76px), (max-width: 980px) calc(50vw - 70px), (max-width: 1244px) calc(25vw - 77px), 234px" alt="" width="600" height="450" loading="lazy" decoding="async"><div class="step-num" data-i18n="x64">03 / BUILD</div><h3 data-i18n="x65">Develop & refine</h3><p data-i18n="x66">Responsive implementation, content structure, integrations and technical SEO foundations.</p></article>
+      <article class="step"><img class="item-visual" src="/assets/photos/launch.webp" srcset="/assets/photos/launch-320.webp 320w, /assets/photos/launch-480.webp 480w, /assets/photos/launch-600.webp 600w, /assets/photos/launch.webp 960w" sizes="(max-width: 760px) calc(100vw - 76px), (max-width: 980px) calc(50vw - 70px), (max-width: 1244px) calc(25vw - 77px), 234px" alt="" width="600" height="450" loading="lazy" decoding="async"><div class="step-num" data-i18n="x67">04 / LAUNCH</div><h3 data-i18n="x68">QA & publish</h3><p data-i18n="x69">Mobile checks, final polish, domain setup and a clean launch path.</p></article>
     </div>
   </section>
 
@@ -646,9 +647,9 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
   <section class="section">
     <div class="section-head"><div><span class="eyebrow" data-i18n="sellLabel">Built to sell</span><h2 data-i18n="sellTitle">Design is only useful when the business message is clear.</h2></div></div>
     <div class="grid">
-      <article class="card"><img class="item-visual" src="/assets/photos/positioning.webp" srcset="/assets/photos/positioning-600.webp 600w, /assets/photos/positioning.webp 960w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 980px) 46vw, 360px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x78">Clear positioning</h3><p data-i18n="x79">Visitors should understand what you do, who it is for and why they should trust you within seconds.</p></article>
-      <article class="card"><img class="item-visual" src="/assets/photos/mobile.webp" srcset="/assets/photos/mobile-600.webp 600w, /assets/photos/mobile.webp 960w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 980px) 46vw, 360px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x80">Mobile-first conversion</h3><p data-i18n="x81">Calls, forms, WhatsApp, booking and quote actions stay simple on the device most prospects actually use.</p></article>
-      <article class="card"><img class="item-visual" src="/assets/photos/growth.webp" srcset="/assets/photos/growth-600.webp 600w, /assets/photos/growth.webp 960w" sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 980px) 46vw, 360px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x82">Ready to expand</h3><p data-i18n="x83">Add markets, services, case studies and languages without rebuilding the entire site architecture.</p></article>
+      <article class="card"><img class="item-visual" src="/assets/photos/positioning.webp" srcset="/assets/photos/positioning-320.webp 320w, /assets/photos/positioning-480.webp 480w, /assets/photos/positioning-600.webp 600w, /assets/photos/positioning.webp 960w" sizes="(max-width: 760px) calc(100vw - 84px), (max-width: 1244px) calc(33.33vw - 88px), 340px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x78">Clear positioning</h3><p data-i18n="x79">Visitors should understand what you do, who it is for and why they should trust you within seconds.</p></article>
+      <article class="card"><img class="item-visual" src="/assets/photos/mobile.webp" srcset="/assets/photos/mobile-320.webp 320w, /assets/photos/mobile-480.webp 480w, /assets/photos/mobile-600.webp 600w, /assets/photos/mobile.webp 960w" sizes="(max-width: 760px) calc(100vw - 84px), (max-width: 1244px) calc(33.33vw - 88px), 340px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x80">Mobile-first conversion</h3><p data-i18n="x81">Calls, forms, WhatsApp, booking and quote actions stay simple on the device most prospects actually use.</p></article>
+      <article class="card"><img class="item-visual" src="/assets/photos/growth.webp" srcset="/assets/photos/growth-320.webp 320w, /assets/photos/growth-480.webp 480w, /assets/photos/growth-600.webp 600w, /assets/photos/growth.webp 960w" sizes="(max-width: 760px) calc(100vw - 84px), (max-width: 1244px) calc(33.33vw - 88px), 340px" alt="" width="600" height="450" loading="lazy" decoding="async"><h3 data-i18n="x82">Ready to expand</h3><p data-i18n="x83">Add markets, services, case studies and languages without rebuilding the entire site architecture.</p></article>
     </div>
   </section>
 

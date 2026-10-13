@@ -128,7 +128,7 @@ if (!homeHtml.includes('<script defer src="/assets/js/lnk-home.js"></script>')) 
   fail('index.html', 'Missing deferred homepage script');
 }
 if (!homeHtml.includes('<link rel="preload" as="image" href="/assets/photos/hero-600.webp"') ||
-    !homeHtml.includes('imagesrcset="/assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w"') ||
+    !homeHtml.includes('imagesrcset="/assets/photos/hero-320.webp 320w, /assets/photos/hero-480.webp 480w, /assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w"') ||
     !homeHtml.includes('fetchpriority="high">')) {
   fail('index.html', 'Missing high-priority hero preload');
 }
@@ -181,10 +181,10 @@ for (const name of photoNames) {
   if (statSync(join(root, small)).size >= statSync(join(root, original)).size) {
     fail(small, 'Responsive variant must be smaller than original');
   }
-  const expectedSrcset = `srcset="/assets/photos/${name}-600.webp 600w, /assets/photos/${name}.webp 960w"`;
+  const expectedSrcset = `srcset="/assets/photos/${name}-320.webp 320w, /assets/photos/${name}-480.webp 480w, /assets/photos/${name}-600.webp 600w, /assets/photos/${name}.webp 960w"`;
   if (!homeHtml.includes(expectedSrcset)) fail('index.html', `Missing responsive srcset: ${name}`);
 }
-if (!homeHtml.includes('imagesrcset="/assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w"')) {
+if (!homeHtml.includes('imagesrcset="/assets/photos/hero-320.webp 320w, /assets/photos/hero-480.webp 480w, /assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w"')) {
   fail('index.html', 'Hero image preload must match responsive source candidates');
 }
 
@@ -234,7 +234,7 @@ for (const url of urls) {
     if (!item) continue;
     const name = item[1];
     optimizedImageCount++;
-    const expected = 'srcset="/assets/previews/' + name + '-720.webp 720w, /assets/previews/' + name + '.webp 1448w"';
+    const expected = (pageFile === 'index.html' ? 'srcset="/assets/previews/' + name + '-320.webp 320w, /assets/previews/' + name + '-480.webp 480w, /assets/previews/' : 'srcset="/assets/previews/') + name + '-720.webp 720w, /assets/previews/' + name + '.webp 1448w"';
     if (item[2] !== 'webp' || !tag.includes(expected) || !tag.includes(' sizes="')) {
       fail(pageFile, 'Portfolio preview missing responsive WebP: ' + name);
     }

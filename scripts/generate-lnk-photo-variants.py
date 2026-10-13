@@ -24,3 +24,11 @@ for name in PHOTO_NAMES:
         print(f"{source.name} -> {target.name}: {target.stat().st_size} bytes ({600}x{height})")
 
 print(f"Generated {len(PHOTO_NAMES)} responsive LNK variants; originals unchanged.")
+
+# Additional slot sizes reduce downloads on desktop cards.
+for folder, names in ((ROOT, PHOTO_NAMES), (Path("assets/previews"), ("beauty", "barbershop", "auto"))):
+    for name in names:
+        with Image.open(folder / f"{name}.webp") as image:
+            for width in (320, 480):
+                output = image.resize((width, round(image.height * width / image.width)), Image.Resampling.LANCZOS)
+                output.save(folder / f"{name}-{width}.webp", "WEBP", quality=82, method=6)
