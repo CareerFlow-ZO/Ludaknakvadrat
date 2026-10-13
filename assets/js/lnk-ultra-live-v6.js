@@ -15,8 +15,8 @@ var phoneBrand=document.getElementById("lnkuPhoneBrand");
 var buttons=Array.prototype.slice.call(stage.querySelectorAll("[data-lnku-demo]"));
 var pictureData={
  realestate:{image:"/assets/photos/hero.webp",phone:"/assets/photos/hero-320.webp",alt:"Premium website design example for luxury property",url:"NOVA / RESIDENCES",eyebrow:"PREMIUM WEB / DESIGN CONCEPT",title:"BEYOND THE EXPECTED.",text:"A first impression built for exceptional brands.",link:"/web-design-portfolio.html",cta:"SEE DESIGN CONCEPT ↗",brand:"NOVA."},
- restaurant:{image:"/assets/previews/restaurant.png",phone:"/assets/photos/business-320.webp",alt:"Illustrative restaurant website preview",url:"MAISON / RESTAURANT",eyebrow:"HOSPITALITY / WEBSITE CONCEPT",title:"A TASTE OF EXTRAORDINARY.",text:"An experience that starts before the first visit.",link:"/restaurant-website-design.html",cta:"EXPLORE RESTAURANTS ↗",brand:"MAISON."},
- shop:{image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&auto=format&fit=crop&q=85",phone:"/assets/previews/ecommerce.png",alt:"Nike red running shoe in an illustrative online shop design",url:"SNEAKER / STORE DEMO",eyebrow:"ONLINE SHOP / PRODUCT CONCEPT",title:"SHOP THE DROP.",text:"Product pages, shopping carts and checkout — illustrated with a Nike sneaker photograph.",link:"/izdelava-spletnih-trgovin.html",cta:"EXPLORE ONLINE STORES ↗",brand:"SNEAKER STORE."}
+ restaurant:{image:"/assets/previews/restaurant.webp",phone:"/assets/previews/restaurant-720.webp",alt:"Illustrative restaurant website preview",url:"MAISON / RESTAURANT",eyebrow:"HOSPITALITY / WEBSITE CONCEPT",title:"A TASTE OF EXTRAORDINARY.",text:"An experience that starts before the first visit.",link:"/restaurant-website-design.html",cta:"EXPLORE RESTAURANTS ↗",brand:"MAISON."},
+ shop:{image:"/assets/previews/nike-shoe.webp",phone:"/assets/previews/nike-shoe-720.webp",alt:"Nike red running shoe in an illustrative online shop design",url:"SNEAKER / STORE DEMO",eyebrow:"ONLINE SHOP / PRODUCT CONCEPT",title:"SHOP THE DROP.",text:"Product pages, shopping carts and checkout — illustrated with a Nike sneaker photograph.",link:"/izdelava-spletnih-trgovin.html",cta:"EXPLORE ONLINE STORES ↗",brand:"SNEAKER STORE."}
 };
 var current="realestate";
 function fallback(img,preferred){
@@ -27,7 +27,7 @@ function fallback(img,preferred){
   img.src=typeof preferred==="function"?preferred():preferred;
  });
 }
-fallback(image,function(){return current==="shop"?"/assets/previews/ecommerce.png":"/assets/photos/hero.webp";});
+fallback(image,function(){return current==="shop"?"/assets/previews/ecommerce.webp":current==="restaurant"?"/assets/previews/restaurant-720.webp":"/assets/photos/hero.webp";});
 fallback(phone,"/assets/photos/mobile-320.webp");
 
 // Service images use a local fallback for external image hosts, preserving layout on iOS/desktop.
@@ -62,8 +62,10 @@ function selectDemo(name){
   }
  }else{
   image.removeAttribute("data-i18n-alt");
-  image.removeAttribute("srcset");
-  image.removeAttribute("sizes");
+  image.srcset=name==="shop"
+   ?"/assets/previews/nike-shoe-720.webp 720w, /assets/previews/nike-shoe.webp 1200w"
+   :"/assets/previews/restaurant-720.webp 720w, /assets/previews/restaurant.webp 1200w";
+  image.sizes="(max-width: 760px) calc(100vw - 100px), (max-width: 980px) calc(100vw - 144px), (max-width: 1244px) calc(46vw - 114px), 458px";
  }
  image.src=d.image;phone.src=d.phone;
  buttons.forEach(function(button){button.setAttribute("aria-pressed",String(button.dataset.lnkuDemo===name));});
