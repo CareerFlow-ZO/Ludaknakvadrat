@@ -12,7 +12,7 @@ assert(html.includes('<script defer src="/assets/js/lnk-brief.js"></script>'),'M
 assert(html.includes('<section id="project-brief"'),'Homepage brief section missing');
 assert(html.includes('data-brief-i18n="heroLink"'),'Hero visitor path missing');
 assert(html.includes('data-brief-i18n="contactLink"'),'Existing contact visitor path missing');
-assert.equal((html.match(/<form\\b/g)||[]).length,1,'Only approved direct contact form allowed');
+assert.equal((html.match(/<form\b/g)||[]).length,1,'Only approved direct contact form allowed');
 assert(html.includes('id="lnkLeadForm"')&&html.includes('name="consent"')&&
  html.includes('name="website_hidden"')&&html.includes('/assets/js/lnk-leads.js'),
  'Private lead form must have consent and anti-spam protection');
