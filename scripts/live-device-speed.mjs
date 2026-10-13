@@ -55,9 +55,26 @@ for(const profile of profiles){
        failedVisibleImages:[...document.images].filter(i=>i.complete&&i.naturalWidth===0&&getComputedStyle(i).display!=='none').map(i=>i.src)
      };
    });
-   reports.push({profile:profile.name,...metric});
-   if(metric.documentWidth>metric.width+3)
-     failures.push(profile.name+': horizontal overflow '+metric.documentWidth+'px vs '+metric.width);
+   const geometry=await page.evaluate(expected=>{
+     const root=document.documentElement;
+     const bad=[...document.querySelectorAll('*')].map(el=>({el,rect:el.getBoundingClientRect()}))
+       .filter(x=>x.rect.width>0&&x.rect.right>expected+3&&x.rect.left<expected)
+       .sort((a,b)=>b.rect.right-a.rect.right).slice(0,12)
+       .map(x=>({tag:x.el.tagName,id:x.el.id,cls:String(x.el.className).slice(0,75),left:Math.round(x.rect.left),right:Math.round(x.rect.right),width:Math.round(x.rect.width)}));
+     return {clientWidth:root.clientWidth,deviceWidth:screen.width,visualWidth:visualViewport?.width||0,offenders:bad};
+   },profile.width);
+   reports.push({profile:profile.name,...metric,geometry});
+   if(metric.documentWidth>profile.width+3 || metric.width>profile.width+3)
+     failures.push(profile.name+': responsive overflow '+metric.documentWidth+'/'+metric.width+'px on '+profile.width+'px. Suspects: '+JSON.stringify(geometry.offenders.slice(0,6)));
+   const broken=await page.evaluate(async()=>{
+     const imgs=[...document.images];
+     await Promise.all(imgs.map(async img=>{
+       img.loading='eager';
+       try{await Promise.race([img.decode(),new Promise(resolve=>setTimeout(resolve,12000))]);}catch(_e){}
+     }));
+     return imgs.filter(i=>i.naturalWidth===0).map(i=>i.currentSrc||i.src);
+   });
+   if(broken.length)failures.push(profile.name+': images failed after lazy decode: '+JSON.stringify(broken));
    if(!metric.title.includes('LNK DIGITAL'))failures.push(profile.name+': title missing');
    if(errors.length)failures.push(profile.name+': JS exceptions '+errors.join('; '));
    await page.screenshot({path:'qa-report/'+profile.name+'.png',fullPage:true,animations:'disabled',timeout:20000});
