@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+<!-- Three.js powers the atmospheric Adriatic ocean animation. -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
 :root{--ink:#101b1a;--ink2:#182a27;--cream:#f5f2ec;--paper:#ede7de;--muted:#9aaba3;--gold:#d3b784;--line:rgba(211,183,132,.25);--sans:'DM Sans',Arial,sans-serif;--serif:'Italiana',Georgia,serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--sans);-webkit-font-smoothing:antialiased}body.lock{overflow:hidden}button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}::selection{background:#c1a473;color:#111b19}
@@ -29,6 +31,73 @@ footer{background:#0b1311;border-top:1px solid var(--line);padding:60px clamp(24
 @media(max-width:750px){.nav{height:77px;padding:0 22px}.mark-icon{width:39px;height:39px;font-size:17px}.mark-text{font-size:8px}.navlinks{display:none;position:absolute;top:76px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:18px 24px 25px;background:#11201cd9;backdrop-filter:blur(25px);border-bottom:1px solid #ffffff33}.navlinks.open{display:flex}.navlinks a{padding:14px 6px}.navlinks .nav-cta{width:100%;margin-top:12px}.menu-toggle{display:block}.hero{height:auto;min-height:790px;grid-template-columns:1fr}.hero-left{min-height:790px;padding:168px 25px 100px;justify-content:center}.hero-image{position:absolute;inset:0;background-position:64% center;opacity:.55}.hero:after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#101b1ad9,#101b1a51),linear-gradient(0deg,#101b1a99,transparent)}.hero h1{font-size:clamp(70px,13.8vw,105px);max-width:550px}.hero h1,.hero .overline,.hero-copy,.hero-actions{position:relative;z-index:3}.hero-copy{max-width:340px}.hero-side-label{display:none}.hero-no{bottom:33px;left:25px}.scroll-cue{display:none}.statement{padding:85px 25px}.experiences{padding:88px 20px}.experience-grid{margin-top:45px;grid-template-columns:1fr;gap:17px}.experience{min-height:430px}.experience .wording h3{font-size:52px}.editorial{grid-template-columns:1fr}.editorial-pic{height:390px}.editorial-text{padding:65px 30px 80px}.journey-banner{padding:110px 24px}.footer-grid{flex-direction:column}.wizard{max-height:96dvh}.overlay{padding:8px}.wizard-body{display:block}.wizard-aside{display:none}.wizard-main{padding:31px 23px 35px}.wizard-main h2{font-size:47px}.wizard-top{padding:18px 21px}.preview-ribbon{bottom:12px;right:12px;font-size:8px;padding:8px 10px}}
 @media(max-width:380px){.hero h1{font-size:67px}.hero-actions{gap:14px}.btn-gold{padding:15px 16px}.experience-options .option{padding:12px 11px}.option b{font-size:21px}.form-double{grid-template-columns:1fr}.wizard-main h2{font-size:40px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+
+/* CROATIA LUXURY CONCIERGE — VIP 3D enhancement, requested 13 October 2026 */
+body{overflow-x:hidden}
+.nav{position:fixed;background:rgba(16,27,26,.65);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:rgba(255,255,255,.08);transition:background .3s ease}
+.mark-icon{box-shadow:0 0 20px rgba(211,183,132,.15)}
+.nav-cta,.btn-gold{transition:transform .3s cubic-bezier(.16,1,.3,1),background .3s,box-shadow .3s;box-shadow:0 4px 25px rgba(211,183,132,.25)}
+.nav-cta:hover,.btn-gold:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(211,183,132,.4)}
+.preview-ribbon span{animation:clc-pulse 2s infinite}
+@keyframes clc-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.5}}
+#webgl-container{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.6;overflow:hidden}
+#webgl-container canvas{width:100%;height:100%;display:block}
+.hero{background:radial-gradient(ellipse at 40% 70%,#1b322e,#0a1211 75%)}
+.hero h1{text-shadow:0 10px 40px rgba(0,0,0,.5)}
+.hero h1 em{text-shadow:0 0 30px rgba(211,183,132,.3)}
+.hero-image-wrap{position:relative;perspective:1200px;overflow:hidden;display:grid;place-items:center}
+.hero-image-wrap .hero-image{position:absolute;inset:0;background-image:linear-gradient(90deg,#101b1a 0%,#101b1a15 35%,#101b1a12 80%),linear-gradient(0deg,#101b1ab8,#101b1a00 50%),url('https://costliving.net/images/locations/croatia.webp');background-size:cover;background-position:center;filter:saturate(.85) contrast(1.05);transform:scale(1.05);transition:transform 1.2s cubic-bezier(.16,1,.3,1);width:100%;height:100%}
+.hero-image-wrap .hero-image:hover{transform:scale(1.12)}
+.hero-side-label{background:rgba(16,27,26,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:15px 25px;border:1px solid rgba(211,183,132,.2);box-shadow:0 15px 35px rgba(0,0,0,.3)}
+.hero-side-label strong{color:#fff}
+.text-btn{transition:opacity .2s}
+.text-btn:hover{opacity:.7}
+.experiences{perspective:1500px}
+.experience-grid{gap:30px}
+.experience{min-height:520px;border-color:rgba(211,183,132,.25);transform-style:preserve-3d;transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s;box-shadow:0 10px 30px rgba(0,0,0,.3);will-change:transform}
+.experience:hover{box-shadow:0 25px 60px rgba(0,0,0,.6),0 0 30px rgba(211,183,132,.15)}
+.experience img{transform:scale(1.03);transition:transform 1s cubic-bezier(.16,1,.3,1),filter .5s}
+.experience:hover img,.experience:focus-visible img{transform:scale(1.12);filter:saturate(.9) brightness(.95)}
+.experience .wording{transform:translateZ(30px);transition:transform .5s}
+.experience .wording .explore span{transition:transform .3s}
+.experience:hover .wording .explore span{transform:translateX(6px)}
+.btn-dark{transition:all .3s cubic-bezier(.16,1,.3,1);box-shadow:0 5px 20px rgba(32,55,47,.3)}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(32,55,47,.5)}
+.journey-banner:before{animation:clc-spin 30s linear infinite}
+@keyframes clc-spin{to{transform:rotate(360deg)}}
+.reveal{transform:translateY(35px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.overlay:not([hidden]){animation:clc-fadeIn .4s cubic-bezier(.16,1,.3,1)}
+@keyframes clc-fadeIn{from{opacity:0}to{opacity:1}}
+.wizard{box-shadow:0 30px 120px #000b;animation:clc-scaleUp .4s cubic-bezier(.16,1,.3,1) both}
+@keyframes clc-scaleUp{from{transform:scale(.96)}to{transform:scale(1)}}
+.wizard-progress i{transition:width .4s cubic-bezier(.16,1,.3,1)}
+.option{transition:background .25s,border-color .25s,transform .25s,box-shadow .25s}
+.option.active{box-shadow:0 6px 20px rgba(56,86,73,.15)}
+.option:hover{border-color:#385649;transform:translateY(-2px)}
+.close{transition:transform .2s}
+.close:hover{transform:rotate(90deg)}
+.counter button{transition:background .2s}
+.counter button:hover{background:#eae2d5}
+section[id]{scroll-margin-top:101px}
+@media(max-width:1050px){.experience{min-height:410px}}
+@media(max-width:750px){
+ .hero-image-wrap{position:absolute;inset:0;z-index:0}
+ .hero-image-wrap .hero-image{opacity:.55;background-position:64% center}
+ .hero:after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#101b1ad9,#101b1a51),linear-gradient(0deg,#101b1a99,transparent)}
+ .hero-left,.hero-no{z-index:3}
+ .experience-grid{gap:17px}
+ .experience{min-height:430px;will-change:auto}
+ .nav{height:77px}
+ section[id]{scroll-margin-top:77px}
+}
+@media(hover:none),(pointer:coarse){.experience{transform:none!important;will-change:auto}.experience:hover img{transform:scale(1.03)}}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+ .reveal{opacity:1;transform:none}
+ #webgl-container{display:none}
+ .experience{transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -39,13 +108,15 @@ footer{background:#0b1311;border-top:1px solid var(--line);padding:60px clamp(24
 </nav>
 <main id="top">
   <section class="hero" aria-labelledby="heroTitle">
+    <!-- Animated 3D Adriatic water. Safe static fallback when WebGL is unavailable. -->
+    <div id="webgl-container" aria-hidden="true"></div>
     <div class="hero-left">
       <div class="overline">A private invitation to Croatia</div>
       <h1 id="heroTitle">Beyond<br>the <em>ordinary.</em></h1>
       <p class="hero-copy">Some journeys are visited. Others are felt. Discover the Adriatic through a world of experiences shaped entirely around you.</p>
       <div class="hero-actions"><button class="btn-gold start-journey">Design your escape &nbsp; ↗</button><a class="text-btn" href="#experiences">Explore the collection <span class="arr">↘</span></a></div>
     </div>
-    <div class="hero-image" role="img" aria-label="Illustrative photograph of Dubrovnik and the Adriatic at sunset"></div>
+    <div class="hero-image-wrap"><div class="hero-image" role="img" aria-label="Illustrative photograph of Dubrovnik and the Adriatic at sunset"></div></div>
     <div class="hero-side-label"><span class="small">01 / THE ADRIATIC</span><strong>Dubrovnik, Croatia</strong><i></i></div>
     <div class="hero-no"><b>01 — 04</b> THE ART OF PERSONAL TRAVEL</div>
     <div class="scroll-cue">SCROLL TO DISCOVER</div>
@@ -71,7 +142,7 @@ footer{background:#0b1311;border-top:1px solid var(--line);padding:60px clamp(24
   <div class="footer-grid"><div><a class="mark" href="#top"><span class="mark-icon">CL</span><span class="mark-text">CROATIA<br>LUXURY CONCIERGE</span></a><p>A vision of immersive, human-first travel. This private design concept is prepared by LNK DIGITAL for review, not the official booking website.</p></div><div class="footer-links"><a href="https://croatialuxuryconcierge.com/" target="_blank" rel="noopener">Official website ↗</a><a href="mailto:book@croatialuxuryconcierge.com">Contact concierge ↗</a><a href="https://www.lnkdigital.com" target="_blank" rel="noopener">Concept by LNK DIGITAL ↗</a></div></div>
   <div class="footer-bottom"><span>© 2026 CONCEPT PRESENTATION · NOT AN OFFICIAL BOOKING CHANNEL</span><span>Editorial imagery for demonstration; replace/approve before commercial launch.</span></div>
 </footer>
-<div class="preview-ribbon"><span></span> PRIVATE DESIGN CONCEPT</div>
+<div class="preview-ribbon"><span></span> VIP 3D CONCEPT SHOWCASE</div>
 <div class="overlay" id="overlay" hidden>
   <div class="wizard" role="dialog" aria-modal="true" aria-labelledby="stepTitle">
     <div class="wizard-top"><div class="brandline"><span>✧</span> YOUR PERSONAL CROATIA EXPERIENCE</div><button id="closeWizard" class="close" aria-label="Close travel planner">×</button></div>
@@ -83,6 +154,82 @@ footer{background:#0b1311;border-top:1px solid var(--line);padding:60px clamp(24
 <script>
 (function(){
 'use strict';
+
+// THREE.JS — atmospheric Adriatic water. Animation pauses off-screen/in background.
+// Static visuals and the booking concept stay functional without 3D or without CDN access.
+(function initAdriatic3D(){
+  var host=document.getElementById('webgl-container');
+  if(!host || !window.THREE || !window.requestAnimationFrame || window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var scene,camera,renderer,geometry,water,position,clock,ambient,light,frame=0,previous=0,visible=true;
+  try {
+    scene=new THREE.Scene();
+    camera=new THREE.PerspectiveCamera(60,1,.1,1000);
+    camera.position.set(0,6,18);
+    camera.lookAt(0,-4,-10);
+    renderer=new THREE.WebGLRenderer({alpha:true,antialias:!window.matchMedia('(max-width:750px)').matches,powerPreference:'low-power'});
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.6));
+    renderer.setClearColor(0x000000,0);
+    host.appendChild(renderer.domElement);
+    geometry=new THREE.PlaneGeometry(60,60,45,45);
+    var material=new THREE.MeshStandardMaterial({color:0x183b32,wireframe:false,roughness:.3,metalness:.8,flatShading:true,side:THREE.DoubleSide});
+    water=new THREE.Mesh(geometry,material);
+    water.rotation.x=-Math.PI/2.8;
+    water.position.set(0,-4,-10);
+    scene.add(water);
+    ambient=new THREE.AmbientLight(0xffffff,.8);scene.add(ambient);
+    light=new THREE.PointLight(0xd3b784,2.5,70);
+    light.position.set(0,10,5);scene.add(light);
+    position=geometry.attributes.position;
+    clock=new THREE.Clock();
+    function resize(){
+      var w=Math.max(1,host.clientWidth),h=Math.max(1,host.clientHeight);
+      camera.aspect=w/h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w,h,false);
+    }
+    resize();
+    window.addEventListener('resize',resize,{passive:true});
+    if('IntersectionObserver'in window){
+      new IntersectionObserver(function(e){visible=e[0].isIntersecting},{threshold:0}).observe(host);
+    }
+    renderer.domElement.addEventListener('webglcontextlost',function(e){e.preventDefault();cancelAnimationFrame(frame);host.style.display='none'});
+    function draw(t){
+      frame=requestAnimationFrame(draw);
+      if(!visible||document.hidden)return;
+      if(t-previous<(window.matchMedia('(max-width:750px)').matches?33:20))return;
+      previous=t;
+      var elapsed=clock.getElapsedTime();
+      for(var i=0;i<position.count;i++){
+        var x=position.getX(i),y=position.getY(i);
+        position.setZ(i,Math.sin(x*.4+elapsed*1.5)*Math.cos(y*.4+elapsed*1.2)*.8);
+      }
+      position.needsUpdate=true;
+      geometry.computeVertexNormals();
+      water.rotation.z=elapsed*.03;
+      renderer.render(scene,camera);
+    }
+    frame=requestAnimationFrame(draw);
+  }catch(e){
+    if(host)host.style.display='none';
+    if(renderer)try{renderer.dispose()}catch(_){}
+  }
+})();
+
+// Tactile 3D card movement for hover-capable pointers. Touch devices keep stable cards.
+if(window.matchMedia('(hover:hover) and (pointer:fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.querySelectorAll('.experience').forEach(function(card){
+    card.addEventListener('pointermove',function(e){
+      var rect=card.getBoundingClientRect();
+      var rx=Math.max(-8,Math.min(8,(e.clientY-rect.top-rect.height/2)/12));
+      var ry=Math.max(-8,Math.min(8,(rect.width/2-(e.clientX-rect.left))/12));
+      card.style.transform='rotateX('+rx+'deg) rotateY('+ry+'deg) translateY(-8px)';
+    });
+    function reset(){card.style.transform='rotateX(0deg) rotateY(0deg) translateY(0px)'}
+    card.addEventListener('pointerleave',reset);
+    card.addEventListener('blur',reset);
+  });
+}
+
 var overlay=document.getElementById('overlay');
 var content=document.getElementById('wizardContent');
 var actions=document.getElementById('wizardActions');
