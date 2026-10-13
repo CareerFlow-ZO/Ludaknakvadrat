@@ -374,7 +374,7 @@
    Keeps content in the DOM for SEO, screen readers, search, deep links, and normal scrolling.
    Older browsers fall back to the original rendering. */
 @media(max-width:760px){
-  #work,#process,#markets,#project-brief,#contact,.lnk-seo-explore{
+  main > section.section{
     content-visibility:auto;
     contain-intrinsic-size:auto 780px;
   }
