@@ -16,7 +16,7 @@ var buttons=Array.prototype.slice.call(stage.querySelectorAll("[data-lnku-demo]"
 var pictureData={
  realestate:{image:"/assets/photos/hero.webp",phone:"/assets/photos/hero-320.webp",alt:"Premium website design example for luxury property",url:"NOVA / RESIDENCES",eyebrow:"PREMIUM WEB / DESIGN CONCEPT",title:"BEYOND THE EXPECTED.",text:"A first impression built for exceptional brands.",link:"/web-design-portfolio.html",cta:"SEE DESIGN CONCEPT ↗",brand:"NOVA."},
  restaurant:{image:"/assets/previews/restaurant.png",phone:"/assets/photos/business-320.webp",alt:"Illustrative restaurant website preview",url:"MAISON / RESTAURANT",eyebrow:"HOSPITALITY / WEBSITE CONCEPT",title:"A TASTE OF EXTRAORDINARY.",text:"An experience that starts before the first visit.",link:"/restaurant-website-design.html",cta:"EXPLORE RESTAURANTS ↗",brand:"MAISON."},
- shop:{image:"/assets/previews/ecommerce.png",phone:"/assets/photos/mobile-320.webp",alt:"Illustrative online store website preview",url:"VELOCITY / STORE",eyebrow:"E-COMMERCE / DESIGN CONCEPT",title:"DESIGNED TO MOVE.",text:"Modern shopping experiences with a clear path to purchase.",link:"/izdelava-spletnih-trgovin.html",cta:"EXPLORE E-COMMERCE ↗",brand:"VELOCITY."}
+ shop:{image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&auto=format&fit=crop&q=85",phone:"/assets/previews/ecommerce.png",alt:"Nike red running shoe in an illustrative online shop design",url:"SNEAKER / STORE DEMO",eyebrow:"ONLINE SHOP / PRODUCT CONCEPT",title:"SHOP THE DROP.",text:"Product pages, shopping carts and checkout — illustrated with a Nike sneaker photograph.",link:"/izdelava-spletnih-trgovin.html",cta:"EXPLORE ONLINE STORES ↗",brand:"SNEAKER STORE."}
 };
 var current="realestate";
 function fallback(img,preferred){
@@ -27,8 +27,23 @@ function fallback(img,preferred){
   img.src=preferred;
  });
 }
-fallback(image,"/assets/photos/hero.webp");
+fallback(image,"/assets/previews/ecommerce.png");
 fallback(phone,"/assets/photos/mobile-320.webp");
+
+// Service images use a local fallback for external image hosts, preserving layout on iOS/desktop.
+Array.prototype.forEach.call(document.querySelectorAll('#services .lnku-service-visual img[data-lnku-fallback]'),function(img){
+ var alternative=img.getAttribute('data-lnku-fallback');
+ if(!alternative)return;
+ function onError(){
+   if(img.getAttribute('data-lnku-fallback-used')==='yes'){img.classList.add('lnku-image-missing');return;}
+   img.setAttribute('data-lnku-fallback-used','yes');
+   img.removeAttribute('srcset');
+   img.src=alternative;
+ }
+ img.addEventListener('error',onError);
+ if(img.complete&&img.naturalWidth===0)onError();
+});
+
 function selectDemo(name){
  var d=pictureData[name];if(!d||!image||!phone)return;
  current=name;
@@ -120,6 +135,21 @@ en:"A complete digital experience.",bs:"Kompletno digitalno iskustvo.",hr:"Cjelo
 var note={
 en:"Illustrative design concepts, not client performance claims.",bs:"Ilustrativni dizajnerski koncepti, ne stvarni rezultati klijenata.",hr:"Ilustrativni dizajnerski koncepti, ne stvarni rezultati klijenata.",sr:"Ilustrativni koncepti dizajna, ne stvarni rezultati klijenata.",sl:"Ilustrativni oblikovni koncepti, ne rezultati strank.",de:"Illustrative Designkonzepte, keine Kundenkennzahlen.",it:"Concept illustrativi, non risultati reali dei clienti.",fr:"Concepts illustratifs, pas de résultats clients.",es:"Conceptos ilustrativos, no resultados reales de clientes.",sq:"Koncepte ilustruese, jo rezultate reale të klientëve."
 };
+
+// Contact appears as a clear heading with two separate options, across all enabled languages.
+var contactCopy={
+ en:["Contact","Contact — choose how to reach us","Chat with us directly","Send us project details"],
+ bs:["Kontakt","Kontakt — izaberi način javljanja","Piši nam direktno","Pošalji detalje projekta"],
+ hr:["Kontakt","Kontakt — odaberite način javljanja","Pošaljite poruku direktno","Pošaljite detalje projekta"],
+ sr:["Kontakt","Kontakt — izaberi način javljanja","Piši nam direktno","Pošalji detalje projekta"],
+ sl:["Kontakt","Kontakt — izberite način stika","Pišite nam neposredno","Pošljite podatke o projektu"],
+ de:["Kontakt","Kontakt — wählen Sie Ihren Kontaktweg","Schreiben Sie uns direkt","Senden Sie uns die Projektdetails"],
+ it:["Contatto","Contattaci — scegli un canale","Scrivici direttamente","Invia i dettagli del progetto"],
+ fr:["Contact","Contact — choisissez un canal","Discutez directement avec nous","Envoyez les détails du projet"],
+ es:["Contacto","Contacto — elige un canal","Escríbenos directamente","Envía los detalles del proyecto"],
+ sq:["Kontakt","Kontakt — zgjidhni mënyrën e kontaktit","Na shkruani drejtpërdrejt","Dërgoni detajet e projektit"]
+};
+
 function translate(){
  var select=document.getElementById("languageSelect"),lang=select&&select.value||"en",set=content[lang]||content.en;
  var cards=document.querySelectorAll("#services [data-lnku-service]");
@@ -133,6 +163,16 @@ function translate(){
  if(label)label.textContent=sectionTitles[lang]||sectionTitles.en;
  var n=document.getElementById("lnkuNote");
  if(n)n.textContent=note[lang]||note.en;
+ var contact=contactCopy[lang]||contactCopy.en;
+ [
+  ["lnkuContactLabel",contact[0].toUpperCase()],
+  ["lnkuContactMethodTitle",contact[1]],
+  ["lnkuWaHint",contact[2]],
+  ["lnkuEmailHint",contact[3]],
+  ["lnkuNavContactDesktop",contact[0]],
+  ["lnkuNavContactMobile",contact[0]],
+  ["lnkuFooterContact",contact[0]]
+ ].forEach(function(entry){var el=document.getElementById(entry[0]);if(el)el.textContent=entry[1];});
 }
 var languageSelect=document.getElementById("languageSelect");
 if(languageSelect)languageSelect.addEventListener("change",translate);
