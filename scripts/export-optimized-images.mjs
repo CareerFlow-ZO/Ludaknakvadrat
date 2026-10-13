@@ -28,7 +28,7 @@ for(const width of [720,1200]){
  await emit('nike-shoe'+(width===720?'-720':'')+'.webp',out);
 }
 
-const iconPng=await sharp('lnk-digital-logo.jpg').resize(48,48,{fit:'contain',background:'#071321'}).png().toBuffer();
+const iconPng=await sharp('lnk-digital-logo.svg').resize(48,48,{fit:'contain',background:'#071321'}).png().toBuffer();
 const icoHead=Buffer.alloc(22);
 icoHead.writeUInt16LE(0,0);icoHead.writeUInt16LE(1,2);icoHead.writeUInt16LE(1,4);
 icoHead[6]=48;icoHead[7]=48;
