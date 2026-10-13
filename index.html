@@ -17,6 +17,7 @@
 <link rel="preload" as="image" href="/assets/photos/hero-600.webp" imagesrcset="/assets/photos/hero-320.webp 320w, /assets/photos/hero-480.webp 480w, /assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w" imagesizes="(max-width: 760px) calc(100vw - 100px), (max-width: 980px) calc(100vw - 144px), (max-width: 1244px) calc(46vw - 114px), 458px" fetchpriority="high">
 <script defer src="/assets/js/lnk-home.js"></script>
 <script defer src="/assets/js/lnk-brief.js"></script>
+<script defer src="/assets/js/lnk-leads.js?v=20261013.1"></script>
 <script defer src="/assets/js/lnk-ultra-live-v6.js?v=20261013.7"></script>
 <style id="lnk-inline-design">
 :root{
@@ -525,6 +526,7 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
 }
 </style>
 <link rel="stylesheet" href="/assets/css/lnk-ultra-live-v6.css?v=20261013.7">
+<link rel="stylesheet" href="/assets/css/lnk-leads.css?v=20261013.1">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.lnkdigital.com/#organization","name":"LNK DIGITAL","url":"https://www.lnkdigital.com/","logo":"https://www.lnkdigital.com/lnk-digital-logo.svg","email":"contact@ludaknakvadrat.com","telephone":"+38631244612"},{"@type":"WebSite","@id":"https://www.lnkdigital.com/#website","url":"https://www.lnkdigital.com/","name":"LNK DIGITAL","publisher":{"@id":"https://www.lnkdigital.com/#organization"}},{"@type":"ProfessionalService","@id":"https://www.lnkdigital.com/#service","name":"LNK DIGITAL","url":"https://www.lnkdigital.com/","provider":{"@id":"https://www.lnkdigital.com/#organization"},"areaServed":["Slovenia","Austria","Germany","Switzerland","Croatia","Italy","United States","Europe"],"serviceType":["Premium web design","Website development","Website redesign","SEO foundations","Landing pages"]}]}</script>
 <meta property="og:image:alt" content="LNK DIGITAL logo">
 <meta name="twitter:title" content="LNK DIGITAL | Premium Web Design, Development & SEO">
@@ -634,14 +636,14 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
         <div class="lnku-service-info"><h3 data-lnku-title>Online stores & sales</h3><p data-lnku-description>Beautiful product pages, shopping carts, secure checkout integrations and a smooth mobile buying experience.</p><a href="/izdelava-spletnih-trgovin.html">Explore service ↗</a></div>
       </article>
       <article class="lnku-service" data-lnku-service="3">
-        <div class="lnku-service-head"><span>03 / SEO · GEO · AEO</span><a href="/web-design.html" aria-label="Explore SEO · GEO · AEO">↗</a></div>
+        <div class="lnku-service-head"><span>03 / SEO · GEO · AEO</span><a href="/seo-geo-aeo.html" aria-label="Explore SEO · GEO · AEO">↗</a></div>
         <div class="lnku-service-visual">
           <img src="/assets/photos/seo-600.webp" srcset="/assets/photos/seo-320.webp 320w, /assets/photos/seo-480.webp 480w, /assets/photos/seo-600.webp 600w" sizes="(max-width:760px) calc(100vw - 95px), (max-width:1180px) 42vw, 460px" loading="lazy" decoding="async" alt="SEO analytics dashboard and search visibility example" width="1200" height="800">
           <div class="lnku-ui-top" aria-hidden="true"><span>LNK / SEARCH INTELLIGENCE</span><i>SEO · GEO · AEO</i></div>
           <div class="lnku-ui-copy" aria-hidden="true"><small>SEARCH · AI DISCOVERY</small><strong>BE FOUND.</strong><span>SEARCH PERFORMANCE</span></div>
           <div class="lnku-mock-control lnku-search-control" aria-hidden="true"><span>⌕ &nbsp; Search visibility</span><b>SEARCH + AI</b><div class="lnku-serp">Pages indexed</div><div class="lnku-serp">Content structure</div><div class="lnku-serp">AI-friendly answers</div></div>
         </div>
-        <div class="lnku-service-info"><h3 data-lnku-title>SEO · GEO · AEO</h3><p data-lnku-description>Technical SEO, structured pages and helpful content designed for search engines and AI-powered discovery.</p><a href="/web-design.html">Explore service ↗</a></div>
+        <div class="lnku-service-info"><h3 data-lnku-title>SEO · GEO · AEO</h3><p data-lnku-description>Technical SEO, structured pages and helpful content designed for search engines and AI-powered discovery.</p><a href="/seo-geo-aeo.html">Explore service ↗</a></div>
       </article>
       <article class="lnku-service" data-lnku-service="4">
         <div class="lnku-service-head"><span>04 / SMART BOOKING</span><a href="/restaurant-website-design.html" aria-label="Explore Booking & automation">↗</a></div>
@@ -804,12 +806,37 @@ Please let me know the next steps and what information you need for a tailored p
         </a>
       </div>
     </div>
+    <div class="lnk-lead-panel" id="lnkLeadPanel">
+      <h3 data-lead-translate="title">Tell us about your project</h3>
+      <p data-lead-translate="intro">Send the details directly, or use WhatsApp/email above.</p>
+      <form id="lnkLeadForm">
+        <div class="lnk-lead-grid">
+          <label class="lnk-lead-field"><span data-lead-translate="name">Your name</span><input type="text" name="name" autocomplete="name" maxlength="120" required></label>
+          <label class="lnk-lead-field"><span data-lead-translate="email">Your email</span><input type="email" name="email" autocomplete="email" maxlength="150" required></label>
+          <label class="lnk-lead-field"><span data-lead-translate="company">Business (optional)</span><input type="text" name="company" autocomplete="organization" maxlength="130"></label>
+          <label class="lnk-lead-field"><span data-lead-translate="service">What do you need?</span><select name="service" required>
+            <option value="website" data-lead-translate="website">New website</option>
+            <option value="redesign" data-lead-translate="redesign">Website redesign</option>
+            <option value="ecommerce" data-lead-translate="ecommerce">Online store</option>
+            <option value="seo" data-lead-translate="seo">SEO · GEO · AEO</option>
+            <option value="booking" data-lead-translate="booking">Bookings / automation</option>
+            <option value="other" data-lead-translate="other">Other</option>
+          </select></label>
+          <label class="lnk-lead-field full"><span data-lead-translate="message">Tell us briefly what you need</span><textarea name="message" maxlength="1500" minlength="8" required></textarea></label>
+        </div>
+        <label class="lnk-trap" aria-hidden="true">Leave this empty<input name="website_hidden" tabindex="-1" autocomplete="off"></label>
+        <label class="lnk-lead-consent"><input type="checkbox" name="consent" value="yes" required><span data-lead-translate="consent">I agree to LNK DIGITAL securely storing my details to reply to this enquiry.</span></label>
+        <button type="submit" class="lnk-lead-submit" id="lnkLeadSubmit" data-lead-translate="send">Send project enquiry</button>
+        <p class="lnk-lead-status" id="lnkLeadStatus" role="status" aria-live="polite"></p>
+        <p class="fine">We use your submitted details only to respond to your project request. See our <a href="/privacy.html">privacy notice</a>.</p>
+      </form>
+    </div>
   </section>
 </main>
 
 <footer>
   <div data-i18n="x87">© 2026 LNK DIGITAL · Web Design · Development · SEO</div>
-  <div class="footer-links"><a href="/website-design-questions.html">Website Q&amp;A</a><a href="/web-design-portfolio.html" data-i18n="navPortfolio">Portfolio</a><a href="/website-redesign-services.html" data-i18n="x88">Redesign</a><a href="/web-design.html" data-i18n="x89">Web design</a><a href="#contact" id="lnkuFooterContact">Contact</a></div>
+  <div class="footer-links"><a href="/website-design-questions.html">Website Q&amp;A</a><a href="/web-design-portfolio.html" data-i18n="navPortfolio">Portfolio</a><a href="/website-redesign-services.html" data-i18n="x88">Redesign</a><a href="/web-design.html" data-i18n="x89">Web design</a><a href="/seo-geo-aeo.html">SEO · GEO · AEO</a><a href="/privacy.html">Privacy</a><a href="#contact" id="lnkuFooterContact">Contact</a></div>
 <p class="fine" data-i18n="metricsNote">We count only total page views and contact clicks to improve this website. No analytics cookies, visitor profiles or message contents are stored in the counts.</p>
 </footer>
 
