@@ -53,6 +53,12 @@ jobs:
           }
           writeFileSync('qa-report/lighthouse-summary.json',JSON.stringify(r,null,2));
           console.log('LIGHTHOUSE RESULTS '+JSON.stringify(r));
+          for(const mode of ['mobile','desktop']){
+            const d=JSON.parse(readFileSync('qa-report/lighthouse-'+mode+'.json','utf8'));
+            const ids=(d.categories['best-practices']?.auditRefs||[]).filter(ref=>ref.weight>0);
+            const needs=ids.map(ref=>({id:ref.id,score:d.audits?.[ref.id]?.score,title:d.audits?.[ref.id]?.title,details:d.audits?.[ref.id]?.details?.items?.slice(0,3)})).filter(a=>a.score!==null&&a.score<1);
+            console.log('LIGHTHOUSE BEST PRACTICES FINDINGS '+mode+' '+JSON.stringify(needs).slice(0,9000));
+          }
           NODE
       - name: Upload browser screenshots and performance reports
         if: always()
