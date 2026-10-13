@@ -63,9 +63,24 @@ for(const profile of profiles){
        .map(x=>({tag:x.el.tagName,id:x.el.id,cls:String(x.el.className).slice(0,75),left:Math.round(x.rect.left),right:Math.round(x.rect.right),width:Math.round(x.rect.width)}));
      return {clientWidth:root.clientWidth,deviceWidth:screen.width,visualWidth:visualViewport?.width||0,offenders:bad};
    },profile.width);
+   const canScrollX=await page.evaluate(async()=>{
+     const elm=document.scrollingElement||document.documentElement;
+     const before=elm.scrollLeft;
+     elm.scrollLeft=1000;
+     await new Promise(requestAnimationFrame);
+     const after=elm.scrollLeft;
+     elm.scrollLeft=before;
+     return after;
+   });
+   geometry.actualHorizontalScroll=canScrollX;
    reports.push({profile:profile.name,...metric,geometry});
-   if(metric.documentWidth>profile.width+3 || metric.width>profile.width+3)
-     failures.push(profile.name+': responsive overflow '+metric.documentWidth+'/'+metric.width+'px on '+profile.width+'px. Suspects: '+JSON.stringify(geometry.offenders.slice(0,6)));
+   // Some composited 3D/perspective decorations contribute to scrollWidth despite
+   // being non-scrollable and outside the visible viewport. Assert actual clipping.
+   if(geometry.clientWidth!==profile.width || Math.abs(geometry.visualWidth-profile.width)>2 ||
+      canScrollX>1 || geometry.offenders.length)
+     failures.push(profile.name+': actual mobile horizontal overflow '+JSON.stringify({
+       expected:profile.width,layout:geometry.clientWidth,
+       visual:geometry.visualWidth,scroll:canScrollX,offenders:geometry.offenders.slice(0,6)}));
    const broken=await page.evaluate(async()=>{
      const imgs=[...document.images];
      await Promise.all(imgs.map(async img=>{
