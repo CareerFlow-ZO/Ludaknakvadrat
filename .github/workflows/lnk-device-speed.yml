@@ -29,7 +29,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p qa-report
-          python3 -m http.server 4173 --bind 127.0.0.1 > qa-report/local-server.log 2>&1 &
+          node scripts/qa-brotli-server.mjs > qa-report/local-server.log 2>&1 &
           sleep 2
           LNK_URL=http://127.0.0.1:4173 LNK_EXPECT_OPTIMIZED=1 node scripts/live-device-speed.mjs
           cp qa-report/device-speed.json qa-report/local-optimized-device-speed.json
