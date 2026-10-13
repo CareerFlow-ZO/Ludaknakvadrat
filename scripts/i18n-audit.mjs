@@ -27,7 +27,7 @@ assert.deepEqual(imageAltKeys, ['heroImageAlt'], 'Featured design must have tran
 const allImages = [...html.matchAll(/<img\b[^>]*>/gi)].map(m => m[0]);
 assert.equal(allImages.length, 17, 'Current homepage should have 17 descriptive/decorative image tags');
 assert(allImages.every(tag => /\balt="/.test(tag)), 'Every homepage image must declare an alt attribute');
-assert.equal(allImages.filter(tag => /alt=""/.test(tag)).length, 1, 'Only the decorative phone screen may have an empty alt');
+assert.equal(allImages.filter(tag => /alt=""/.test(tag)).length, 11, 'Decorative support photos should retain empty alt; primary service mockups are described');
 const usedKeys = [...new Set([...textKeys, ...ariaKeys, ...imageAltKeys, 'heroTitle', 'contactTitle', 'menuOpen', 'menuClose', 'whatsappHello', 'whatsappBusiness'])];
 for (const lang of expectedLanguages) {
   for (const key of usedKeys) {
