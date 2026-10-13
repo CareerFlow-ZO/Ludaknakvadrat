@@ -1,0 +1,155 @@
+/* LNK DIGITAL ULTRA — integrated visual system, isolated from checkout and client pages. */
+:root{--lnku-ink:#050914;--lnku-cyan:#8ce8ff;--lnku-purple:#ad91ff;--lnku-line:rgba(142,176,247,.32)}
+.hero.lnku-hero{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:18px;position:relative;min-height:685px;padding:42px 0 66px;isolation:isolate}
+.hero.lnku-hero:before{content:"";position:absolute;inset:-60px -10% -80px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 73% 43%,rgba(66,61,174,.27),transparent 72%),radial-gradient(ellipse 37% 35% at 6% 31%,rgba(29,106,200,.13),transparent 76%)}
+.lnku-hero .hero-copy{position:relative;z-index:3;min-width:0}
+.lnku-hero .hero-copy h1{font-size:clamp(47px,5.2vw,77px);letter-spacing:-.068em;line-height:1.03;max-width:710px}
+.lnku-hero .hero-copy .gradient-text{background:linear-gradient(108deg,#f6eeff 5%,#c0aaff 50%,#86e5ff 100%);background-clip:text;-webkit-background-clip:text;color:transparent;background-size:170% 100%;animation:lnku-gradient 12s ease-in-out infinite}
+.lnku-hero .hero-copy .lead{font-size:clamp(16px,1.55vw,19px);line-height:1.77}
+.lnku-hero .hero-status{position:relative;z-index:2}
+.lnku-hero .actions .button.primary{background:linear-gradient(120deg,#9beaff,#a1acff 60%,#c3a3ff);color:#101531;box-shadow:0 12px 35px #7a9dff45;border-color:#cef7ff}
+.lnku-hero .actions .button.secondary{background:rgba(13,22,41,.85)}
+.lnku-hero .hero-copy:after{content:"";position:absolute;width:210px;height:210px;left:-24%;bottom:6%;z-index:-1;filter:blur(45px);border-radius:50%;background:#3345aa1b;pointer-events:none}
+.lnku-stats{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-top:26px;color:#a9bdd9;font-size:10px;letter-spacing:.14em;font-weight:800}
+.lnku-stats b{font-size:22px;color:#b0e6ff;font-weight:900;letter-spacing:-.05em;display:block}
+.lnku-stats i{display:block;height:31px;width:1px;background:#7299d366}
+.lnku-stage{position:relative;isolation:isolate;width:100%;height:555px;min-width:0;perspective:1100px;transform-style:preserve-3d;--lnku-dx:0px;--lnku-dy:0px}
+.lnku-stage:before{content:"";pointer-events:none;z-index:-2;position:absolute;inset:5% -6%;background:radial-gradient(ellipse 58% 60% at 50% 50%,#6372e756,#492d9940 47%,transparent 77%);filter:blur(18px);animation:lnku-breathe 10s ease-in-out infinite}
+.lnku-floor{position:absolute;z-index:-1;inset:auto 1% 0;height:46%;opacity:.42;transform:perspective(410px) rotateX(67deg);transform-origin:bottom;background:repeating-linear-gradient(90deg,transparent 0 29px,#86bfff40 30px),repeating-linear-gradient(0deg,transparent 0 28px,#86bfff3d 29px);mask-image:linear-gradient(0deg,transparent,#000a 40%,transparent 100%)}
+.lnku-ring{pointer-events:none;position:absolute;top:23%;left:10%;width:81%;height:60%;border:1px solid #94cfff59;box-shadow:0 0 22px #587fff42,inset 0 0 28px #7a69db3b;border-radius:50%;transform:rotateX(70deg) rotateZ(-13deg);animation:lnku-spin 27s linear infinite}
+.lnku-ring.alt{top:16%;left:7%;width:85%;height:70%;border-color:#a388ff2b;animation-duration:36s;animation-direction:reverse}
+.lnku-screen{position:absolute;background:linear-gradient(130deg,#162647,#070d1d);border:1px solid #a5c5ff99;box-shadow:0 21px 52px #0009,0 0 35px #7f8fff4b,inset 0 1px #fff3;backdrop-filter:blur(12px);overflow:hidden;border-radius:15px;transform-style:preserve-3d}
+.lnku-window{height:28px;display:flex;align-items:center;gap:5px;padding:0 11px;border-bottom:1px solid #92ceff4a;background:#9bc9ff13;position:relative;z-index:3}
+.lnku-window>i{width:6px;height:6px;border-radius:50%;background:#fb849b}
+.lnku-window>i:nth-child(2){background:#ffce82}.lnku-window>i:nth-child(3){background:#9bffc6}
+.lnku-window>span{margin-left:auto;max-width:61%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:8px;color:#b5d8fc;letter-spacing:.11em;font-weight:800}
+.lnku-main{left:13%;width:77%;height:60%;top:17%;z-index:8;transform:rotateY(-9deg) rotateZ(-3deg);animation:lnku-float 8.5s ease-in-out infinite}
+.lnku-picture{height:calc(100% - 28px);position:relative;overflow:hidden;isolation:isolate;background:#11182a}
+.lnku-picture img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;filter:brightness(.83) saturate(.88);transition:opacity .35s ease,filter .35s ease,transform .7s ease}
+.lnku-picture:after{content:"";pointer-events:none;position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#071020ed,#071323a5 45%,transparent 98%),linear-gradient(0deg,#071022ac,transparent 60%)}
+.lnku-graphic{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:22px 23px;gap:9px;transition:opacity .3s,transform .3s}
+.lnku-graphic small{font-size:9px;letter-spacing:.18em;font-weight:850;color:#c4def7}
+.lnku-graphic strong{display:block;max-width:78%;font-size:clamp(25px,3.1vw,43px);font-weight:900;letter-spacing:-.065em;line-height:1.02;color:#fff;text-shadow:0 2px 19px #0009}
+.lnku-graphic p{font-size:11px;margin:0;color:#e1e6f5;max-width:70%;line-height:1.5}
+.lnku-graphic a{font-size:10px;font-weight:900;text-decoration:none;padding:9px 13px;background:#dff8ff;color:#10213b;border-radius:6px;margin-top:4px}
+.lnku-graphic a:hover{background:white;color:#0d1830}
+.lnku-phone{position:absolute;left:0;top:49%;width:22%;height:38%;z-index:10;overflow:hidden;border:5px solid #233252;border-radius:24px;box-shadow:0 0 0 1px #c0dcffb0,8px 15px 36px #000b,0 0 25px #658aff4a;background:#0a1121;transform:rotate(-8deg);animation:lnku-float-phone 9s ease-in-out infinite}
+.lnku-phone:before{content:"";position:absolute;width:43%;height:9px;top:5px;left:29%;background:#080e1a;z-index:3;border-radius:12px}
+.lnku-phone img{display:block;position:relative;width:100%;height:65%;object-fit:cover;filter:brightness(.81) saturate(.85)}
+.lnku-phone div{padding:10px 8px;font-size:10px;font-weight:900;color:#f0f5ff}
+.lnku-phone div small{display:block;font-size:7px;letter-spacing:.12em;color:#a6c8f4;padding-bottom:8px}
+.lnku-code{top:0;left:39%;width:39%;height:26%;z-index:4;transform:rotate(7deg);animation:lnku-float-phone 10s -3s ease-in-out infinite}
+.lnku-code pre{font-size:9px;line-height:1.6;margin:0;padding:9px 12px;color:#b0defc;overflow:hidden}
+.lnku-code b{color:#a7f3d0;font-weight:400}
+.lnku-analytics{width:29%;height:30%;right:0;top:47%;z-index:11;transform:rotate(7deg);animation:lnku-float 9s -2s ease-in-out infinite}
+.lnku-analytics>div:last-child{padding:12px;color:#d6e7ff}
+.lnku-analytics small{display:block;font-size:8px;letter-spacing:.12em;color:#a9c2e7}
+.lnku-analytics strong{display:block;font-size:20px;font-weight:900;letter-spacing:-.04em;margin-top:12px}
+.lnku-analytics svg{width:100%;height:45px}
+.lnku-chip{position:absolute;z-index:13;font-size:9px;letter-spacing:.11em;font-weight:850;color:#d6efff;background:#0d1b35d9;border:1px solid #90c1ff90;backdrop-filter:blur(12px);padding:9px 12px;border-radius:9px;box-shadow:0 0 22px #729eff42}
+.lnku-chip:before{content:"";display:inline-block;width:6px;height:6px;margin-right:7px;background:#92f5ff;border-radius:50%;box-shadow:0 0 8px #8dffff}
+.lnku-chip.a{top:24%;left:0}.lnku-chip.b{bottom:16%;right:2%}
+.lnku-tabs{position:absolute;left:0;right:0;bottom:0;z-index:15;display:flex;align-items:center;justify-content:center;gap:8px}
+.lnku-tabs button{flex:1 1 0;min-width:0;max-width:170px;font-weight:850;font-size:9px;letter-spacing:.1em;padding:11px 8px;border-radius:10px;color:#b5c5e4;background:#0c1730cb;border:1px solid #8fa6e177;transition:background .2s,color .2s,box-shadow .2s,transform .2s}
+.lnku-tabs button:hover{transform:translateY(-3px);border-color:#9fe8ff}
+.lnku-tabs button[aria-pressed=true]{background:#a6edff;border-color:#a5edff;color:#071934;box-shadow:0 0 20px #75cfff57}
+.lnku-scene-note{position:absolute;top:6%;right:0;color:#acc3e5;font-size:8px;letter-spacing:.2em;font-weight:800}
+.lnku-paint .lnku-picture img{opacity:.56}.lnku-paint .lnku-graphic{opacity:.1;transform:translateY(8px)}
+/* Five services: explicit image layer prevents the blank image bug caused by negative z-indices. */
+#services .lnku-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+#services .lnku-service{min-width:0;border:1px solid #7795cf5c;border-radius:23px;background:radial-gradient(circle at 90% 0%,#23406652,transparent 62%),linear-gradient(150deg,#111b30,#090e1b);padding:19px;display:flex;flex-direction:column;gap:18px;overflow:hidden;position:relative;transition:transform .28s,border-color .28s,box-shadow .28s}
+#services .lnku-service:hover{transform:translateY(-5px);border-color:#a7d6ffbb;box-shadow:0 20px 48px #1d398353}
+#services .lnku-service:first-child{grid-column:span 2}
+.lnku-service .lnku-service-head{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#b9c8e3;font-size:10px;font-weight:900;letter-spacing:.12em;min-height:33px}
+.lnku-service .lnku-service-head a{display:grid;place-items:center;flex-shrink:0;width:34px;height:34px;background:#1e2c49;border:1px solid #849fd85c;border-radius:10px;font-size:19px;text-decoration:none;color:#e5f1ff;transition:transform .2s}
+.lnku-service .lnku-service-head a:hover{transform:translate(3px,-3px);background:#314e7b}
+.lnku-service-visual{height:209px;min-width:0;width:100%;position:relative;overflow:hidden;isolation:isolate;border-radius:15px;background:linear-gradient(135deg,#202f53,#0d1a31);border:1px solid #83a5e35b;flex-shrink:0}
+#services .lnku-service:first-child .lnku-service-visual{height:332px}
+.lnku-service-visual img{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;z-index:0;filter:saturate(.85);transition:transform .55s ease}
+.lnku-service:hover .lnku-service-visual img{transform:scale(1.06)}
+.lnku-service-visual:after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,#07101fd8,#0b1b3a70 62%,#0710201a),linear-gradient(0deg,#071225a8,transparent 55%)}
+.lnku-service-visual .lnku-ui-top{position:absolute;top:12px;left:13px;right:13px;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:10px;color:#d1e5ff;font-size:8px;letter-spacing:.14em;font-weight:850}
+.lnku-service-visual .lnku-ui-top i{font-style:normal;border-radius:20px;background:#91bcff27;padding:5px 8px}
+.lnku-service-visual .lnku-ui-copy{position:absolute;z-index:2;bottom:16px;left:17px;right:12px;display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.lnku-ui-copy small{font-size:8px;color:#b4cfff;letter-spacing:.16em;font-weight:800}
+.lnku-ui-copy strong{font-size:clamp(24px,2.5vw,35px);color:white;line-height:1.03;letter-spacing:-.06em;max-width:80%;text-shadow:0 2px 16px #000a}
+.lnku-ui-copy span{font-size:9px;color:#d8e4ff;letter-spacing:.10em;font-weight:700}
+#services .lnku-service:first-child .lnku-ui-copy strong{font-size:clamp(40px,4vw,62px)}
+.lnku-service h3{font-size:clamp(23px,2vw,29px);letter-spacing:-.045em;margin:0 0 9px;line-height:1.16;color:#f7fbff}
+.lnku-service .lnku-service-info{margin-top:auto;min-height:93px}
+.lnku-service .lnku-service-info p{font-size:13px;line-height:1.72;color:#b4bfd3;margin:0}
+.lnku-service .lnku-service-info a{font-size:12px;color:#91ddff;text-decoration:none;font-weight:800;display:inline-block;margin-top:13px}
+.lnku-service .lnku-service-info a:hover{text-decoration:underline}
+.lnku-section-note{font-size:11px;color:#94a5c3;line-height:1.65;margin:14px 2px 0}
+/* Consistent finish on rest of existing homepage — preserves content and links. */
+#work .work-card,#process .step,#markets .service-links a,#content .card{transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+#work .work-card:hover,#process .step:hover,#content .card:hover{transform:translateY(-5px);box-shadow:0 18px 47px #172d7052}
+#content .section{scroll-margin-top:105px}
+#content .section-head h2{letter-spacing:-.05em}
+#content .section-head p{line-height:1.8}
+.lnku-catalog-tag{margin:30px 0 0;text-align:center;color:#a1b8da;font-size:12px;letter-spacing:.04em}
+@keyframes lnku-float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@keyframes lnku-float-phone{0%,100%{translate:0 4px}50%{translate:1px -8px}}
+@keyframes lnku-gradient{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+@keyframes lnku-breathe{0%,100%{opacity:.8}50%{opacity:1}}
+@keyframes lnku-spin{to{transform:rotateX(70deg) rotateZ(347deg)}}
+@media(max-width:1080px){
+ .hero.lnku-hero{grid-template-columns:minmax(0,1fr);min-height:0;gap:25px;padding:40px 0 80px}
+ .lnku-hero .hero-copy{max-width:820px}
+ .lnku-hero .hero-copy h1{font-size:clamp(48px,8vw,81px)}
+ .lnku-stage{max-width:760px;width:100%;height:570px;margin:0 auto}
+ #services .lnku-services{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #services .lnku-service:first-child{grid-column:span 2}
+}
+@media(max-width:760px){
+ .hero.lnku-hero{padding:20px 0 62px;gap:28px}
+ .lnku-hero .hero-copy h1{font-size:clamp(42px,10.2vw,64px);line-height:1.045}
+ .lnku-hero .lead{font-size:16px}
+ .lnku-stats{gap:17px;margin-top:24px}
+ .lnku-stage{height:clamp(328px,92vw,470px);max-width:540px;margin:8px auto 0}
+ /* On touch devices, the primary web preview and mobile phone are the only overlapping cards. */
+ .lnku-stage .lnku-code,.lnku-stage .lnku-analytics{display:none!important}
+ .lnku-main{left:11%;width:85%;top:13%;height:69%;transform:rotate(-2deg)}
+ .lnku-phone{left:0;top:46%;width:19%;height:39%;border-width:3px;border-radius:16px}
+ .lnku-phone:before{top:4px;height:7px}
+ .lnku-phone div{font-size:7px;padding:7px 5px}
+ .lnku-phone div small{font-size:6px}
+ .lnku-chip{font-size:7px;padding:7px 8px}
+ .lnku-chip.a{top:5%;left:0}.lnku-chip.b{bottom:12%;right:0}
+ .lnku-graphic{padding:13px;gap:6px}
+ .lnku-graphic small{font-size:7px;letter-spacing:.12em}
+ .lnku-graphic strong{font-size:clamp(20px,5.5vw,33px);max-width:86%}
+ .lnku-graphic p{font-size:8px;max-width:80%}
+ .lnku-graphic a{font-size:7px;padding:8px 9px}
+ .lnku-window{height:19px;padding:0 8px}
+ .lnku-window i{width:4px;height:4px}.lnku-window span{font-size:6px}
+ .lnku-picture{height:calc(100% - 19px)}
+ .lnku-tabs{gap:6px;bottom:-5px}
+ .lnku-tabs button{font-size:clamp(7px,1.8vw,9px);letter-spacing:0;padding:11px 3px}
+ .lnku-scene-note{font-size:7px;right:0;top:0}
+ #services .lnku-services{grid-template-columns:minmax(0,1fr);gap:16px}
+ #services .lnku-service,#services .lnku-service:first-child{grid-column:span 1!important;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 215px auto;align-items:start;gap:15px;padding:20px;min-height:0;height:auto}
+ #services .lnku-service:first-child{grid-template-rows:auto 245px auto}
+ #services .lnku-service .lnku-service-visual,#services .lnku-service:first-child .lnku-service-visual{grid-row:2;width:100%;max-width:100%;height:215px!important;min-height:215px!important;max-height:215px!important;flex:none;margin:0}
+ #services .lnku-service:first-child .lnku-service-visual{height:245px!important;min-height:245px!important;max-height:245px!important}
+ #services .lnku-service .lnku-service-info{grid-row:3;min-height:0;margin:0;width:100%}
+ .lnku-service-visual .lnku-ui-copy{left:16px;bottom:15px;right:12px}
+ .lnku-ui-copy strong{font-size:clamp(25px,6.7vw,36px)}
+ #services .lnku-service:first-child .lnku-ui-copy strong{font-size:clamp(32px,9vw,48px)}
+ .lnku-service h3{font-size:26px;line-height:1.15}
+ .lnku-service .lnku-service-info p{font-size:13px}
+}
+@media(max-width:390px){
+ .lnku-stats b{font-size:18px}.lnku-stats{gap:12px}
+ .lnku-scene-note{font-size:6px}.lnku-chip.a{max-width:36%}.lnku-chip.b{max-width:48%}
+ #services .lnku-service{padding:17px;grid-template-rows:auto 188px auto}
+ #services .lnku-service:first-child{grid-template-rows:auto 214px auto}
+ #services .lnku-service .lnku-service-visual{height:188px!important;min-height:188px!important;max-height:188px!important}
+ #services .lnku-service:first-child .lnku-service-visual{height:214px!important;min-height:214px!important;max-height:214px!important}
+ .lnku-ui-copy strong{font-size:25px}
+}
+@media(prefers-reduced-motion:reduce){
+ .lnku-stage:before,.lnku-ring,.lnku-main,.lnku-phone,.lnku-code,.lnku-analytics,.lnku-hero .gradient-text{animation:none!important}
+ .lnku-service,.lnku-service img{transition:none!important}
+ #services .lnku-service:hover{transform:none}
+}
