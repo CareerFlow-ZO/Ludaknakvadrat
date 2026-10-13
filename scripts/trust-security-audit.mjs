@@ -6,7 +6,7 @@ const text=p=>readFileSync(p,'utf8');
 const site='https://www.lnkdigital.com';
 const sitemap=text('sitemap.xml');
 const urls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-assert.equal(urls.length,21,'Expected 21 public LNK pages');
+assert.equal(urls.length,22,'Expected 22 public LNK pages including SEO');
 const expectedEmail='contact@ludaknakvadrat.com';
 const expectedWhatsApp='wa.me/38631244612';
 let securityPages=0, externalNewTabLinks=0;
@@ -29,8 +29,17 @@ for(const url of urls){
     assert(/\brel=["'][^"']*\bnoopener\b/i.test(tag),'Missing noopener on external-tab link: '+path);
     externalNewTabLinks++;
   }
-  // The current site has no web forms; any new one needs a privacy and anti-spam review.
-  assert(!/<form\b/i.test(html),'A new form needs separate GDPR/security review: '+path);
+  // The approved direct contact form exists only on the homepage, requires consent
+  // and posts only to the private server-side lead API.
+  if(path==='index.html'){
+    assert.equal((html.match(/<form\\b/gi)||[]).length,1,'Unexpected homepage form count');
+    assert(html.includes('id="lnkLeadForm"') && html.includes('name="consent"') &&
+      html.includes('name="website_hidden"') && html.includes('/assets/js/lnk-leads.js'),
+      'Lead form needs consent, server handler and honeypot');
+    const handler=text('api/lnk-digital-lead.js');
+    assert(handler.includes('lnk_digital_leads') && handler.includes('data.website_hidden') &&
+      handler.includes('!consent'), 'Unsafe private form handler');
+  }else assert(!/<form\\b/i.test(html),'Unreviewed external form: '+path);
   securityPages++;
 }
 const home=text('index.html'), portfolio=text('web-design-portfolio.html'), locale=text('assets/js/lnk-home.js');
@@ -59,4 +68,4 @@ assert(vercel.headers.some(h=>h.source==='/admin.html' && h.headers.some(v=>v.ke
  'Admin must remain noindex');
 assert(vercel.headers.some(h=>h.source==='/euro-gurman-preview/(.*)' && h.headers.some(v=>v.key==='X-Robots-Tag' && /noindex/.test(v.value))),
  'Euro Gurman preview must remain noindex');
-console.log('TRUST & SECURITY QA PASS: '+securityPages+'/21 LNK pages; no unreviewed external scripts/forms/iframes; '+externalNewTabLinks+' external-tab links checked; 10 honest portfolio labels; legal publication blocked pending business facts; client routes retained.');
+console.log('TRUST & SECURITY QA PASS: '+securityPages+'/22 LNK pages; no unreviewed external scripts/forms/iframes; '+externalNewTabLinks+' external-tab links checked; 10 honest portfolio labels; legal publication blocked pending business facts; client routes retained.');
