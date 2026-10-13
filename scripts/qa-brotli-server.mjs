@@ -29,7 +29,7 @@ createServer(async(req,res)=>{
     'X-Content-Type-Options':'nosniff','Vary':'Accept-Encoding',
     'Cache-Control':ext==='.html'?'public, max-age=0, must-revalidate':'public, max-age=3600'};
   let output=body;
-  if(compressible.test(filename)&&/\\bbr\\b/.test(req.headers['accept-encoding']||'')){
+  if(compressible.test(filename)&&/\bbr\b/.test(req.headers['accept-encoding']||'')){
     output=brotliCompressSync(body,{params:{[constants.BROTLI_PARAM_QUALITY]:4}});
     headers['Content-Encoding']='br';
   }
