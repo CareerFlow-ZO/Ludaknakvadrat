@@ -369,3 +369,23 @@
 @media(prefers-reduced-motion:reduce){
   .lnku-stage .lnku-main,.lnku-stage .lnku-phone{animation:none!important}
 }
+
+/* PERFORMANCE: Skip layout/painting of deep sections until they near the viewport.
+   Keeps content in the DOM for SEO, screen readers, search, deep links, and normal scrolling.
+   Older browsers fall back to the original rendering. */
+@media(max-width:760px){
+  main > section.section{
+    content-visibility:auto;
+    contain-intrinsic-size:auto 780px;
+  }
+}
+
+/* MOBILE LCP COMPOSITING: Preserve the cinematic gradient and visible 3D planes
+   while avoiding expensive continuous background and blurred-layer repaints
+   during the first meaningful render on battery-constrained devices. */
+@media(max-width:760px){
+  .lnku-hero .hero-copy .gradient-text{animation:none!important;background-position:50% 50%}
+  .lnku-stage:before,.lnku-ring{animation:none!important}
+  .lnku-screen{backdrop-filter:none;-webkit-backdrop-filter:none;background:linear-gradient(130deg,#162647f5,#070d1df7)}
+  .lnku-hero .hero-copy:after{filter:none;background:radial-gradient(circle,#3345aa21 0%,transparent 73%)}
+}
