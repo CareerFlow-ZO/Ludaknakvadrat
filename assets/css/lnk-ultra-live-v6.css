@@ -369,3 +369,13 @@
 @media(prefers-reduced-motion:reduce){
   .lnku-stage .lnku-main,.lnku-stage .lnku-phone{animation:none!important}
 }
+
+/* PERFORMANCE: Skip layout/painting of deep sections until they near the viewport.
+   Keeps content in the DOM for SEO, screen readers, search, deep links, and normal scrolling.
+   Older browsers fall back to the original rendering. */
+@media(max-width:760px){
+  #work,#process,#markets,#project-brief,#contact,.lnk-seo-explore{
+    content-visibility:auto;
+    contain-intrinsic-size:auto 780px;
+  }
+}
