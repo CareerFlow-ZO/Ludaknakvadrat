@@ -32,14 +32,14 @@ for(const url of urls){
   // The approved direct contact form exists only on the homepage, requires consent
   // and posts only to the private server-side lead API.
   if(path==='index.html'){
-    assert.equal((html.match(/<form\\b/gi)||[]).length,1,'Unexpected homepage form count');
+    assert.equal((html.match(/<form\b/gi)||[]).length,1,'Unexpected homepage form count');
     assert(html.includes('id="lnkLeadForm"') && html.includes('name="consent"') &&
       html.includes('name="website_hidden"') && html.includes('/assets/js/lnk-leads.js'),
       'Lead form needs consent, server handler and honeypot');
     const handler=text('api/lnk-digital-lead.js');
     assert(handler.includes('lnk_digital_leads') && handler.includes('data.website_hidden') &&
       handler.includes('!consent'), 'Unsafe private form handler');
-  }else assert(!/<form\\b/i.test(html),'Unreviewed external form: '+path);
+  }else assert(!/<form\b/i.test(html),'Unreviewed external form: '+path);
   securityPages++;
 }
 const home=text('index.html'), portfolio=text('web-design-portfolio.html'), locale=text('assets/js/lnk-home.js');
