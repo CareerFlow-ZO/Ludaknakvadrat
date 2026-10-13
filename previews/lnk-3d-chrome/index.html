@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="bs" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07090e">
+  <title>LNK DIGITAL — 3D Chrome Concept (Preview)</title>
+  <meta name="description" content="LNK DIGITAL, nezavisni 3D chrome web design koncept.">
+  <style>
+    :root { --bg: #07090e; --card: #101626; --muted: #a0aabe; --violet:#a476ff; --blue:#75bdff }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; background:var(--bg); color:#f7f8ff; font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif; overflow-x:hidden; }
+    a { color:inherit; text-decoration:none; }
+    button { cursor:pointer; font:inherit; }
+    .stage { position:relative; isolation:isolate; min-height:100svh; overflow:hidden; background:radial-gradient(ellipse 62% 56% at 76% 44%, #3c236f4c, transparent 70%),radial-gradient(ellipse 40% 35% at 22% 8%,#1a29542d,transparent),#07090e; }
+    .stage:before { content:""; position:absolute; inset:0; z-index:-1; background-image:linear-gradient(#a0a6cf0e 1px,transparent 1px),linear-gradient(90deg,#a0a6cf0e 1px,transparent 1px); background-size:65px 65px; pointer-events:none; }
+    .wrap { width:min(1240px,calc(100% - 64px)); margin:0 auto; }
+    .nav { min-height:92px; display:flex; align-items:center; justify-content:space-between; position:relative; z-index:20; }
+    .brand { display:flex; align-items:center; gap:13px; font-size:18px; font-weight:850; letter-spacing:.02em; }
+    .brand-badge { display:grid; place-items:center; width:50px; height:40px; border-radius:11px; color:white; background:linear-gradient(135deg,#9d4dfd,#4b65ed); box-shadow:0 10px 35px #8550ee52; font-size:15px; letter-spacing:1px; font-weight:900; }
+    .nav-right { display:flex; align-items:center; gap:26px; }
+    .nav-links { display:flex; align-items:center; gap:27px; font-size:13px; color:#b5c0d4; font-weight:650; }
+    .nav-links a:hover { color:white; }
+    .preview-tag { color:#d3b7fc; border:1px solid #6a4eaa70; background:#4a267633; padding:9px 13px; border-radius:100px; font-size:10px; font-weight:800; letter-spacing:.13em; }
+    .toggle { display:none; background:#151e2d; color:white; border:1px solid #35405b; border-radius:10px; padding:8px 12px; font-size:22px; }
+    .mobile-nav { display:none; }
+    .hero { position:relative; z-index:5; min-height:calc(100svh - 152px); display:grid; grid-template-columns:1fr 1fr; align-items:center; padding:48px 0 91px; }
+    .hero-copy { position:relative; z-index:5; max-width:680px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:11px; padding:10px 15px; border-radius:100px; border:1px solid #794dc06b; background:#4a2a8633; color:#d8b6ff; font-size:10px; letter-spacing:.12em; font-weight:850; }
+    .dot { width:7px; height:7px; border-radius:50%; background:#b985ff; box-shadow:0 0 12px #b985ff; animation:pulse 2s infinite; }
+    h1 { font-size:clamp(44px,5.4vw,76px); line-height:1.09; font-weight:850; letter-spacing:-.062em; margin:30px 0 24px; max-width:800px; }
+    .grad { background:linear-gradient(110deg,#c69aff,#9395ff 50%,#79c2ff); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .intro { font-size:clamp(16px,1.5vw,19px); line-height:1.84; color:var(--muted); max-width:620px; margin:0; }
+    .buttons { display:flex; flex-wrap:wrap; gap:13px; margin-top:35px; }
+    .btn { min-height:56px; display:inline-flex; align-items:center; justify-content:center; gap:12px; border-radius:13px; padding:0 25px; font-size:14px; font-weight:770; transition:transform .25s,box-shadow .25s,background .25s; }
+    .btn:hover { transform:translateY(-3px); }
+    .btn-primary { background:linear-gradient(120deg,#9153f8,#4c60e8); border:1px solid #a174ff; box-shadow:0 15px 35px #6d3fe351; color:white; }
+    .btn-primary:hover { box-shadow:0 17px 38px #8651f96f; }
+    .btn-secondary { background:#121a29c9; border:1px solid #384259; color:#e8ecf8; }
+    .btn-secondary:hover { background:#1d2940; }
+    .sidenote { display:flex; align-items:center; gap:10px; font-size:12px; color:#8190a9; margin-top:23px; line-height:1.6; }
+    .sidenote span { color:#b08fff; }
+    .three-wrap { position:absolute; z-index:2; top:0; bottom:6%; right:-7%; width:59%; pointer-events:none; }
+    #webgl { width:100%; height:100%; display:block; filter:drop-shadow(0 0 70px #7849b844); }
+    .floating { position:absolute; top:15%; right:10%; padding:14px 17px; color:#c7ccdf; border:1px solid #51577980; background:#13182a95; backdrop-filter:blur(14px); border-radius:14px; font-size:10px; font-weight:700; letter-spacing:.14em; }
+    .floating:before { content:""; display:inline-block; width:7px; height:7px; border-radius:100%; background:#91bfff; box-shadow:0 0 14px #91bfff; margin-right:10px; }
+    .scene-note { position:absolute; right:13%; bottom:15%; font-size:10px; color:#a8aed1b0; letter-spacing:.2em; }
+    .strip { border-top:1px solid #54618938; min-height:64px; position:relative; z-index:6; display:flex; align-items:center; justify-content:space-between; gap:16px; color:#8c96af; font-size:11px; letter-spacing:.09em; }
+    .strip b { color:#d9d8e9; letter-spacing:.16em; }
+    .section { padding:100px 0; background:linear-gradient(180deg,#080b12,#0c101b); }
+    .mini-title { color:#b890ff; font-size:11px; font-weight:800; letter-spacing:.19em; margin-bottom:15px; }
+    h2 { font-size:clamp(32px,4vw,51px); letter-spacing:-.05em; margin:0 0 19px; line-height:1.13; max-width:760px; }
+    .desc { color:#a1acc0; line-height:1.8; max-width:650px; margin:0; font-size:16px; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:37px; }
+    .card { background:linear-gradient(140deg,#171d2d,#0e1421); border:1px solid #303751; border-radius:22px; padding:31px; min-height:255px; transition:transform .25s,border-color .25s; }
+    .card:hover { transform:translateY(-5px); border-color:#8062bb; }
+    .card small { color:#ba96ff; letter-spacing:.16em; font-weight:800; font-size:11px; }
+    .card h3 { margin:40px 0 12px; font-size:24px; letter-spacing:-.035em; }
+    .card p { color:#9fabc2; font-size:14px; line-height:1.75; margin:0; }
+    .contact { background:#0b0f19; padding:95px 0 100px; }
+    .contact-panel { border:1px solid #424065; border-radius:26px; padding:45px; background:radial-gradient(ellipse at top right,#59308d60,transparent 60%),linear-gradient(130deg,#151b2b,#0c121e); display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .contact-panel h2 { font-size:clamp(26px,3.4vw,40px); }
+    .contact-panel p { color:#a9b2c9; max-width:610px; line-height:1.75; }
+    footer { border-top:1px solid #2b3247; padding:25px 0; background:#080b12; color:#8791aa; font-size:12px; }
+    footer .wrap { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    footer a { color:#bea0ff; }
+    @keyframes pulse { 50% { opacity:.4; } }
+    @media(max-width:1000px) {
+      .wrap { width:calc(100% - 48px); }
+      .nav-links { display:none; }
+      .toggle { display:block; }
+      .mobile-nav.open { display:grid; position:absolute; left:24px; right:24px; top:81px; z-index:30; background:#121827; border:1px solid #333d5a; border-radius:15px; padding:10px; box-shadow:0 25px 55px #0009; }
+      .mobile-nav a { padding:14px; border-radius:9px; color:#d9ddeb; }
+      .hero { grid-template-columns:1fr; min-height:780px; }
+      .hero-copy { max-width:680px; }
+      .three-wrap { right:-24%; width:85%; opacity:.45; }
+      .floating,.scene-note { display:none; }
+    }
+    @media(max-width:650px) {
+      .wrap { width:calc(100% - 42px); }
+      .nav { min-height:78px; }
+      .brand { font-size:15px; }
+      .brand-badge { width:43px; height:36px; }
+      .preview-tag { display:none; }
+      .hero { min-height:760px; align-items:start; padding:77px 0 66px; }
+      h1 { font-size:clamp(38px,10.5vw,56px); letter-spacing:-.055em; margin:27px 0 22px; }
+      .eyebrow { font-size:9px; }
+      .intro { font-size:15px; line-height:1.8; }
+      .buttons { margin-top:28px; }
+      .btn { width:100%; }
+      .three-wrap { top:22%; bottom:3%; right:-52%; width:130%; opacity:.21; }
+      .strip { flex-wrap:wrap; justify-content:flex-start; gap:6px 18px; padding:15px 0; font-size:9px; }
+      .section { padding:75px 0; }
+      .cards { grid-template-columns:1fr; }
+      .card { min-height:215px; }
+      .card h3 { margin-top:30px; }
+      .contact { padding:70px 0; }
+      .contact-panel { display:block; padding:28px; }
+      .contact-panel .btn { margin-top:17px; }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*:before,*:after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
+  </style>
+</head>
+<body>
+  <!-- Isolated proof-of-concept. No production scripts, checkout, or integrations. -->
+  <div class="stage" id="pocetak">
+    <header class="nav wrap">
+      <a class="brand" href="#pocetak"><span class="brand-badge">LNK</span><span>LNK DIGITAL</span></a>
+      <div class="nav-right">
+        <nav class="nav-links"><a href="#usluge">Usluge</a><a href="#koncept">3D koncept</a><a href="#kontakt">Kontakt</a></nav>
+        <span class="preview-tag">3D CONCEPT PREVIEW</span>
+        <button class="toggle" id="menuButton" aria-label="Otvori meni" aria-expanded="false">☰</button>
+      </div>
+    </header>
+    <nav class="mobile-nav" id="mobileMenu"><a href="#usluge">Usluge</a><a href="#koncept">3D koncept</a><a href="#kontakt">Kontakt</a></nav>
+    <main class="hero wrap">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot"></span> EVROPA · SAD · RAD NA DALJINU</span>
+        <h1>Tvoj sajt treba da te predstavi kao <span class="grad">najbolji izbor u prostoriji.</span></h1>
+        <p class="intro">LNK DIGITAL pravi premium digitalna iskustva za firme koje žele jači autoritet, premium pozicioniranje i jasan put do upita.</p>
+        <div class="buttons">
+          <a href="mailto:sales@ludaknakvadrat.com?subject=LNK%20DIGITAL%20-%20besplatan%20koncept" class="btn btn-primary">Zatraži BESPLATAN koncept ↗</a>
+          <a href="#usluge" class="btn btn-secondary">Pogledaj koncepte dizajna ↓</a>
+        </div>
+        <div class="sidenote"><span>✓</span> Samostalni preview — <strong>postojeći LNK DIGITAL sajt nije mijenjan.</strong></div>
+      </div>
+      <div class="three-wrap" aria-hidden="true">
+        <canvas id="webgl"></canvas>
+        <div class="floating">INTERACTIVE 3D CHROME</div>
+        <div class="scene-note">DIGITAL EXPERIENCE — 001</div>
+      </div>
+    </main>
+    <div class="strip wrap"><b>CREATIVE DIGITAL STUDIO</b><span>WEBDESIGN • ONLINE STORES • SEO / GEO / AEO</span><span>SCROLL TO EXPLORE ↓</span></div>
+  </div>
+  <section class="section" id="usluge"><div class="wrap">
+    <div class="mini-title">01 / NAŠE USLUGE</div>
+    <h2>Premium izgled. Jasna poruka. Više mogućnosti.</h2>
+    <p class="desc">Test prikazuje kako bi se ovaj 3D izgled mogao uklopiti u širu LNK DIGITAL prezentaciju, bez diranja trenutne ponude ili postojećih funkcija.</p>
+    <div class="cards">
+      <article class="card"><small>01 / DESIGN</small><h3>Premium Web Design</h3><p>Brze, moderne i responzivne stranice sa snažnim vizualnim identitetom.</p></article>
+      <article class="card"><small>02 / VISIBILITY</small><h3>SEO · GEO · AEO</h3><p>Bolja struktura sadržaja i tehnički temelji za vidljivost na tražilicama i AI platformama.</p></article>
+      <article class="card"><small>03 / GROWTH</small><h3>Webshop i rezervacije</h3><p>Online narudžbe, ponude, rezervacije i forme koje olakšavaju dolazak do novih upita.</p></article>
+    </div>
+  </div></section>
+  <section class="contact" id="koncept"><div class="wrap">
+    <div class="mini-title">02 / 3D PREZENTACIJA</div>
+    <div class="contact-panel" id="kontakt"><div><h2>Prvi utisak može biti nezaboravan.</h2><p>Rotirajući 3D objekat reaguje na pokret miša. Na manjim ekranima postaje suptilnija pozadina, kako bi tekst i dugmad ostali čitljivi.</p></div><a class="btn btn-primary" href="mailto:sales@ludaknakvadrat.com?subject=LNK%20DIGITAL%20-%20premium%20dizajn">Kontaktiraj LNK DIGITAL ↗</a></div>
+  </div></section>
+  <footer><div class="wrap"><span>© 2026 LNK DIGITAL · 3D koncept demonstracija</span><span>Odvojeno od produkcije · <a href="https://www.lnkdigital.com" target="_blank" rel="noopener noreferrer">lnkdigital.com ↗</a></span></div></footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+  (function () {
+    var mb = document.getElementById('menuButton');
+    var menu = document.getElementById('mobileMenu');
+    mb.addEventListener('click', function () { var open = menu.classList.toggle('open'); mb.setAttribute('aria-expanded',String(open)); mb.textContent=open?'✕':'☰'; });
+    menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');mb.setAttribute('aria-expanded','false');mb.textContent='☰';});});
+    if(!window.THREE) return;
+    var canvas=document.getElementById('webgl'),holder=canvas.parentElement;
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, renderer;
+    try{renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true,powerPreference:'low-power'});}catch(err){return;}
+    renderer.setClearColor(0x000000,0);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.7));
+    var scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(44,1,.1,100);camera.position.z=7.5;
+    scene.add(new THREE.AmbientLight(0xffffff,.8));
+    var v=new THREE.PointLight(0x975cff,4.8,40);v.position.set(4,5,6);scene.add(v);
+    var bl=new THREE.PointLight(0x67baff,4.8,40);bl.position.set(-5,-4,5);scene.add(bl);
+    var wh=new THREE.PointLight(0xffffff,2.8,30);wh.position.set(0,-2,8);scene.add(wh);
+    var geometry=new THREE.TorusKnotGeometry(1.38,.38,200,36,2,5);
+    // Phong specular + multiple moving studio lights for a shiny chrome aesthetic without a large HDR asset.
+    var material=new THREE.MeshPhongMaterial({color:0xa9a9cf,specular:0xffffff,shininess:135,reflectivity:1});
+    var mesh=new THREE.Mesh(geometry,material);mesh.rotation.z=.3;scene.add(mesh);
+    var halo=new THREE.Mesh(new THREE.TorusGeometry(2.42,.006,4,220),new THREE.MeshBasicMaterial({color:0x8f60fe,transparent:true,opacity:.28}));
+    halo.rotation.x=.4;halo.rotation.y=.4;scene.add(halo);
+    var halo2=new THREE.Mesh(new THREE.TorusGeometry(2.78,.004,3,220),new THREE.MeshBasicMaterial({color:0x7bacff,transparent:true,opacity:.18}));
+    halo2.rotation.x=-.25;halo2.rotation.y=.48;scene.add(halo2);
+    var targetX=0,targetY=0,x=0,y=0;
+    document.addEventListener('pointermove',function(ev){if(ev.pointerType==='touch')return;targetX=(ev.clientX/window.innerWidth-.5)*.7;targetY=(ev.clientY/window.innerHeight-.5)*.55;},{passive:true});
+    function resize(){var w=Math.max(1,holder.clientWidth),h=Math.max(1,holder.clientHeight);camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false);}
+    resize();window.addEventListener('resize',resize,{passive:true});
+    var observer=window.ResizeObserver?new ResizeObserver(resize):null;if(observer)observer.observe(holder);
+    var start=performance.now(),active=true;
+    function animate(t){if(!active)return;x+=(targetX-x)*.05;y+=(targetY-y)*.05;var seconds=(t-start)/1000;mesh.rotation.x=seconds*.18+y;mesh.rotation.y=seconds*.24+x;halo.rotation.z=seconds*.025;halo2.rotation.z=-seconds*.035;renderer.render(scene,camera);if(!reduce)requestAnimationFrame(animate);}
+    if(reduce){mesh.rotation.set(.3,.4,.25);renderer.render(scene,camera);}else requestAnimationFrame(animate);
+    document.addEventListener('visibilitychange',function(){active=!document.hidden;if(active&&!reduce)requestAnimationFrame(animate);});
+    window.addEventListener('pagehide',function(){active=false;if(observer)observer.disconnect();renderer.dispose();geometry.dispose();material.dispose();});
+  })();
+  </script>
+</body>
+</html>
