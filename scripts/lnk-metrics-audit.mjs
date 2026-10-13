@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 const file=p=>readFileSync(p,'utf8');
 const pages=[...file('sitemap.xml').matchAll(/<loc>https:\/\/www\.lnkdigital\.com(\/[^<]*)<\/loc>/g)].map(m=>m[1]);
-assert.equal(pages.length,21);
+assert.equal(pages.length,22);
 // The new editorial FAQ has no analytics; preserve the existing 20-page consent scope.
 const untracked='/website-design-questions.html';
 assert(!file(untracked.slice(1)).includes('/assets/js/lnk-metrics.js'),'FAQ must remain untracked');
@@ -32,4 +32,4 @@ assert(outbound,'No bounded event payload');
 const keys=outbound[1].split(',').map(s=>s.trim().split(':')[0]);
 assert(keys.every(x=>allowed.has(x))&&keys.length===3,'Unexpected event payload');
 assert(script.includes("navigator.globalPrivacyControl===true")&&script.includes("navigator.doNotTrack==='1'"));
-console.log('LNK METRICS QA PASS: 20/20 pages, 10 language disclosures, six aggregate events, existing contact routes, no cookies, visitor identifiers or message contents.');
+console.log('LNK METRICS QA PASS: 21/21 pages, 10 language disclosures, six aggregate events, existing contact routes, no cookies, visitor identifiers or message contents.');
