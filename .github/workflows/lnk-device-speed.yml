@@ -1,0 +1,64 @@
+name: LNK DIGITAL Real Device & Speed QA
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  real_browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install pinned browser test dependencies
+        run: |
+          node --version
+          npm install --no-save --no-package-lock --ignore-scripts playwright@1.56.1 lighthouse@12.8.2
+          npx playwright install chromium
+      - name: Test 5 actual browser viewports and interactive flows
+        run: node scripts/live-device-speed.mjs
+      - name: Lighthouse mobile and desktop performance, SEO and accessibility
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p qa-report
+          if [ ! -d node_modules/lighthouse ]; then
+            echo "Lighthouse not installed; previous step failed"
+            exit 1
+          fi
+          node node_modules/lighthouse/cli/index.js https://www.lnkdigital.com/ --only-categories=performance,accessibility,best-practices,seo --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=qa-report/lighthouse-mobile.json --quiet
+          node node_modules/lighthouse/cli/index.js https://www.lnkdigital.com/ --preset=desktop --only-categories=performance,accessibility,best-practices,seo --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=qa-report/lighthouse-desktop.json --quiet
+          node --input-type=module - <<'NODE'
+          import {readFileSync,writeFileSync} from 'node:fs';
+          const r={};
+          for(const mode of ['mobile','desktop']){
+            const d=JSON.parse(readFileSync('qa-report/lighthouse-'+mode+'.json','utf8'));
+            const a=d.audits||{};
+            r[mode]={
+              scores:Object.fromEntries(Object.entries(d.categories||{}).map(([k,v])=>[k,Math.round(100*(v.score||0))])),
+              lcpMs:a['largest-contentful-paint']?.numericValue||null,
+              cls:a['cumulative-layout-shift']?.numericValue||null,
+              tbtMs:a['total-blocking-time']?.numericValue||null,
+              fcpMs:a['first-contentful-paint']?.numericValue||null,
+              speedIndexMs:a['speed-index']?.numericValue||null
+            };
+          }
+          writeFileSync('qa-report/lighthouse-summary.json',JSON.stringify(r,null,2));
+          console.log('LIGHTHOUSE RESULTS '+JSON.stringify(r));
+          NODE
+      - name: Upload browser screenshots and performance reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: lnk-device-speed-qa
+          path: qa-report/
+          if-no-files-found: warn
+          retention-days: 7
