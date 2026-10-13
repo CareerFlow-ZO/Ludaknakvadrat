@@ -3,13 +3,20 @@ import { readFileSync, existsSync } from 'node:fs';
 import assert from 'node:assert/strict';
 const sitemap=readFileSync('sitemap.xml','utf8');
 const pages=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-assert.equal(pages.length,21,'Expected 21 public LNK pages');
+assert.equal(pages.length,22,'Expected 22 public LNK pages');
 const langs=['en','sl','de','hr','bs','sr','it','fr','es','sq'];
 const css='assets/css/lnk-global-languages.css';
 assert(existsSync(css),'Missing responsive locale-menu stylesheet');
 for(const url of pages){
  const path=new URL(url).pathname;
  if(path==='/')continue;
+ if(path==='/seo-geo-aeo.html'){
+   const html=readFileSync('seo-geo-aeo.html','utf8');
+   assert(html.includes('class="lnk-global-languages"'),'SEO language menu missing');
+   for(const lang of langs)assert(html.includes('href="/?lang='+lang+'" lang="'+lang+'"'),'SEO locale link missing '+lang);
+   assert(html.includes('class="lnk-locale-note"')&&html.includes('<main id="main-content">'),'SEO menu needs a11y main landmark');
+   continue;
+ }
  const file=path.slice(1),html=readFileSync(file,'utf8');
  const originalLocale=html.match(/<html\b[^>]*lang="([^"]+)"/)?.[1];
  assert(originalLocale,'Missing original document language: '+file);
