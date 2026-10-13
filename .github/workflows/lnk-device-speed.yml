@@ -25,6 +25,25 @@ jobs:
           npx playwright install chromium
       - name: Test 5 actual browser viewports and interactive flows
         run: node scripts/live-device-speed.mjs
+      - name: Test fully optimized GitHub HEAD locally in real browsers
+        shell: bash
+        run: |
+          mkdir -p qa-report
+          python3 -m http.server 4173 --bind 127.0.0.1 > qa-report/local-server.log 2>&1 &
+          sleep 2
+          LNK_URL=http://127.0.0.1:4173 LNK_EXPECT_OPTIMIZED=1 node scripts/live-device-speed.mjs
+          cp qa-report/device-speed.json qa-report/local-optimized-device-speed.json
+          node node_modules/lighthouse/cli/index.js http://127.0.0.1:4173/ --only-categories=performance,accessibility,best-practices,seo --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=qa-report/local-lighthouse-mobile.json --quiet
+          node node_modules/lighthouse/cli/index.js http://127.0.0.1:4173/ --preset=desktop --only-categories=performance,accessibility,best-practices,seo --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=qa-report/local-lighthouse-desktop.json --quiet
+          node --input-type=module - <<'NODE'
+          import {readFileSync} from 'node:fs';
+          for(const mode of ['mobile','desktop']){
+            const d=JSON.parse(readFileSync('qa-report/local-lighthouse-'+mode+'.json'));
+            const score=Object.fromEntries(Object.entries(d.categories).map(([k,v])=>[k,Math.round(v.score*100)]));
+            const a=d.audits;
+            console.log('OPTIMIZED_LOCAL_LIGHTHOUSE '+mode+' '+JSON.stringify({score,lcpMs:a['largest-contentful-paint']?.numericValue,fcpMs:a['first-contentful-paint']?.numericValue,tbtMs:a['total-blocking-time']?.numericValue}));
+          }
+          NODE
       - name: Lighthouse mobile and desktop performance, SEO and accessibility
         if: always()
         shell: bash
