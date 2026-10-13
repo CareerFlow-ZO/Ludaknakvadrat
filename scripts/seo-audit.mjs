@@ -181,7 +181,7 @@ for (const name of photoNames) {
   if (statSync(join(root, small)).size >= statSync(join(root, original)).size)
     fail(small, 'Responsive variant must be smaller than original');
   // Check displayed photo cards; never require removed legacy cards.
-  const used = [...homeHtml.matchAll(/<img\\b[^>]*>/gi)].map(m => m[0])
+  const used = [...homeHtml.matchAll(/<img\b[^>]*>/gi)].map(m => m[0])
     .filter(tag => tag.includes('/assets/photos/' + name + '-600.webp'));
   for (const tag of used) {
     const responsive = `/assets/photos/${name}-320.webp 320w, /assets/photos/${name}-480.webp 480w, /assets/photos/${name}-600.webp 600w`;
