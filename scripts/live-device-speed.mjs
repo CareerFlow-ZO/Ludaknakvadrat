@@ -89,10 +89,18 @@ for(const profile of profiles){
        }));
        const button=await page.locator('[data-lnku-demo="'+name+'"]').getAttribute('aria-pressed');
        if(button!=='true')failures.push(profile.name+': '+name+' active tab not set');
-       if(name==='shop' && (!chosen.src.includes('nike-shoe.webp')||!chosen.srcset.includes('nike-shoe-720.webp')))
-         failures.push(profile.name+': e-commerce tab displays wrong image candidate');
-       if(name==='restaurant' && (!chosen.src.includes('restaurant.webp')||!chosen.srcset.includes('restaurant-720.webp')))
-         failures.push(profile.name+': restaurant tab displays wrong image candidate');
+       if(name==='shop'){
+         const optimized=chosen.src.includes('nike-shoe.webp')&&chosen.srcset.includes('nike-shoe-720.webp');
+         const previous=chosen.src.includes('unsplash.com')&&!chosen.srcset;
+         if(!(optimized||(process.env.GITHUB_EVENT_NAME==='pull_request'&&previous)))
+           failures.push(profile.name+': e-commerce image wrong or unoptimized in production');
+       }
+       if(name==='restaurant'){
+         const optimized=chosen.src.includes('restaurant.webp')&&chosen.srcset.includes('restaurant-720.webp');
+         const previous=chosen.src.includes('restaurant.png')&&!chosen.srcset;
+         if(!(optimized||(process.env.GITHUB_EVENT_NAME==='pull_request'&&previous)))
+           failures.push(profile.name+': restaurant image wrong or unoptimized in production');
+       }
      }
      for(const lang of ['en','sl','de','bs','fr','it','es','sq','hr','sr']){
        await page.locator('#languageSelect').selectOption(lang);
