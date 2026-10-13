@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     const n=clean(name),e=clean(email).toLowerCase(),c=clean(company),s=clean(service),m=clean(message);
     if (!consent || n.length<2||n.length>120||e.length>150||e.length<5
         || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)
-        || c.length>130||s.length>100||m.length>1500)
+        || c.length>130||s.length>100||m.length<8||m.length>1500)
       return res.status(400).json({error:"Check required fields"});
     const allowed=["website","redesign","ecommerce","seo","booking","other"];
     if (!allowed.includes(s)) return res.status(400).json({error:"Invalid service"});
