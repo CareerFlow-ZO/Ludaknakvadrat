@@ -51,7 +51,21 @@ function selectDemo(name){
  url.textContent=d.url;title.textContent=d.title;subtitle.textContent=d.eyebrow;teaser.textContent=d.text;
  link.href=d.link;link.textContent=d.cta;phoneBrand.textContent=d.brand;
  image.dataset.fallback="0";phone.dataset.fallback="0";
- image.alt=d.alt;image.src=d.image;phone.src=d.phone;
+ image.alt=d.alt;
+ if(name==="realestate"){
+  image.setAttribute("data-i18n-alt","heroImageAlt");
+  image.srcset="/assets/photos/hero-320.webp 320w, /assets/photos/hero-480.webp 480w, /assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w";
+  image.sizes="(max-width: 760px) calc(100vw - 100px), (max-width: 980px) calc(100vw - 144px), (max-width: 1244px) calc(46vw - 114px), 458px";
+  if(typeof LNK_TRANSLATIONS!=="undefined"){
+   var lang=document.getElementById("languageSelect")?.value||"en";
+   image.alt=LNK_TRANSLATIONS[lang]?.heroImageAlt||d.alt;
+  }
+ }else{
+  image.removeAttribute("data-i18n-alt");
+  image.removeAttribute("srcset");
+  image.removeAttribute("sizes");
+ }
+ image.src=d.image;phone.src=d.phone;
  buttons.forEach(function(button){button.setAttribute("aria-pressed",String(button.dataset.lnkuDemo===name));});
  window.setTimeout(function(){stage.classList.remove("lnku-paint");},150);
 }
