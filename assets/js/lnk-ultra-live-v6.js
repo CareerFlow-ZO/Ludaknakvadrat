@@ -24,10 +24,10 @@ function fallback(img,preferred){
  img.addEventListener("error",function(){
   if(img.dataset.fallback==="1"){img.style.opacity="0";return;}
   img.dataset.fallback="1";
-  img.src=preferred;
+  img.src=typeof preferred==="function"?preferred():preferred;
  });
 }
-fallback(image,"/assets/previews/ecommerce.png");
+fallback(image,function(){return current==="shop"?"/assets/previews/ecommerce.png":"/assets/photos/hero.webp";});
 fallback(phone,"/assets/photos/mobile-320.webp");
 
 // Service images use a local fallback for external image hosts, preserving layout on iOS/desktop.
