@@ -624,6 +624,185 @@ html{scroll-padding-top:26px}
  .reveal{filter:none!important;opacity:1!important;transform:none!important}
 }
 
+
+/* === V5 mobile refinement — requested screenshot fixes (2026-10-13) ===
+   Desktop showroom & original main website remain untouched.
+   Specificity intentionally exceeds previous v4/v5 mobile rules. */
+@media (max-width:650px) {
+  /* Remove the two distracting holographic panels entirely on phones. */
+  #showroom .code-screen,
+  #showroom .stats-screen {
+    display:none!important;
+  }
+  /* Make the real website preview the dominant object. */
+  #showroom.showroom {
+    width:100%!important;
+    height:clamp(332px,91vw,405px)!important;
+    margin:32px auto 27px!important;
+    overflow:visible;
+    isolation:isolate;
+  }
+  #showroom .main-screen {
+    left:11%!important;
+    top:14%!important;
+    width:84%!important;
+    height:67%!important;
+    z-index:8;
+    transform:rotateY(-7deg) rotateX(2deg) rotateZ(-2.5deg);
+  }
+  #showroom .phone-screen {
+    left:0%!important;
+    top:46%!important;
+    width:19%!important;
+    height:39%!important;
+    z-index:10;
+  }
+  #showroom .sample-label {top:0!important;right:2%!important;}
+  #showroom .chip.one {top:10%!important;left:0!important;max-width:38%;z-index:12;}
+  #showroom .chip.two {right:0!important;bottom:12%!important;max-width:48%;z-index:12;}
+  #showroom .sample-switch {
+    left:0!important;right:0!important;
+    bottom:-23px!important;display:flex!important;
+    justify-content:center!important;align-items:center!important;
+    gap:6px!important;z-index:20;
+  }
+  #showroom .sample-switch button {
+    flex:1 1 0!important;min-width:0!important;max-width:none!important;
+    white-space:nowrap;text-align:center;padding:11px 5px!important;
+    font-size:clamp(7px,2vw,9px)!important;
+    border-radius:10px;
+  }
+  /* Service visual area uses a real full-width layout — no narrow left column. */
+  #usluge .services {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:18px!important;
+  }
+  #usluge .services > article.service-v5,
+  #usluge .services > article.service-v5:first-child {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:auto 206px auto!important;
+    align-content:start!important;
+    align-items:start!important;
+    justify-content:stretch!important;
+    gap:16px!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    height:auto!important;
+    padding:21px 20px 24px!important;
+    overflow:hidden;
+  }
+  #usluge .services > article.service-v5:first-child {
+    grid-template-rows:auto 244px auto!important;
+  }
+  #usluge .services > article.service-v5 .service-head {
+    grid-row:1;min-width:0;max-width:100%;align-self:start;
+  }
+  #usluge .services > article.service-v5 .service-visual.service-media,
+  #usluge .services > article.service-v5:nth-child(n) .service-visual.service-media {
+    display:block!important;
+    grid-row:2;
+    position:relative!important;
+    align-self:stretch!important;
+    justify-self:stretch!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    height:206px!important;
+    min-height:206px!important;
+    max-height:206px!important;
+    flex:none!important;
+    margin:0!important;
+    overflow:visible!important;
+    transform:none!important;
+  }
+  #usluge .services > article.service-v5:first-child .service-visual.service-media,
+  #usluge .services > article.service-v5:first-child:nth-child(n) .service-visual.service-media {
+    height:244px!important;min-height:244px!important;max-height:244px!important;
+  }
+  #usluge .services > article.service-v5 .service-media .media-frame {
+    display:block!important;
+    position:relative!important;
+    box-sizing:border-box!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:100%!important;
+    min-height:100%!important;
+    max-height:none!important;
+    margin:0!important;
+    transform:none!important;
+    border-radius:15px;
+    overflow:hidden!important;
+  }
+  #usluge .services > article.service-v5 .media-frame img {
+    position:absolute!important;inset:0!important;
+    width:100%!important;height:100%!important;
+    min-width:100%!important;max-width:none!important;
+    object-fit:cover!important;object-position:center!important;
+    display:block!important;
+  }
+  #usluge .services > article.service-v5 .service-info {
+    grid-row:3;align-self:start!important;justify-self:stretch!important;
+    position:relative!important;width:100%!important;max-width:100%!important;
+    margin:0!important;min-height:0!important;
+    padding:0!important;transform:none!important;
+  }
+  #usluge .services > article.service-v5 .service-info h3 {
+    margin:0 0 10px!important;
+    font-size:clamp(24px,6.7vw,31px)!important;
+    line-height:1.12!important;
+    letter-spacing:-.05em!important;
+  }
+  #usluge .services > article.service-v5 .service-info p {
+    margin:0!important;
+    font-size:13px!important;
+    line-height:1.65!important;
+    max-width:100%!important;
+  }
+  /* Eliminate the overlapping tiny widgets from exactly the two marked cards. */
+  #usluge .services > article.service-v5:nth-child(3) .media-search,
+  #usluge .services > article.service-v5:nth-child(5) .media-growth {
+    display:none!important;
+  }
+  #usluge .services > article.service-v5:nth-child(3) .media-frame,
+  #usluge .services > article.service-v5:nth-child(5) .media-frame {
+    width:100%!important;height:100%!important;overflow:hidden!important;
+  }
+  #usluge .services > article.service-v5:nth-child(3) .media-copy,
+  #usluge .services > article.service-v5:nth-child(5) .media-copy {
+    left:15px!important;right:12px!important;bottom:15px!important;
+    max-width:89%!important;
+  }
+  #usluge .services > article.service-v5:nth-child(5) .media-copy strong {
+    font-size:clamp(21px,6vw,29px)!important;line-height:1.04!important;
+  }
+  #usluge .services > article.service-v5:nth-child(5) .media-frame img {
+    object-position:center center!important;
+  }
+}
+/* Smallest devices: consistent card images without text being cut off. */
+@media (max-width:370px) {
+  #usluge .services > article.service-v5,
+  #usluge .services > article.service-v5:first-child {
+    grid-template-rows:auto 185px auto!important;
+    padding:19px 17px 21px!important;
+  }
+  #usluge .services > article.service-v5:first-child {
+    grid-template-rows:auto 215px auto!important;
+  }
+  #usluge .services > article.service-v5 .service-visual.service-media,
+  #usluge .services > article.service-v5:nth-child(n) .service-visual.service-media {
+    height:185px!important;min-height:185px!important;max-height:185px!important;
+  }
+  #usluge .services > article.service-v5:first-child .service-visual.service-media,
+  #usluge .services > article.service-v5:first-child:nth-child(n) .service-visual.service-media {
+    height:215px!important;min-height:215px!important;max-height:215px!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -743,7 +922,7 @@ html{scroll-padding-top:26px}
           <img loading="lazy" decoding="async" width="1200" height="800" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1050&auto=format&fit=crop&q=82" alt="Analitički poslovni dashboard na monitoru kao ilustracija digitalne strategije i optimizacije">
           <div class="media-vignette" aria-hidden="true"></div>
           <div class="media-topline" aria-hidden="true"><span class="media-lights"><i></i><i></i><i></i></span><span>LNK / PERFORMANCE</span></div>
-          <div class="media-copy" aria-hidden="true"><small>ANALYTICS / CONCEPT</small><strong>TURN DATA<br>INTO CLARITY.</strong><span class="media-sub">INSIGHTS & OPTIMIZATION</span></div>
+          <div class="media-copy" aria-hidden="true"><small>ANALYTICS / CONCEPT</small><strong>SMARTER<br>DECISIONS.</strong><span class="media-sub">INSIGHTS & OPTIMIZATION</span></div>
           
           
           <div class="media-widget media-growth" aria-hidden="true"><small>DESIGN INSIGHTS</small><svg viewBox="0 0 180 58" preserveAspectRatio="none" aria-hidden="true"><path d="M0 52 C20 49 24 30 46 38 S79 45 97 22 S128 32 149 10 L180 5" fill="none" stroke="#a3edff" stroke-width="3.5"/><path d="M0 52 C20 49 24 30 46 38 S79 45 97 22 S128 32 149 10 L180 5 L180 58 L0 58Z" fill="#7dd5ff27"/></svg></div>
