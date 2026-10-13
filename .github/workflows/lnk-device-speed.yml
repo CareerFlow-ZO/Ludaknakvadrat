@@ -42,6 +42,20 @@ jobs:
             const score=Object.fromEntries(Object.entries(d.categories).map(([k,v])=>[k,Math.round(v.score*100)]));
             const a=d.audits;
             console.log('OPTIMIZED_LOCAL_LIGHTHOUSE '+mode+' '+JSON.stringify({score,lcpMs:a['largest-contentful-paint']?.numericValue,fcpMs:a['first-contentful-paint']?.numericValue,tbtMs:a['total-blocking-time']?.numericValue}));
+            if(mode==='mobile'){
+              const perf=(d.categories.performance?.auditRefs||[])
+                .filter(x=>x.weight>0).map(x=>({id:x.id,weight:x.weight,value:a[x.id]?.numericValue,score:a[x.id]?.score}));
+              const opportunities=Object.entries(a).filter(([id,x])=>x.score!==null&&x.score!==undefined&&x.score<1&&(
+                (x.details?.overallSavingsMs||0)>50||id.includes('lcp')||id.includes('render-blocking')||id.includes('mainthread')||id.includes('long-task')||id.includes('network-dependency')||id.includes('unused')||id.includes('largest-contentful')
+              )).map(([id,x])=>({id,score:x.score,savings:x.details?.overallSavingsMs||0,title:x.title,
+                  items:x.details?.items?.slice(0,4).map(y=>({url:y.url, wastedMs:y.wastedMs,wastedBytes:y.wastedBytes,node:y.node?.snippet,subItems:y.subItems?.items?.slice(0,2)}))}))
+                .sort((p,q)=>q.savings-p.savings).slice(0,24);
+              console.log('MOBILE_PERF_AUDITS '+JSON.stringify(perf));
+              console.log('MOBILE_OPPORTUNITIES '+JSON.stringify(opportunities).slice(0,20000));
+              for(const id of ['lcp-breakdown-insight','lcp-discovery-insight','network-dependency-tree-insight','render-blocking-insight','largest-contentful-paint-element','mainthread-work-breakdown','bootup-time']){
+                const v=a[id];if(v)console.log('MOBILE_DEEP '+id+' '+JSON.stringify({displayValue:v.displayValue,details:v.details?.items?.slice(0,5)}).slice(0,8000));
+              }
+            }
           }
           NODE
       - name: Lighthouse mobile and desktop performance, SEO and accessibility
