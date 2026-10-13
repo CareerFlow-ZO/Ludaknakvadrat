@@ -16,6 +16,39 @@ module.exports=async(req,res)=>{
   try{
     if(event.type==="checkout.session.completed"){
       const session=event.data.object;
+      // LNK DIGITAL uses the same verified Stripe webhook, but keeps its orders
+      // separate from the music catalogue. Never mark a service payment as a song.
+      if(session.metadata?.order_type==="lnk_digital_service"){
+        if(session.payment_status!=="paid"){
+          return res.status(200).json({received:true,ignored:"payment not yet paid"});
+        }
+        if(!session.id||!["START","BUSINESS","PREMIUM"].includes(session.metadata.package)){
+          console.error("LNK DIGITAL webhook: invalid signed session data");
+          return res.status(400).json({error:"Invalid LNK DIGITAL session"});
+        }
+        const customer=session.customer_details||{};
+        // Ignore duplicate deliveries; Stripe retries and can deliver out of order.
+        await supabase("lnk_digital_service_orders?on_conflict=stripe_session_id",{
+          method:"POST",
+          headers:{"Prefer":"resolution=ignore-duplicates,return=minimal"},
+          body:JSON.stringify({
+            stripe_session_id:session.id,
+            stripe_event_id:event.id,
+            stripe_payment_intent_id:typeof session.payment_intent==="string"?session.payment_intent:null,
+            customer_email:customer.email||session.customer_email||null,
+            customer_name:session.metadata.customer_name||customer.name||null,
+            package_key:session.metadata.package,
+            addon_keys:session.metadata.addons||"",
+            amount_total_cents:session.amount_total||0,
+            currency:session.currency||"eur",
+            payment_status:"paid",
+            project_description:session.metadata.project_description||"",
+            maintenance_requested:session.metadata.maintenance_requested==="true",
+            paid_at:new Date((event.created||Math.floor(Date.now()/1000))*1000).toISOString()
+          })
+        });
+        return res.status(200).json({received:true,service_order:true});
+      }
       const orderId=session.metadata?.order_id;
       // This Stripe account also serves LNK BUSINESS. Ignore checkouts for other products.
       // A song order can only be fulfilled/emailed when it carries a music order_id.
