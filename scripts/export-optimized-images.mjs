@@ -27,3 +27,11 @@ for(const width of [720,1200]){
  const out=await sharp(nike).resize({width,withoutEnlargement:true}).webp({quality:80,effort:5}).toBuffer();
  await emit('nike-shoe'+(width===720?'-720':'')+'.webp',out);
 }
+
+const iconPng=await sharp('lnk-digital-logo.jpg').resize(48,48,{fit:'contain',background:'#071321'}).png().toBuffer();
+const icoHead=Buffer.alloc(22);
+icoHead.writeUInt16LE(0,0);icoHead.writeUInt16LE(1,2);icoHead.writeUInt16LE(1,4);
+icoHead[6]=48;icoHead[7]=48;
+icoHead.writeUInt16LE(1,10);icoHead.writeUInt16LE(32,12);
+icoHead.writeUInt32LE(iconPng.length,14);icoHead.writeUInt32LE(22,18);
+await emit('favicon.ico',Buffer.concat([icoHead,iconPng]));
