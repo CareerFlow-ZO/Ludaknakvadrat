@@ -41,13 +41,13 @@ for (const lang of expectedLanguages) {
 // Check all 15 business cards: services, portfolio, steps, benefits and mini-cards.
 const cards = [...html.matchAll(/<(article|a|div)\b([^>]*\bclass="[^"]*\b(?:card|step|work-card|mini-card)\b[^"]*"[^>]*)>([\s\S]*?)<\/\1>/gi)];
 assert.equal(cards.length, 10, 'Ten legacy portfolio, process and benefit cards must remain');
-const newServiceCards=[...html.matchAll(/<article class="lnku-service"[^>]*>[\\s\\S]*?<\\/article>/g)];
+const newServiceCards=[...html.matchAll(/<article class="lnku-service"[^>]*>[\s\S]*?<\/article>/g)];
 assert.equal(newServiceCards.length,5,'Five cinematic service cards must remain');
 for(const block of newServiceCards){
  const markup=block[0];
  assert(markup.includes('data-lnku-title')&&markup.includes('data-lnku-description'),
  'Cinematic service card lost multilingual title or description');
- assert(/<img\\b[^>]*alt="[^"]+"/.test(markup),'Cinematic service imagery must be described');
+ assert(/<img\b[^>]*alt="[^"]+"/.test(markup),'Cinematic service imagery must be described');
 }
 const allCardKeys = new Set();
 for (const card of cards) {
