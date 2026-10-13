@@ -25,9 +25,9 @@ const ariaKeys = [...html.matchAll(/\bdata-i18n-aria="([^"]+)"/g)].map(m => m[1]
 const imageAltKeys = [...html.matchAll(/\bdata-i18n-alt="([^"]+)"/g)].map(m => m[1]);
 assert.deepEqual(imageAltKeys, ['heroImageAlt'], 'Featured design must have translated alt text');
 const allImages = [...html.matchAll(/<img\b[^>]*>/gi)].map(m => m[0]);
-assert.equal(allImages.length, 16, 'Homepage image count changed; review alt test coverage');
+assert.equal(allImages.length, 17, 'Current homepage should have 17 descriptive/decorative image tags');
 assert(allImages.every(tag => /\balt="/.test(tag)), 'Every homepage image must declare an alt attribute');
-assert.equal(allImages.filter(tag => /alt=""/.test(tag)).length, 15, 'Decorative image conventions changed; review accessibility');
+assert.equal(allImages.filter(tag => /alt=""/.test(tag)).length, 1, 'Only the decorative phone screen may have an empty alt');
 const usedKeys = [...new Set([...textKeys, ...ariaKeys, ...imageAltKeys, 'heroTitle', 'contactTitle', 'menuOpen', 'menuClose', 'whatsappHello', 'whatsappBusiness'])];
 for (const lang of expectedLanguages) {
   for (const key of usedKeys) {
