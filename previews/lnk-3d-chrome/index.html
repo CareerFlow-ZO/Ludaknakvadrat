@@ -42,7 +42,19 @@
     .sidenote { display:flex; align-items:center; gap:10px; font-size:12px; color:#8190a9; margin-top:23px; line-height:1.6; }
     .sidenote span { color:#b08fff; }
     .three-wrap { position:absolute; z-index:2; top:0; bottom:6%; right:-7%; width:59%; pointer-events:none; }
-    #webgl { width:100%; height:100%; display:block; filter:drop-shadow(0 0 70px #7849b844); }
+    .three-wrap:before { content:""; position:absolute; width:76%; height:68%; left:12%; top:17%; border-radius:50%; background:radial-gradient(circle,#7e55fe2c,transparent 69%); filter:blur(28px); }
+    /* Visible animated backup if the browser blocks the WebGL canvas or CDN. */
+    .fallback-3d { position:absolute; inset:0; overflow:hidden; display:grid; place-items:center; opacity:1; transition:opacity .4s ease; }
+    .webgl-ready .fallback-3d { opacity:0; }
+    .fallback-glow { position:absolute; width:300px; height:300px; background:radial-gradient(circle,#7c62f651 0%,#734deb1a 48%,transparent 72%); filter:blur(24px); }
+    .fallback-orbit { position:absolute; width:340px; height:180px; border-radius:50%; border:2px solid #b8adf46e; box-shadow:inset 0 0 22px #7841e52d,0 0 26px #a87bfa28; transform:rotate(-31deg); animation:orbit-a 11s linear infinite; }
+    .fallback-orbit.two { width:300px; height:300px; border-color:#82baff57; transform:rotateX(71deg) rotate(-42deg); animation:orbit-b 14s linear infinite; }
+    .fallback-chrome { width:240px; height:240px; border-radius:50%; position:relative; background:radial-gradient(ellipse at 29% 24%,#fff9 2%,transparent 18%),conic-gradient(from 34deg,#111b30,#e3e8fd 9%,#656b94 20%,#c0c4e5 31%,#15182a 40%,#faf8ff 54%,#797ca7 63%,#2c2749 75%,#aab2e0 88%,#111b30); box-shadow:inset -26px -29px 53px #080b1dbc,inset 12px 11px 24px #fff8,0 0 58px #714cd864; animation:float-shine 7s ease-in-out infinite; }
+    .fallback-chrome:after { content:""; position:absolute; inset:25%; border-radius:50%; background:radial-gradient(circle at 70% 80%,#8f8bed,#11172f 73%); box-shadow:inset 12px 10px 20px #0008,0 0 0 13px #8e96bd13; }
+    @keyframes float-shine { 0%,100% { transform:translateY(3px) rotate(-13deg); } 50% { transform:translateY(-12px) rotate(16deg); } }
+    @keyframes orbit-a { 0% { transform:rotate(-31deg) rotateX(10deg); } 100% { transform:rotate(329deg) rotateX(10deg); } }
+    @keyframes orbit-b { 0% { transform:rotateX(71deg) rotate(0); } 100% { transform:rotateX(71deg) rotate(360deg); } }
+    #webgl { position:relative; z-index:1; width:100%; height:100%; display:block; filter:drop-shadow(0 0 70px #7849b844); }
     .floating { position:absolute; top:15%; right:10%; padding:14px 17px; color:#c7ccdf; border:1px solid #51577980; background:#13182a95; backdrop-filter:blur(14px); border-radius:14px; font-size:10px; font-weight:700; letter-spacing:.14em; }
     .floating:before { content:""; display:inline-block; width:7px; height:7px; border-radius:100%; background:#91bfff; box-shadow:0 0 14px #91bfff; margin-right:10px; }
     .scene-note { position:absolute; right:13%; bottom:15%; font-size:10px; color:#a8aed1b0; letter-spacing:.2em; }
@@ -74,7 +86,7 @@
       .mobile-nav a { padding:14px; border-radius:9px; color:#d9ddeb; }
       .hero { grid-template-columns:1fr; min-height:780px; }
       .hero-copy { max-width:680px; }
-      .three-wrap { right:-24%; width:85%; opacity:.45; }
+      .three-wrap { right:-12%; width:65%; opacity:.85; }
       .floating,.scene-note { display:none; }
     }
     @media(max-width:650px) {
@@ -83,13 +95,20 @@
       .brand { font-size:15px; }
       .brand-badge { width:43px; height:36px; }
       .preview-tag { display:none; }
-      .hero { min-height:760px; align-items:start; padding:77px 0 66px; }
+      .hero { min-height:0; display:flex; flex-direction:column; gap:16px; align-items:stretch; padding:66px 0 52px; }
+      .hero-copy { order:1; }
+      .three-wrap { order:2; position:relative; inset:auto; width:100%; height:350px; opacity:1; margin-top:10px; border:1px solid #4343737d; border-radius:25px; background:radial-gradient(circle at center,#4d317b47 0%,#11132193 49%,#0d1020a9 78%); overflow:hidden; box-shadow:inset 0 0 80px #080d20a9,0 15px 60px #0003; }
+      .three-wrap .fallback-chrome { width:180px; height:180px; }
+      .three-wrap .fallback-orbit { width:280px; height:150px; }
+      .three-wrap .fallback-orbit.two { width:245px; height:245px; }
+      .three-wrap .floating { display:block; right:15px; top:16px; font-size:8px; z-index:3; }
+      .three-wrap .scene-note { display:block; right:15px; bottom:17px; font-size:8px; z-index:3; }
       h1 { font-size:clamp(38px,10.5vw,56px); letter-spacing:-.055em; margin:27px 0 22px; }
       .eyebrow { font-size:9px; }
       .intro { font-size:15px; line-height:1.8; }
       .buttons { margin-top:28px; }
       .btn { width:100%; }
-      .three-wrap { top:22%; bottom:3%; right:-52%; width:130%; opacity:.21; }
+      /* 3D has a dedicated, readable section on small touchscreens. */
       .strip { flex-wrap:wrap; justify-content:flex-start; gap:6px 18px; padding:15px 0; font-size:9px; }
       .section { padding:75px 0; }
       .cards { grid-template-columns:1fr; }
@@ -126,6 +145,7 @@
         <div class="sidenote"><span>✓</span> Samostalni preview — <strong>postojeći LNK DIGITAL sajt nije mijenjan.</strong></div>
       </div>
       <div class="three-wrap" aria-hidden="true">
+        <div class="fallback-3d"><span class="fallback-glow"></span><span class="fallback-orbit"></span><span class="fallback-orbit two"></span><span class="fallback-chrome"></span></div>
         <canvas id="webgl"></canvas>
         <div class="floating">INTERACTIVE 3D CHROME</div>
         <div class="scene-note">DIGITAL EXPERIENCE — 001</div>
@@ -167,7 +187,7 @@
     var wh=new THREE.PointLight(0xffffff,2.8,30);wh.position.set(0,-2,8);scene.add(wh);
     var geometry=new THREE.TorusKnotGeometry(1.38,.38,200,36,2,5);
     // Phong specular + multiple moving studio lights for a shiny chrome aesthetic without a large HDR asset.
-    var material=new THREE.MeshPhongMaterial({color:0xa9a9cf,specular:0xffffff,shininess:135,reflectivity:1});
+    var material=new THREE.MeshPhongMaterial({color:0xe2dcfc,specular:0xffffff,shininess:145,reflectivity:1});
     var mesh=new THREE.Mesh(geometry,material);mesh.rotation.z=.3;scene.add(mesh);
     var halo=new THREE.Mesh(new THREE.TorusGeometry(2.42,.006,4,220),new THREE.MeshBasicMaterial({color:0x8f60fe,transparent:true,opacity:.28}));
     halo.rotation.x=.4;halo.rotation.y=.4;scene.add(halo);
@@ -179,8 +199,9 @@
     resize();window.addEventListener('resize',resize,{passive:true});
     var observer=window.ResizeObserver?new ResizeObserver(resize):null;if(observer)observer.observe(holder);
     var start=performance.now(),active=true;
-    function animate(t){if(!active)return;x+=(targetX-x)*.05;y+=(targetY-y)*.05;var seconds=(t-start)/1000;mesh.rotation.x=seconds*.18+y;mesh.rotation.y=seconds*.24+x;halo.rotation.z=seconds*.025;halo2.rotation.z=-seconds*.035;renderer.render(scene,camera);if(!reduce)requestAnimationFrame(animate);}
-    if(reduce){mesh.rotation.set(.3,.4,.25);renderer.render(scene,camera);}else requestAnimationFrame(animate);
+    var firstFrame=true;
+    function animate(t){if(!active)return;x+=(targetX-x)*.05;y+=(targetY-y)*.05;var seconds=(t-start)/1000;mesh.rotation.x=seconds*.18+y;mesh.rotation.y=seconds*.24+x;halo.rotation.z=seconds*.025;halo2.rotation.z=-seconds*.035;renderer.render(scene,camera);if(firstFrame){firstFrame=false;holder.classList.add('webgl-ready');}if(!reduce)requestAnimationFrame(animate);}
+    if(reduce){mesh.rotation.set(.3,.4,.25);renderer.render(scene,camera);holder.classList.add('webgl-ready');}else requestAnimationFrame(animate);
     document.addEventListener('visibilitychange',function(){active=!document.hidden;if(active&&!reduce)requestAnimationFrame(animate);});
     window.addEventListener('pagehide',function(){active=false;if(observer)observer.disconnect();renderer.dispose();geometry.dispose();material.dispose();});
   })();
