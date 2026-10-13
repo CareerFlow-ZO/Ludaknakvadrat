@@ -25,9 +25,9 @@ const ariaKeys = [...html.matchAll(/\bdata-i18n-aria="([^"]+)"/g)].map(m => m[1]
 const imageAltKeys = [...html.matchAll(/\bdata-i18n-alt="([^"]+)"/g)].map(m => m[1]);
 assert.deepEqual(imageAltKeys, ['heroImageAlt'], 'Featured design must have translated alt text');
 const allImages = [...html.matchAll(/<img\b[^>]*>/gi)].map(m => m[0]);
-assert.equal(allImages.length, 16, 'Homepage image count changed; review alt test coverage');
+assert.equal(allImages.length, 17, 'Current homepage should have 17 descriptive/decorative image tags');
 assert(allImages.every(tag => /\balt="/.test(tag)), 'Every homepage image must declare an alt attribute');
-assert.equal(allImages.filter(tag => /alt=""/.test(tag)).length, 15, 'Decorative image conventions changed; review accessibility');
+assert.equal(allImages.filter(tag => /alt=""/.test(tag)).length, 11, 'Decorative support photos should retain empty alt; primary service mockups are described');
 const usedKeys = [...new Set([...textKeys, ...ariaKeys, ...imageAltKeys, 'heroTitle', 'contactTitle', 'menuOpen', 'menuClose', 'whatsappHello', 'whatsappBusiness'])];
 for (const lang of expectedLanguages) {
   for (const key of usedKeys) {
@@ -40,7 +40,15 @@ for (const lang of expectedLanguages) {
 
 // Check all 15 business cards: services, portfolio, steps, benefits and mini-cards.
 const cards = [...html.matchAll(/<(article|a|div)\b([^>]*\bclass="[^"]*\b(?:card|step|work-card|mini-card)\b[^"]*"[^>]*)>([\s\S]*?)<\/\1>/gi)];
-assert.equal(cards.length, 15, 'Homepage card count changed; review test coverage');
+assert.equal(cards.length, 10, 'Ten legacy portfolio, process and benefit cards must remain');
+const newServiceCards=[...html.matchAll(/<article class="lnku-service"[^>]*>[\s\S]*?<\/article>/g)];
+assert.equal(newServiceCards.length,5,'Five cinematic service cards must remain');
+for(const block of newServiceCards){
+ const markup=block[0];
+ assert(markup.includes('data-lnku-title')&&markup.includes('data-lnku-description'),
+ 'Cinematic service card lost multilingual title or description');
+ assert(/<img\b[^>]*alt="[^"]+"/.test(markup),'Cinematic service imagery must be described');
+}
 const allCardKeys = new Set();
 for (const card of cards) {
   const keys = [...card[3].matchAll(/\bdata-i18n="([^"]+)"/g)].map(m => m[1]);

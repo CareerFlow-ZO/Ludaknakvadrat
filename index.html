@@ -39,7 +39,7 @@
   --radius:26px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;background:var(--bg)}
+html{scroll-behavior:smooth;background:var(--bg);overflow-x:clip}
 body{
   margin:0;
   min-height:100vh;
@@ -592,7 +592,7 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
       <div class="lnku-screen lnku-main">
         <div class="lnku-window"><i></i><i></i><i></i><span id="lnkuMockUrl">NOVA / RESIDENCES</span></div>
         <div class="lnku-picture">
-          <img id="lnkuMainImage" src="/assets/photos/hero-600.webp" width="600" height="450" alt="Luxury real estate website concept" fetchpriority="high">
+          <img id="lnkuMainImage" src="/assets/photos/hero-600.webp" srcset="/assets/photos/hero-320.webp 320w, /assets/photos/hero-480.webp 480w, /assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w" sizes="(max-width: 760px) calc(100vw - 100px), (max-width: 980px) calc(100vw - 144px), (max-width: 1244px) calc(46vw - 114px), 458px" width="600" height="450" alt="Luxury real estate website concept" data-i18n-alt="heroImageAlt" fetchpriority="high" decoding="async">
           <div class="lnku-graphic">
             <small id="lnkuDemoSub">PREMIUM WEB / DESIGN CONCEPT</small>
             <strong id="lnkuDemoTitle">BEYOND THE EXPECTED.</strong>
@@ -628,7 +628,7 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
       <article class="lnku-service" data-lnku-service="2">
         <div class="lnku-service-head"><span>02 / E-COMMERCE</span><a href="/izdelava-spletnih-trgovin.html" aria-label="Explore Online stores & sales">↗</a></div>
         <div class="lnku-service-visual">
-          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&auto=format&fit=crop&q=85" data-lnku-fallback="/assets/previews/ecommerce.png" loading="lazy" decoding="async" alt="Red Nike running shoe in a sample footwear online store design" width="1200" height="800">
+          <img src="/assets/previews/nike-shoe-720.webp" srcset="/assets/previews/nike-shoe-720.webp 720w, /assets/previews/nike-shoe.webp 1200w" sizes="(max-width:760px) calc(100vw - 95px), (max-width:1180px) 42vw, 460px" data-lnku-fallback="/assets/previews/ecommerce.webp" loading="lazy" decoding="async" alt="Red Nike running shoe in a sample footwear online store design" width="1200" height="800">
           <div class="lnku-ui-top" aria-hidden="true"><span>SNEAKER / CONCEPT SHOP</span><i>ONLINE STORE</i></div>
           <div class="lnku-ui-copy" aria-hidden="true"><small>ONLINE STORE · PRODUCT VIEW</small><strong>SHOP THE DROP.</strong><span>PRODUCT • CART • CHECKOUT</span></div>
           <div class="lnku-mock-control lnku-shop-control" aria-hidden="true"><small>STORE / PRODUCT 01</small><b>RUNNER 01</b><div class="lnku-sizes"><i>40</i><i>41</i><i>42</i></div><span>Demo product page</span><span class="lnku-addcart">🛒 ADD TO CART</span></div>
@@ -648,7 +648,7 @@ main,.grid,.process-grid,.portfolio-grid,.mini-grid,.section-head>*{min-width:0}
       <article class="lnku-service" data-lnku-service="4">
         <div class="lnku-service-head"><span>04 / SMART BOOKING</span><a href="/restaurant-website-design.html" aria-label="Explore Booking & automation">↗</a></div>
         <div class="lnku-service-visual">
-          <img src="/assets/previews/restaurant.png"  loading="lazy" decoding="async" alt="Realistic restaurant website showing a reservation-oriented business design" width="1200" height="800">
+          <img src="/assets/previews/restaurant-720.webp" srcset="/assets/previews/restaurant-720.webp 720w, /assets/previews/restaurant.webp 1200w" sizes="(max-width:760px) calc(100vw - 95px), (max-width:1180px) 42vw, 460px" loading="lazy" decoding="async" alt="Realistic restaurant website showing a reservation-oriented business design" width="1200" height="800">
           <div class="lnku-ui-top" aria-hidden="true"><span>LNK / RESERVATIONS</span><i>BOOKING SYSTEM</i></div>
           <div class="lnku-ui-copy" aria-hidden="true"><small>BOOKING · QR · WORKFLOWS</small><strong>RESERVE WITH EASE.</strong><span>ONLINE RESERVATIONS</span></div>
           <div class="lnku-mock-control lnku-booking-control" aria-hidden="true"><small>BOOK A TABLE</small><strong>OCTOBER 2026</strong><div class="lnku-times"><span>18:30</span><span>19:00</span><span>19:30</span></div></div>

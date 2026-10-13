@@ -178,11 +178,18 @@ for (const name of photoNames) {
     fail('index.html', `Missing responsive image: ${original} or ${small}`);
     continue;
   }
-  if (statSync(join(root, small)).size >= statSync(join(root, original)).size) {
+  if (statSync(join(root, small)).size >= statSync(join(root, original)).size)
     fail(small, 'Responsive variant must be smaller than original');
+  // Check displayed photo cards; never require removed legacy cards.
+  const used = [...homeHtml.matchAll(/<img\b[^>]*>/gi)].map(m => m[0])
+    .filter(tag => tag.includes('/assets/photos/' + name + '-600.webp'));
+  for (const tag of used) {
+    const responsive = `/assets/photos/${name}-320.webp 320w, /assets/photos/${name}-480.webp 480w, /assets/photos/${name}-600.webp 600w`;
+    if (!tag.includes('srcset="' + responsive))
+      fail('index.html', `Used photo must have responsive srcset: ${name}`);
+    if (!tag.includes('sizes="'))
+      fail('index.html', `Used photo must have sizes: ${name}`);
   }
-  const expectedSrcset = `srcset="/assets/photos/${name}-320.webp 320w, /assets/photos/${name}-480.webp 480w, /assets/photos/${name}-600.webp 600w, /assets/photos/${name}.webp 960w"`;
-  if (!homeHtml.includes(expectedSrcset)) fail('index.html', `Missing responsive srcset: ${name}`);
 }
 if (!homeHtml.includes('imagesrcset="/assets/photos/hero-320.webp 320w, /assets/photos/hero-480.webp 480w, /assets/photos/hero-600.webp 600w, /assets/photos/hero.webp 960w"')) {
   fail('index.html', 'Hero image preload must match responsive source candidates');

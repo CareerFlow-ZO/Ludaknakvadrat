@@ -8,7 +8,7 @@ const host='https://www.lnkdigital.com';
 const asset=host+'/lnk-digital-logo.jpg';
 const sitemap=readFileSync('sitemap.xml','utf8');
 const urls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-assert.equal(urls.length,21,'Expected 21 public LNK URLs');
+assert.equal(urls.length,22,'Expected 22 public LNK URLs');
 assert(existsSync('lnk-digital-logo.jpg'),'Social preview asset missing');
 const jpeg=readFileSync('lnk-digital-logo.jpg');
 assert(jpeg.length>1000 && jpeg[0]===255 && jpeg[1]===216 && jpeg[2]===255,
@@ -56,4 +56,4 @@ for(const url of urls){
  }
  assert.equal((markup.match(/<h1\b/gi)||[]).length,1,'Wrong H1 count '+file);
 }
-console.log('SHARE & A11Y QA PASS: '+urls.length+'/21 social cards with authentic brand JPEG; 21/21 keyboard skip links; '+links+' internal anchors resolved.');
+console.log('SHARE & A11Y QA PASS: '+urls.length+'/22 social cards with authentic brand JPEG; 22/22 keyboard skip links; '+links+' internal anchors resolved.');
