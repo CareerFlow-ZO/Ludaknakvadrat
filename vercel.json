@@ -501,6 +501,160 @@
       ],
       "destination": "https://www.lnkdigital.com/web-design-portfolio.html",
       "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "ludaknakvadrat.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "ludaknakvadrat.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/",
+      "permanent": true
+    },
+    {
+      "source": "/lnk-digital-home.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "ludaknakvadrat.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/",
+      "permanent": true
+    },
+    {
+      "source": "/website-design-questions.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "ludaknakvadrat.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/website-design-questions.html",
+      "permanent": true
+    },
+    {
+      "source": "/seo-geo-aeo.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "ludaknakvadrat.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/seo-geo-aeo.html",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.ludaknakvadrat.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.ludaknakvadrat.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/",
+      "permanent": true
+    },
+    {
+      "source": "/lnk-digital-home.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.ludaknakvadrat.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/",
+      "permanent": true
+    },
+    {
+      "source": "/website-design-questions.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.ludaknakvadrat.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/website-design-questions.html",
+      "permanent": true
+    },
+    {
+      "source": "/seo-geo-aeo.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.ludaknakvadrat.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/seo-geo-aeo.html",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "lnkdigital.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/",
+      "permanent": true
+    },
+    {
+      "source": "/lnk-digital-home.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "lnkdigital.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.lnkdigital.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/",
+      "permanent": true
+    },
+    {
+      "source": "/lnk-digital-home.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.lnkdigital.com"
+        }
+      ],
+      "destination": "https://www.lnkdigital.com/",
+      "permanent": true
     }
   ],
   "routes": [

@@ -16,9 +16,11 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
+      - name: Test sitemap, canonical and redirect regression guards
+        run: node --test scripts/seo-url-policy.test.mjs
       - name: Validate metadata, sitemap, images and preview indexing
         run: node scripts/seo-audit.mjs
-      - name: Validate contextual links and market FAQs on all 21 pages
+      - name: Validate contextual links and market FAQs on all 22 pages
         run: node scripts/seo-content-audit.mjs
       - name: Guard portfolio claims, external scripts and client safety
         run: node scripts/trust-security-audit.mjs
@@ -33,7 +35,7 @@ jobs:
       - name: Test 10 languages, cards, links and mobile menu
         run: node scripts/i18n-audit.mjs
 
-      - name: Verify language links on all 20 SEO pages
+      - name: Verify language links on all SEO pages
         run: node scripts/secondary-page-language-audit.mjs
 
   live_sitemap:
@@ -58,7 +60,7 @@ jobs:
           grep -q 'https://www.lnkdigital.com/' /tmp/lnk-sitemap.xml
           count=$(grep -o '<loc>' /tmp/lnk-sitemap.xml | wc -l | tr -d ' ')
           echo "Sitemap URLs: ${count}"
-          test "${count}" -ge 21
+          test "${count}" -eq 22
           grep -q 'Sitemap: https://www.lnkdigital.com/sitemap.xml' /tmp/lnk-robots.txt
           echo "LIVE SITEMAP & ROBOTS PASS"
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -67,6 +69,6 @@ jobs:
       - name: Verify JWT-protected metrics endpoint and browser CORS without adding visits
         run: node scripts/lnk-metrics-health.mjs
       - name: Crawl all public LNK pages for SEO and indexability
-        run: node scripts/live-seo-crawl.mjs
+        run: node scripts/live-seo-crawl.mjs --variants
       - name: Test production images, language runtime, domains and Euro Gurman
         run: node scripts/live-production-smoke.mjs

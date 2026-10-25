@@ -2,6 +2,7 @@
 // Static SEO quality gate for LNK DIGITAL. No API keys or external network required.
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { ORIGIN, PUBLIC_PATHS, OLD_HOSTS, HOME_ALIASES, sitemapUrls, seoHead, hasNoindex } from './seo-url-policy.mjs';
 
 const root = process.cwd();
 const host = 'https://www.lnkdigital.com';
@@ -14,7 +15,7 @@ const sitemap = text('sitemap.xml');
 if (!robots.includes(`Sitemap: ${host}/sitemap.xml`)) {
   fail('robots.txt', 'Sitemap URL must match the canonical host');
 }
-const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+const urls = sitemapUrls(sitemap);
 if (!urls.length) fail('sitemap.xml', 'No indexable URLs found');
 if (new Set(urls).size !== urls.length) fail('sitemap.xml', 'Duplicate URLs found');
 
@@ -28,6 +29,9 @@ for (const url of urls) {
   const file = parsed.pathname === '/' ? 'index.html' : parsed.pathname.replace(/^\//, '');
   if (!existsSync(join(root, file))) { fail(file, 'Referenced in sitemap but file is missing'); continue; }
   const html = text(file);
+  const head = seoHead(html);
+  if (head.canonicals.length !== 1) fail(file, 'Expected exactly one canonical');
+  if (hasNoindex(head.robots)) fail(file, 'Sitemap page is noindex');
   const canonical = html.match(/<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']/i)?.[1];
   if (canonical !== url) fail(file, `Canonical mismatch: ${canonical || 'missing'}; expected ${url}`);
   if (!/<html\b[^>]*\blang=["'][^"']+["']/i.test(html)) fail(file, 'Missing html lang');
@@ -88,6 +92,32 @@ for (const [, path] of germanRegionAlternates) {
 }
 
 const vercel = JSON.parse(text('vercel.json'));
+// Host-scoped migration only: unrelated music/client/admin routes must not be caught.
+for (const host of OLD_HOSTS) {
+  for (const path of [...PUBLIC_PATHS, ...HOME_ALIASES]) {
+    const destination = ORIGIN + (HOME_ALIASES.includes(path) ? '/' : path);
+    const matching = vercel.redirects.filter(r => r.source === path &&
+      r.has?.some(h => h.type === 'host' && h.value === host));
+    if (matching.length !== 1 || matching[0].destination !== destination || !matching[0].permanent)
+      fail('vercel.json', 'Missing/ambiguous permanent migration: ' + host + path);
+  }
+}
+for (const host of ['lnkdigital.com', 'www.lnkdigital.com']) {
+  for (const path of HOME_ALIASES) {
+    if (!vercel.redirects.some(r => r.source === path && r.destination === ORIGIN + '/' && r.permanent &&
+      r.has?.some(h => h.type === 'host' && h.value === host)))
+      fail('vercel.json', 'Missing homepage alias redirect: ' + host + path);
+  }
+}
+for (const rule of vercel.redirects) {
+  if (rule.destination?.startsWith(ORIGIN) &&
+      (!rule.has?.some(h => h.type === 'host' && [...OLD_HOSTS, 'lnkdigital.com', 'www.lnkdigital.com'].includes(h.value)) ||
+       ![...PUBLIC_PATHS, ...HOME_ALIASES].includes(rule.source)))
+    fail('vercel.json', 'Overbroad business redirect: ' + rule.source);
+}
+if (!hasNoindex(seoHead(text('privacy.html')).robots) || urls.includes(ORIGIN + '/privacy.html'))
+  fail('privacy.html', 'Intentional noindex and sitemap exclusion must be preserved');
+
 const previewDirs = readdirSync(root, { withFileTypes: true })
   .filter(d => d.isDirectory() && (d.name === 'previews' || d.name.endsWith('-preview')))
   .map(d => d.name);
