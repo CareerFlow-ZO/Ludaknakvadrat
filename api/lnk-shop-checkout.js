@@ -2,9 +2,7 @@ const Stripe=require("stripe");
 const CATALOG=Object.freeze({
  king:{name:"Golden King — Digital Art",cents:7900},
  earth:{name:"Beyond Earth — Digital Art",cents:7900},
- tree:{name:"Tree of Eternity — Digital Art",cents:19900},
- web:{name:"Creative Web Template",cents:7900},
- bundle:{name:"Exclusive Design Bundle",cents:2900}
+ tree:{name:"Tree of Eternity — Digital Art",cents:19900}
 });
 module.exports=async(req,res)=>{
  res.setHeader("Cache-Control","no-store");
