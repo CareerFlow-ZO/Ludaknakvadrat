@@ -7,7 +7,7 @@ const CATALOG=Object.freeze({
 module.exports=async(req,res)=>{
  res.setHeader("Cache-Control","no-store");
  if(req.method!=="POST")return res.status(405).json({error:"Method not allowed"});
- if(process.env.SHOP_SALES_ENABLED!=="true")return res.status(503).json({error:"Shop checkout is being prepared. No payment was taken."});
+ if(process.env.SHOP_SALES_ENABLED!=="true" || process.env.SHOP_FULFILLMENT_READY!=="true")return res.status(503).json({error:"Shop checkout is being prepared. No payment was taken."});
  if(!process.env.STRIPE_SECRET_KEY)return res.status(503).json({error:"Payment is not configured"});
  const origin=req.headers.origin;
  const allowed=["https://www.lnkdigital.com","https://lnkdigital.com"];
