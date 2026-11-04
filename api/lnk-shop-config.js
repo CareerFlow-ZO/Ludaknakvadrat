@@ -1,0 +1,1 @@
+module.exports=async(req,res)=>{res.setHeader("Cache-Control","no-store");if(req.method!=="GET")return res.status(405).json({error:"Method not allowed"});return res.status(200).json({checkout_enabled:process.env.SHOP_SALES_ENABLED==="true"&&Boolean(process.env.STRIPE_SECRET_KEY)});};
