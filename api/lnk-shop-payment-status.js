@@ -8,6 +8,6 @@ module.exports=async(req,res)=>{
  try{
   const s=await new Stripe(process.env.STRIPE_SECRET_KEY).checkout.sessions.retrieve(id);
   if(s.metadata?.order_type!=="lnk_shop")return res.status(404).json({error:"Not a shop order"});
-  return res.status(200).json({paid:s.payment_status==="paid",status:s.status,amount_total:s.amount_total,currency:s.currency});
+  return res.status(200).json({paid:s.payment_status==="paid",status:s.status,amount_total:s.amount_total,currency:s.currency,items:s.payment_status==="paid"?JSON.parse(s.metadata.items||"[]"):[]});
  }catch(e){return res.status(404).json({error:"Order not found"});}
 };
