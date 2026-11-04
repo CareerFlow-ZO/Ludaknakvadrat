@@ -49,6 +49,22 @@ module.exports=async(req,res)=>{
         });
         return res.status(200).json({received:true,service_order:true});
       }
+      if(session.metadata?.order_type==="lnk_shop"){
+        if(session.payment_status!=="paid")return res.status(200).json({received:true,pending:true});
+        const items=JSON.parse(session.metadata.items||"[]");
+        if(!session.id||!Array.isArray(items)||!items.length)throw Error("Invalid shop session metadata");
+        await supabase("lnk_shop_orders?on_conflict=stripe_session_id",{
+          method:"POST",headers:{"Prefer":"resolution=ignore-duplicates,return=minimal"},
+          body:JSON.stringify({
+            stripe_session_id:session.id,
+            stripe_payment_intent_id:typeof session.payment_intent==="string"?session.payment_intent:null,
+            customer_email:session.customer_details?.email||session.customer_email||null,
+            items,amount_total_cents:session.amount_total||0,currency:session.currency||"eur",
+            payment_status:"paid",paid_at:new Date((event.created||Math.floor(Date.now()/1000))*1000).toISOString()
+          })
+        });
+        return res.status(200).json({received:true,shop_order:true});
+      }
       const orderId=session.metadata?.order_id;
       // This Stripe account also serves LNK BUSINESS. Ignore checkouts for other products.
       // A song order can only be fulfilled/emailed when it carries a music order_id.
